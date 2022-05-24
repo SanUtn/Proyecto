@@ -1,0 +1,114 @@
+# depslib dependency file v1.0
+1652916352 source:c:\users\intel-pentium\desktop\utn\2do cuatri\laboratorio ii\segundo parcial\proyecto\gestiondeheladera\consumoproducto.cpp
+	<iostream>
+	"ConsumoProducto.h"
+
+1652916374 c:\users\intel-pentium\desktop\utn\2do cuatri\laboratorio ii\segundo parcial\proyecto\gestiondeheladera\consumoproducto.h
+	"Producto.h"
+	"Fecha.h"
+
+1652920652 c:\users\intel-pentium\desktop\utn\2do cuatri\laboratorio ii\segundo parcial\proyecto\gestiondeheladera\producto.h
+	<cstring>
+	<cstdlib>
+
+1652908600 c:\users\intel-pentium\desktop\utn\2do cuatri\laboratorio ii\segundo parcial\proyecto\gestiondeheladera\fecha.h
+
+1652908924 source:c:\users\intel-pentium\desktop\utn\2do cuatri\laboratorio ii\segundo parcial\proyecto\gestiondeheladera\fecha.cpp
+	<iostream>
+	"Fecha.h"
+
+1652915931 source:c:\users\intel-pentium\desktop\utn\2do cuatri\laboratorio ii\segundo parcial\proyecto\gestiondeheladera\consumoplatillo.cpp
+	<iostream>
+	"ConsumoPlatillo.h"
+
+1652921434 c:\users\intel-pentium\desktop\utn\2do cuatri\laboratorio ii\segundo parcial\proyecto\gestiondeheladera\consumoplatillo.h
+	"Platillo.h"
+	"Fecha.h"
+	"OrientacionAlimentaria.h"
+
+1652921998 c:\users\intel-pentium\desktop\utn\2do cuatri\laboratorio ii\segundo parcial\proyecto\gestiondeheladera\platillo.h
+	"Fecha.h"
+	"Producto.h"
+	"OrientacionAlimentaria.h"
+	<cstdlib>
+	<cstring>
+
+1584205420 source:c:\users\intel-pentium\desktop\utn\2do cuatri\laboratorio ii\segundo parcial\proyecto\gestiondeheladera\main.cpp
+	<iostream>
+
+1652921782 c:\users\intel-pentium\desktop\utn\2do cuatri\laboratorio ii\segundo parcial\proyecto\gestiondeheladera\orientacionalimentaria.h
+	<cstdlib>
+	<cstring>
+
+1652924031 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\consumoplatillo.cpp
+	<iostream>
+	"ConsumoPlatillo.h"
+
+1652924031 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\consumoplatillo.h
+	"Platillo.h"
+	"Fecha.h"
+	"OrientacionAlimentaria.h"
+
+1652924031 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\platillo.h
+	"Fecha.h"
+	"Producto.h"
+	"OrientacionAlimentaria.h"
+	<cstdlib>
+	<cstring>
+
+1652924031 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\fecha.h
+
+1652924031 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.h
+	<cstring>
+	<cstdlib>
+
+1652924631 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\orientacionalimentaria.h
+	<cstdlib>
+	<cstring>
+
+1652924031 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\consumoproducto.cpp
+	<iostream>
+	"ConsumoProducto.h"
+
+1652924031 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\consumoproducto.h
+	"Producto.h"
+	"Fecha.h"
+
+1652924031 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\fecha.cpp
+	<iostream>
+	"Fecha.h"
+
+1652924031 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\main.cpp
+	<iostream>
+
+1652924643 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.cpp
+	<cstdlib>
+	<cstring>
+	<iostream>
+	"IngresoProducto.h"
+
+1652924031 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.h
+	"Usuario.h"
+	"Producto.h"
+	"Fecha.h"
+
+1652924565 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\usuario.h
+	<cstdlib>
+	<cstring>
+	"OrientacionAlimentaria.h"
+
+1652924031 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\orientacionalimentaria.cpp
+	<iostream>
+	"OrientacionAlimentaria.h"
+
+1652924904 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.cpp
+	<iostream>
+	"Producto.h"
+
+1652924031 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productostock.cpp
+	<iostream>
+	"ProductoStock.h"
+
+1652924031 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productostock.h
+	"Producto.h"
+
