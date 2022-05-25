@@ -9,21 +9,21 @@
 
         private:
             int idRetiro;
-            Usuario DNI;
-            Producto idProducto;
+            int DNI;
+            int idProducto;
             Fecha fechaRetiro;
 
         public:
             //getters
             int getIdRetiro(){return idRetiro;}
-            Usuario getDNI(){return DNI;}
-            Producto getIdProducto(){return idProducto;}
+            int getDNI(){return DNI;}
+            int getIdProducto(){return idProducto;}
             Fecha getFechaRetiro(){return fechaRetiro;}
 
             //setters
             void setIdRetiro(int id){idRetiro=id;}
-            void setDNI(Usuario d){DNI=d;}
-            void setIdProducto(Producto id){idProducto=id;}
+            void setDNI(int d){DNI=d;}
+            void setIdProducto(int id){idProducto=id;}
             void setFechaRetiro(Fecha f){fechaRetiro=f;}
 
             //metodos

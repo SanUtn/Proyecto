@@ -7,8 +7,10 @@ using namespace std;
     void RetiroProducto::Cargar(){
         cout<<"Ingrese el id: ";
         cin>>idRetiro;
-        DNI.Cargar();
-        idProducto.Cargar();
+        cout<<"DNI del Usuario: ";
+        cin>>DNI;
+        cout<<"Id del producto: ";
+        cin>>idProducto;
         fechaRetiro.Cargar();
     }
 
@@ -16,8 +18,12 @@ using namespace std;
         cout<<"Id del retiro: ";
         cout<<idRetiro;
         cout<<endl;
-        DNI.Mostrar();
-        idProducto.Mostrar();
+        cout<<"DNI del Usuario: ";
+        cout<<DNI;
+        cout<<endl;
+        cout<<"Id del producto: ";
+        cout<<idProducto;
+        cout<<endl;
         fechaRetiro.Mostrar();
     }
 

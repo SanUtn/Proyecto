@@ -4,32 +4,32 @@
 using namespace std;
 
 
-    //falta agregar validacion de que no puede repetirse el dni
-    void Usuario::Cargar(){
-        cout<<"Ingrese el DNI: ";
-        cin>>DNI;
-        cout<<"Ingrese el nombre: ";
-        cin>>nombre;
-        cout<<"Ingrese el apellido: ";
-        cin>>apellido;
-        idOrientacionAlimentaria.Cargar();
-        estadoUsuario = true;
+    string Usuario::getNombre(){
+        string nombres;
+        nombres = nombre;
+        return nombres;
     }
 
-    void Usuario::Mostrar(){
-        if (estadoUsuario == true){
-        cout<<"DNI: ";
-        cout<<DNI;
-        cout<<endl;
-        cout<<"Nombre: ";
-        cout<<nombre;
-        cout<<endl;
-        cout<<"Apellido: ";
-        cout<<apellido;
-        cout<<endl;
-        idOrientacionAlimentaria.Mostrar();
-        }
+    string Usuario::getApellido(){
+        string apellidos;
+        apellidos=apellido;
+        return apellidos;
     }
+
+
+    void Usuario::setNombre(string nombres){
+        strcpy(nombre, nombres.c_str());
+    }
+
+    void Usuario::setApellido(string apellidos){
+        strcpy(apellido, apellidos.c_str());
+    }
+
+   string Usuario::toString(){
+        string cadena;
+    cadena = "Id: " + to_string(id) + "," + "Nombre: " + nombre + "," + "Apellido: " + apellido + "," + "Orientacion Alimentaria: " + to_string(idOrientacionAlimentaria);
+        return cadena;
+}
 
 
      bool Usuario::LeerDeDisco(int pos){
@@ -90,3 +90,110 @@ using namespace std;
         return false;
         }
      }
+
+
+    /// Funciones globales para gestionar Usuario
+    bool nuevoUsuario(){
+        Usuario reg;
+        reg = cargarUsuario();
+        bool ok = reg.GrabarEnDisco();
+        return ok;
+    }
+
+     int CantidadRegistrosUsuario(){
+        FILE *p;
+        p=fopen("Usuarios.dat", "rb");
+            if(p==NULL){
+              return 0;
+            }
+            size_t bytes;
+            int cantidad;
+
+            fseek(p, 0, SEEK_END);
+            bytes=ftell(p);
+
+            fclose(p);
+         cantidad = bytes/sizeof(Usuario);
+         return cantidad;
+     }
+
+    Usuario cargarUsuario(){
+        int id;
+        string nombre;
+        string apellido;
+        int idOrientacionAlimentaria;
+        bool estado = true;
+
+        id = CantidadRegistrosUsuario()+1;
+
+        cout << "Ingrese el nombre: ";
+        cin >> nombre;
+
+        cout << "Ingrese el apellido: ";
+        cin >> apellido;
+
+        cout << "Ingrese la orientacion alimentaria: ";
+        cin >> idOrientacionAlimentaria;
+
+        Usuario reg;
+        reg.setId(id);
+        reg.setNombre(nombre);
+        reg.setApellido(apellido);
+        reg.setIdOrientacionAlimentaria(idOrientacionAlimentaria);
+        reg.setEstadoUsuario(estado);
+        return reg;
+    }
+
+
+    void listarUsuarios(){
+        Usuario aux;
+        int cantUsuarios = CantidadRegistrosUsuario();
+    cout << "LISTADO DE USUARIOS" << endl;
+    cout << "----------------------------------" << endl;
+        for(int i=0; i<cantUsuarios; i++){
+            aux.LeerDeDisco(i);
+            if(aux.getEstadoUsuario()){
+                cout<<aux.toString()<<endl;
+            }
+        }
+        cout << "----------------------------------" << endl;
+        cout << "Total: " << cantUsuarios << " Usuarios.";
+    }
+
+
+  void menuUsuario(){
+   int opc;
+    while(true){
+        system("cls");
+
+        cout<<"MENU USUARIO"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"1. AGREGAR USUARIO "<<endl;
+        cout<<"2. LISTAR USUARIOS "<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"0. SALIR"<<endl;
+        cout<<endl;
+
+        cout<<"OPCION: "<<endl;
+        cin>>opc;
+
+        system("cls");
+
+        switch(opc){
+            case 1:   if(nuevoUsuario()){
+                            cout<<endl;
+                            cout<<"USUARIO AGREGADO";
+                        }else {
+                             cout<<endl;
+                            cout<<"NO SE PUDO AGREGAR EL USUARIO";
+                        }
+                break;
+            case 2: listarUsuarios();
+                break;
+            case 0: return;
+                    break;
+        }
+        cout<<endl;
+        system("pause");
+    }
+  }

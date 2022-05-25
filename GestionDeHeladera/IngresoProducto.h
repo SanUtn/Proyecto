@@ -8,21 +8,21 @@
 
         private:
             int idIngreso;
-            Usuario DNI;
-            Producto idProducto;
+            int DNI;
+            int idProducto;
             Fecha fechaIngreso;
 
         public:
             //getters
             int getIdIngreso(){return idIngreso;}
-            Usuario getDNI(){return DNI;}
-            Producto getIdProducto(){return idProducto;}
+            int getDNI(){return DNI;}
+            int getIdProducto(){return idProducto;}
             Fecha getFechaIngreso(){return fechaIngreso;}
 
             //setters
             void setIdIngreso(int id){idIngreso=id;}
-            void setDNI(Usuario d){DNI=d;}
-            void setIdProducto(Producto id){idProducto=id;}
+            void setDNI(int d){DNI=d;}
+            void setIdProducto(int id){idProducto=id;}
             void setFechaIngreso(Fecha f){fechaIngreso=f;}
 
             //metodos
@@ -31,12 +31,6 @@
             bool LeerDeDisco(int pos);
             bool GrabarEnDisco();
             bool ModificarArchivo(int pos);
-
-
-
-
-
-
 
     };
 

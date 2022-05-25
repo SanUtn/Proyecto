@@ -2,47 +2,53 @@
 #define USUARIO_H_INCLUDED
 #include<cstdlib>
 #include<cstring>
+#include <string>
 #include "OrientacionAlimentaria.h"
+using namespace std;
 
     class Usuario{
 
         private:
+            int id;
             int DNI;
             char nombre[30];
             char apellido[30];
-            OrientacionAlimentaria idOrientacionAlimentaria;
+            int idOrientacionAlimentaria;
             bool estadoUsuario;
 
         public:
             //getters
+            int getId(){return id;}
             int getDNI(){return DNI;}
-            const char *getNombre(){return nombre;}
-            const char *getApellido(){return apellido;}
-            OrientacionAlimentaria getIdOrientacionAlimentaria(){return idOrientacionAlimentaria;}
+            string getNombre();
+            string getApellido();
+            int getIdOrientacionAlimentaria(){return idOrientacionAlimentaria;}
             bool getEstadoUsuario(){return estadoUsuario;}
 
             //setters
+            void setId(int i){id=i;}
             void setDNI(int d){DNI=d;}
-            void setNombre(const char *n){strcpy(nombre, n);}
-            void setApellido(const char *a){strcpy(apellido, a);}
-            void setIdOrientacionAlimentaria(OrientacionAlimentaria id){idOrientacionAlimentaria=id;}
+            void setNombre(string nombres);
+            void setApellido(string apellidos);
+            void setIdOrientacionAlimentaria(int id){idOrientacionAlimentaria=id;}
             void setEstadoUsuario(bool e){estadoUsuario=e;}
 
             //metodos
-            void Cargar();
-            void Mostrar();
+            string toString();
             bool LeerDeDisco(int pos);
             bool GrabarEnDisco();
             bool ModificarArchivo(int pos);
-
-
-
 
     };
 
 
 
-
+    //Funciones globales que no pertenecen a la clase
+    bool nuevoUsuario();
+    int CantidadRegistrosUsuario();
+    Usuario cargarUsuario();
+    void listarUsuarios();
+    void menuUsuario();
 
 
 

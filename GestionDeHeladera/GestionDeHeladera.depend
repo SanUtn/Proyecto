@@ -78,23 +78,25 @@
 	<iostream>
 	"Fecha.h"
 
-1652924031 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\main.cpp
+1653496585 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\main.cpp
 	<iostream>
+	"Usuario.h"
 
-1652924643 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.cpp
+1653496535 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.cpp
 	<cstdlib>
 	<cstring>
 	<iostream>
 	"IngresoProducto.h"
 
-1652924031 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.h
+1653496392 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.h
 	"Usuario.h"
 	"Producto.h"
 	"Fecha.h"
 
-1652924565 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\usuario.h
+1653497650 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\usuario.h
 	<cstdlib>
 	<cstring>
+	<string>
 	"OrientacionAlimentaria.h"
 
 1652924031 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\orientacionalimentaria.cpp
@@ -111,4 +113,30 @@
 
 1652924031 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productostock.h
 	"Producto.h"
+
+1652925035 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\platillo.cpp
+	<iostream>
+	"Platillo.h"
+
+1652924031 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\receta.cpp
+	<iostream>
+	"Receta.h"
+
+1652924031 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\receta.h
+	"Platillo.h"
+	<cstdlib>
+	<cstring>
+
+1653496715 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\retiroproducto.cpp
+	<iostream>
+	"RetiroProducto.h"
+
+1653496809 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\retiroproducto.h
+	"Usuario.h"
+	"Producto.h"
+	"Fecha.h"
+
+1653497791 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\usuario.cpp
+	<iostream>
+	"Usuario.h"
 
