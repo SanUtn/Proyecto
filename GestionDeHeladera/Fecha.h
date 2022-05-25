@@ -24,9 +24,9 @@ using namespace std;
             void setAnio(int a){anio=a;}
 
             //metodos
-             void Cargar();
-             string toString();
+             Fecha(int d, int m, int a);
              Fecha();
+             string toString();
 
 
 

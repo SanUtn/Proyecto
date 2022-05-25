@@ -163,9 +163,13 @@ using namespace std;
             case 1:   if(nuevoProducto()){
                             cout<<endl;
                             cout<<"PRODUCTO AGREGADO";
+                            cout<<endl;
+                            system("pause");
                         }else {
                              cout<<endl;
                             cout<<"NO SE PUDO AGREGAR EL PRODUCTO";
+                            cout<<endl;
+                            system("pause");
                         }
                 break;
             case 2: listarProductos();

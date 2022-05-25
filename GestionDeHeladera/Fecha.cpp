@@ -4,14 +4,13 @@
 
 using namespace std;
 
-    void Fecha::Cargar(){
-        cout<<"Ingrese el dia: ";
-        cin>>dia;
-        cout<<"Ingrese el mes: ";
-        cin>>mes;
-        cout<<"Ingrese el anio: ";
-        cin>>anio;
+
+    Fecha::Fecha(int d, int m, int a){
+        dia=d;
+        mes=m;
+        anio=a;
     }
+
 
     string Fecha::toString(){
         string cadena;

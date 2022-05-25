@@ -2,6 +2,9 @@
 #define ORIENTACIONALIMENTARIA_H_INCLUDED
 # include<cstdlib>
 # include<cstring>
+# include<string>
+# include<iostream>
+using namespace std;
 
     class OrientacionAlimentaria{
 
@@ -13,26 +16,29 @@
         public:
             //getters
             int getIdOrientacionAlimentaria(){return idOrientacionAlimentaria;}
-            const char *getDescripcion(){return descripcion;}
+            string getDescripcion();
             bool getEstadoOrientacion(){return estadoOrientacion;}
 
             //setters
             void setIdOrientacionAlimentaria(int id){idOrientacionAlimentaria=id;}
-            void setDescripcion(const char *d){strcpy(descripcion, d);}
+            void setDescripcion(string d){strcpy(descripcion,d.c_str());}
             void setEstadoOrientacion(bool e){estadoOrientacion=e;}
 
             //metodos
-            void Cargar();
-            void Mostrar();
+            string toString();
             bool LeerDeDisco(int pos);
             bool GrabarEnDisco();
             bool ModificarArchivo(int pos);
 
-
     };
 
 
-
+    //Funciones globales que no pertenecen a la clase
+    bool nuevaOrientacionAlimentaria();
+    int CantidadRegistrosOA();
+    OrientacionAlimentaria cargarOrientacionAlimentaria();
+    void listarOrientacionAlimentaria();
+    void menuOrientacionAlimentaria();
 
 
 

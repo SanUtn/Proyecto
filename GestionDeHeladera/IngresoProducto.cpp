@@ -13,7 +13,7 @@ using namespace std;
         cin>>DNI;
         cout<<"Ingrese el id del producto: ";
         cin>>idProducto;
-        fechaIngreso.Cargar();
+        //fechaIngreso.Cargar();
     }
 
     void IngresoProducto::Mostrar(){

@@ -11,7 +11,7 @@ using namespace std;
         cin>>DNI;
         cout<<"Id del producto: ";
         cin>>idProducto;
-        fechaRetiro.Cargar();
+        //fechaRetiro.Cargar();
     }
 
     void RetiroProducto::Mostrar(){

@@ -191,9 +191,13 @@ using namespace std;
             case 1:   if(nuevoUsuario()){
                             cout<<endl;
                             cout<<"USUARIO AGREGADO";
+                            cout<<endl;
+                            system("pause");
                         }else {
                              cout<<endl;
                             cout<<"NO SE PUDO AGREGAR EL USUARIO";
+                            cout<<endl;
+                            system("pause");
                         }
                 break;
             case 2: listarUsuarios();

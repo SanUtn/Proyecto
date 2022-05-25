@@ -3,50 +3,45 @@
 #include "Platillo.h"
 # include<cstdlib>
 # include<cstring>
-
+# include<string>
+using namespace std;
 
     class Receta{
 
         private:
             int idReceta;
-            Platillo idPlatillo;
+            int idPlatillo;
             char descripcion[30];
             bool estadoReceta;
 
         public:
             //getters
             int getIdReceta(){return idReceta;}
-            Platillo getIdPlatillo(){return idPlatillo;}
-            const char *getDescripcion(){return descripcion;}
+            int getIdPlatillo(){return idPlatillo;}
+            string getDescripcion();
             bool getEstadoReceta(){return estadoReceta;}
 
             //setters
             void setIdReceta(int id){idReceta=id;}
-            void setIdPlatillo(Platillo id){idPlatillo=id;}
-            void setDescripcion(const char *d){strcpy(descripcion,d);}
-            void setEstadoReceta(const char *e){estadoReceta=e;}
+            void setIdPlatillo(int id){idPlatillo=id;}
+            void setDescripcion(string d){strcpy(descripcion,d.c_str());}
+            void setEstadoReceta(bool e){estadoReceta=e;}
 
              //metodos
-            void Cargar();
-            void Mostrar();
+            string toString();
             bool LeerDeDisco(int pos);
             bool GrabarEnDisco();
             bool ModificarArchivo(int pos);
 
-
-
-
-
-
-
-
-
-
-
     };
 
 
-
+    //Funciones globales que no pertenecen a la clase
+    bool nuevaReceta();
+    int CantidadRegistrosReceta();
+    Receta cargarReceta();
+    void listarRecetas();
+    void menuRecetas();
 
 
 

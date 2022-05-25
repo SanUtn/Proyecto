@@ -106,6 +106,7 @@ using namespace std;
 
         cout << "Ingrese el id del Producto: ";
         cin >> id;
+        cout<<endl;
 
         ConsumoProducto reg;
         reg.setIdProducto(id);

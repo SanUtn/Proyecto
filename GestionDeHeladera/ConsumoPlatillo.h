@@ -1,40 +1,39 @@
 #ifndef CONSUMOPLATILLO_H_INCLUDED
 #define CONSUMOPLATILLO_H_INCLUDED
-#include "Platillo.h"
+# include<cstring>
+# include<cstdlib>
+# include<string>
 #include "Fecha.h"
-#include "OrientacionAlimentaria.h"
+using namespace std;
 
     class ConsumoPlatillo{
 
         private:
-            Platillo idPlatillo;
+            int idPlatillo;
             Fecha fechaConsumo;
 
         public:
             //getters
-            Platillo getIdPlatillo(){return idPlatillo;}
+            int getIdPlatillo(){return idPlatillo;}
             Fecha getFechaConsumo(){return fechaConsumo;}
 
             //setters
-            void setIdPlatillo(Platillo id){idPlatillo=id;}
-            void setFecha(Fecha f){fechaConsumo=f;}
+            void setIdPlatillo(int id){idPlatillo=id;}
+            void setFechaConsumo(Fecha f){fechaConsumo=f;}
 
              //metodos
-            void Cargar();
-            void Mostrar();
+            string toString();
             bool LeerDeDisco(int pos);
             bool GrabarEnDisco();
             bool ModificarArchivo(int pos);
 
-
-
-
-
-
-
-
     };
 
+ //Funciones globales que no pertenecen a la clase
+    bool nuevoConsumoPlatillo();
+    int CantidadRegistrosConsumoPlatillo();
+    ConsumoPlatillo cargarConsumoPlatillo();
+    void listarConsumosPlatillo();
 
 
 

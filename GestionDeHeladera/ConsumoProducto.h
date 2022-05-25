@@ -3,7 +3,6 @@
 # include<cstring>
 # include<cstdlib>
 # include<string>
-#include "Producto.h"
 #include "Fecha.h"
 using namespace std;
 

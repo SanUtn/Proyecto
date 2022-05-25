@@ -3,40 +3,34 @@
 
 using namespace std;
 
-    //falta agregar validacion de que no puede repetirse el id
-    void Platillo::Cargar(){
-        int ingrediente;
-        cout<<"Ingrese el id del platillo: ";
-        cin>>idPlatillo;
-        cout<<"Ingrese el nombre del platillo: ";
-        cin>>nombrePlatillo;
-        fechaRegistrado.Cargar();
-        //ingredientes.Cargar();
-        cout<<"Ingrese ingrediente: ";
-        cin>>ingrediente;
-        setIngredientes(ingrediente);
-        cout<<"Ingrese el nombre del platillo: ";
-        cin>>nombrePlatillo;
-        orientacionAlimentaria.Cargar();
-        estadoPlatillo = true;
+    string Platillo::getNombrePlatillo(){
+        string nombrePlatillos;
+        nombrePlatillos=nombrePlatillo;
+        return nombrePlatillos;
     }
 
-    void Platillo::Mostrar(){
-        if (estadoPlatillo == true){
-        cout<<"Id del platillo: ";
-        cout<<idPlatillo;
-        cout<<endl;
-        cout<<"Nombre del Platillo: ";
-        cout<<nombrePlatillo;
-        cout<<endl;
-        fechaRegistrado.toString();
-        //ingredientes.Mostrar();
-        cout<<"Ingredientes: ";
-         for(int i=0; i<20;i++){
-              cout<<ingredientes[i]<<endl;
+    string Platillo::getIngredientes(){
+          string ingrediente;
+          ingrediente=ingredientes;
+          return ingrediente;
+      }
+
+    string Platillo::getNombreOrientacion(){
+        string nombres;
+        nombres=nombreOrientacion;
+        return nombres;
+    }
+
+    //ver si se puede modificar por un vector dinamico que el usuario ingrese la cantidad de ingredientes.
+    /*void Platillo::setIngredientes(int in){
+             for(int i=0; i<20;i++){
+                ingredientes[i]=in;
              }
-        orientacionAlimentaria.Mostrar();
-        }
+            }*/
+
+    string Platillo::toString(){
+        string cadena;
+        cadena = "Id Platillo: " + to_string(idPlatillo) + " " " " + " Nombre Platillo: " + nombrePlatillo + " " " " + fechaRegistrado.toString() + " " " " + " Ingredientes: " + ingredientes + " " " " + " Orientacion alimentaria: " + nombreOrientacion;
     }
 
 
@@ -98,3 +92,144 @@ using namespace std;
         return false;
         }
      }
+
+
+
+       /// Funciones globales para gestionar Platillos
+    bool nuevoPlatillo(){
+        Platillo reg;
+        reg = cargarPlatillo();
+        bool ok = reg.GrabarEnDisco();
+        return ok;
+    }
+
+     int CantidadRegistrosPlatillo(){
+        FILE *p;
+        p=fopen("Platillos.dat", "rb");
+            if(p==NULL){
+              return 0;
+            }
+            size_t bytes;
+            int cantidad;
+
+            fseek(p, 0, SEEK_END);
+            bytes=ftell(p);
+
+            fclose(p);
+         cantidad = bytes/sizeof(Platillo);
+         return cantidad;
+     }
+
+    Platillo cargarPlatillo(){
+        int id;
+        string nombrePlatillo;
+        int dia,mes, anio;
+        string ingredientes;
+        string nombreOrientacion;
+        bool estado = true;
+
+        id = CantidadRegistrosPlatillo()+1;
+        Platillo reg;
+
+        cout << "Ingrese el nombre del platillo: ";
+        cin>>nombrePlatillo;
+        //getline(cin, nombrePlatillo);
+        //cin.ignore();
+        //scanf("%s", nombrePlatillo);
+        //ver como resolver que tome todas las letras con espacios
+
+        cout<<"Ingrese el dia: ";
+        cin>>dia;
+        cout<<"Ingrese el mes: ";
+        cin>>mes;
+        cout<<"Ingrese el anio: ";
+        cin>>anio;
+        cout<<endl;
+        listarProductos();
+        cout<<endl;
+        cout << "Ingrese el nombre del ingrendiente o 0 para no agregar mas: ";
+        cin >> ingredientes;
+
+
+        while(ingredientes != "0"){
+            reg.setIngredientes(ingredientes);
+            cout << "Ingrese el nombre del ingrendiente: ";
+            cin>>ingredientes;
+        }
+        cout<<endl;
+        listarOrientacionAlimentaria();
+        cout<<endl;
+        cout << "Ingrese el nombre de la orienteacion: ";
+        cin >> nombreOrientacion;
+
+        Fecha fecha(dia, mes, anio);
+        reg.setIdPlatillo(id);
+        reg.setNombrePlatillo(nombrePlatillo);
+        reg.setFechaRegistrado(fecha);
+        reg.setNombreOrientacion(nombreOrientacion);
+        reg.setEstadoPlatillo(estado);
+        cout<<endl;
+        cout<<endl;
+        system("pause");
+        return reg;
+    }
+
+
+    void listarPlatillos(){
+        Platillo aux;
+        int cantPlatillos = CantidadRegistrosPlatillo();
+    cout << "LISTADO DE PLATILLOS" << endl;
+    cout << "----------------------------------" << endl;
+        for(int i=0; i<cantPlatillos; i++){
+            aux.LeerDeDisco(i);
+            if(aux.getEstadoPlatillo()){
+                cout<<aux.toString()<<endl;
+            }
+        }
+        cout << "----------------------------------" << endl;
+        cout << "Total: " << cantPlatillos << " platillos.";
+        cout<<endl;
+        cout<<endl;
+        system("pause");
+    }
+
+
+  void menuPlatillo(){
+   int opc;
+    while(true){
+        system("cls");
+
+        cout<<"MENU PLATILLO"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"1. AGREGAR PLATILLO "<<endl;
+        cout<<"2. LISTAR PLAILLOS "<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"0. SALIR"<<endl;
+        cout<<endl;
+
+        cout<<"OPCION: "<<endl;
+        cin>>opc;
+
+        system("cls");
+
+        switch(opc){
+            case 1:   if(nuevoPlatillo()){
+                            cout<<endl;
+                            cout<<"PLATILLO AGREGADO";
+                            cout<<endl;
+                            system("pause");
+                        }else {
+                             cout<<endl;
+                            cout<<"NO SE PUDO AGREGAR EL PLATILLO";
+                            cout<<endl;
+                            system("pause");
+                        }
+                break;
+            case 2: listarPlatillos();
+                break;
+            case 0: return;
+                    break;
+        }
+        cout<<endl;
+    }
+  }

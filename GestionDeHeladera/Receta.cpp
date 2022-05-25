@@ -1,30 +1,19 @@
 #include <iostream>
+#include<string>
 #include "Receta.h"
-
 using namespace std;
 
-    //falta agregar validacion de que no puede repetirse el id
-    void Receta::Cargar(){
-        cout<<"Ingrese el id de la receta: ";
-        cin>>idReceta;
-        idPlatillo.Cargar();//ver en vez de cargarlo de traer los datos de platillo
-        cout<<"Ingrese la descripcion: ";
-        cin>>descripcion;
-        estadoReceta = true;
+    string Receta::getDescripcion(){
+        string descripciones;
+        descripciones = descripcion;
+        return descripciones;
     }
 
-    void Receta::Mostrar(){
-        if (estadoReceta == true){
-        cout<<"Id de la receta: ";
-        cout<<idReceta;
-        cout<<endl;
-        idPlatillo.Mostrar();
-        cout<<"Descripcion: ";
-        cout<<descripcion;
-        cout<<endl;
-        }
+    string Receta::toString(){
+        string cadena;
+        cadena = "Id receta: " + to_string(idReceta) + " " " " + " Id Platillo: " + to_string(idPlatillo) + " " " " + "Descripcion: " + descripcion;
+        return cadena;
     }
-
 
      bool Receta::LeerDeDisco(int pos){
         FILE *p;
@@ -84,3 +73,116 @@ using namespace std;
         return false;
         }
      }
+
+
+     /// Funciones globales para gestionar Usuario
+    bool nuevaReceta(){
+        Receta reg;
+        reg = cargarReceta();
+        bool ok = reg.GrabarEnDisco();
+        return ok;
+    }
+
+     int CantidadRegistrosReceta(){
+        FILE *p;
+        p=fopen("Recetas.dat", "rb");
+            if(p==NULL){
+              return 0;
+            }
+            size_t bytes;
+            int cantidad;
+
+            fseek(p, 0, SEEK_END);
+            bytes=ftell(p);
+
+            fclose(p);
+         cantidad = bytes/sizeof(Receta);
+         return cantidad;
+     }
+
+    Receta cargarReceta(){
+        int id;
+        int idPlatillo;
+        string descripcion;
+        bool estado = true;
+
+        id = CantidadRegistrosReceta()+1;
+
+        //listarPlatillos();
+        cout<<endl;
+
+        cout << "Ingrese el Id del Platillo: ";
+        cin >> idPlatillo;
+        cout << "Ingrese la descripcion: ";
+        cin >> descripcion;
+
+        Receta reg;
+        reg.setIdReceta(id);
+        reg.setIdPlatillo(idPlatillo);
+        reg.setDescripcion(descripcion);
+        reg.setEstadoReceta(estado);
+        cout<<endl;
+        cout<<endl;
+        system("pause");
+        return reg;
+    }
+
+
+    void listarRecetas(){
+        Receta aux;
+        int cantRecetas = CantidadRegistrosReceta();
+    cout << "LISTADO DE RECETAS" << endl;
+    cout << "----------------------------------" << endl;
+        for(int i=0; i<cantRecetas; i++){
+            aux.LeerDeDisco(i);
+            if(aux.getEstadoReceta()){
+                cout<<aux.toString()<<endl;
+            }
+        }
+        cout << "----------------------------------" << endl;
+        cout << "Total: " << cantRecetas << " recetas.";
+        cout<<endl;
+        cout<<endl;
+        system("pause");
+    }
+
+
+  void menuRecetas(){
+   int opc;
+    while(true){
+        system("cls");
+
+        cout<<"MENU RECETAS"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"1. AGREGAR RECETAS "<<endl;
+        cout<<"2. LISTAR RECETAS "<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"0. SALIR"<<endl;
+        cout<<endl;
+
+        cout<<"OPCION: "<<endl;
+        cin>>opc;
+
+        system("cls");
+
+        switch(opc){
+            case 1:   if(nuevaReceta()){
+                            cout<<endl;
+                            cout<<"RECETA AGREGADA";
+                            cout<<endl;
+                            system("pause");
+                        }else {
+                             cout<<endl;
+                            cout<<"NO SE PUDO AGREGAR LA RECETA";
+                            cout<<endl;
+                            system("pause");
+                        }
+                break;
+            case 2: listarRecetas();
+                break;
+            case 0: return;
+                    break;
+        }
+        cout<<endl;
+    }
+  }

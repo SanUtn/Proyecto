@@ -5,6 +5,8 @@
 #include "OrientacionAlimentaria.h"
 # include<cstdlib>
 # include<cstring>
+# include<string>
+using namespace std;
 
 
     class Platillo{
@@ -13,53 +15,42 @@
             int idPlatillo;
             char nombrePlatillo [30];
             Fecha fechaRegistrado;
-            int ingredientes[20];
-            //Producto *ingredientes= new Producto[20];(ver como hacer un vector de Producto)
-            OrientacionAlimentaria orientacionAlimentaria;
+            char ingredientes[20];
+            char nombreOrientacion [30];
             bool estadoPlatillo;
 
         public:
             //getters
             int getIdPlatillo(){return idPlatillo;}
-            const char *getNombrePlatillo(){return nombrePlatillo;}
+            string getNombrePlatillo();
             Fecha getFechaRegistrado(){return fechaRegistrado;}
-            int *getIngredientes(){return ingredientes;}
-            //Producto *getIngredientes(){return ingredientes;}
-            OrientacionAlimentaria getOrientacionAlimentaria(){return orientacionAlimentaria;}
+            string getIngredientes();
+            string getNombreOrientacion();
             bool getEstadoPlatillo(){return estadoPlatillo;}
 
             //setters
             void setIdPlatillo(int id){idPlatillo=id;}
-            void setNombrePlatillo(const char *n){strcpy(nombrePlatillo,n);}
+            void setNombrePlatillo(string n){strcpy(nombrePlatillo,n.c_str());}
             void setFechaRegistrado(Fecha f){fechaRegistrado=f;}
-            void setIngredientes(int in){
-             for(int i=0; i<20;i++){
-                ingredientes[i]=in;
-             }
-            }
-            //void setIngredientes(const Producto *i){ingredientes=i;}
-            void setOrientacionAlimentaria(OrientacionAlimentaria o){orientacionAlimentaria=o;}
+            void setIngredientes(string in){strcpy(ingredientes,in.c_str());}
+            void setNombreOrientacion(string o){strcpy(nombreOrientacion,o.c_str());}
             void setEstadoPlatillo(bool e){estadoPlatillo=e;}
 
             //metodos
-            void Cargar();
-            void Mostrar();
+            string toString();
             bool LeerDeDisco(int pos);
             bool GrabarEnDisco();
             bool ModificarArchivo(int pos);
 
-
-
-
-
-
-
-
-
     };
 
 
-
+    //Funciones globales que no pertenecen a la clase
+    bool nuevoPlatillo();
+    int CantidadRegistrosPlatillo();
+    Platillo cargarPlatillo();
+    void listarPlatillos();
+    void menuPlatillo();
 
 
 

@@ -3,7 +3,9 @@
 #include "FuncionesGlobales.h"
 #include "Producto.h"
 #include "ConsumoProducto.h"
-
+#include "Platillo.h"
+#include "ConsumoPlatillo.h"
+#include "Receta.h"
 using namespace std;
 
 int main(){
@@ -37,13 +39,13 @@ int main(){
                 break;
             case 2: menuProducto();
                 break;
-            case 3: //menuPlatillo();
+            case 3: menuPlatillo();
                 break;
-            case 4: //menuOrientacionAlimentaria();
+            case 4: menuOrientacionAlimentaria();
                 break;
             case 5: //menuStockProductos();
                 break;
-            case 6: //menuRecetas();
+            case 6: menuRecetas();
                 break;
             case 7: menuConsumos();
                 break;
