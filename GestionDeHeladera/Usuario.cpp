@@ -27,7 +27,7 @@ using namespace std;
 
    string Usuario::toString(){
         string cadena;
-    cadena = "Id: " + to_string(id) + "," + "Nombre: " + nombre + "," + "Apellido: " + apellido + "," + "Orientacion Alimentaria: " + to_string(idOrientacionAlimentaria);
+    cadena = " Id: " + to_string(id) + " " " " + " Nombre: " + nombre + " " " " + " Apellido: " + apellido + " " " " + " Orientacion Alimentaria: " + to_string(idOrientacionAlimentaria);
         return cadena;
 }
 
@@ -119,6 +119,7 @@ using namespace std;
 
     Usuario cargarUsuario(){
         int id;
+        int dni;
         string nombre;
         string apellido;
         int idOrientacionAlimentaria;
@@ -126,21 +127,25 @@ using namespace std;
 
         id = CantidadRegistrosUsuario()+1;
 
+        cout << "Ingrese el DNI: ";
+        cin >> dni;
         cout << "Ingrese el nombre: ";
         cin >> nombre;
-
         cout << "Ingrese el apellido: ";
         cin >> apellido;
-
         cout << "Ingrese la orientacion alimentaria: ";
         cin >> idOrientacionAlimentaria;
 
         Usuario reg;
         reg.setId(id);
+        reg.setDNI(dni);
         reg.setNombre(nombre);
         reg.setApellido(apellido);
         reg.setIdOrientacionAlimentaria(idOrientacionAlimentaria);
         reg.setEstadoUsuario(estado);
+        cout<<endl;
+        cout<<endl;
+        system("pause");
         return reg;
     }
 
@@ -158,6 +163,9 @@ using namespace std;
         }
         cout << "----------------------------------" << endl;
         cout << "Total: " << cantUsuarios << " Usuarios.";
+        cout<<endl;
+        cout<<endl;
+        system("pause");
     }
 
 
@@ -194,6 +202,5 @@ using namespace std;
                     break;
         }
         cout<<endl;
-        system("pause");
     }
   }

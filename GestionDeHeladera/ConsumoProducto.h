@@ -1,41 +1,42 @@
 #ifndef CONSUMOPRODUCTO_H_INCLUDED
 #define CONSUMOPRODUCTO_H_INCLUDED
+# include<cstring>
+# include<cstdlib>
+# include<string>
 #include "Producto.h"
 #include "Fecha.h"
+using namespace std;
 
     class ConsumoProducto{
 
         private:
-            Producto idProducto;
+            int idProducto;
             Fecha fechaConsumo;
 
         public:
             //getters
-            Producto getIdProducto(){return idProducto;}
+            int getIdProducto(){return idProducto;}
             Fecha getFechaConsumo(){return fechaConsumo;}
 
             //setters
-            void setIdProducto(Producto id){idProducto=id;}
+            void setIdProducto(int id){idProducto=id;}
             void setFechaConsumo(Fecha f){fechaConsumo=f;}
 
             //metodos
-            void Cargar();
-            void Mostrar();
+            string toString();
             bool LeerDeDisco(int pos);
             bool GrabarEnDisco();
             bool ModificarArchivo(int pos);
-
-
-
-
-
-
-
 
     };
 
 
 
+    //Funciones globales que no pertenecen a la clase
+    bool nuevoConsumoProducto();
+    int CantidadRegistrosConsumoProducto();
+    ConsumoProducto cargarConsumoProducto();
+    void listarConsumosPoductos();
 
 
 

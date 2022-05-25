@@ -29,7 +29,7 @@ using namespace std;
         cout<<"Nombre del Platillo: ";
         cout<<nombrePlatillo;
         cout<<endl;
-        fechaRegistrado.Mostrar();
+        fechaRegistrado.toString();
         //ingredientes.Mostrar();
         cout<<"Ingredientes: ";
          for(int i=0; i<20;i++){

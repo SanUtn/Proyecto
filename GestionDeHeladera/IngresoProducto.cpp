@@ -26,7 +26,7 @@ using namespace std;
         cout<<"Id del producto: ";
         cout<<idProducto;
         cout<<endl;
-        fechaIngreso.Mostrar();
+        fechaIngreso.toString();
     }
 
 

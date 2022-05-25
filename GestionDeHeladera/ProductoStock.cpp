@@ -5,13 +5,13 @@ using namespace std;
 
 
     void ProductoStock::Cargar(){
-        idProducto.Cargar();
+        //idProducto.Cargar();
         cout<<"Ingrese el stock: ";
         cin>>stock;
     }
 
     void ProductoStock::Mostrar(){
-        idProducto.Mostrar();
+        //idProducto.Mostrar();
         cout<<"Stock: ";
         cout<<stock;
         cout<<endl;

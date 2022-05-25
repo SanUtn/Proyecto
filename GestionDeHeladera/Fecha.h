@@ -1,5 +1,9 @@
 #ifndef FECHA_H_INCLUDED
 #define FECHA_H_INCLUDED
+#include<cstdlib>
+#include<cstring>
+#include <string>
+using namespace std;
 
     class Fecha{
 
@@ -21,7 +25,8 @@
 
             //metodos
              void Cargar();
-             void Mostrar();
+             string toString();
+             Fecha();
 
 
 

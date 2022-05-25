@@ -2,7 +2,8 @@
 #define PRODUCTO_H_INCLUDED
 # include<cstring>
 # include<cstdlib>
-
+# include<string>
+using namespace std;
 
 class Producto{
 
@@ -15,31 +16,28 @@ class Producto{
     public:
         //getters
         int getIdProducto(){return idProducto;}
-        const char *getNombreProducto(){return nombreProducto;}
+        string getNombreProducto();
         bool getEstadoProducto(){return estadoProducto;}
 
         //setters
         void setIdProducto(int id){idProducto=id;}
-        void setNombreProducto(const char *n){strcpy(nombreProducto, n);}
+        void setNombreProducto(string n){strcpy(nombreProducto, n.c_str());}
         void setEstadoProducto(bool e){estadoProducto=e;}
 
         //metodos
-        void Cargar();
-        void Mostrar();
+        string toString();
         bool LeerDeDisco(int pos);
         bool GrabarEnDisco();
         bool ModificarArchivo(int pos);
 
-
-
-
-
-
-
 };
 
-
-
+    //Funciones globales no pertenecientes a la clase
+    bool nuevoProducto();
+    int CantidadRegistrosProductos();
+    Producto cargarProducto();
+    void listarProductos();
+    void menuProducto();
 
 
 

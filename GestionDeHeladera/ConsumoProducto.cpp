@@ -1,17 +1,14 @@
 #include <iostream>
 #include "ConsumoProducto.h"
+#include "Producto.h"
 
 using namespace std;
 
 
-    void ConsumoProducto::Cargar(){
-       idProducto.Cargar();
-       fechaConsumo.Cargar();
-    }
-
-    void ConsumoProducto::Mostrar(){
-       idProducto.Mostrar();
-       fechaConsumo.Mostrar();
+    string ConsumoProducto::toString(){
+        string cadena;
+        cadena = "Id del Producto: " + to_string(idProducto) + " " " " + " Fecha consumo: " + fechaConsumo.toString();
+        return cadena;
     }
 
 
@@ -73,3 +70,65 @@ using namespace std;
         return false;
         }
      }
+
+
+
+    /// Funciones globales para gestionar el consumo de un producto
+    bool nuevoConsumoProducto(){
+        ConsumoProducto reg;
+        reg = cargarConsumoProducto();
+        bool ok = reg.GrabarEnDisco();
+        return ok;
+    }
+
+     int CantidadRegistrosConsumoProducto(){
+        FILE *p;
+        p=fopen("ConsumoProductos.dat", "rb");
+            if(p==NULL){
+              return 0;
+            }
+            size_t bytes;
+            int cantidad;
+
+            fseek(p, 0, SEEK_END);
+            bytes=ftell(p);
+
+            fclose(p);
+         cantidad = bytes/sizeof(ConsumoProducto);
+         return cantidad;
+     }
+
+    ConsumoProducto cargarConsumoProducto(){
+        int id;
+        Fecha fecha;
+
+        listarProductos();
+
+        cout << "Ingrese el id del Producto: ";
+        cin >> id;
+
+        ConsumoProducto reg;
+        reg.setIdProducto(id);
+        reg.setFechaConsumo(fecha);
+        cout<<endl;
+        cout<<endl;
+        system("pause");
+        return reg;
+    }
+
+
+    void listarConsumosPoductos(){
+        ConsumoProducto aux;
+        int cantConsumoProducto = CantidadRegistrosConsumoProducto();
+    cout << "LISTADO DE CONSUMOS PRODUCTOS" << endl;
+    cout << "----------------------------------" << endl;
+        for(int i=0; i<cantConsumoProducto; i++){
+            aux.LeerDeDisco(i);
+            cout<<aux.toString()<<endl;
+        }
+        cout<<endl;
+        cout<<endl;
+        system("pause");
+    }
+
+

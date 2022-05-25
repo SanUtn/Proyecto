@@ -11,7 +11,7 @@ using namespace std;
 
     void ConsumoPlatillo::Mostrar(){
         idPlatillo.Mostrar();
-        fechaConsumo.Mostrar();
+        //fechaConsumo.Mostrar();
     }
 
 
