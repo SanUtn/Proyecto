@@ -11,26 +11,7 @@ string Platillo::getNombrePlatillo()
     return nombrePlatillos;
 }
 
-/*string Platillo::getIngredientes()
-{
-    string ingrediente;
-    ingrediente=ingredientes;
-    return ingrediente;
-}*/
 
-string Platillo::getNombreOrientacion()
-{
-    string nombres;
-    nombres=nombreOrientacion;
-    return nombres;
-}
-
-//ver si se puede modificar por un vector dinamico que el usuario ingrese la cantidad de ingredientes.
-/*void Platillo::setIngredientes(int in){
-         for(int i=0; i<20;i++){
-            ingredientes[i]=in;
-         }
-        }*/
 
 string Platillo::toString()
 {
@@ -43,7 +24,7 @@ string Platillo::toString()
     fechaRegistrado.toString() +
     " " " " +
     " Orientacion alimentaria: "
-    + nombreOrientacion;
+    + to_string(orientacionAlimentaria);
 
     return cadena;
 }
@@ -157,8 +138,7 @@ Platillo cargarPlatillo()
     int id;
     string nombrePlatillo;
     int dia,mes, anio;
-    string ingredientes;
-    string nombreOrientacion;
+    int orientacionAlimentaria;
     bool estado = true;
 
     id = CantidadRegistrosPlatillo()+1;
@@ -178,7 +158,7 @@ Platillo cargarPlatillo()
     cin>>anio;
     cout<<endl;
 
-    cout << "Ingrese el nombre del ingrendiente o 0 para no agregar mas: " << endl;
+    cout << "Ingrese el id del ingrendiente o 0 para no agregar mas: " << endl;
     listarProductos();
     cin >> opc;
 
@@ -205,8 +185,8 @@ Platillo cargarPlatillo()
     cout<<endl;
     listarOrientacionAlimentaria();
     cout<<endl;
-    cout << "Ingrese el nombre de la orienteacion: ";
-    cin >> nombreOrientacion;
+    cout << "Ingrese el id de la orienteacion: ";
+    cin >> orientacionAlimentaria;
 
     Fecha fecha(dia, mes, anio);
 
@@ -214,7 +194,7 @@ Platillo cargarPlatillo()
     reg.setIdPlatillo(id);
     reg.setNombrePlatillo(nombrePlatillo);
     reg.setFechaRegistrado(fecha);
-    reg.setNombreOrientacion(nombreOrientacion);
+    reg.setOrientacionalimentaria(orientacionAlimentaria);
     reg.setEstadoPlatillo(estado);
     cout<<endl;
     cout<<endl;

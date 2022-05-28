@@ -14,7 +14,7 @@ string Producto::getNombreProducto()
 string Producto::toString()
 {
     string cadena;
-    cadena = "Id del producto: " + to_string(idProducto) + " " " " + " Nombre del Producto: " + nombreProducto;
+    cadena = "Id del producto: " + to_string(idProducto) + " " " " + " Nombre del Producto: " + nombreProducto + " " " " + " Dni del Usuario: " + to_string(dniUsuario) + " " " " + " Fecha ingreso: " + fechaIngreso.toString();
     return cadena;
 }
 
@@ -125,16 +125,29 @@ Producto cargarProducto()
 {
     int id;
     string nombre;
+    int dniUsuario; //ver de hacer que lo tome de la sesion.
+    int dia, mes, anio;
     bool estado = true;
 
     id = CantidadRegistrosProductos()+1;
 
     cout << "Ingrese el nombre del Producto: ";
     cin >> nombre;
+    cout << "Ingrese el dni del Usuario: ";
+    cin >> dniUsuario;
+    cout << "Ingrese el dia: ";
+    cin >> dia;
+    cout << "Ingrese el mes: ";
+    cin >> mes;
+    cout << "Ingrese el anio: ";
+    cin >> anio;
 
+    Fecha fecha(dia, mes, anio);
     Producto reg;
     reg.setIdProducto(id);
     reg.setNombreProducto(nombre);
+    reg.setDniUsuario(dniUsuario);
+    reg.setFechaIngreso(fecha);
     reg.setEstadoProducto(estado);
     cout<<endl;
     cout<<endl;

@@ -3,6 +3,7 @@
 # include<cstring>
 # include<cstdlib>
 # include<string>
+#include "Fecha.h"
 using namespace std;
 
 class Producto{
@@ -10,6 +11,8 @@ class Producto{
     private:
         int idProducto;
         char nombreProducto[30];
+        int dniUsuario;
+        Fecha fechaIngreso;
         bool estadoProducto;
 
 
@@ -17,11 +20,15 @@ class Producto{
         //getters
         int getIdProducto(){return idProducto;}
         string getNombreProducto();
+        int getDniUsuario(){return dniUsuario;}
+        Fecha getFechaIngreso(){return fechaIngreso;}
         bool getEstadoProducto(){return estadoProducto;}
 
         //setters
         void setIdProducto(int id){idProducto=id;}
         void setNombreProducto(string n){strcpy(nombreProducto, n.c_str());}
+        void setDniUsuario(int d){dniUsuario=d;}
+        void setFechaIngreso(Fecha f){fechaIngreso=f;}
         void setEstadoProducto(bool e){estadoProducto=e;}
 
         //metodos

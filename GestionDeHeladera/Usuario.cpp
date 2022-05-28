@@ -27,7 +27,7 @@ using namespace std;
 
    string Usuario::toString(){
         string cadena;
-    cadena = " Id: " + to_string(id) + " " " " + " Nombre: " + nombre + " " " " + " Apellido: " + apellido + " " " " + " Orientacion Alimentaria: " + to_string(idOrientacionAlimentaria);
+    cadena = " Id: " + to_string(id) + " " " " + " Dni: " + to_string(DNI) + " " " " + "Nombre: " + nombre + " " " " + " Apellido: " + apellido + " " " " + " Orientacion Alimentaria: " + to_string(idOrientacionAlimentaria);
         return cadena;
 }
 
@@ -74,22 +74,18 @@ using namespace std;
     //METODO GUARDAR EN DISCO QUE PERMITE GUARDAR UNA MODIFICACION
     //HAY QUE PASARLE LA POSICION Y EL MODO LECTURA VA RB+
       bool Usuario::ModificarArchivo(int pos){
-        FILE *p;
-        p=fopen("Usuarios.dat", "rb+");
-        if(p==NULL){
-          cout<<"El archivo no pudo abrirse"<<endl;
-          exit(1);
-        }
-        fseek(p, pos*sizeof(Usuario),0);
-        int escribio=fwrite(this, sizeof(Usuario),1,p);
-        fclose(p);
+            FILE *p;
+            p=fopen("Usuarios.dat", "rb+");
+            if(p==NULL){
+              cout<<"El archivo no pudo abrirse"<<endl;
+              return false;
+            }
+            fseek(p, pos*sizeof(Usuario),0);
+            int escribio=fwrite(this, sizeof(Usuario),1,p);
+            fclose(p);
 
-        if(escribio){
-            return true;
-        }else{
-        return false;
+            return escribio;
         }
-     }
 
 
     /// Funciones globales para gestionar Usuario
@@ -133,6 +129,9 @@ using namespace std;
         cin >> nombre;
         cout << "Ingrese el apellido: ";
         cin >> apellido;
+        cout<<endl;
+        listarOrientacionAlimentaria();
+        cout<<endl;
         cout << "Ingrese la orientacion alimentaria: ";
         cin >> idOrientacionAlimentaria;
 
@@ -152,7 +151,7 @@ using namespace std;
 
     void listarUsuarios(){
         Usuario aux;
-        int cantUsuarios = CantidadRegistrosUsuario();
+        int cantUsuarios=CantidadRegistrosUsuario();
     cout << "LISTADO DE USUARIOS" << endl;
     cout << "----------------------------------" << endl;
         for(int i=0; i<cantUsuarios; i++){
@@ -169,6 +168,29 @@ using namespace std;
     }
 
 
+    int EliminarUsuario(){
+        Usuario aux;
+        int pos=0, dni;
+
+        listarUsuarios();
+        cout<<endl;
+
+        cout<<"Ingrese el dni del usuario a eliminar: ";
+        cin>>dni;
+
+        while(aux.LeerDeDisco(pos)==1){
+           if(aux.getDNI()==dni){
+                aux.setEstadoUsuario(false);
+                aux.ModificarArchivo(pos);
+                return pos;
+           }
+           pos++;
+        }
+        return -1;
+     }
+
+
+
   void menuUsuario(){
    int opc;
     while(true){
@@ -177,7 +199,8 @@ using namespace std;
         cout<<"MENU USUARIO"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"1. AGREGAR USUARIO "<<endl;
-        cout<<"2. LISTAR USUARIOS "<<endl;
+        cout<<"2. ELIMINAR USUARIO"<<endl;
+        cout<<"3. LISTAR USUARIOS "<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -200,7 +223,19 @@ using namespace std;
                             system("pause");
                         }
                 break;
-            case 2: listarUsuarios();
+            case 2: if(EliminarUsuario()!= -1){
+                            cout<<endl;
+                            cout<<"USUARIO ELIMINADO";
+                            cout<<endl;
+                            system("pause");
+                        }else {
+                             cout<<endl;
+                            cout<<"NO SE PUDO ELIMINAR EL USUARIO";
+                            cout<<endl;
+                            system("pause");
+                        }
+                break;
+            case 3: listarUsuarios();
                 break;
             case 0: return;
                     break;
@@ -208,3 +243,5 @@ using namespace std;
         cout<<endl;
     }
   }
+
+

@@ -38,6 +38,8 @@ using namespace std;
             bool LeerDeDisco(int pos);
             bool GrabarEnDisco();
             bool ModificarArchivo(int pos);
+            int buscarUsuario(int dni);
+            bool EliminarUsuario();
 
     };
 

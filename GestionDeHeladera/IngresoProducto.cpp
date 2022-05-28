@@ -5,29 +5,6 @@
 
 using namespace std;
 
-    //falta agregar validacion de que no puede repetirse el id
-    void IngresoProducto::Cargar(){
-        cout<<"Ingrese el id: ";
-        cin>>idIngreso;
-        cout<<"Ingrese el DNI: ";
-        cin>>DNI;
-        cout<<"Ingrese el id del producto: ";
-        cin>>idProducto;
-        //fechaIngreso.Cargar();
-    }
-
-    void IngresoProducto::Mostrar(){
-        cout<<"Id del ingreso: ";
-        cout<<idIngreso;
-        cout<<endl;
-        cout<<"DNI del Usuario: ";
-        cout<<DNI;
-        cout<<endl;
-        cout<<"Id del producto: ";
-        cout<<idProducto;
-        cout<<endl;
-        fechaIngreso.toString();
-    }
 
 
      bool IngresoProducto::LeerDeDisco(int pos){

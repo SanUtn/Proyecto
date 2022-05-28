@@ -26,8 +26,7 @@
             void setFechaIngreso(Fecha f){fechaIngreso=f;}
 
             //metodos
-            void Cargar();
-            void Mostrar();
+            string toString();
             bool LeerDeDisco(int pos);
             bool GrabarEnDisco();
             bool ModificarArchivo(int pos);

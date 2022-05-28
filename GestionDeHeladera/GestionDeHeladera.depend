@@ -51,7 +51,7 @@
 	<string>
 	"Fecha.h"
 
-1653513148 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\platillo.h
+1653772677 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\platillo.h
 	"Fecha.h"
 	"Producto.h"
 	"OrientacionAlimentaria.h"
@@ -64,10 +64,11 @@
 	<cstring>
 	<string>
 
-1653504945 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.h
+1653774059 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.h
 	<cstring>
 	<cstdlib>
 	<string>
+	"Fecha.h"
 
 1653508925 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\orientacionalimentaria.h
 	<cstdlib>
@@ -101,18 +102,18 @@
 	"ConsumoPlatillo.h"
 	"Receta.h"
 
-1653514961 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.cpp
+1653773330 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.cpp
 	<cstdlib>
 	<cstring>
 	<iostream>
 	"IngresoProducto.h"
 
-1653496392 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.h
+1653773450 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.h
 	"Usuario.h"
 	"Producto.h"
 	"Fecha.h"
 
-1653497650 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\usuario.h
+1653777548 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\usuario.h
 	<cstdlib>
 	<cstring>
 	<string>
@@ -122,7 +123,7 @@
 	<iostream>
 	"OrientacionAlimentaria.h"
 
-1653508344 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.cpp
+1653774936 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.cpp
 	<iostream>
 	"Producto.h"
 
@@ -133,12 +134,14 @@
 1652924031 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productostock.h
 	"Producto.h"
 
-1653516502 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\platillo.cpp
+1653773215 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\platillo.cpp
 	<iostream>
+	"ProductosxPlatillo.h"
 	"Platillo.h"
 
-1653514440 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\receta.cpp
+1653518026 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\receta.cpp
 	<iostream>
+	<string>
 	"Receta.h"
 
 1653517689 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\receta.h
@@ -156,15 +159,15 @@
 	"Producto.h"
 	"Fecha.h"
 
-1653508328 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\usuario.cpp
+1653777618 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\usuario.cpp
 	<iostream>
 	"Usuario.h"
 
-1653513857 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\funcionesglobales.h
+1653774456 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\funcionesglobales.h
 	"ConsumoProducto.h"
 	"ConsumoPlatillo.h"
 
-1653500620 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\funcionesglobales.cpp
+1653774442 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\funcionesglobales.cpp
 	<iostream>
 	"FuncionesGlobales.h"
 
@@ -299,6 +302,17 @@
 	"ProductosxPlatillo.h"
 
 1653769600 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\productosxplatillo.h
+	<cstdlib>
+	<cstring>
+	<string>
+	"Fecha.h"
+	"Producto.h"
+
+1653769895 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productosxplatillo.cpp
+	<iostream>
+	"ProductosxPlatillo.h"
+
+1653769895 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productosxplatillo.h
 	<cstdlib>
 	<cstring>
 	<string>
