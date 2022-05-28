@@ -1,0 +1,12 @@
+- cambiar orientacion alimentaria en vez de nombre poner id en platillo.
+- agregar listado de orientacion alimentaria a usuario para cargar el id de orientacion, que muestre opciones.
+- crear una funcion que recibe id orientacion y muestra el nombre de la orientacion
+- crear una funcion que recibe id platillo y muestra los ingredientes, los productos por nombre.
+- eliminar clase ingreso producto y ponerle a productos el dni y la fecha.(pendiente).
+- borrar la clase cosumo producto.(pendiente)
+- entrar a opcion cosumo platillo y que te liste las opciones de platillo de acuerdo al usuario logueado y sus preferencias. y ahi el usuario elige que platillo quiere.(hay que dar de baja los productos en retiro producto )
+- cada vez que se agrega un producto se suma en la clase stock y lo mismo si se retira.
+- agregar cpp de funciones globales
+- antes del menu principal agregar un menu que pida dni del usuario que ingresa a la aplicacion
+- agregar a las clases que tienen estado la opcion eliminar 
+- falta validar dni a usuario, y idproducto en la clase productoxPlatillo.
