@@ -38,6 +38,7 @@
 		<Unit filename="ConsumoProducto.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
+		<Unit filename="FuncionesGlobales.cpp" />
 		<Unit filename="FuncionesGlobales.h" />
 		<Unit filename="IngresoProducto.cpp" />
 		<Unit filename="IngresoProducto.h" />
@@ -49,6 +50,8 @@
 		<Unit filename="Producto.h" />
 		<Unit filename="ProductoStock.cpp" />
 		<Unit filename="ProductoStock.h" />
+		<Unit filename="ProductosxPlatillo.cpp" />
+		<Unit filename="ProductosxPlatillo.h" />
 		<Unit filename="Receta.cpp" />
 		<Unit filename="Receta.h" />
 		<Unit filename="RetiroProducto.cpp" />
