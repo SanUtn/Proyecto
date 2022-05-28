@@ -168,3 +168,140 @@
 	<iostream>
 	"FuncionesGlobales.h"
 
+1653766928 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\consumoplatillo.cpp
+	<iostream>
+	"ConsumoPlatillo.h"
+	"Platillo.h"
+
+1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\consumoplatillo.h
+	<cstring>
+	<cstdlib>
+	<string>
+	"Fecha.h"
+
+1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\fecha.h
+	<cstdlib>
+	<cstring>
+	<string>
+
+1653769246 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\platillo.h
+	"Fecha.h"
+	"Producto.h"
+	"OrientacionAlimentaria.h"
+	<cstdlib>
+	<cstring>
+	<string>
+
+1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\producto.h
+	<cstring>
+	<cstdlib>
+	<string>
+
+1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\orientacionalimentaria.h
+	<cstdlib>
+	<cstring>
+	<string>
+	<iostream>
+
+1653766928 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\consumoproducto.cpp
+	<iostream>
+	"ConsumoProducto.h"
+	"Producto.h"
+
+1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\consumoproducto.h
+	<cstring>
+	<cstdlib>
+	<string>
+	"Fecha.h"
+
+1653766928 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\fecha.cpp
+	<iostream>
+	"Fecha.h"
+	<ctime>
+
+1653766928 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\ingresoproducto.cpp
+	<cstdlib>
+	<cstring>
+	<iostream>
+	"IngresoProducto.h"
+
+1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\ingresoproducto.h
+	"Usuario.h"
+	"Producto.h"
+	"Fecha.h"
+
+1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\usuario.h
+	<cstdlib>
+	<cstring>
+	<string>
+	"OrientacionAlimentaria.h"
+
+1653769046 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\main.cpp
+	<iostream>
+	"Usuario.h"
+	"FuncionesGlobales.h"
+	"Producto.h"
+	"ConsumoProducto.h"
+	"Platillo.h"
+	"ConsumoPlatillo.h"
+	"Receta.h"
+
+1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\funcionesglobales.h
+	"ConsumoProducto.h"
+	"ConsumoPlatillo.h"
+
+1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\receta.h
+	"Platillo.h"
+	<cstdlib>
+	<cstring>
+	<string>
+
+1653766928 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\orientacionalimentaria.cpp
+	<iostream>
+	"OrientacionAlimentaria.h"
+
+1653769516 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\platillo.cpp
+	<iostream>
+	"ProductosxPlatillo.h"
+	"Platillo.h"
+
+1653769150 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\producto.cpp
+	<iostream>
+	"Producto.h"
+
+1653766928 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\productostock.cpp
+	<iostream>
+	"ProductoStock.h"
+
+1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\productostock.h
+	"Producto.h"
+
+1653766928 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\receta.cpp
+	<iostream>
+	<string>
+	"Receta.h"
+
+1653766928 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\retiroproducto.cpp
+	<iostream>
+	"RetiroProducto.h"
+
+1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\retiroproducto.h
+	"Usuario.h"
+	"Producto.h"
+	"Fecha.h"
+
+1653766928 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\usuario.cpp
+	<iostream>
+	"Usuario.h"
+
+1653769619 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\productosxplatillo.cpp
+	<iostream>
+	"ProductosxPlatillo.h"
+
+1653769600 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\productosxplatillo.h
+	<cstdlib>
+	<cstring>
+	<string>
+	"Fecha.h"
+	"Producto.h"
+
