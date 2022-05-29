@@ -53,6 +53,7 @@ using namespace std;
     Platillo cargarPlatillo();
     void listarPlatillos();
     void menuPlatillo();
+    int EliminarPlatillo();
 
 
 #endif // PLATILLO_H_INCLUDED

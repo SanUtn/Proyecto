@@ -3,9 +3,11 @@
 
 using namespace std;
 
-void menuConsumos(){
-   int opc;
-    while(true){
+void menuConsumos()
+{
+    int opc;
+    while(true)
+    {
         system("cls");
 
         cout<<"MENU CONSUMOS"<<endl;
@@ -23,55 +25,96 @@ void menuConsumos(){
 
         system("cls");
 
-        switch(opc){
-            case 1:   if(nuevoConsumoProducto()){
-                            cout<<endl;
-                            cout<<"CONSUMO AGREGADO";
-                            cout<<endl;
-                            system("pause");
-                        }else {
-                             cout<<endl;
-                            cout<<"NO SE PUDO AGREGAR EL CONSUMO";
-                            cout<<endl;
-                            system("pause");
-                        }
-                break;
-            case 2: listarConsumosPoductos();
-                break;
-            case 3:   if(nuevoConsumoPlatillo()){
-                            cout<<endl;
-                            cout<<"CONSUMO AGREGADO";
-                            cout<<endl;
-                            system("pause");
-                        }else {
-                             cout<<endl;
-                            cout<<"NO SE PUDO AGREGAR EL CONSUMO";
-                            cout<<endl;
-                            system("pause");
-                        }
-                break;
-            case 4: listarConsumosPlatillo();
-                break;
-            case 0: return;
-                    break;
+        switch(opc)
+        {
+        case 1:
+            if(nuevoConsumoProducto())
+            {
+                cout<<endl;
+                cout<<"CONSUMO AGREGADO";
+                cout<<endl;
+                system("pause");
+            }
+            else
+            {
+                cout<<endl;
+                cout<<"NO SE PUDO AGREGAR EL CONSUMO";
+                cout<<endl;
+                system("pause");
+            }
+            break;
+        case 2:
+            listarConsumosPoductos();
+            break;
+        case 3:
+            if(nuevoConsumoPlatillo())
+            {
+                cout<<endl;
+                cout<<"CONSUMO AGREGADO";
+                cout<<endl;
+                system("pause");
+            }
+            else
+            {
+                cout<<endl;
+                cout<<"NO SE PUDO AGREGAR EL CONSUMO";
+                cout<<endl;
+                system("pause");
+            }
+            break;
+        case 4:
+            listarConsumosPlatillo();
+            break;
+        case 0:
+            return;
+            break;
         }
         cout<<endl;
     }
-  }
+}
 
 
-   /*void mostrarOrientacionAlimentaria(){
-        OrientacionAlimentaria aux;
-        int cantOA = CantidadRegistrosOA();
-    cout << "LISTADO DE ORIENTACION ALIMENTARIA" << endl;
-    cout << "----------------------------------" << endl;
-        for(int i=0; i<cantOA; i++){
-            aux.LeerDeDisco(i);
-            if(aux.getEstadoOrientacion()){
-                cout<<aux.toString()<<endl;
-            }
+string mostrarOrientacionAlimentaria(int id)
+{
+    OrientacionAlimentaria aux;
+    int pos = 0;
+
+    while(aux.LeerDeDisco(pos))
+    {
+        if (aux.getIdOrientacionAlimentaria() == id)
+        {
+            return aux.getDescripcion();
         }
-        cout<<endl;
-        cout<<endl;
-        //system("pause");
-    }*/
+        pos++;
+    }
+}
+
+string mostrarNombreProducto(int id)
+{
+    Producto aux;
+    int pos = 0;
+
+    while(aux.LeerDeDisco(pos))
+    {
+        if (aux.getIdProducto() == id)
+        {
+            return aux.getNombreProducto();
+        }
+        pos++;
+    }
+}
+
+string mostrarNombrePlatillo(int id){
+    Platillo aux;
+    int pos = 0;
+
+    while(aux.LeerDeDisco(pos))
+    {
+        if (aux.getIdPlatillo() == id)
+        {
+            return aux.getNombrePlatillo();
+        }
+        pos++;
+    }
+}
+

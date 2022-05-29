@@ -53,8 +53,6 @@ using namespace std;
         }
      }
 
-
-
     //METODO GUARDAR EN DISCO QUE PERMITE GUARDAR UNA MODIFICACION
     //HAY QUE PASARLE LA POSICION Y EL MODO LECTURA VA RB+
       bool OrientacionAlimentaria::ModificarArchivo(int pos){
@@ -140,6 +138,26 @@ using namespace std;
         system("pause");
     }
 
+    int EliminarOrientacionAlimentaria(){
+        OrientacionAlimentaria aux;
+        int pos=0, idOrientacion;
+
+        listarOrientacionAlimentaria();
+        cout<<endl;
+
+        cout<<"Ingrese el ID de la orientacion a eliminar: ";
+        cin>>idOrientacion;
+
+        while(aux.LeerDeDisco(pos)==1){
+           if(aux.getIdOrientacionAlimentaria() == idOrientacion){
+                aux.setEstadoOrientacion(false);
+                aux.ModificarArchivo(pos);
+                return pos;
+           }
+           pos++;
+        }
+        return -1;
+     }
 
   void menuOrientacionAlimentaria(){
    int opc;
@@ -150,6 +168,7 @@ using namespace std;
         cout<<"-------------------"<<endl;
         cout<<"1. AGREGAR ORIENTACION "<<endl;
         cout<<"2. LISTAR ORIENTACIONES "<<endl;
+        cout<<"3. ELIMINAR ORIENTACION" <<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -173,6 +192,19 @@ using namespace std;
                         }
                 break;
             case 2: listarOrientacionAlimentaria();
+                break;
+            case 3:
+                   if(EliminarOrientacionAlimentaria()!= -1){
+                            cout<<endl;
+                            cout<<"ORIENTACION ELIMINADA";
+                            cout<<endl;
+                            system("pause");
+                        }else {
+                             cout<<endl;
+                            cout<<"NO SE PUDO ELIMINAR LA ORIENTACION";
+                            cout<<endl;
+                            system("pause");
+                        }
                 break;
             case 0: return;
                     break;

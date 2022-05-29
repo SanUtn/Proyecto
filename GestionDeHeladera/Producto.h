@@ -45,7 +45,7 @@ class Producto{
     Producto cargarProducto();
     void listarProductos();
     void menuProducto();
-
+    int EliminarProducto();
 
 
 

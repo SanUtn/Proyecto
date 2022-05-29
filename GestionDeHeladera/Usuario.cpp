@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Usuario.h"
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ using namespace std;
 
    string Usuario::toString(){
         string cadena;
-    cadena = " Id: " + to_string(id) + " " " " + " Dni: " + to_string(DNI) + " " " " + "Nombre: " + nombre + " " " " + " Apellido: " + apellido + " " " " + " Orientacion Alimentaria: " + to_string(idOrientacionAlimentaria);
+    cadena = " Id: " + to_string(id) + " " " " + " Dni: " + to_string(DNI) + " " " " + "Nombre: " + nombre + " " " " + " Apellido: " + apellido + " " " " + " Orientacion Alimentaria: " +          mostrarOrientacionAlimentaria(getIdOrientacionAlimentaria());
         return cadena;
 }
 

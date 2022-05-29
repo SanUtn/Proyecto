@@ -39,13 +39,7 @@ using namespace std;
     OrientacionAlimentaria cargarOrientacionAlimentaria();
     void listarOrientacionAlimentaria();
     void menuOrientacionAlimentaria();
-
-
-
-
-
-
-
+    int EliminarOrientacionAlimentaria();
 
 
 #endif // ORIENTACIONALIMENTARIA_H_INCLUDED

@@ -1,12 +1,28 @@
-1)cambiar orientacion alimentaria en vez de nombre poner id en platillo. HECHO
-2)agregar listado de orientacion alimentaria a usuario para cargar el id de orientacion, que muestre opciones.HECHO
-3) crear una funcion que recibe id orientacion y muestra el nombre de la orientacion
-4) crear una funcion que recibe id platillo y muestra los ingredientes, los productos por nombre.
+TO DO
+4) crear una funcion que recibe id platillo y muestra los ingredientes, los productos por nombre. (VER NOTAS -> Creo que seria mejor que lo mostremos con las recetas)
 5) ponerle a productos el dni y la fecha.HECHO (ver que tome el dni del usuario actual) pendiente!!.
-6) entrar a opcion cosumo platillo y que te liste las opciones de platillo de acuerdo al usuario logueado y sus preferencias. y ahi el usuario elige que platillo quiere.(hay que dar de baja los productos en retiro producto )
+6) entrar a opcion cosumo platillo y que te liste las opciones de platillo y ahi el usuario elige que platillo quiere.(hay que dar de baja los productos en retiro producto y descontar stock)
 7) cada vez que se agrega un producto se suma en la clase stock y lo mismo si se retira.
-8) agregar cpp de funciones globales HECHO
 9) antes del menu principal agregar un menu que pida dni del usuario que ingresa a la aplicacion
-10) agregar a las clases que tienen estado la opcion eliminar (HECHO EN USUARIO).
 11) falta validar dni a usuario, y idproducto en la clase productoxPlatillo.
 12) validar los nombres de los productos que no se repitan.
+
+
+HECHAS
+1)cambiar orientacion alimentaria en vez de nombre poner id en platillo. HECHO
+2)agregar listado de orientacion alimentaria a usuario para cargar el id de orientacion, que muestre opciones.HECHO
+3) crear una funcion que recibe id orientacion y muestra el nombre de la orientacion. HECHO (en usuario y platillo)
+8) agregar cpp de funciones globales HECHO
+10) agregar a las clases que tienen estado la opcion eliminar (HECHO EN USUARIO, PRODUCTO, PLATILLO, ORIENTACION, RECETAS).
+13) Fixear que se puedan ingresar strings con espacios. HECHO
+
+NOTAS
+
+En listar recetas, saque la descripcion. estaria bueno agregarle una opcion que te pida ingresar un ID de receta para que te muestre su descripcion.
+
+POST PROTOTIPO
+
+1) Reportes
+2) Informes
+3) Alerta de stock
+4) Funcionalidad de ideas segun disponibilidad

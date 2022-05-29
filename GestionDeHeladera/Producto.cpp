@@ -132,7 +132,9 @@ Producto cargarProducto()
     id = CantidadRegistrosProductos()+1;
 
     cout << "Ingrese el nombre del Producto: ";
-    cin >> nombre;
+    cin.ignore();
+    getline(cin, nombre);
+    //cin >> nombre;
     cout << "Ingrese el dni del Usuario: ";
     cin >> dniUsuario;
     cout << "Ingrese el dia: ";
@@ -177,6 +179,27 @@ void listarProductos()
     //system("pause");
 }
 
+int EliminarProducto(){
+        Producto aux;
+        int pos=0, idproducto;
+
+        listarProductos();
+        cout<<endl;
+
+        cout<<"Ingrese el ID del producto a eliminar: ";
+        cin>>idproducto;
+
+        while(aux.LeerDeDisco(pos)==1){
+           if(aux.getIdProducto() == idproducto){
+                aux.setEstadoProducto(false);
+                aux.ModificarArchivo(pos);
+                return pos;
+           }
+           pos++;
+        }
+        return -1;
+     }
+
 
 void menuProducto()
 {
@@ -189,6 +212,7 @@ void menuProducto()
         cout<<"-------------------"<<endl;
         cout<<"1. AGREGAR PRODUCTO "<<endl;
         cout<<"2. LISTAR PRODUCTOS "<<endl;
+        cout<<"3. ELIMINAR PRODUCTO "<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -219,6 +243,19 @@ void menuProducto()
         case 2:
             listarProductos();
             system("pause");
+            break;
+        case 3:
+            if(EliminarProducto()!= -1){
+                            cout<<endl;
+                            cout<<"PRODUCTO ELIMINADO";
+                            cout<<endl;
+                            system("pause");
+                        }else {
+                             cout<<endl;
+                            cout<<"NO SE PUDO ELIMINAR EL PRODUCTO";
+                            cout<<endl;
+                            system("pause");
+                        }
             break;
         case 0:
             return;

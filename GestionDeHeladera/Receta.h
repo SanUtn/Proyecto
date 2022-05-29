@@ -11,7 +11,7 @@ using namespace std;
         private:
             int idReceta;
             int idPlatillo;
-            char descripcion[30];
+            char descripcion[300];
             bool estadoReceta;
 
         public:
@@ -42,7 +42,7 @@ using namespace std;
     Receta cargarReceta();
     void listarRecetas();
     void menuRecetas();
-
+    int EliminarReceta();
 
 
 
