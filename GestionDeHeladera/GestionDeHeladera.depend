@@ -171,10 +171,11 @@
 	<iostream>
 	"FuncionesGlobales.h"
 
-1653766928 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\consumoplatillo.cpp
+1653851024 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\consumoplatillo.cpp
 	<iostream>
 	"ConsumoPlatillo.h"
 	"Platillo.h"
+	"FuncionesGlobales.h"
 
 1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\consumoplatillo.h
 	<cstring>
@@ -182,7 +183,7 @@
 	<string>
 	"Fecha.h"
 
-1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\fecha.h
+1653850776 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\fecha.h
 	<cstdlib>
 	<cstring>
 	<string>
@@ -195,7 +196,7 @@
 	<cstring>
 	<string>
 
-1653796483 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\producto.h
+1653853659 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\producto.h
 	<cstring>
 	<cstdlib>
 	<string>
@@ -218,7 +219,7 @@
 	<string>
 	"Fecha.h"
 
-1653766928 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\fecha.cpp
+1653850818 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\fecha.cpp
 	<iostream>
 	"Fecha.h"
 	<ctime>
@@ -234,13 +235,13 @@
 	"Producto.h"
 	"Fecha.h"
 
-1653794376 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\usuario.h
+1653851759 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\usuario.h
 	<cstdlib>
 	<cstring>
 	<string>
 	"OrientacionAlimentaria.h"
 
-1653769046 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\main.cpp
+1653849097 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\main.cpp
 	<iostream>
 	"Usuario.h"
 	"FuncionesGlobales.h"
@@ -249,6 +250,7 @@
 	"Platillo.h"
 	"ConsumoPlatillo.h"
 	"Receta.h"
+	"ProductoStock.h"
 
 1653799108 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\funcionesglobales.h
 	"ConsumoProducto.h"
@@ -266,21 +268,22 @@
 	<iostream>
 	"OrientacionAlimentaria.h"
 
-1653799441 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\platillo.cpp
+1653853131 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\platillo.cpp
 	<iostream>
 	"ProductosxPlatillo.h"
 	"Platillo.h"
 	"FuncionesGlobales.h"
 
-1653799487 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\producto.cpp
+1653853734 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\producto.cpp
 	<iostream>
 	"Producto.h"
 
-1653766928 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\productostock.cpp
+1653849548 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\productostock.cpp
 	<iostream>
 	"ProductoStock.h"
+	"FuncionesGlobales.h"
 
-1653766928 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\productostock.h
+1653849303 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\productostock.h
 	"Producto.h"
 
 1653799533 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\receta.cpp
@@ -298,16 +301,16 @@
 	"Producto.h"
 	"Fecha.h"
 
-1653795552 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\usuario.cpp
+1653852312 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\usuario.cpp
 	<iostream>
 	"Usuario.h"
 	"FuncionesGlobales.h"
 
-1653769619 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\productosxplatillo.cpp
+1653853559 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\productosxplatillo.cpp
 	<iostream>
 	"ProductosxPlatillo.h"
 
-1653769600 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\productosxplatillo.h
+1653852901 e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\productosxplatillo.h
 	<cstdlib>
 	<cstring>
 	<string>
@@ -325,7 +328,7 @@
 	"Fecha.h"
 	"Producto.h"
 
-1653798745 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\funcionesglobales.cpp
+1653848340 source:e:\practicas\facultad\labo2\pruebagit\proyecto\gestiondeheladera\funcionesglobales.cpp
 	<iostream>
 	"FuncionesGlobales.h"
 

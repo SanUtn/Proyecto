@@ -43,25 +43,12 @@ using namespace std;
 
     };
 
-
-
     //Funciones globales que no pertenecen a la clase
     bool nuevoUsuario();
     int CantidadRegistrosUsuario();
     Usuario cargarUsuario();
     void listarUsuarios();
     void menuUsuario();
-
-
-
-
-
-
-
-
-
-
-
-
+    bool validarUsuarioExistente(int);
 
 #endif // USUARIO_H_INCLUDED

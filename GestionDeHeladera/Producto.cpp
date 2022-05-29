@@ -134,7 +134,12 @@ Producto cargarProducto()
     cout << "Ingrese el nombre del Producto: ";
     cin.ignore();
     getline(cin, nombre);
-    //cin >> nombre;
+    while(validarProductoExistente(nombre))
+    {
+        cout <<"Producto ya ingresado, ingrese otro: ";
+        cin.ignore();
+        getline(cin, nombre);
+    }
     cout << "Ingrese el dni del Usuario: ";
     cin >> dniUsuario;
     cout << "Ingrese el dia: ";
@@ -157,6 +162,21 @@ Producto cargarProducto()
     return reg;
 }
 
+bool validarProductoExistente(string n)
+{
+    Producto aux;
+    int pos = 0;
+
+    while(aux.LeerDeDisco(pos))
+    {
+        if(aux.getNombreProducto() == n && aux.getEstadoProducto() == true)
+        {
+            return true;
+        }
+        pos++;
+    }
+    return false;
+}
 
 void listarProductos()
 {
@@ -179,26 +199,29 @@ void listarProductos()
     //system("pause");
 }
 
-int EliminarProducto(){
-        Producto aux;
-        int pos=0, idproducto;
+int EliminarProducto()
+{
+    Producto aux;
+    int pos=0, idproducto;
 
-        listarProductos();
-        cout<<endl;
+    listarProductos();
+    cout<<endl;
 
-        cout<<"Ingrese el ID del producto a eliminar: ";
-        cin>>idproducto;
+    cout<<"Ingrese el ID del producto a eliminar: ";
+    cin>>idproducto;
 
-        while(aux.LeerDeDisco(pos)==1){
-           if(aux.getIdProducto() == idproducto){
-                aux.setEstadoProducto(false);
-                aux.ModificarArchivo(pos);
-                return pos;
-           }
-           pos++;
+    while(aux.LeerDeDisco(pos)==1)
+    {
+        if(aux.getIdProducto() == idproducto)
+        {
+            aux.setEstadoProducto(false);
+            aux.ModificarArchivo(pos);
+            return pos;
         }
-        return -1;
-     }
+        pos++;
+    }
+    return -1;
+}
 
 
 void menuProducto()
@@ -245,17 +268,20 @@ void menuProducto()
             system("pause");
             break;
         case 3:
-            if(EliminarProducto()!= -1){
-                            cout<<endl;
-                            cout<<"PRODUCTO ELIMINADO";
-                            cout<<endl;
-                            system("pause");
-                        }else {
-                             cout<<endl;
-                            cout<<"NO SE PUDO ELIMINAR EL PRODUCTO";
-                            cout<<endl;
-                            system("pause");
-                        }
+            if(EliminarProducto()!= -1)
+            {
+                cout<<endl;
+                cout<<"PRODUCTO ELIMINADO";
+                cout<<endl;
+                system("pause");
+            }
+            else
+            {
+                cout<<endl;
+                cout<<"NO SE PUDO ELIMINAR EL PRODUCTO";
+                cout<<endl;
+                system("pause");
+            }
             break;
         case 0:
             return;

@@ -102,11 +102,33 @@ ProductosxPlatillo cargarProductosxPlatillo(int idplatillo, int idproducto)
 {
         ProductosxPlatillo reg;
         reg.setIdPlatillo(idplatillo);
+
+        while( validarProductoEnPlatillo(idplatillo, idproducto)){
+            cout << "Producto ya incluido en este platillo, ingrese otro: ";
+            cin >> idproducto;
+        }
+
         reg.setIdProducto(idproducto);
 
         cout<<endl;
         cout<<endl;
         return reg;
+}
+
+bool validarProductoEnPlatillo(int idplatillo, int idproducto)
+{
+    ProductosxPlatillo aux;
+    int pos = 0;
+
+    while(aux.LeerDeDisco(pos))
+    {
+        if(aux.getIdPlatillo() == idplatillo && aux.getIdProducto() == idproducto)
+        {
+            return true;
+        }
+        pos++;
+    }
+    return false;
 }
 
 void listarProductosxPlatillo()

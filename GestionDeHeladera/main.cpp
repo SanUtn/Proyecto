@@ -6,6 +6,8 @@
 #include "Platillo.h"
 #include "ConsumoPlatillo.h"
 #include "Receta.h"
+#include "ProductoStock.h"
+
 using namespace std;
 
 int main(){
@@ -43,7 +45,8 @@ int main(){
                 break;
             case 4: menuOrientacionAlimentaria();
                 break;
-            case 5: //menuStockProductos();
+            case 5:
+                    menuStockProductos();
                 break;
             case 6: menuRecetas();
                 break;

@@ -2,44 +2,49 @@
 #define PRODUCTOSTOCK_H_INCLUDED
 #include "Producto.h"
 
-    class ProductoStock{
+class ProductoStock
+{
 
-        private:
-            Producto idProducto;
-            int stock;
+private:
+    int idProducto;
+    int stock;
 
-        public:
-            //getters
-            Producto getIdProducto(){return idProducto;}
-            int getStock(){return stock;}
+public:
+    //getters
+    int getIdProducto()
+    {
+        return idProducto;
+    }
+    int getStock()
+    {
+        return stock;
+    }
 
-            //setters
-            void setIdProducto(Producto id){idProducto=id;}
-            void setStock(int s){stock=s;}
-
-
-            //metodos
-            void Cargar();
-            void Mostrar();
-            bool LeerDeDisco(int pos);
-            bool GrabarEnDisco();
-            bool ModificarArchivo(int pos);
-
-
-
-    };
-
-
-
+    //setters
+    void setIdProducto(int id)
+    {
+        idProducto=id;
+    }
+    void setStock(int s)
+    {
+        stock=s;
+    }
 
 
+    //metodos
+    void Cargar();
+    string toString();
+    bool LeerDeDisco(int pos);
+    bool GrabarEnDisco();
+    bool ModificarArchivo(int pos);
 
-
-
-
-
-
-
+};
+int CantidadRegistrosStock();
+void listarStocks();
+bool nuevoStock();
+ProductoStock cargarStock();
+void menuStockProductos();
+int EditarStock();
 
 
 #endif // PRODUCTOSTOCK_H_INCLUDED

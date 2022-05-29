@@ -28,8 +28,6 @@ using namespace std;
              Fecha();
              string toString();
 
-
-
     };
 
 
