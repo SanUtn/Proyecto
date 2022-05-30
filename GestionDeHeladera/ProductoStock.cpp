@@ -5,13 +5,6 @@
 using namespace std;
 
 
-void ProductoStock::Cargar()
-{
-    //idProducto.Cargar();
-    cout<<"Ingrese el stock: ";
-    cin>>stock;
-}
-
 string ProductoStock::toString()
 {
     string cadena;
@@ -91,7 +84,38 @@ bool ProductoStock::ModificarArchivo(int pos)
     }
 }
 
-//globales
+//funciones globales
+
+bool nuevoStock()
+{
+    ProductoStock reg;
+    reg = cargarStock();
+    bool ok = reg.GrabarEnDisco();
+    return ok;
+}
+
+ProductoStock cargarStock()
+{
+    int idproducto;
+    int stock;
+
+    listarProductos();
+    cout << "Ingrese el nombre del Producto: ";
+    cin >> idproducto;
+
+    cout << "Ingrese el stock: ";
+    cin >> stock;
+
+    ProductoStock reg;
+    reg.setIdProducto(idproducto);
+    reg.setStock(stock);
+
+    cout<<endl;
+    cout<<endl;
+    system("pause");
+    return reg;
+}
+
 
 int CantidadRegistrosStock()
 {
@@ -129,35 +153,6 @@ void listarStocks()
     cout<<endl;
 }
 
-bool nuevoStock()
-{
-    ProductoStock reg;
-    reg = cargarStock();
-    bool ok = reg.GrabarEnDisco();
-    return ok;
-}
-
-ProductoStock cargarStock()
-{
-    int idproducto;
-    int stock;
-
-    listarProductos();
-    cout << "Ingrese el nombre del Producto: ";
-    cin >> idproducto;
-
-    cout << "Ingrese el stock: ";
-    cin >> stock;
-
-    ProductoStock reg;
-    reg.setIdProducto(idproducto);
-    reg.setStock(stock);
-
-    cout<<endl;
-    cout<<endl;
-    system("pause");
-    return reg;
-}
 
 int EditarStock()
 {
@@ -194,8 +189,8 @@ void menuStockProductos()
         cout<<"MENU STOCK DE PRODUCTOS"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"1. AGREGAR STOCK "<<endl;
-        cout<<"2. LISTAR STOCK "<<endl;
-        cout<<"3. MODIFICAR STOCK"<<endl;
+        cout<<"2. MODIFICAR STOCK"<<endl;
+        cout<<"3. LISTAR STOCK "<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -224,10 +219,6 @@ void menuStockProductos()
             }
             break;
         case 2:
-            listarStocks();
-            system("pause");
-            break;
-        case 3:
 
             if(EditarStock()!= -1)
             {
@@ -243,6 +234,10 @@ void menuStockProductos()
                 cout<<endl;
                 system("pause");
             }
+        case 3:
+            listarStocks();
+            system("pause");
+            break;
         case 0:
             return;
             break;

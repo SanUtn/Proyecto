@@ -196,6 +196,7 @@ bool validarUsuarioExistente(int dni)
 void listarUsuarios()
 {
     Usuario aux;
+    int cont=0;
     int cantUsuarios=CantidadRegistrosUsuario();
     cout << "LISTADO DE USUARIOS" << endl;
     cout << "----------------------------------" << endl;
@@ -205,10 +206,12 @@ void listarUsuarios()
         if(aux.getEstadoUsuario())
         {
             cout<<aux.toString()<<endl;
+        }else{
+            cont++;
         }
     }
     cout << "----------------------------------" << endl;
-    cout << "Total: " << cantUsuarios << " Usuarios.";
+    cout << "Total: " << cantUsuarios - cont<< " Usuarios.";
     cout<<endl;
     cout<<endl;
     system("pause");

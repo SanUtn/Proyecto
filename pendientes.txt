@@ -23,7 +23,7 @@ HECHAS
 NOTAS
 
 4_ En listar recetas, saque la descripcion. estaria bueno agregarle una opcion que te pida ingresar un ID de receta para que te muestre su descripcion.
-7_ Tenemos que definir algo. Agregar producto solo te deje agregar un producto nuevo que antes no existia, y en el stock le indicamos cuanto stock tiene. ??
+7_ Tenemos que definir algo. Agregar producto solo te deje agregar un producto nuevo que antes no existia, y en el stock le indicamos cuanto stock tiene. 
 
 POST PROTOTIPO
 

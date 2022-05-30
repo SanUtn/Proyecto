@@ -14,7 +14,7 @@ string Producto::getNombreProducto()
 string Producto::toString()
 {
     string cadena;
-    cadena = "Id del producto: " + to_string(idProducto) + " " " " + " Nombre del Producto: " + nombreProducto + " " " " + " Dni del Usuario: " + to_string(dniUsuario) + " " " " + " Fecha ingreso: " + fechaIngreso.toString();
+    cadena = "Id del producto: " + to_string(idProducto) + " " " " + " Nombre del Producto: " + nombreProducto;/*" Dni del Usuario: " + to_string(dniUsuario) + " " " " + " Fecha ingreso: " + fechaIngreso.toString();*/
     return cadena;
 }
 
@@ -125,8 +125,8 @@ Producto cargarProducto()
 {
     int id;
     string nombre;
-    int dniUsuario; //ver de hacer que lo tome de la sesion.
-    int dia, mes, anio;
+    //int dniUsuario; //ver de hacer que lo tome de la sesion.
+    //int dia, mes, anio;
     bool estado = true;
 
     id = CantidadRegistrosProductos()+1;
@@ -140,8 +140,8 @@ Producto cargarProducto()
         cin.ignore();
         getline(cin, nombre);
     }
-    cout << "Ingrese el dni del Usuario: ";
-    cin >> dniUsuario;
+    /*cout << "Ingrese el dni del Usuario: ";
+    //cin >> dniUsuario;
     cout << "Ingrese el dia: ";
     cin >> dia;
     cout << "Ingrese el mes: ";
@@ -149,12 +149,12 @@ Producto cargarProducto()
     cout << "Ingrese el anio: ";
     cin >> anio;
 
-    Fecha fecha(dia, mes, anio);
+    Fecha fecha(dia, mes, anio);*/
     Producto reg;
     reg.setIdProducto(id);
     reg.setNombreProducto(nombre);
-    reg.setDniUsuario(dniUsuario);
-    reg.setFechaIngreso(fecha);
+    //reg.setDniUsuario(dniUsuario);
+    //reg.setFechaIngreso(fecha);
     reg.setEstadoProducto(estado);
     cout<<endl;
     cout<<endl;
@@ -181,6 +181,7 @@ bool validarProductoExistente(string n)
 void listarProductos()
 {
     Producto aux;
+    int cont=0;
     int cantProductos = CantidadRegistrosProductos();
     cout << "LISTADO DE PRODUCTOS" << endl;
     cout << "----------------------------------" << endl;
@@ -190,10 +191,12 @@ void listarProductos()
         if(aux.getEstadoProducto())
         {
             cout<<aux.toString()<<endl;
+        }else{
+         cont++;
         }
     }
     cout << "----------------------------------" << endl;
-    cout << "Total: " << cantProductos << " Productos.";
+    cout << "Total: " << cantProductos - cont<< " Productos.";
     cout<<endl;
     cout<<endl;
     //system("pause");
@@ -234,8 +237,8 @@ void menuProducto()
         cout<<"MENU PRODUCTO"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"1. AGREGAR PRODUCTO "<<endl;
-        cout<<"2. LISTAR PRODUCTOS "<<endl;
-        cout<<"3. ELIMINAR PRODUCTO "<<endl;
+        cout<<"2. ELIMINAR PRODUCTO "<<endl;
+        cout<<"3. LISTAR PRODUCTOS "<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -264,10 +267,6 @@ void menuProducto()
             }
             break;
         case 2:
-            listarProductos();
-            system("pause");
-            break;
-        case 3:
             if(EliminarProducto()!= -1)
             {
                 cout<<endl;
@@ -282,6 +281,10 @@ void menuProducto()
                 cout<<endl;
                 system("pause");
             }
+            break;
+        case 3:
+            listarProductos();
+            system("pause");
             break;
         case 0:
             return;

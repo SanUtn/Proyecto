@@ -122,6 +122,7 @@ using namespace std;
 
     void listarOrientacionAlimentaria(){
         OrientacionAlimentaria aux;
+        int cont=0;
         int cantOA = CantidadRegistrosOA();
     cout << "LISTADO DE ORIENTACIONES ALIMENTARIAS" << endl;
     cout << "----------------------------------" << endl;
@@ -129,10 +130,12 @@ using namespace std;
             aux.LeerDeDisco(i);
             if(aux.getEstadoOrientacion()){
                 cout<<aux.toString()<<endl;
+            }else{
+             cont++;
             }
         }
         cout << "----------------------------------" << endl;
-        cout << "Total: " << cantOA << " orientaciones alimentarias.";
+        cout << "Total: " << cantOA - cont<< " orientaciones alimentarias.";
         cout<<endl;
         cout<<endl;
         system("pause");
@@ -167,8 +170,8 @@ using namespace std;
         cout<<"MENU ORIENTACION ALIMENTARIA"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"1. AGREGAR ORIENTACION "<<endl;
-        cout<<"2. LISTAR ORIENTACIONES "<<endl;
-        cout<<"3. ELIMINAR ORIENTACION" <<endl;
+        cout<<"2. ELIMINAR ORIENTACION" <<endl;
+        cout<<"3. LISTAR ORIENTACIONES "<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -191,9 +194,7 @@ using namespace std;
                             system("pause");
                         }
                 break;
-            case 2: listarOrientacionAlimentaria();
-                break;
-            case 3:
+            case 2:
                    if(EliminarOrientacionAlimentaria()!= -1){
                             cout<<endl;
                             cout<<"ORIENTACION ELIMINADA";
@@ -205,6 +206,8 @@ using namespace std;
                             cout<<endl;
                             system("pause");
                         }
+                break;
+            case 3: listarOrientacionAlimentaria();
                 break;
             case 0: return;
                     break;

@@ -20,15 +20,15 @@ class Producto{
         //getters
         int getIdProducto(){return idProducto;}
         string getNombreProducto();
-        int getDniUsuario(){return dniUsuario;}
-        Fecha getFechaIngreso(){return fechaIngreso;}
+        //int getDniUsuario(){return dniUsuario;}
+        //Fecha getFechaIngreso(){return fechaIngreso;}
         bool getEstadoProducto(){return estadoProducto;}
 
         //setters
         void setIdProducto(int id){idProducto=id;}
         void setNombreProducto(string n){strcpy(nombreProducto, n.c_str());}
-        void setDniUsuario(int d){dniUsuario=d;}
-        void setFechaIngreso(Fecha f){fechaIngreso=f;}
+        //void setDniUsuario(int d){dniUsuario=d;}
+        //void setFechaIngreso(Fecha f){fechaIngreso=f;}
         void setEstadoProducto(bool e){estadoProducto=e;}
 
         //metodos

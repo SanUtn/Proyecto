@@ -83,7 +83,7 @@ using namespace std;
 
      int CantidadRegistrosConsumoProducto(){
         FILE *p;
-        p=fopen("ConsumoProductos.dat", "rb");
+        p=fopen("ConsumosProductos.dat", "rb");
             if(p==NULL){
               return 0;
             }

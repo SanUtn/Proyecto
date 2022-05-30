@@ -156,6 +156,7 @@ Receta cargarReceta()
 void listarRecetas()
 {
     Receta aux;
+    int cont=0;
     int cantRecetas = CantidadRegistrosReceta();
     cout << "LISTADO DE RECETAS" << endl;
     cout << "----------------------------------" << endl;
@@ -165,10 +166,12 @@ void listarRecetas()
         if(aux.getEstadoReceta())
         {
             cout<<aux.toString()<<endl;
+        }else{
+        cont++;
         }
     }
     cout << "----------------------------------" << endl;
-    cout << "Total: " << cantRecetas << " recetas.";
+    cout << "Total: " << cantRecetas - cont << " recetas.";
     cout<<endl;
     cout<<endl;
     system("pause");
@@ -209,8 +212,8 @@ void menuRecetas()
         cout<<"MENU RECETAS"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"1. AGREGAR RECETAS "<<endl;
-        cout<<"2. LISTAR RECETAS "<<endl;
-        cout<<"3. ELIMINAR RECETA" <<endl;
+        cout<<"2. ELIMINAR RECETA" <<endl;
+        cout<<"3. LISTAR RECETAS "<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -239,9 +242,6 @@ void menuRecetas()
             }
             break;
         case 2:
-            listarRecetas();
-            break;
-        case 3:
             if(EliminarReceta()!= -1)
             {
                 cout<<endl;
@@ -256,6 +256,9 @@ void menuRecetas()
                 cout<<endl;
                 system("pause");
             }
+            break;
+        case 3:
+            listarRecetas();
             break;
         case 0:
             return;

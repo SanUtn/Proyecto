@@ -192,7 +192,7 @@ void listarPlatillos()
 {
     Platillo aux;
     int cantPlatillos = CantidadRegistrosPlatillo();
-    int pos = 0;
+    int pos = 0, cont=0;
     cout << "LISTADO DE PLATILLOS" << endl;
     cout << "----------------------------------" << endl;
     for(int i=0; i<cantPlatillos; i++)
@@ -201,10 +201,12 @@ void listarPlatillos()
         if(aux.getEstadoPlatillo())
         {
             cout<<aux.toString()<<endl;
+        }else {
+        cont++;
         }
     }
     cout << "----------------------------------" << endl;
-    cout << "Total: " << cantPlatillos << " platillos.";
+    cout << "Total: " << cantPlatillos - cont<< " platillos.";
     cout<<endl;
     cout<<endl;
     system("pause");
@@ -241,9 +243,9 @@ void menuPlatillo()
         cout<<"MENU PLATILLO"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"1. AGREGAR PLATILLO "<<endl;
-        cout<<"2. LISTAR PLAILLOS "<<endl;
-        cout<<"3. LISTAR PRODUCTOS POR PLATILLO" << endl;
-        cout<<"4. ELIMINAR PLATILLO "<<endl;
+        cout<<"2. ELIMINAR PLATILLO "<<endl;
+        cout<<"3. LISTAR PLATILLOS "<<endl;
+        cout<<"4. LISTAR PRODUCTOS POR PLATILLO" << endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -272,13 +274,6 @@ void menuPlatillo()
             }
             break;
         case 2:
-            listarPlatillos();
-            break;
-        case 3:
-            listarProductosxPlatillo();
-            system("pause");
-            break;
-        case 4:
              if(EliminarPlatillo()!= -1){
                             cout<<endl;
                             cout<<"PLATILLO ELIMINADO";
@@ -290,6 +285,13 @@ void menuPlatillo()
                             cout<<endl;
                             system("pause");
                         }
+            break;
+        case 3:
+            listarPlatillos();
+            break;
+        case 4:
+            listarProductosxPlatillo();
+            system("pause");
             break;
         case 0:
             return;

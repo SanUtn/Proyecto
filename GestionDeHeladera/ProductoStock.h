@@ -11,34 +11,22 @@ private:
 
 public:
     //getters
-    int getIdProducto()
-    {
-        return idProducto;
-    }
-    int getStock()
-    {
-        return stock;
-    }
+    int getIdProducto(){return idProducto;}
+    int getStock(){return stock;}
 
     //setters
-    void setIdProducto(int id)
-    {
-        idProducto=id;
-    }
-    void setStock(int s)
-    {
-        stock=s;
-    }
-
+    void setIdProducto(int id){idProducto=id;}
+    void setStock(int s){stock=s;}
 
     //metodos
-    void Cargar();
     string toString();
     bool LeerDeDisco(int pos);
     bool GrabarEnDisco();
     bool ModificarArchivo(int pos);
 
 };
+
+//funciones globales que no pertenecen a la clase.
 int CantidadRegistrosStock();
 void listarStocks();
 bool nuevoStock();
