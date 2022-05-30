@@ -2,29 +2,29 @@
 #include<cstring>
 #include <iostream>
 #include "IngresoProducto.h"
+#include "ProductoStock.h"
 
 using namespace std;
 
-
+     string IngresoProducto::toString(){
+        string cadena;
+        cadena= "Id Ingreso: " + to_string(idIngreso) + " " " " + " Dni del Usuario: " + to_string(dniUsuario) + " " " " + " Id Producto: " + to_string(idProducto) + " " " " + " Fecha ingreso: " + fechaIngreso.toString();
+        return cadena;
+     }
 
      bool IngresoProducto::LeerDeDisco(int pos){
         FILE *p;
         int leyo;
         p=fopen("IngresosProductos.dat", "rb");
             if(p==NULL){
-              cout<<"El archivo no pudo abrirse"<<endl;
-              exit(1);
+              return false;
             }
         fseek(p, pos*sizeof(IngresoProducto),0);
         leyo=fread(this,sizeof(IngresoProducto),1,p);
 
         fclose(p);
 
-        if(leyo){
-            return true;
-        }else{
-        return false;
-        }
+        return leyo;
     }
 
      bool IngresoProducto::GrabarEnDisco(){
@@ -32,16 +32,12 @@ using namespace std;
         p=fopen("IngresosProductos.dat", "ab");
         if(p==NULL){
           cout<<"El archivo no pudo abrirse"<<endl;
-          exit(1);
+          return false;
         }
         int escribio=fwrite(this, sizeof(IngresoProducto),1,p);
         fclose(p);
 
-        if(escribio){
-            return true;
-        }else{
-        return false;
-        }
+        return escribio;
      }
 
 
@@ -52,16 +48,100 @@ using namespace std;
         FILE *p;
         p=fopen("IngresosProductos.dat", "rb+");
         if(p==NULL){
-          cout<<"El archivo no pudo abrirse"<<endl;
-          exit(1);
+          return false;
         }
         fseek(p, pos*sizeof(IngresoProducto),0);
         int escribio=fwrite(this, sizeof(IngresoProducto),1,p);
         fclose(p);
 
-        if(escribio){
-            return true;
-        }else{
-        return false;
-        }
+        return true;
      }
+
+
+
+/// Funciones globales para gestionar Producto
+bool ingresarProducto()
+{
+    IngresoProducto reg;
+    reg = cargarProductoExistente();
+    bool ok = reg.GrabarEnDisco();
+    return ok;
+}
+
+int CantidadRegistrosProductosExistentes()
+{
+    FILE *p;
+    p=fopen("IngresosProductos.dat", "rb");
+    if(p==NULL)
+    {
+        return 0;
+    }
+    size_t bytes;
+    int cantidad;
+
+    fseek(p, 0, SEEK_END);
+    bytes=ftell(p);
+
+    fclose(p);
+    cantidad = bytes/sizeof(IngresoProducto);
+    return cantidad;
+}
+
+IngresoProducto cargarProductoExistente()
+{
+    int id;
+    int dniUsuario; //ver de hacer que lo tome de la sesion.
+    int idProducto;
+    int dia, mes, anio;
+
+    id = CantidadRegistrosProductosExistentes()+1;
+
+    cout << "Ingrese el dni del Usuario: ";//esto despues no iria porque lo tomaría de la sesión
+    cin >> dniUsuario;
+    cout<<endl;
+    listarProductos();
+    cout<<endl;
+    cout<<"Ingrese el id del Producto: ";
+    cin>>idProducto;
+    //ver si cargamos la fecha o tomamos la actual
+    cout << "Ingrese el dia: ";
+    cin >> dia;
+    cout << "Ingrese el mes: ";
+    cin >> mes;
+    cout << "Ingrese el anio: ";
+    cin >> anio;
+
+    Fecha fecha(dia, mes, anio);
+    IngresoProducto reg;
+    reg.setIdIngreso(id);
+    reg.setDniUsuario(dniUsuario);
+    reg.setIdProducto(idProducto);
+    reg.setFechaIngreso(fecha);
+    //agrega al stock de productos el ingresado
+    agregarProductoAlStock(idProducto);
+
+    cout<<endl;
+    cout<<endl;
+    system("pause");
+    return reg;
+}
+
+
+void listarIngresosDeProductosExistentes()
+{
+    IngresoProducto aux;
+    int cantProductos = CantidadRegistrosProductosExistentes();
+    cout << "LISTADO DE PRODUCTOS INGRESADOS " << endl;
+    cout << "----------------------------------" << endl;
+    for(int i=0; i<cantProductos; i++)
+    {
+        aux.LeerDeDisco(i);
+        cout<<aux.toString()<<endl;
+    }
+    cout << "----------------------------------" << endl;
+    cout << "Total: " << cantProductos << " registros.";
+    cout<<endl;
+    cout<<endl;
+}
+
+

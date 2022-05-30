@@ -11,8 +11,8 @@ class Producto{
     private:
         int idProducto;
         char nombreProducto[30];
-        int dniUsuario;
-        Fecha fechaIngreso;
+        //int dniUsuario;
+        //Fecha fechaIngreso;
         bool estadoProducto;
 
 

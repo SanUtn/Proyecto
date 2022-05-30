@@ -12,6 +12,7 @@ string ProductoStock::toString()
     return cadena;
 }
 
+
 bool ProductoStock::LeerDeDisco(int pos)
 {
     FILE *p;
@@ -19,22 +20,14 @@ bool ProductoStock::LeerDeDisco(int pos)
     p=fopen("ProductosStock.dat", "rb");
     if(p==NULL)
     {
-        cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+        return false;
     }
     fseek(p, pos*sizeof(ProductoStock),0);
     leyo=fread(this,sizeof(ProductoStock),1,p);
 
     fclose(p);
 
-    if(leyo)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+   return leyo;
 }
 
 bool ProductoStock::GrabarEnDisco()
@@ -44,19 +37,12 @@ bool ProductoStock::GrabarEnDisco()
     if(p==NULL)
     {
         cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+        return false;
     }
     int escribio=fwrite(this, sizeof(ProductoStock),1,p);
     fclose(p);
 
-    if(escribio)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return escribio;
 }
 
 //METODO GUARDAR EN DISCO QUE PERMITE GUARDAR UNA MODIFICACION
@@ -67,32 +53,17 @@ bool ProductoStock::ModificarArchivo(int pos)
     p=fopen("ProductosStock.dat", "rb+");
     if(p==NULL)
     {
-        cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+       return false;
     }
     fseek(p, pos*sizeof(ProductoStock),0);
     int escribio=fwrite(this, sizeof(ProductoStock),1,p);
     fclose(p);
 
-    if(escribio)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return escribio;
 }
 
 //funciones globales
 
-bool nuevoStock()
-{
-    ProductoStock reg;
-    reg = cargarStock();
-    bool ok = reg.GrabarEnDisco();
-    return ok;
-}
 
 ProductoStock cargarStock()
 {
@@ -116,45 +87,15 @@ ProductoStock cargarStock()
     return reg;
 }
 
-
-int CantidadRegistrosStock()
+/*bool nuevoStock()
 {
-    FILE *p;
-    p=fopen("ProductosStock.dat", "rb");
-    if(p==NULL)
-    {
-        return 0;
-    }
-    size_t bytes;
-    int cantidad;
-
-    fseek(p, 0, SEEK_END);
-    bytes=ftell(p);
-
-    fclose(p);
-    cantidad = bytes/sizeof(ProductoStock);
-    return cantidad;
+    ProductoStock reg;
+    reg = cargarStock();
+    bool ok = reg.GrabarEnDisco();
+    return ok;
 }
 
-void listarStocks()
-{
-    ProductoStock aux;
-    int cantStocks = CantidadRegistrosStock();
-    cout << "LISTADO DE PRODUCTOS" << endl;
-    cout << "----------------------------------" << endl;
-    for(int i=0; i<cantStocks; i++)
-    {
-        aux.LeerDeDisco(i);
-        cout<<aux.toString()<<endl;
-    }
-    cout << "----------------------------------" << endl;
-    cout << "Total: " << cantStocks << " registros.";
-    cout<<endl;
-    cout<<endl;
-}
-
-
-int EditarStock()
+/*int EditarStock()
 {
     ProductoStock aux;
     int pos=0, idproducto, stock;
@@ -177,71 +118,148 @@ int EditarStock()
         pos++;
     }
     return -1;
-}
+}*/
 
-void menuStockProductos()
-{
-    int opc;
-    while(true)
-    {
-        system("cls");
 
-        cout<<"MENU STOCK DE PRODUCTOS"<<endl;
-        cout<<"-------------------"<<endl;
-        cout<<"1. AGREGAR STOCK "<<endl;
-        cout<<"2. MODIFICAR STOCK"<<endl;
-        cout<<"3. LISTAR STOCK "<<endl;
-        cout<<"-------------------"<<endl;
-        cout<<"0. SALIR"<<endl;
-        cout<<endl;
 
-        cout<<"OPCION: "<<endl;
-        cin>>opc;
+    bool agregarProductoAlStock(int idProducto){
+        Producto reg;
+        ProductoStock aux;
+        int pos=0, cantidad;
 
-        system("cls");
+        while(reg.LeerDeDisco(pos)==1){
 
-        switch(opc)
-        {
-        case 1:
-            if(nuevoStock())
-            {
-                cout<<endl;
-                cout<<"STOCK AGREGADO";
-                cout<<endl;
-                system("pause");
+            if(reg.getIdProducto() == idProducto && reg.getEstadoProducto()== true){
+                if(consultarStock(reg.getIdProducto())== 0){
+                   aux.setIdProducto(idProducto);
+                   aux.setStock(2);//el que ya existe mas el del cliente.
+                   aux.GrabarEnDisco();
+                   return true;
+                }else {
+                 cantidad=consultarStock(reg.getIdProducto());
+                  aux.setIdProducto(idProducto);
+                  aux.setStock(cantidad + 1);
+                  aux.ModificarArchivo(pos);
+                  return true;
+                }
             }
-            else
-            {
-                cout<<endl;
-                cout<<"NO SE PUDO AGREGAR EL STOCK";
-                cout<<endl;
-                system("pause");
-            }
-            break;
-        case 2:
-
-            if(EditarStock()!= -1)
-            {
-                cout<<endl;
-                cout<<"STOCK ACTUALIZADO";
-                cout<<endl;
-                system("pause");
-            }
-            else
-            {
-                cout<<endl;
-                cout<<"NO SE PUDO ACTUALIZAR EL STOCK";
-                cout<<endl;
-                system("pause");
-            }
-        case 3:
-            listarStocks();
-            system("pause");
-            break;
-        case 0:
-            return;
-            break;
+            pos++;
         }
+        return false;
+    }
+
+
+
+    int consultarStock(int idP){
+        ProductoStock aux;
+        int cantidad=0;
+        int cantStocks = CantidadRegistrosStock();
+
+        for(int i=0; i<cantStocks; i++){
+            if(aux.LeerDeDisco(i)){
+                if(aux.getIdProducto()==idP){
+                    cantidad = aux.getStock();
+                    return cantidad;
+                }
+            }
+        }
+        return cantidad;
+    }
+
+
+     bool retirarProductoDelStock(int idProducto){
+        Producto reg;
+        ProductoStock aux;
+        int pos=0, cantidad;
+
+        while(reg.LeerDeDisco(pos)==1){
+
+            if(reg.getIdProducto() == idProducto && reg.getEstadoProducto()== true){
+                if(consultarStock(reg.getIdProducto())== 0){
+//si devuelve 0 es que existe el producto porque llego hasta aca pero no figura en stock, como no hay stock es que tengo un solo producto entonces lo elimino.
+                   reg.setEstadoProducto(false);
+                   reg.ModificarArchivo(pos);
+                   return true;
+                }else {
+                 cantidad=consultarStock(reg.getIdProducto());
+                   aux.setStock(cantidad - 1);
+                   aux.ModificarArchivo(pos);
+                  return true;
+                }
+            }
+            pos++;
+        }
+        return false;
+    }
+
+
+    int CantidadRegistrosStock()
+    {
+        FILE *p;
+        p=fopen("ProductosStock.dat", "rb");
+        if(p==NULL)
+        {
+            return 0;
+        }
+        size_t bytes;
+        int cantidad;
+
+        fseek(p, 0, SEEK_END);
+        bytes=ftell(p);
+
+        fclose(p);
+        cantidad = bytes/sizeof(ProductoStock);
+        return cantidad;
+    }
+
+
+    void listarStocks()
+    {
+        ProductoStock aux;
+        int cantStocks = CantidadRegistrosStock();
+        cout << "LISTADO DE STOCK DE PRODUCTOS" << endl;
+        cout << "----------------------------------" << endl;
+        for(int i=0; i<cantStocks; i++)
+        {
+            aux.LeerDeDisco(i);
+            cout<<aux.toString()<<endl;
+        }
+        cout << "----------------------------------" << endl;
+        cout << "Total: " << cantStocks << " registros.";
+        cout<<endl;
         cout<<endl;
     }
-}
+
+    void menuStockProductos()
+    {
+        int opc;
+        while(true)
+        {
+            system("cls");
+
+            cout<<"MENU STOCK DE PRODUCTOS"<<endl;
+            cout<<"-------------------"<<endl;
+            cout<<"1. LISTAR STOCK "<<endl;
+            cout<<"-------------------"<<endl;
+            cout<<"0. SALIR"<<endl;
+            cout<<endl;
+
+            cout<<"OPCION: "<<endl;
+            cin>>opc;
+
+            system("cls");
+
+            switch(opc)
+            {
+
+            case 1:
+                listarStocks();
+                system("pause");
+                break;
+            case 0:
+                return;
+                break;
+            }
+            cout<<endl;
+        }
+    }

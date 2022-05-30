@@ -1,51 +1,29 @@
 #include <iostream>
 #include "RetiroProducto.h"
+#include "Producto.h"
+#include "ProductoStock.h"
 
 using namespace std;
 
-    //falta agregar validacion de que no puede repetirse el id
-    void RetiroProducto::Cargar(){
-        cout<<"Ingrese el id: ";
-        cin>>idRetiro;
-        cout<<"DNI del Usuario: ";
-        cin>>DNI;
-        cout<<"Id del producto: ";
-        cin>>idProducto;
-        //fechaRetiro.Cargar();
-    }
-
-    void RetiroProducto::Mostrar(){
-        cout<<"Id del retiro: ";
-        cout<<idRetiro;
-        cout<<endl;
-        cout<<"DNI del Usuario: ";
-        cout<<DNI;
-        cout<<endl;
-        cout<<"Id del producto: ";
-        cout<<idProducto;
-        cout<<endl;
-        fechaRetiro.toString();
-    }
-
+        string RetiroProducto::toString(){
+        string cadena;
+        cadena= "Id Retiro: " + to_string(idRetiro) + " " " " + " Dni del Usuario: " + to_string(dniUsuario) + " " " " + " Id Producto: " + to_string(idProducto) + " " " " + " Fecha ingreso: " + fechaRetiro.toString();
+        return cadena;
+     }
 
      bool RetiroProducto::LeerDeDisco(int pos){
         FILE *p;
         int leyo;
         p=fopen("RetirosProductos.dat", "rb");
             if(p==NULL){
-              cout<<"El archivo no pudo abrirse"<<endl;
-              exit(1);
+              return false;
             }
         fseek(p, pos*sizeof(RetiroProducto),0);
         leyo=fread(this,sizeof(RetiroProducto),1,p);
 
         fclose(p);
 
-        if(leyo){
-            return true;
-        }else{
-        return false;
-        }
+        return leyo;
     }
 
      bool RetiroProducto::GrabarEnDisco(){
@@ -53,16 +31,12 @@ using namespace std;
         p=fopen("RetirosProductos.dat", "ab");
         if(p==NULL){
           cout<<"El archivo no pudo abrirse"<<endl;
-          exit(1);
+          return false;
         }
         int escribio=fwrite(this, sizeof(RetiroProducto),1,p);
         fclose(p);
 
-        if(escribio){
-            return true;
-        }else{
-        return false;
-        }
+        return escribio;
      }
 
 
@@ -73,16 +47,99 @@ using namespace std;
         FILE *p;
         p=fopen("RetirosProductos.dat", "rb+");
         if(p==NULL){
-          cout<<"El archivo no pudo abrirse"<<endl;
-          exit(1);
+          return false;
         }
         fseek(p, pos*sizeof(RetiroProducto),0);
         int escribio=fwrite(this, sizeof(RetiroProducto),1,p);
         fclose(p);
 
-        if(escribio){
-            return true;
-        }else{
-        return false;
-        }
+        return escribio;
      }
+
+
+     /// Funciones globales para gestionar Producto
+    bool retirarProducto()
+    {
+        RetiroProducto reg;
+        reg = retirarProductoExistente();
+        bool ok = reg.GrabarEnDisco();
+        return ok;
+    }
+
+    int CantidadRegistrosRetiroProductosExistentes()
+    {
+        FILE *p;
+        p=fopen("RetirosProductos.dat", "rb");
+        if(p==NULL)
+        {
+            return 0;
+        }
+        size_t bytes;
+        int cantidad;
+
+        fseek(p, 0, SEEK_END);
+        bytes=ftell(p);
+
+        fclose(p);
+        cantidad = bytes/sizeof(RetiroProducto);
+        return cantidad;
+    }
+
+    RetiroProducto retirarProductoExistente()
+    {
+        int id;
+        int dniUsuario; //ver de hacer que lo tome de la sesion.
+        int idProducto;
+        int dia, mes, anio;
+
+        id = CantidadRegistrosRetiroProductosExistentes()+1;
+
+        cout << "Ingrese el dni del Usuario: ";//esto despues no iria porque lo tomaría de la sesión
+        cin >> dniUsuario;
+        cout<<endl;
+        listarProductos();
+        cout<<endl;
+        cout<<"Ingrese el id del Producto: ";
+        cin>>idProducto;
+        //ver si cargamos la fecha o tomamos la actual
+        cout << "Ingrese el dia: ";
+        cin >> dia;
+        cout << "Ingrese el mes: ";
+        cin >> mes;
+        cout << "Ingrese el anio: ";
+        cin >> anio;
+
+        Fecha fecha(dia, mes, anio);
+        RetiroProducto reg;
+        reg.setIdRetiro(id);
+        reg.setDniUsuario(dniUsuario);
+        reg.setIdProducto(idProducto);
+        reg.setFechaRetiro(fecha);
+        //retirar del stock de productos el ingresado
+        retirarProductoDelStock(idProducto);
+
+        cout<<endl;
+        cout<<endl;
+        system("pause");
+        return reg;
+    }
+
+
+    void listarRetirosDeProductosExistentes()
+    {
+        RetiroProducto aux;
+        int cantProductos = CantidadRegistrosRetiroProductosExistentes();
+        cout << "LISTADO DE PRODUCTOS RETIRADOS " << endl;
+        cout << "----------------------------------" << endl;
+        for(int i=0; i<cantProductos; i++)
+        {
+            aux.LeerDeDisco(i);
+            cout<<aux.toString()<<endl;
+        }
+        cout << "----------------------------------" << endl;
+        cout << "Total: " << cantProductos << " registros.";
+        cout<<endl;
+        cout<<endl;
+    }
+
+

@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Producto.h"
+#include "IngresoProducto.h"
+#include "RetiroProducto.h"
 
 using namespace std;
 
@@ -26,22 +28,13 @@ bool Producto::LeerDeDisco(int pos)
     p=fopen("Productos.dat", "rb");
     if(p==NULL)
     {
-        cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+        return false;
     }
     fseek(p, pos*sizeof(Producto),0);
     leyo=fread(this,sizeof(Producto),1,p);
 
     fclose(p);
-
-    if(leyo)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return leyo;
 }
 
 bool Producto::GrabarEnDisco()
@@ -51,19 +44,12 @@ bool Producto::GrabarEnDisco()
     if(p==NULL)
     {
         cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+        return false;
     }
     int escribio=fwrite(this, sizeof(Producto),1,p);
     fclose(p);
 
-    if(escribio)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return escribio;
 }
 
 
@@ -76,21 +62,13 @@ bool Producto::ModificarArchivo(int pos)
     p=fopen("Productos.dat", "rb+");
     if(p==NULL)
     {
-        cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+      return false;
     }
     fseek(p, pos*sizeof(Producto),0);
     int escribio=fwrite(this, sizeof(Producto),1,p);
     fclose(p);
 
-    if(escribio)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+   return escribio;
 }
 
 /// Funciones globales para gestionar Producto
@@ -134,11 +112,13 @@ Producto cargarProducto()
     cout << "Ingrese el nombre del Producto: ";
     cin.ignore();
     getline(cin, nombre);
+
     while(validarProductoExistente(nombre))
     {
         cout <<"Producto ya ingresado, ingrese otro: ";
         cin.ignore();
         getline(cin, nombre);
+
     }
     /*cout << "Ingrese el dni del Usuario: ";
     //cin >> dniUsuario;
@@ -238,7 +218,11 @@ void menuProducto()
         cout<<"-------------------"<<endl;
         cout<<"1. AGREGAR PRODUCTO "<<endl;
         cout<<"2. ELIMINAR PRODUCTO "<<endl;
-        cout<<"3. LISTAR PRODUCTOS "<<endl;
+        cout<<"3. INGRESAR PRODUCTO EXISTENTE "<<endl;
+        cout<<"4. RETIRAR PRODUCTO EXISTENTE "<<endl;
+        cout<<"5. LISTAR PRODUCTOS "<<endl;
+        cout<<"6. LISTAR INGRESOS DE PRODUCTOS "<<endl;
+        cout<<"7. LISTAR RETIROS DE PRODUCTOS "<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -282,8 +266,47 @@ void menuProducto()
                 system("pause");
             }
             break;
-        case 3:
+        case 3:  if(ingresarProducto())
+            {
+                cout<<endl;
+                cout<<"PRODUCTO AGREGADO";
+                cout<<endl;
+                system("pause");
+            }
+            else
+            {
+                cout<<endl;
+                cout<<"NO EXISTE EL PRODUCTO";
+                cout<<endl;
+                system("pause");
+            }
+            break;
+
+        case 4:  if(retirarProducto())
+            {
+                cout<<endl;
+                cout<<"PRODUCTO RETIRADO";
+                cout<<endl;
+                system("pause");
+            }
+            else
+            {
+                cout<<endl;
+                cout<<"NO EXISTE EL PRODUCTO";
+                cout<<endl;
+                system("pause");
+            }
+            break;
+        case 5:
             listarProductos();
+            system("pause");
+            break;
+        case 6:
+            listarIngresosDeProductosExistentes();
+            system("pause");
+            break;
+        case 7:
+            listarRetirosDeProductosExistentes();
             system("pause");
             break;
         case 0:

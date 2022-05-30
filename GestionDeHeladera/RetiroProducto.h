@@ -1,46 +1,43 @@
 #ifndef RETIROPRODUCTO_H_INCLUDED
 #define RETIROPRODUCTO_H_INCLUDED
 
-#include "Usuario.h"
-#include "Producto.h"
 #include "Fecha.h"
 
     class RetiroProducto{
 
         private:
             int idRetiro;
-            int DNI;
+            int dniUsuario;
             int idProducto;
             Fecha fechaRetiro;
 
         public:
             //getters
             int getIdRetiro(){return idRetiro;}
-            int getDNI(){return DNI;}
+            int getDniUsuario(){return dniUsuario;}
             int getIdProducto(){return idProducto;}
             Fecha getFechaRetiro(){return fechaRetiro;}
 
             //setters
             void setIdRetiro(int id){idRetiro=id;}
-            void setDNI(int d){DNI=d;}
+            void setDniUsuario(int d){dniUsuario=d;}
             void setIdProducto(int id){idProducto=id;}
             void setFechaRetiro(Fecha f){fechaRetiro=f;}
 
             //metodos
-            void Cargar();
-            void Mostrar();
+            string toString();
             bool LeerDeDisco(int pos);
             bool GrabarEnDisco();
             bool ModificarArchivo(int pos);
 
-
-
-
-
-
-
     };
 
+
+    //Funciones que no pertenecen a la clase
+    bool retirarProducto();
+    int CantidadRegistrosRetiroProductosExistentes();
+    RetiroProducto retirarProductoExistente();
+    void listarRetirosDeProductosExistentes();
 
 
 

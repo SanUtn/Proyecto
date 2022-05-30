@@ -26,13 +26,18 @@ public:
 
 };
 
-//funciones globales que no pertenecen a la clase.
-int CantidadRegistrosStock();
-void listarStocks();
-bool nuevoStock();
-ProductoStock cargarStock();
-void menuStockProductos();
-int EditarStock();
+    //funciones globales que no pertenecen a la clase.
+    bool agregarProductoAlStock(int idProducto);
+    int consultarStock(int idP);
+    bool retirarProductoDelStock(int idProducto);
+    int CantidadRegistrosStock();
+    void listarStocks();
+    void menuStockProductos();
+
+    //bool nuevoStock
+    //ProductoStock cargarStock();
+    //int EditarStock();
+
 
 
 #endif // PRODUCTOSTOCK_H_INCLUDED
