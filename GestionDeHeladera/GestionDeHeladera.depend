@@ -130,7 +130,7 @@
 	"IngresoProducto.h"
 	"RetiroProducto.h"
 
-1653880255 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productostock.cpp
+1654048394 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productostock.cpp
 	<iostream>
 	"ProductoStock.h"
 	"FuncionesGlobales.h"

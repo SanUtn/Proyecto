@@ -175,13 +175,14 @@ ProductoStock cargarStock()
         while(reg.LeerDeDisco(pos)==1){
 
             if(reg.getIdProducto() == idProducto && reg.getEstadoProducto()== true){
-                if(consultarStock(reg.getIdProducto())== 0){
+                cantidad = consultarStock(reg.getIdProducto());
+                if(cantidad == 0){
 //si devuelve 0 es que existe el producto porque llego hasta aca pero no figura en stock, como no hay stock es que tengo un solo producto entonces lo elimino.
                    reg.setEstadoProducto(false);
                    reg.ModificarArchivo(pos);
                    return true;
                 }else {
-                 cantidad=consultarStock(reg.getIdProducto());
+                   aux.setIdProducto(idProducto);//se carga setid porque cuando no estaba rompia y traia basura en id.
                    aux.setStock(cantidad - 1);
                    aux.ModificarArchivo(pos);
                   return true;
