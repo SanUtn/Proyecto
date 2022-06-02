@@ -444,7 +444,7 @@
 	<iostream>
 	"OrientacionAlimentaria.h"
 
-1654176261 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\platillo.cpp
+1654178976 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\platillo.cpp
 	<iostream>
 	"ProductosxPlatillo.h"
 	"Platillo.h"
@@ -457,7 +457,7 @@
 	"Fecha.h"
 	"Producto.h"
 
-1654173433 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\producto.cpp
+1654176708 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\producto.cpp
 	<iostream>
 	"Producto.h"
 	"IngresoProducto.h"
@@ -481,7 +481,7 @@
 	"Receta.h"
 	"FuncionesGlobales.h"
 
-1654173433 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\retiroproducto.cpp
+1654176665 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\retiroproducto.cpp
 	<iostream>
 	"RetiroProducto.h"
 	"Producto.h"

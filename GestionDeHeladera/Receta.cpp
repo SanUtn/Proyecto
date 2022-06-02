@@ -15,7 +15,7 @@ string Receta::getDescripcion()
 string Receta::toString()
 {
     string cadena;
-    cadena = "Id receta: " + to_string(idReceta) + " " " " + " Id Platillo: " + mostrarNombrePlatillo(getIdReceta());
+    cadena = "Id receta: " + to_string(idReceta) + " " " " + " Id Platillo: " + mostrarNombrePlatillo(getIdReceta()) + " " " " + " Instrucciones: " + getDescripcion();
     return cadena;
 }
 
