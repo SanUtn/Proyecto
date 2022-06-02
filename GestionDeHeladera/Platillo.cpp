@@ -15,10 +15,10 @@ string Platillo::getNombrePlatillo()
 string Platillo::toString()
 {
     string cadena;
-    cadena = "Id Platillo: " +
+    cadena = "Id: " +
     to_string(idPlatillo) +
     " " " " +
-    " Nombre Platillo: " +
+    " Nombre: " +
     nombrePlatillo + " " " " +
     fechaRegistrado.toString() +
     " " " " +
@@ -209,7 +209,6 @@ void listarPlatillos()
     cout << "Total: " << cantPlatillos - cont<< " platillos.";
     cout<<endl;
     cout<<endl;
-    system("pause");
 }
 
 int EliminarPlatillo(){
@@ -250,7 +249,7 @@ void menuPlatillo()
         cout<<"0. SALIR"<<endl;
         cout<<endl;
 
-        cout<<"OPCION: "<<endl;
+        cout<<"OPCION: ";
         cin>>opc;
 
         system("cls");
@@ -288,6 +287,7 @@ void menuPlatillo()
             break;
         case 3:
             listarPlatillos();
+             system("pause");
             break;
         case 4:
             listarProductosxPlatillo();

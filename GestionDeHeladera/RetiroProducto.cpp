@@ -7,7 +7,7 @@ using namespace std;
 
         string RetiroProducto::toString(){
         string cadena;
-        cadena= "Id Retiro: " + to_string(idRetiro) + " " " " + " Dni del Usuario: " + to_string(dniUsuario) + " " " " + " Id Producto: " + to_string(idProducto) + " " " " + " Fecha ingreso: " + fechaRetiro.toString();
+        cadena= "Id Retiro: " + to_string(idRetiro) + " " " " + " Dni del Usuario: " + to_string(dniUsuario) + " " " " + " Id Producto: " + to_string(idProducto) + " " " " + " Fecha retiro: " + fechaRetiro.toString();
         return cadena;
      }
 

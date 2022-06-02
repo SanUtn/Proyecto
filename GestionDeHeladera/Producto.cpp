@@ -16,7 +16,7 @@ string Producto::getNombreProducto()
 string Producto::toString()
 {
     string cadena;
-    cadena = "Id del producto: " + to_string(idProducto) + " " " " + " Nombre del Producto: " + nombreProducto;/*" Dni del Usuario: " + to_string(dniUsuario) + " " " " + " Fecha ingreso: " + fechaIngreso.toString();*/
+    cadena = "Id: " + to_string(idProducto) + " " " " + " Nombre: " + nombreProducto;/*" Dni del Usuario: " + to_string(dniUsuario) + " " " " + " Fecha ingreso: " + fechaIngreso.toString();*/
     return cadena;
 }
 

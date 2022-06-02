@@ -173,7 +173,6 @@ Usuario cargarUsuario()
     reg.setEstadoUsuario(estado);
     cout<<endl;
     cout<<endl;
-    system("pause");
     return reg;
 }
 
@@ -214,7 +213,6 @@ void listarUsuarios()
     cout << "Total: " << cantUsuarios - cont<< " Usuarios.";
     cout<<endl;
     cout<<endl;
-    system("pause");
 }
 
 
@@ -301,6 +299,7 @@ void menuUsuario()
             break;
         case 3:
             listarUsuarios();
+            system("pause");
             break;
         case 0:
             return;

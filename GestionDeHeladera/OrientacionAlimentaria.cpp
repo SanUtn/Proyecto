@@ -138,7 +138,6 @@ using namespace std;
         cout << "Total: " << cantOA - cont<< " orientaciones alimentarias.";
         cout<<endl;
         cout<<endl;
-        system("pause");
     }
 
     int EliminarOrientacionAlimentaria(){
@@ -208,6 +207,7 @@ using namespace std;
                         }
                 break;
             case 3: listarOrientacionAlimentaria();
+            system("pause");
                 break;
             case 0: return;
                     break;
