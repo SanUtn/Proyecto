@@ -1,6 +1,8 @@
 #include <iostream>
 #include "ProductoStock.h"
 #include "FuncionesGlobales.h"
+#include "ProductoStock.h"
+#include "ProductosxPlatillo.h"
 
 using namespace std;
 
@@ -213,6 +215,61 @@ bool retirarProductoDelStock(int idProducto)
             }
         }
         pos++;
+    }
+    return false;
+}
+
+bool retirarProductoDelStockDesdePlatillo(int idplatillo)
+{
+    Platillo pla;
+    ProductosxPlatillo pxp;
+    ProductoStock psto;
+
+    bool resto;
+
+    int pos=0, cantidad, pos2, pos3;
+
+    while(pla.LeerDeDisco(pos)==1)
+    {
+        pos2 = 0;
+
+
+        if(pla.getIdPlatillo() == idplatillo)
+        {
+            while(pxp.LeerDeDisco(pos2) == 1)
+            {
+                        pos3 = 0;
+                if(pxp.getIdPlatillo() == idplatillo)
+                {
+                    cantidad = consultarStock(pxp.getIdProducto());
+                    if(cantidad == 0)
+                    {
+                        //reg.setEstadoProducto(false);
+                        //reg.ModificarArchivo(pos);
+                        resto = true;
+                    }
+                    else
+                    {
+                        while(psto.LeerDeDisco(pos3) == 1)
+                        {
+                            if(psto.getIdProducto() == pxp.getIdProducto())
+                            {
+                                psto.setIdProducto(psto.getIdProducto());//se carga setid porque cuando no estaba rompia y traia basura en id.
+                                psto.setStock(cantidad - 1);
+                                psto.ModificarArchivo(pos3);
+                                resto =  true;
+                            }
+                            pos3++;
+                        }
+                    }
+                }
+                pos2++;
+            }
+        }
+        pos++;
+    }
+    if(resto){
+        return true;
     }
     return false;
 }

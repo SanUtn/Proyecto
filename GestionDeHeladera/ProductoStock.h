@@ -33,6 +33,7 @@ public:
     int CantidadRegistrosStock();
     void listarStocks();
     void menuStockProductos();
+    bool retirarProductoDelStockDesdePlatillo(int idplatillo);
 
     //bool nuevoStock
     //ProductoStock cargarStock();

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ConsumoPlatillo.h"
 #include "Platillo.h"
+#include "ProductoStock.h"
 #include "FuncionesGlobales.h"
 using namespace std;
 
@@ -93,6 +94,10 @@ bool nuevoConsumoPlatillo()
     ConsumoPlatillo reg;
     reg = cargarConsumoPlatillo();
     bool ok = reg.GrabarEnDisco();
+    if(ok){
+        int idproducto = reg.getIdPlatillo();
+        retirarProductoDelStockDesdePlatillo(idproducto);
+    }
     return ok;
 }
 
