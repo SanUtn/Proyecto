@@ -37,21 +37,14 @@ bool Platillo::LeerDeDisco(int pos)
     if(p==NULL)
     {
         cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+        return false;
     }
     fseek(p, pos*sizeof(Platillo),0);
     leyo=fread(this,sizeof(Platillo),1,p);
 
     fclose(p);
 
-    if(leyo)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+   return leyo;
 }
 
 bool Platillo::GrabarEnDisco()
@@ -61,19 +54,12 @@ bool Platillo::GrabarEnDisco()
     if(p==NULL)
     {
         cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+        return false;
     }
     int escribio=fwrite(this, sizeof(Platillo),1,p);
     fclose(p);
 
-    if(escribio)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+  return escribio;
 }
 
 //METODO GUARDAR EN DISCO QUE PERMITE GUARDAR UNA MODIFICACION
@@ -85,20 +71,13 @@ bool Platillo::ModificarArchivo(int pos)
     if(p==NULL)
     {
         cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+        return false;
     }
     fseek(p, pos*sizeof(Platillo),0);
     int escribio=fwrite(this, sizeof(Platillo),1,p);
     fclose(p);
 
-    if(escribio)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+   return escribio;
 }
 
 /// Funciones globales para gestionar Platillos
@@ -159,7 +138,7 @@ Platillo cargarPlatillo()
 
     while(opc != 0){
 
-        nuevoProductoxPlatillo(id, opc);
+        nuevoProductoxPlatillo(id, opc);//le pasa el id del platillo y el ingrediente a agregar.
 
         cout << "Ingrese el nombre del ingrendiente o 0 para no agregar mas: " << endl;
         listarProductos();

@@ -46,21 +46,14 @@ bool Usuario::LeerDeDisco(int pos)
     if(p==NULL)
     {
         cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+        return false;
     }
     fseek(p, pos*sizeof(Usuario),0);
     leyo=fread(this,sizeof(Usuario),1,p);
 
     fclose(p);
 
-    if(leyo)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return leyo;
 }
 
 bool Usuario::GrabarEnDisco()
@@ -70,19 +63,12 @@ bool Usuario::GrabarEnDisco()
     if(p==NULL)
     {
         cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+        return false;
     }
     int escribio=fwrite(this, sizeof(Usuario),1,p);
     fclose(p);
 
-    if(escribio)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+   return escribio;
 }
 
 

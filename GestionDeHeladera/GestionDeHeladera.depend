@@ -124,7 +124,7 @@
 	<iostream>
 	"OrientacionAlimentaria.h"
 
-1653878813 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.cpp
+1654721265 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.cpp
 	<iostream>
 	"Producto.h"
 	"IngresoProducto.h"
@@ -135,7 +135,7 @@
 	"ProductoStock.h"
 	"FuncionesGlobales.h"
 
-1653877673 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productostock.h
+1654721265 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productostock.h
 	"Producto.h"
 
 1653868261 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\platillo.cpp
@@ -156,7 +156,7 @@
 	<cstring>
 	<string>
 
-1653878618 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\retiroproducto.cpp
+1654721265 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\retiroproducto.cpp
 	<iostream>
 	"RetiroProducto.h"
 	"Producto.h"

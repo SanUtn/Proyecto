@@ -21,21 +21,14 @@ bool ConsumoPlatillo::LeerDeDisco(int pos)
     if(p==NULL)
     {
         cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+        return false;
     }
     fseek(p, pos*sizeof(ConsumoPlatillo),0);
     leyo=fread(this,sizeof(ConsumoPlatillo),1,p);
 
     fclose(p);
 
-    if(leyo)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+  return leyo;
 }
 
 bool ConsumoPlatillo::GrabarEnDisco()
@@ -45,19 +38,12 @@ bool ConsumoPlatillo::GrabarEnDisco()
     if(p==NULL)
     {
         cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+       return false;
     }
     int escribio=fwrite(this, sizeof(ConsumoPlatillo),1,p);
     fclose(p);
 
-    if(escribio)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return escribio;
 }
 
 
@@ -71,20 +57,13 @@ bool ConsumoPlatillo::ModificarArchivo(int pos)
     if(p==NULL)
     {
         cout<<"El archivo no pudo abrirse"<<endl;
-        exit(1);
+       return false;
     }
     fseek(p, pos*sizeof(ConsumoPlatillo),0);
     int escribio=fwrite(this, sizeof(ConsumoPlatillo),1,p);
     fclose(p);
 
-    if(escribio)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return escribio;
 }
 
 
@@ -95,9 +74,9 @@ bool nuevoConsumoPlatillo()
     reg = cargarConsumoPlatillo();
     bool ok = reg.GrabarEnDisco();
     if(ok){
-        int idproducto = reg.getIdPlatillo();
-        retirarProductoDelStockDesdePlatillo(idproducto);
-    }
+        int platillo= reg.getIdPlatillo();
+        ok = retirarProductoDelStockDesdePlatillo(platillo);
+      }
     return ok;
 }
 

@@ -54,7 +54,7 @@ using namespace std;
         int escribio=fwrite(this, sizeof(IngresoProducto),1,p);
         fclose(p);
 
-        return true;
+        return escribio;
      }
 
 

@@ -67,7 +67,7 @@ bool ProductoStock::ModificarArchivo(int pos)
 //funciones globales
 
 
-ProductoStock cargarStock()
+/*ProductoStock cargarStock()
 {
     int idproducto;
     int stock;
@@ -87,7 +87,7 @@ ProductoStock cargarStock()
     cout<<endl;
     system("pause");
     return reg;
-}
+}*/
 
 /*bool nuevoStock()
 {
@@ -135,7 +135,8 @@ bool agregarProductoAlStock(int idProducto)
 
         if(reg.getIdProducto() == idProducto && reg.getEstadoProducto()== true)
         {
-            if(consultarStock(reg.getIdProducto())== 0)
+            cantidad = consultarStock(reg.getIdProducto());
+            if(cantidad == 0)
             {
                 aux.setIdProducto(idProducto);
                 aux.setStock(2);//el que ya existe mas el del cliente.
@@ -144,7 +145,6 @@ bool agregarProductoAlStock(int idProducto)
             }
             else
             {
-                cantidad=consultarStock(reg.getIdProducto());
                 aux.setIdProducto(idProducto);
                 aux.setStock(cantidad + 1);
                 aux.ModificarArchivo(pos);
@@ -219,6 +219,7 @@ bool retirarProductoDelStock(int idProducto)
     return false;
 }
 
+//consulto en archivo de platillo si existe ese platillo, si existe, busco en productos por platillo sus ingredientes para ir agregando a stock, si no existe en stock el producto retorno true y si existe resto uno a stock de cada producto y retorno true y sino se pudo restar productos retorno false.
 bool retirarProductoDelStockDesdePlatillo(int idplatillo)
 {
     Platillo pla;
@@ -234,7 +235,7 @@ bool retirarProductoDelStockDesdePlatillo(int idplatillo)
         pos2 = 0;
 
 
-        if(pla.getIdPlatillo() == idplatillo)
+        if(pla.getIdPlatillo() == idplatillo && pla.getEstadoPlatillo() == true)
         {
             while(pxp.LeerDeDisco(pos2) == 1)
             {

@@ -22,18 +22,14 @@ using namespace std;
         p=fopen("OrientacionesAlimentarias.dat", "rb");
             if(p==NULL){
               cout<<"El archivo no pudo abrirse"<<endl;
-              exit(1);
+              return false;
             }
         fseek(p, pos*sizeof(OrientacionAlimentaria),0);
         leyo=fread(this,sizeof(OrientacionAlimentaria),1,p);
 
         fclose(p);
 
-        if(leyo){
-            return true;
-        }else{
-        return false;
-        }
+        return leyo;
     }
 
      bool OrientacionAlimentaria::GrabarEnDisco(){
@@ -41,16 +37,12 @@ using namespace std;
         p=fopen("OrientacionesAlimentarias.dat", "ab");
         if(p==NULL){
           cout<<"El archivo no pudo abrirse"<<endl;
-          exit(1);
+          return false;
         }
         int escribio=fwrite(this, sizeof(OrientacionAlimentaria),1,p);
         fclose(p);
 
-        if(escribio){
-            return true;
-        }else{
-        return false;
-        }
+        return escribio;
      }
 
     //METODO GUARDAR EN DISCO QUE PERMITE GUARDAR UNA MODIFICACION
@@ -60,17 +52,13 @@ using namespace std;
         p=fopen("OrientacionesAlimentarias.dat", "rb+");
         if(p==NULL){
           cout<<"El archivo no pudo abrirse"<<endl;
-          exit(1);
+          return false;
         }
         fseek(p, pos*sizeof(OrientacionAlimentaria),0);
         int escribio=fwrite(this, sizeof(OrientacionAlimentaria),1,p);
         fclose(p);
 
-        if(escribio){
-            return true;
-        }else{
-        return false;
-        }
+        return escribio;
      }
 
 
