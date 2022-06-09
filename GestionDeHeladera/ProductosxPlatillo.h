@@ -11,25 +11,29 @@ class ProductosxPlatillo{
     private:
     int IdPlatillo;
     int IdProducto;
-    //int Cantidad;
 
     public:
+        //getters
         int getIdProducto();
         int getIdPlatillo();
-        //int getCantidad(){return Cantidad;}
+        //setters
         void setIdProducto(int i);
         void setIdPlatillo(int i);
-        //void setCantidad(int c){Cantidad = c;}
+
 
         //metodos
         bool LeerDeDisco(int pos);
         bool GrabarEnDisco();
 };
 
-//Funciones globales no pertenecientes a la clase
+
+///Funciones globales no pertenecientes a la clase
 int CantidadRegistrosProductosxPlatillos();
 ProductosxPlatillo cargarProductosxPlatillo(int idplatillo, int idproducto);
 bool nuevoProductoxPlatillo(int idplatillo, int idproducto);
 void listarProductosxPlatillo();
 bool validarProductoEnPlatillo(int idplatillo, int idproducto);
+
+
+
 #endif // PRODUCTOSXPLATILLO_H_INCLUDED

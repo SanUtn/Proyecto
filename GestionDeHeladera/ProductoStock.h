@@ -39,6 +39,8 @@ public:
     void listarStocks();
     void menuStockProductos();
     bool retirarProductoDelStockDesdePlatillo(int idplatillo);
+    bool buscarPlatillo(int idP);
+    void buscarProductosXPlatillo(int idP, int *vProductos, int tam);
 
 
 

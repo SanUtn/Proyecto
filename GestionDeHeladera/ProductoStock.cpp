@@ -178,7 +178,7 @@ int buscarPosicionProducto(int idP)
 
 
 
-///consulto en archivo de platillo si existe ese platillo, si existe, busco en productos por platillo sus ingredientes para ir agregando a stock, si no existe en stock el producto retorno true y si existe resto uno a stock de cada producto y retorno true y sino se pudo restar productos retorno false.
+/*///consulto en archivo de platillo si existe ese platillo, si existe, busco en productos por platillo sus ingredientes para ir agregando a stock, si no existe en stock el producto retorno true y si existe resto uno a stock de cada producto y retorno true y sino se pudo restar productos retorno false.
 bool retirarProductoDelStockDesdePlatillo(int idplatillo)
 {
     Platillo pla;
@@ -232,6 +232,95 @@ bool retirarProductoDelStockDesdePlatillo(int idplatillo)
         return true;
     }
     return false;
+}*/
+
+
+
+///consulta en archivo de platillo si existe ese platillo, si existe, busca en productos por platillo sus ingredientes y los carga en un vector para ir sacando de stock de productos cada uno.
+bool retirarProductoDelStockDesdePlatillo(int idplatillo)
+{
+    Platillo pla;
+    ProductosxPlatillo pxp;
+    ProductoStock aux;
+    Producto reg;
+
+    int *vProductos;
+    int cantStocks = CantidadRegistrosStock();
+    int cantReg = CantidadRegistrosProductosxPlatillos();
+    vProductos = new int [cantReg];
+     if(vProductos==NULL){return false;}
+    int cantidad, posicion, productoId;
+    bool bandera = false;
+
+        if(buscarPlatillo(idplatillo))
+        {
+            //lena el vector con los productos del platillo
+            buscarProductosXPlatillo(idplatillo, vProductos, cantReg);
+
+            for(int i=0; i<cantStocks; i++)
+            {
+                aux.LeerDeDisco(i);
+
+                for(int j=0; j<cantReg; j++)
+                {
+                if(aux.getIdProducto()== vProductos[j])
+                {
+                    cantidad = aux.getStock();
+                    posicion=buscarPosicionProducto(aux.getIdProducto());
+                    if(cantidad == 1 && posicion != -1)
+                    {
+                        reg.setEstadoProducto(false);
+                        reg.ModificarArchivo(posicion);
+                        aux.setEstadoStock(false);
+                        aux.ModificarArchivo(i);
+                        bandera = true;
+                    } else if(cantidad > 1)
+                    {
+                        aux.setStock(cantidad - 1);
+                        aux.ModificarArchivo(i);
+                        bandera = true;
+                    }
+                }
+                }
+            }
+        }
+        delete vProductos;
+        return bandera;
+}
+
+bool buscarPlatillo(int idP)
+{
+    Platillo aux;
+    int cantPlatillos = CantidadRegistrosPlatillo();
+
+    for(int i=0; i<cantPlatillos; i++)
+    {
+        if(aux.LeerDeDisco(i))
+        {
+            if(aux.getIdPlatillo()==idP && aux.getEstadoPlatillo()==true)
+            {
+               return true;
+            }
+        }
+    }
+    return false;
+}
+
+void buscarProductosXPlatillo(int idP, int *vProductos, int tam)
+{
+    ProductosxPlatillo aux;
+
+    for(int i=0; i<tam; i++)
+    {
+        if(aux.LeerDeDisco(i))
+        {
+            if(aux.getIdPlatillo()==idP)
+            {
+               vProductos[i] = aux.getIdProducto();
+            }
+        }
+    }
+
 }
 
 

@@ -6,9 +6,8 @@ los productos por nombre. (VER NOTAS -> Creo que seria mejor que lo mostremos co
 9) antes del menu principal agregar un menu que pida dni del usuario que ingresa a la aplicacion
 11 bis) Validar idproducto por productosXplatillo. INICIADO, HAY UN TEMA SI VALIDA Y QUIERE CANCELAR.
 CRIS:
-15) VER SI CREAMOS UNA FUNCION PARA PONER A TODOS LOS PRODUCTOS CON STOCK UNO Y 
-MODIFICAMOS LA QUE ESTA DE agregarStock.??TENGO DUDAS AHI COMO NOS CONVIENE
-16) validamos el dni cuando ingresa o se retira un producto????
+15) Se modifico stock para que al agregar un producto sume 1 y luego al ingresar producto existente sume al 1 que ya tiene, y si retira y queda 1 en stock, lo elimina de productos seteando el estado.
+16) validamos el dni cuando ingresa o se retira un producto????//ver de tomar de la sesion
 
 
 

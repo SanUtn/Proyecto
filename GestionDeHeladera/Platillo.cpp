@@ -131,8 +131,10 @@ Platillo cargarPlatillo()
     cout<<"Ingrese el anio: ";
     cin>>anio;
     cout<<endl;
+    system("cls");
 
     cout << "Ingrese el id del ingrendiente o 0 para no agregar mas: " << endl;
+    cout<<endl;
     listarProductos();
     cin >> opc;
 
@@ -140,12 +142,14 @@ Platillo cargarPlatillo()
 
         nuevoProductoxPlatillo(id, opc);//le pasa el id del platillo y el ingrediente a agregar.
 
-        cout << "Ingrese el nombre del ingrendiente o 0 para no agregar mas: " << endl;
+        system("cls");
+        cout << "Ingrese el id del ingrendiente o 0 para no agregar mas: " << endl;
+        cout<<endl;
         listarProductos();
         cin >> opc;
     }
     cout<<endl;
-
+     system("cls");
     cout<<endl;
     listarOrientacionAlimentaria();
     cout<<endl;
