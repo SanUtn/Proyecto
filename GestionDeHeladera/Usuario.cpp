@@ -147,7 +147,7 @@ Usuario cargarUsuario()
     cout<<endl;
     listarOrientacionAlimentaria();
     cout<<endl;
-    cout << "Ingrese la orientacion alimentaria: ";
+    cout << "Ingrese el id de la orientacion alimentaria: ";
     cin >> idOrientacionAlimentaria;
 
     Usuario reg;

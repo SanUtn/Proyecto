@@ -2,11 +2,7 @@ TO DO
 4) crear una funcion que recibe id platillo y muestra los ingredientes, 
 los productos por nombre. (VER NOTAS -> Creo que seria mejor que lo mostremos con las recetas)
 5) ponerle a productos el dni y la fecha.HECHO (ver que tome el dni del usuario actual) pendiente!!.
-6 bis) Descontar de stock productos cuando se realiza el consumo de un platillo.
-(CRIS: ACA PODEMOS USAR LAS FUNCIONES DEFINIDAS EN STOCK, 
-CAMBIANDO UN POCO, VER SI LAS FUNCIONES DEFINIDAS EN STOCK QUEDAN AHI O LAS MOVEMOS A INGRESOPRODUCTO
- POR EJEMPLO O A PLATILLO EN EL CASO DE LA OTRA)
-
+6 bis) Descontar de stock productos cuando se realiza el consumo de un platillo.HECHO
 9) antes del menu principal agregar un menu que pida dni del usuario que ingresa a la aplicacion
 11 bis) Validar idproducto por productosXplatillo. INICIADO, HAY UN TEMA SI VALIDA Y QUIERE CANCELAR.
 CRIS:
@@ -25,7 +21,7 @@ HECHAS
 13) Fixear que se puedan ingresar strings con espacios. HECHO
 6) entrar a opcion cosumo platillo y que te liste las opciones de platillo y ahi el usuario elige que platillo quiere. HECHO
 14) FIX Fecha Actual en consumos. HECHO
-11) VALIDAR DNI POR USUARIO. HECHO (Tendriamos que ver que hacemos con los que se dan de baja y se vuelven a ingresar)
+11) VALIDAR DNI POR USUARIO. HECHO (Tendriamos que ver que hacemos con los que se dan de baja y se vuelven a ingresar) PARA MI SE VUELVE A INGRESAR PORQUE AL TENER ESTADO EN FALSE ES COMO QUE YA NO EXISTE, Y VUELVE A ENTRAR.
 12) validar los nombres de los productos que no se repitan. HECHO
 
 NOTAS
@@ -33,11 +29,7 @@ NOTAS
 4_ En listar recetas, saque la descripcion. estaria bueno agregarle una opcion que te pida ingresar un ID de receta para que te muestre su descripcion.
 7) cada vez que se agrega un producto se suma en la clase stock y lo mismo si se retira. (VER NOTAS)HECHO
 7_ Tenemos que definir algo. Agregar producto solo te deje agregar un producto nuevo que antes no existia, y en el stock le indicamos cuanto stock tiene. 
-CRIS: LE AGREGUE AL MENU DE PRODUCTOS DOS OPCIONES INGRESAR PRODUCTO Y RETIRAR Y TAMBIEN LAS OPCIONES DE LISTADOS.
-FUNCIONA BIEN EL AGREGAR Y EL RETIRAR Y EL MOSTRAR STOCK TAMBIEN, PERO CUANDO SE HACE UN RETIRO Y UN INGRESO 
-COLAPSA EL MOSTRAR EN LA PARTE DE TRAER EL PRODUCTO POR ID, PERO SI HACES SOLO UN INGRESO Y VAS A 
-MENU STOCK TE MUESTRA LO MAS BIEN, O SI HACES DOS INGRESOS, PERO SI MEZCLA INGRESO Y EGRESO SE CAGA EL MOSTRAR STOCK,
- NO  ME DOY CUENTA DEL ERROR.
+
 
 POST PROTOTIPO
 

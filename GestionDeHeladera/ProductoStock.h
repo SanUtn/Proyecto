@@ -8,15 +8,18 @@ class ProductoStock
 private:
     int idProducto;
     int stock;
+    bool estadoStock;
 
 public:
     //getters
     int getIdProducto(){return idProducto;}
     int getStock(){return stock;}
+    int getEstadoStock(){return estadoStock;}
 
     //setters
     void setIdProducto(int id){idProducto=id;}
     void setStock(int s){stock=s;}
+    void setEstadoStock(int es){estadoStock=es;}
 
     //metodos
     string toString();
@@ -27,17 +30,16 @@ public:
 };
 
     //funciones globales que no pertenecen a la clase.
+    bool agregarProductoNuevoAlStock(int idProducto);
     bool agregarProductoAlStock(int idProducto);
     int consultarStock(int idP);
+    int buscarPosicionProducto(int idP);
     bool retirarProductoDelStock(int idProducto);
     int CantidadRegistrosStock();
     void listarStocks();
     void menuStockProductos();
     bool retirarProductoDelStockDesdePlatillo(int idplatillo);
 
-    //bool nuevoStock
-    //ProductoStock cargarStock();
-    //int EditarStock();
 
 
 

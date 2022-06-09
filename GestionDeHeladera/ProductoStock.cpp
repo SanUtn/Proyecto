@@ -55,6 +55,7 @@ bool ProductoStock::ModificarArchivo(int pos)
     p=fopen("ProductosStock.dat", "rb+");
     if(p==NULL)
     {
+        cout<<"El archivo no pudo abrirse"<<endl;
         return false;
     }
     fseek(p, pos*sizeof(ProductoStock),0);
@@ -64,96 +65,72 @@ bool ProductoStock::ModificarArchivo(int pos)
     return escribio;
 }
 
-//funciones globales
-
-
-/*ProductoStock cargarStock()
-{
-    int idproducto;
-    int stock;
-
-    listarProductos();
-    cout << "Ingrese el nombre del Producto: ";
-    cin >> idproducto;
-
-    cout << "Ingrese el stock: ";
-    cin >> stock;
-
-    ProductoStock reg;
-    reg.setIdProducto(idproducto);
-    reg.setStock(stock);
-
-    cout<<endl;
-    cout<<endl;
-    system("pause");
-    return reg;
-}*/
-
-/*bool nuevoStock()
-{
-    ProductoStock reg;
-    reg = cargarStock();
-    bool ok = reg.GrabarEnDisco();
-    return ok;
-}
-
-/*int EditarStock()
+///Funciones globales
+bool agregarProductoNuevoAlStock(int idProducto)
 {
     ProductoStock aux;
-    int pos=0, idproducto, stock;
+    int cantidad;
 
-    listarProductos();
-    cout << "Ingrese el id del Producto: ";
-    cin >> idproducto;
-
-    cout << "Ingrese el stock: ";
-    cin >> stock;
-
-    while(aux.LeerDeDisco(pos)==1)
-    {
-        if(aux.getIdProducto() == idproducto)
-        {
-            aux.setStock(stock);
-            aux.ModificarArchivo(pos);
-            return pos;
-        }
-        pos++;
-    }
-    return -1;
-}*/
-
+     cantidad = consultarStock(idProducto);
+            if(cantidad == 0)
+            {
+                aux.setIdProducto(idProducto);
+                aux.setStock(1);
+                aux.GrabarEnDisco();
+                return true;
+            }
+    return false;
+}
 
 
 bool agregarProductoAlStock(int idProducto)
 {
-    Producto reg;
     ProductoStock aux;
-    int pos=0, cantidad;
+    int cantStocks = CantidadRegistrosStock();
 
-    while(reg.LeerDeDisco(pos)==1)
-    {
-
-        if(reg.getIdProducto() == idProducto && reg.getEstadoProducto()== true)
+        for(int i=0; i<cantStocks; i++)
         {
-            cantidad = consultarStock(reg.getIdProducto());
-            if(cantidad == 0)
+            aux.LeerDeDisco(i);
+            if(aux.getIdProducto()==idProducto)
             {
-                aux.setIdProducto(idProducto);
-                aux.setStock(2);//el que ya existe mas el del cliente.
-                aux.GrabarEnDisco();
-                return true;
-            }
-            else
-            {
-                aux.setIdProducto(idProducto);
-                aux.setStock(cantidad + 1);
-                aux.ModificarArchivo(pos);
+                aux.setStock(aux.getStock() + 1);
+                aux.ModificarArchivo(i);
                 return true;
             }
         }
-        pos++;
-    }
-    return false;
+        return false;
+}
+
+bool retirarProductoDelStock(int idProducto)
+{
+    ProductoStock aux;
+    Producto reg;
+    int cantStocks = CantidadRegistrosStock();
+    int cantidad, posicion;
+
+        for(int i=0; i<cantStocks; i++)
+        {
+            aux.LeerDeDisco(i);
+            if(aux.getIdProducto()==idProducto)
+            {
+                cantidad = aux.getStock();
+                posicion=buscarPosicionProducto(aux.getIdProducto());
+                if(cantidad == 1 && posicion != -1)
+                {
+                    reg.setEstadoProducto(false);
+                    reg.ModificarArchivo(posicion);
+                    aux.setEstadoStock(false);
+                    aux.ModificarArchivo(i);
+                    return true;
+                } else if(cantidad > 1)
+                {
+                    aux.setStock(cantidad - 1);
+                    aux.ModificarArchivo(i);
+                    return true;
+                }
+            }
+        }
+        return false;
 }
 
 
@@ -179,47 +156,29 @@ int consultarStock(int idP)
 }
 
 
-bool retirarProductoDelStock(int idProducto)
+
+int buscarPosicionProducto(int idP)
 {
-    Producto reg;
-    ProductoStock aux;
-    int pos=0, cantidad, posStock;
+    Producto aux;
+    int cantProductos = CantidadRegistrosProductos();
 
-    while(reg.LeerDeDisco(pos)==1)
+    for(int i=0; i<cantProductos; i++)
     {
-
-        if(reg.getIdProducto() == idProducto && reg.getEstadoProducto()== true)
+        if(aux.LeerDeDisco(i))
         {
-            cantidad = consultarStock(reg.getIdProducto());
-            if(cantidad == 0)
+            if(aux.getIdProducto()==idP)
             {
-//si devuelve 0 es que existe el producto porque llego hasta aca pero no figura en stock, como no hay stock es que tengo un solo producto entonces lo elimino.
-                reg.setEstadoProducto(false);
-                reg.ModificarArchivo(pos);
-                return true;
-            }
-            else
-            {
-                posStock = 0;
-                while(aux.LeerDeDisco(posStock) == 1)
-                {
-                    if(aux.getIdProducto() == idProducto)
-                    {
-                        //aux.setIdProducto(idProducto);//se carga setid porque cuando no estaba rompia y traia basura en id.
-                        aux.setStock(cantidad - 1);
-                        aux.ModificarArchivo(posStock);
-                    }
-                    posStock++;
-                }
-            return true;
+               return i;
             }
         }
-        pos++;
     }
-    return false;
+    return -1;
 }
 
-//consulto en archivo de platillo si existe ese platillo, si existe, busco en productos por platillo sus ingredientes para ir agregando a stock, si no existe en stock el producto retorno true y si existe resto uno a stock de cada producto y retorno true y sino se pudo restar productos retorno false.
+
+
+
+///consulto en archivo de platillo si existe ese platillo, si existe, busco en productos por platillo sus ingredientes para ir agregando a stock, si no existe en stock el producto retorno true y si existe resto uno a stock de cada producto y retorno true y sino se pudo restar productos retorno false.
 bool retirarProductoDelStockDesdePlatillo(int idplatillo)
 {
     Platillo pla;
@@ -299,16 +258,22 @@ int CantidadRegistrosStock()
 void listarStocks()
 {
     ProductoStock aux;
+     int cont=0;
     int cantStocks = CantidadRegistrosStock();
     cout << "LISTADO DE STOCK DE PRODUCTOS" << endl;
     cout << "----------------------------------" << endl;
     for(int i=0; i<cantStocks; i++)
     {
         aux.LeerDeDisco(i);
-        cout<<aux.toString()<<endl;
+        if(aux.getEstadoStock())
+        {
+            cout<<aux.toString()<<endl;
+        } else {
+          cont++;
+        }
     }
     cout << "----------------------------------" << endl;
-    cout << "Total: " << cantStocks << " registros.";
+    cout << "Total: " << cantStocks - cont << " registros.";
     cout<<endl;
     cout<<endl;
 }

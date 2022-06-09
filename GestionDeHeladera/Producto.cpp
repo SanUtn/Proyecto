@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Producto.h"
+#include "ProductoStock.h"
 #include "IngresoProducto.h"
 #include "RetiroProducto.h"
 
@@ -16,7 +17,7 @@ string Producto::getNombreProducto()
 string Producto::toString()
 {
     string cadena;
-    cadena = "Id: " + to_string(idProducto) + " " " " + " Nombre: " + nombreProducto;/*" Dni del Usuario: " + to_string(dniUsuario) + " " " " + " Fecha ingreso: " + fechaIngreso.toString();*/
+    cadena = "Id: " + to_string(idProducto) + " " " " + " Nombre: " + nombreProducto;
     return cadena;
 }
 
@@ -103,8 +104,6 @@ Producto cargarProducto()
 {
     int id;
     string nombre;
-    //int dniUsuario; //ver de hacer que lo tome de la sesion.
-    //int dia, mes, anio;
     bool estado = true;
 
     id = CantidadRegistrosProductos()+1;
@@ -120,22 +119,15 @@ Producto cargarProducto()
         getline(cin, nombre);
 
     }
-    /*cout << "Ingrese el dni del Usuario: ";
-    //cin >> dniUsuario;
-    cout << "Ingrese el dia: ";
-    cin >> dia;
-    cout << "Ingrese el mes: ";
-    cin >> mes;
-    cout << "Ingrese el anio: ";
-    cin >> anio;
 
-    Fecha fecha(dia, mes, anio);*/
     Producto reg;
     reg.setIdProducto(id);
     reg.setNombreProducto(nombre);
-    //reg.setDniUsuario(dniUsuario);
-    //reg.setFechaIngreso(fecha);
     reg.setEstadoProducto(estado);
+
+    //agrega producto al stock
+    agregarProductoNuevoAlStock(id);
+
     cout<<endl;
     cout<<endl;
     system("pause");
@@ -146,10 +138,13 @@ bool validarProductoExistente(string n)
 {
     Producto aux;
     int pos = 0;
+    string nombre;
 
     while(aux.LeerDeDisco(pos))
     {
-        if(aux.getNombreProducto() == n && aux.getEstadoProducto() == true)
+        ///ver de pasar todo el nombre a mayuscula para que no haya repetidos
+       // nombre = n.toupper();//transforma todo a mayuscula por si se tipea diferente pero existe
+        if(aux.getNombreProducto() == nombre && aux.getEstadoProducto() == true)
         {
             return true;
         }
@@ -179,7 +174,6 @@ void listarProductos()
     cout << "Total: " << cantProductos - cont<< " Productos.";
     cout<<endl;
     cout<<endl;
-    //system("pause");
 }
 
 int EliminarProducto()
