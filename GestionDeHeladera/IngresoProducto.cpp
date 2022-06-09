@@ -3,6 +3,7 @@
 #include <iostream>
 #include "IngresoProducto.h"
 #include "ProductoStock.h"
+#include "Usuario.h"
 
 using namespace std;
 
@@ -98,11 +99,19 @@ IngresoProducto cargarProductoExistente()
 
     cout << "Ingrese el dni del Usuario: ";//esto despues no iria porque lo tomaría de la sesión
     cin >> dniUsuario;
+    while(validarUsuarioExistente(dniUsuario) == false){
+        cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";//esto despues no iria porque lo tomaría de la sesión
+        cin >> dniUsuario;
+    }
     cout<<endl;
     listarProductos();
     cout<<endl;
     cout<<"Ingrese el id del Producto: ";
     cin>>idProducto;
+        while(validarProductoExistenteID(idProducto) == false){
+        cout << "El ID de producto que ingreso no existe en el sistema, ingrese otro:  ";//esto despues no iria porque lo tomaría de la sesión
+        cin >> idProducto;
+    }
     //ver si cargamos la fecha o tomamos la actual
     cout << "Ingrese el dia: ";
     cin >> dia;

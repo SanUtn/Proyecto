@@ -153,6 +153,22 @@ bool validarProductoExistente(string n)
     return false;
 }
 
+bool validarProductoExistenteID(int id)
+{
+    Producto aux;
+    int pos = 0;
+
+    while(aux.LeerDeDisco(pos))
+    {
+        if(aux.getIdProducto() == id && aux.getEstadoProducto() == true)
+        {
+            return true;
+        }
+        pos++;
+    }
+    return false;
+}
+
 void listarProductos()
 {
     Producto aux;
