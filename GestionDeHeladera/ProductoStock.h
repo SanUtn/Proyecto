@@ -32,6 +32,7 @@ public:
     //funciones globales que no pertenecen a la clase.
     bool agregarProductoNuevoAlStock(int idProducto);
     bool agregarProductoAlStock(int idProducto);
+    int EliminarProductoStock(int idproducto);
     int consultarStock(int idP);
     int buscarPosicionProducto(int idP);
     bool retirarProductoDelStock(int idProducto);
@@ -44,6 +45,7 @@ public:
     void ponerEnCeroElVector(int *vProductos, int tam);
     bool retirarProductoDelStockConsumoProducto(int idproducto);
     bool buscarProducto(int idproducto);
+    void alertaStock();
 
 
 

@@ -208,7 +208,10 @@ int EliminarProducto()
         if(aux.getIdProducto() == idproducto)
         {
             aux.setEstadoProducto(false);
-            aux.ModificarArchivo(pos);
+            bool modifico = aux.ModificarArchivo(pos);
+            if (modifico){
+                eliminarStock(idproducto);
+            }
             return pos;
         }
         pos++;

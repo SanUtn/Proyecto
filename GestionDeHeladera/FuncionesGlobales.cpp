@@ -108,3 +108,27 @@ string mayuscula(string cadena) {
   for (int i = 0; i < cadena.length(); i++) cadena[i] = toupper(cadena[i]);
   return cadena;
 }
+
+Producto buscarProductoPorId(int id){
+    Producto reg;
+    int pos =0;
+
+    while(reg.LeerDeDisco(pos)){
+            if(reg.getIdProducto() == id && reg.getEstadoProducto()){
+                return reg;
+            }
+        pos++;
+    }
+}
+
+void eliminarStock(int idproducto){
+    ProductoStock reg;
+    int pos = 0;
+
+    while(reg.LeerDeDisco(pos)){
+        if(reg.getIdProducto() == idproducto && reg.getEstadoStock()){
+            EliminarProductoStock(idproducto);
+        }
+        pos++;
+    }
+}

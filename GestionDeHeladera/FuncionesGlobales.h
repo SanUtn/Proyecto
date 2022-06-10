@@ -4,6 +4,8 @@
 #include "ConsumoPlatillo.h"
 #include "OrientacionAlimentaria.h"
 #include "Platillo.h"
+#include "Producto.h"
+#include "ProductoStock.h"
 
 
 void menuConsumos();
@@ -11,12 +13,8 @@ string mostrarOrientacionAlimentaria(int id);
 string mostrarNombreProducto(int id);
 string mostrarNombrePlatillo(int id);
 string mayuscula(string cadena);
-
-
-
-
-
-
+Producto buscarProductoPorId(int id);
+void eliminarStock(int idproducto);
 
 
 

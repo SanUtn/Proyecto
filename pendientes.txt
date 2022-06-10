@@ -56,5 +56,6 @@ COSAS QUE ME PARECE A MI CAMBIAR Y LAS ANOTO ACA ASI ME ACUERDO:
 Validacion string: Logre hacerlo, me volvi loco. Hecho en producto, platillo, orientacion. (creo que con estas estamos)
 Recetas segun stock: Esto lo habia pensado asi pero desde el menu de sugerencias (vi q lo metiste en el de consumos, por ahi separarlo)
 Fecha de vencimiento: Me gusta, hay que pensarlo un poco.
-Alerta de stock: lo mismo que habia pensado, tamos bien.
+Alerta de stock: lo mismo que habia pensado, tamos bien. HECHO, PARECE QUE HAY UN TEMA Y MUESTRA ALGO DE MAS.
 Cambiar listados visualmente: si, lo vengo pensando y medio que dejar para lo ultimo para que no llenar el codigo de cosas y marearnos.
+Cuando se elimina un producto, hay que eliminar el stock. HECHO
