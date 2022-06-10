@@ -107,7 +107,7 @@
 	"Receta.h"
 	"ProductoStock.h"
 
-1654815612 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.cpp
+1654828389 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.cpp
 	<cstdlib>
 	<cstring>
 	<iostream>
@@ -163,11 +163,12 @@
 	<cstring>
 	<string>
 
-1654738254 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\retiroproducto.cpp
+1654828414 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\retiroproducto.cpp
 	<iostream>
 	"RetiroProducto.h"
 	"Producto.h"
 	"ProductoStock.h"
+	"Usuario.h"
 
 1653878470 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\retiroproducto.h
 	"Fecha.h"

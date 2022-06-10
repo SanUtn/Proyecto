@@ -132,16 +132,13 @@ using namespace std;
 
         if(buscarProducto(idproducto))
         {
-            cout<<"Esto tiene bandera"<<bandera<<endl;
             if(consultarStock(idproducto) == 0)
             {
                 bandera = false;
-                cout<<"Esto tiene bandera"<<bandera<<endl;
             }
         } else {
          bandera = false;
         }
-        cout<<"Esto tiene bandera"<<bandera<<endl;
       return bandera;
     }
 

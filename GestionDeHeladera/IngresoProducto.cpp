@@ -109,7 +109,7 @@ IngresoProducto cargarProductoExistente()
     cout<<"Ingrese el id del Producto: ";
     cin>>idProducto;
 
-        while(validarProductoExistenteID(idProducto) == false){
+    while(validarProductoExistenteID(idProducto) == false){
         cout << "El ID de producto que ingreso no existe en el sistema, ingrese otro:  ";
         cin >> idProducto;
     }
