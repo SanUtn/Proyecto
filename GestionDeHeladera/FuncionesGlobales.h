@@ -10,7 +10,7 @@ void menuConsumos();
 string mostrarOrientacionAlimentaria(int id);
 string mostrarNombreProducto(int id);
 string mostrarNombrePlatillo(int id);
-
+string mayuscula(string cadena);
 
 
 

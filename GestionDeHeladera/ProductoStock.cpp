@@ -448,7 +448,7 @@ void menuStockProductos()
         cout<<"0. SALIR"<<endl;
         cout<<endl;
 
-        cout<<"OPCION: "<<endl;
+        cout<<"OPCION: ";
         cin>>opc;
 
         system("cls");

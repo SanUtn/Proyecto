@@ -3,6 +3,7 @@
 #include "ProductoStock.h"
 #include "IngresoProducto.h"
 #include "RetiroProducto.h"
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
@@ -111,13 +112,13 @@ Producto cargarProducto()
     cout << "Ingrese el nombre del Producto: ";
     cin.ignore();
     getline(cin, nombre);
+    nombre = mayuscula(nombre);
 
     while(validarProductoExistente(nombre))
     {
         cout <<"Producto ya ingresado, ingrese otro: ";
-        cin.ignore();
         getline(cin, nombre);
-
+        nombre = mayuscula(nombre);
     }
 
     Producto reg;
@@ -138,13 +139,12 @@ bool validarProductoExistente(string n)
 {
     Producto aux;
     int pos = 0;
-    string nombre;
 
     while(aux.LeerDeDisco(pos))
     {
         ///ver de pasar todo el nombre a mayuscula para que no haya repetidos
        // nombre = n.toupper();//transforma todo a mayuscula por si se tipea diferente pero existe
-        if(aux.getNombreProducto() == nombre && aux.getEstadoProducto() == true)
+        if(aux.getNombreProducto() == n && aux.getEstadoProducto() == true)
         {
             return true;
         }
@@ -237,7 +237,7 @@ void menuProducto()
         cout<<"0. SALIR"<<endl;
         cout<<endl;
 
-        cout<<"OPCION: "<<endl;
+        cout<<"OPCION: ";
         cin>>opc;
 
         system("cls");

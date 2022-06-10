@@ -20,7 +20,7 @@ void menuConsumos()
         cout<<"0. SALIR"<<endl;
         cout<<endl;
 
-        cout<<"OPCION: "<<endl;
+        cout<<"OPCION: ";
         cin>>opc;
 
         system("cls");
@@ -104,3 +104,7 @@ string mostrarNombrePlatillo(int id){
     }
 }
 
+string mayuscula(string cadena) {
+  for (int i = 0; i < cadena.length(); i++) cadena[i] = toupper(cadena[i]);
+  return cadena;
+}
