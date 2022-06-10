@@ -46,21 +46,7 @@ void menuConsumos()
         case 2:
             listarConsumosPoductos();
             break;
-        case 3:
-            if(nuevoConsumoPlatillo())
-            {
-                cout<<endl;
-                cout<<"CONSUMO AGREGADO";
-                cout<<endl;
-                system("pause");
-            }
-            else
-            {
-                cout<<endl;
-                cout<<"NO SE PUDO AGREGAR EL CONSUMO";
-                cout<<endl;
-                system("pause");
-            }
+        case 3: menuSugerenciasPlatillos();
             break;
         case 4:
             listarConsumosPlatillo();

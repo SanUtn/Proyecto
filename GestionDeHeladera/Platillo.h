@@ -16,6 +16,7 @@ using namespace std;
             char nombrePlatillo [30];
             Fecha fechaRegistrado;
             int orientacionAlimentaria;
+            int calorias;
             bool estadoPlatillo;
 
         public:
@@ -24,6 +25,7 @@ using namespace std;
             string getNombrePlatillo();
             Fecha getFechaRegistrado(){return fechaRegistrado;}
             int getOrientacionAlimentaria(){return orientacionAlimentaria;}
+            int getCalorias(){return calorias;}
             bool getEstadoPlatillo(){return estadoPlatillo;}
 
             //setters
@@ -31,6 +33,7 @@ using namespace std;
             void setNombrePlatillo(string n){strcpy(nombrePlatillo,n.c_str());}
             void setFechaRegistrado(Fecha f){fechaRegistrado=f;}
             void setOrientacionalimentaria(int o){orientacionAlimentaria=o;}
+            void setCalorias(int c){calorias=c;}
             void setEstadoPlatillo(bool e){estadoPlatillo=e;}
 
             //metodos

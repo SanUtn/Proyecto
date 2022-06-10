@@ -23,7 +23,8 @@ string Platillo::toString()
     fechaRegistrado.toString() +
     " " " " +
     " Orientacion alimentaria: "
-    + mostrarOrientacionAlimentaria(getOrientacionAlimentaria());
+    + mostrarOrientacionAlimentaria(getOrientacionAlimentaria()) + " " " "    + " Calorias: "
+    + to_string(calorias);
 
     return cadena;
 }
@@ -115,6 +116,7 @@ Platillo cargarPlatillo()
     string nombrePlatillo;
     int dia,mes, anio;
     int orientacionAlimentaria;
+    int calorias;
     bool estado = true;
 
     id = CantidadRegistrosPlatillo()+1;
@@ -155,6 +157,9 @@ Platillo cargarPlatillo()
     cout<<endl;
     cout << "Ingrese el id de la orientacion: ";
     cin >> orientacionAlimentaria;
+    cout<<endl;
+    cout << "Ingrese las calorias: ";
+    cin >> calorias;
 
     Fecha fecha(dia, mes, anio);
 
@@ -163,6 +168,7 @@ Platillo cargarPlatillo()
     reg.setNombrePlatillo(nombrePlatillo);
     reg.setFechaRegistrado(fecha);
     reg.setOrientacionalimentaria(orientacionAlimentaria);
+    reg.setCalorias(calorias);
     reg.setEstadoPlatillo(estado);
     cout<<endl;
     cout<<endl;

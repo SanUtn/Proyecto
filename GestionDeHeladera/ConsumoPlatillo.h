@@ -35,6 +35,14 @@ using namespace std;
     ConsumoPlatillo cargarConsumoPlatillo();
     bool validarExistenciaDeProductos(int idPlatillo);
     void listarConsumosPlatillo();
+    void menuSugerenciasPlatillos();
+    void sugerenciasXOrientacion();
+    int buscarOrientacion(int dni);
+    void buscarPlatillosXOrientacion(int orientacion);
+    void sugerenciasXCalorias();
+    void buscarPlatillosXCalorias(int calorias);
+    bool validarCalorias(int calorias);
+    bool validarCalorias(int calorias);
 
 
 

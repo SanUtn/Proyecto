@@ -4,6 +4,7 @@
 #include "ProductoStock.h"
 #include "ProductosxPlatillo.h"
 #include "FuncionesGlobales.h"
+#include "Usuario.h"
 using namespace std;
 
 string ConsumoPlatillo::toString()
@@ -104,8 +105,6 @@ ConsumoPlatillo cargarConsumoPlatillo()
 {
     int id;
 
-    listarPlatillos();
-
     cout << "Ingrese el id del Platillo: ";
     cin >> id;
     cout<<endl;
@@ -182,4 +181,157 @@ void listarConsumosPlatillo()
     system("pause");
 }
 
+    void sugerenciasXOrientacion(){
+      int orientacion, dni;
 
+      cout << "Ingrese el dni: ";
+      cin >> dni;
+      cout<<endl;
+
+        while(validarUsuarioExistente(dni) == false){
+            cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
+            cin >> dni;
+        }
+
+         orientacion = buscarOrientacion(dni);
+         buscarPlatillosXOrientacion(orientacion);
+    }
+
+     int buscarOrientacion(int dni){
+        Usuario aux;
+        int cantUsuarios=CantidadRegistrosUsuario();
+
+        for(int i=0; i<cantUsuarios; i++)
+        {
+            aux.LeerDeDisco(i);
+            if(aux.getDNI() == dni && aux.getEstadoUsuario()== true)
+            {
+              return aux.getIdOrientacionAlimentaria();
+            }
+        }
+
+        return -1;
+    }
+
+    void buscarPlatillosXOrientacion(int orientacion){
+        Platillo aux;
+        int cantPlatillos = CantidadRegistrosPlatillo();
+        for(int i=0; i<cantPlatillos; i++)
+        {
+            aux.LeerDeDisco(i);
+            if(aux.getOrientacionAlimentaria() == orientacion && aux.getEstadoPlatillo() == true){
+              cout<<aux.toString()<<endl;
+            }
+        }
+        cout<<endl;
+        cout<<endl;
+        system("pause");
+    }
+
+    void sugerenciasXCalorias(){
+      int calorias;
+
+      cout << "Ingrese las calorias que desea consumir: ";
+      cin >> calorias;
+      cout<<endl;
+
+        while(validarCalorias(calorias) == false){
+            cout << "No hay platillos con esas calorias, ingrese otro valor:  ";
+            cin >> calorias;
+        }
+
+        buscarPlatillosXCalorias(calorias);
+    }
+
+
+    void buscarPlatillosXCalorias(int calorias){
+        Platillo aux;
+        int cantPlatillos = CantidadRegistrosPlatillo();
+        for(int i=0; i<cantPlatillos; i++)
+        {
+            aux.LeerDeDisco(i);
+            if(aux.getCalorias() == calorias && aux.getEstadoPlatillo() == true){
+              cout<<aux.toString()<<endl;
+            }
+        }
+        cout<<endl;
+        cout<<endl;
+        system("pause");
+    }
+
+
+bool validarCalorias(int calorias)
+{
+    Platillo aux;
+    int pos = 0;
+
+    while(aux.LeerDeDisco(pos))
+    {
+        if(aux.getCalorias() == calorias && aux.getEstadoPlatillo() == true)
+        {
+            return true;
+        }
+        pos++;
+    }
+    return false;
+}
+
+ void menuSugerenciasPlatillos(){
+   int opc;
+    while(true){
+        system("cls");
+
+        cout<<"MENU SUGERENCIAS PLATILLOS"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"1. SUGERENCIAS POR ORIENTACION"<<endl;
+        cout<<"2. SUGERENCIAS POR CALORIAS" <<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"0. SALIR"<<endl;
+        cout<<endl;
+
+        cout<<"OPCION: "<<endl;
+        cin>>opc;
+
+        system("cls");
+
+        switch(opc){
+            case 1: sugerenciasXOrientacion();
+                    cout<<endl;
+                    if(nuevoConsumoPlatillo())
+                    {
+                    cout<<endl;
+                    cout<<"CONSUMO AGREGADO";
+                    cout<<endl;
+                    system("pause");
+                    }
+                    else
+                    {
+                    cout<<endl;
+                    cout<<"NO SE PUDO AGREGAR EL CONSUMO";
+                    cout<<endl;
+                    system("pause");
+                    }
+                break;
+            case 2:  sugerenciasXCalorias();
+                      cout<<endl;
+                    if(nuevoConsumoPlatillo())
+                    {
+                    cout<<endl;
+                    cout<<"CONSUMO AGREGADO";
+                    cout<<endl;
+                    system("pause");
+                    }
+                    else
+                    {
+                    cout<<endl;
+                    cout<<"NO SE PUDO AGREGAR EL CONSUMO";
+                    cout<<endl;
+                    system("pause");
+                    }
+                break;
+            case 0: return;
+                    break;
+        }
+        cout<<endl;
+    }
+  }
