@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ConsumoProducto.h"
 #include "Producto.h"
+#include "ProductoStock.h"
 
 using namespace std;
 
@@ -66,6 +67,10 @@ using namespace std;
         ConsumoProducto reg;
         reg = cargarConsumoProducto();
         bool ok = reg.GrabarEnDisco();
+        if(ok){
+            int producto= reg.getIdProducto();
+            ok = retirarProductoDelStockConsumoProducto(producto);
+        }
         return ok;
     }
 
@@ -96,6 +101,21 @@ using namespace std;
         cin >> id;
         cout<<endl;
 
+        //validamos que exista ese producto
+        while(buscarProducto(id) == false)
+        {
+        cout << "Producto inexistente, ingrese otro: ";
+        cin >> id;
+        cout<<endl;
+        }
+
+        while(validarExistenciaDeProductosParaConsumo(id)== false)
+        {
+        cout << "Lo sentimos, no hay stock de ese producto o no existe, ingrese otro: ";
+        cin >> id;
+        cout<<endl;
+        }
+
         ConsumoProducto reg;
         reg.setIdProducto(id);
         reg.setFechaConsumo(fecha);
@@ -105,6 +125,25 @@ using namespace std;
         return reg;
     }
 
+
+    bool validarExistenciaDeProductosParaConsumo(int idproducto)
+    {
+        bool bandera = true;
+
+        if(buscarProducto(idproducto))
+        {
+            cout<<"Esto tiene bandera"<<bandera<<endl;
+            if(consultarStock(idproducto) == 0)
+            {
+                bandera = false;
+                cout<<"Esto tiene bandera"<<bandera<<endl;
+            }
+        } else {
+         bandera = false;
+        }
+        cout<<"Esto tiene bandera"<<bandera<<endl;
+      return bandera;
+    }
 
     void listarConsumosPoductos(){
         ConsumoProducto aux;

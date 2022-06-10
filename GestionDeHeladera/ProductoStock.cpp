@@ -66,6 +66,25 @@ bool ProductoStock::ModificarArchivo(int pos)
 }
 
 ///Funciones globales
+int CantidadRegistrosStock()
+{
+    FILE *p;
+    p=fopen("ProductosStock.dat", "rb");
+    if(p==NULL)
+    {
+        return 0;
+    }
+    size_t bytes;
+    int cantidad;
+
+    fseek(p, 0, SEEK_END);
+    bytes=ftell(p);
+
+    fclose(p);
+    cantidad = bytes/sizeof(ProductoStock);
+    return cantidad;
+}
+
 bool agregarProductoNuevoAlStock(int idProducto)
 {
     ProductoStock aux;
@@ -76,6 +95,7 @@ bool agregarProductoNuevoAlStock(int idProducto)
             {
                 aux.setIdProducto(idProducto);
                 aux.setStock(1);
+                aux.setEstadoStock(true);
                 aux.GrabarEnDisco();
                 return true;
             }
@@ -333,25 +353,63 @@ void ponerEnCeroElVector(int *vProductos, int tam)
 }
 
 
-int CantidadRegistrosStock()
+
+
+bool retirarProductoDelStockConsumoProducto(int idproducto)
 {
-    FILE *p;
-    p=fopen("ProductosStock.dat", "rb");
-    if(p==NULL)
-    {
-        return 0;
-    }
-    size_t bytes;
-    int cantidad;
+    ProductoStock aux;
+    Producto reg;
 
-    fseek(p, 0, SEEK_END);
-    bytes=ftell(p);
+    int cantStocks = CantidadRegistrosStock();
+    int cantidad, posicion;
+    bool bandera = false;
 
-    fclose(p);
-    cantidad = bytes/sizeof(ProductoStock);
-    return cantidad;
+        if(buscarProducto(idproducto))
+        {
+            for(int i=0; i<cantStocks; i++)
+            {
+                aux.LeerDeDisco(i);
+                if(aux.getIdProducto()== idproducto)
+                {
+                    cantidad = aux.getStock();
+                    posicion=buscarPosicionProducto(aux.getIdProducto());
+                    if(cantidad == 1 && posicion != -1)
+                    {
+                        reg.setEstadoProducto(false);
+                        reg.ModificarArchivo(posicion);
+                        aux.setEstadoStock(false);
+                        aux.ModificarArchivo(i);
+                        bandera = true;
+                    } else if(cantidad > 1){
+                        aux.setStock(cantidad - 1);
+                        aux.ModificarArchivo(i);
+                        bandera = true;
+                    }
+                }
+
+            }
+        }
+        return bandera;
 }
 
+
+bool buscarProducto(int idproducto)
+{
+    Producto aux;
+    int cantProductos = CantidadRegistrosProductos();
+
+    for(int i=0; i<cantProductos; i++)
+    {
+        if(aux.LeerDeDisco(i))
+        {
+            if(aux.getIdProducto() == idproducto && aux.getEstadoProducto()==true)
+            {
+               return true;
+            }
+        }
+    }
+    return false;
+}
 
 void listarStocks()
 {

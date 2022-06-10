@@ -42,7 +42,8 @@ public:
     bool buscarPlatillo(int idP);
     void buscarProductosXPlatillo(int idP, int *vProductos, int tam);
     void ponerEnCeroElVector(int *vProductos, int tam);
-
+    bool retirarProductoDelStockConsumoProducto(int idproducto);
+    bool buscarProducto(int idproducto);
 
 
 

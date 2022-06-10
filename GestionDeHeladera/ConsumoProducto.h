@@ -31,11 +31,12 @@ using namespace std;
 
 
 
-    //Funciones globales que no pertenecen a la clase
+    ///Funciones globales que no pertenecen a la clase
     bool nuevoConsumoProducto();
     int CantidadRegistrosConsumoProducto();
     ConsumoProducto cargarConsumoProducto();
     void listarConsumosPoductos();
+    bool validarExistenciaDeProductosParaConsumo(int idproducto);
 
 
 
