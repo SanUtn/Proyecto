@@ -7,7 +7,7 @@ los productos por nombre. (VER NOTAS -> Creo que seria mejor que lo mostremos co
 11 bis) Validar idproducto por productosXplatillo. INICIADO, HAY UN TEMA SI VALIDA Y QUIERE CANCELAR.
 CRIS:
 15) Se modifico stock para que al agregar un producto sume 1 y luego al ingresar producto existente sume al 1 que ya tiene, y si retira y queda 1 en stock, lo elimina de productos seteando el estado.
-16) validamos el dni cuando ingresa o se retira un producto????//ver de tomar de la sesion
+16) validamos el dni cuando ingresa o se retira un producto.HECHO
 
 
 
@@ -48,14 +48,19 @@ TAMBIEN PROPUSO AGREGAR A PRODUCTOS FECHA DE VENCIMIENTO Y QUE AVISE CUANDO ESTA
 
 COSAS QUE ME PARECE A MI CAMBIAR Y LAS ANOTO ACA ASI ME ACUERDO:
 - LA ALERTA DE STOCK QUE AVISA LOS PRODUCTOS QUE TIENEN UNA SOLA UNIDAD
-- VALIDACION DE STRING, PASAR TODO A MAYUSCULA CUANDO SE INGRESA UN NOMBRE POR EJEMPLO PARA PODER VALIDAR DESPUES SI EL NOMBRE ES IGUAL. ANGEL ME DIJO QUE NO EXISTE FUNCION PARA HACER ESO Y QUE HAY QUE HACERLA MANUALMENTE, HACIENDO UNA FUNCION QUE RECIBE UN STRING, LO RECORRE Y TOMA CARACTER A CARACTER COMO UNA POSICION Y EN ESA MISMA POSICION SE GUARDA HACIENDO ASI TOUPPER(A) POR EJ. ALGO ASI ME APLICO HAY QUE VER COMO CARAJO SE HACE JAJA.
+- VALIDACION DE STRING, PASAR TODO A MAYUSCULA CUANDO SE INGRESA UN NOMBRE POR EJEMPLO PARA PODER VALIDAR DESPUES SI EL NOMBRE ES IGUAL. ANGEL ME DIJO QUE NO EXISTE FUNCION PARA HACER ESO Y QUE HAY QUE HACERLA MANUALMENTE, HACIENDO UNA FUNCION QUE RECIBE UN STRING, LO RECORRE Y TOMA CARACTER A CARACTER COMO UNA POSICION Y EN ESA MISMA POSICION SE GUARDA HACIENDO ASI TOUPPER(A) POR EJ. ALGO ASI ME EXPLICO HAY QUE VER COMO CARAJO SE HACE JAJA.
 - CAMBIAR TODOS LOS LISTADOS PARA QUE SE VEAN MAS LINDOS CON ESAS FUNCIONES QUE USAMOS EN EL PARCIAL.
 
 10/06 Anotaciones cris xd:
 
-Validacion string: Logre hacerlo, me volvi loco. Hecho en producto, platillo, orientacion. (creo que con estas estamos)
+Validacion string: Logre hacerlo, me volvi loco. Hecho en producto, platillo, orientacion. (creo que con estas estamos) EXCELENTE CRIS QUEDO GENIAL!!!!!!
 Recetas segun stock: Esto lo habia pensado asi pero desde el menu de sugerencias (vi q lo metiste en el de consumos, por ahi separarlo)
 Fecha de vencimiento: Me gusta, hay que pensarlo un poco.
-Alerta de stock: lo mismo que habia pensado, tamos bien. HECHO, PARECE QUE HAY UN TEMA Y MUESTRA ALGO DE MAS.
+Alerta de stock: lo mismo que habia pensado, tamos bien. HECHO, PARECE QUE HAY UN TEMA Y MUESTRA ALGO DE MAS.(SOLUCIONADO)
 Cambiar listados visualmente: si, lo vengo pensando y medio que dejar para lo ultimo para que no llenar el codigo de cosas y marearnos.
 Cuando se elimina un producto, hay que eliminar el stock. HECHO
+
+
+10/06/2022 ANOTACIONES SAN
+- AHORA QUE LO PIENSO ELIMINAR PRODUCTO NO ESTARIA MEDIO AL PEPE? DEJAMOS SOLO RETIRAR PRODUCTOS?
+-  SOLUCIONADO LO DE ALERTAS STOCK.

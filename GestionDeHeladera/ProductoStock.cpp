@@ -65,7 +65,7 @@ bool ProductoStock::ModificarArchivo(int pos)
     return escribio;
 }
 
-int EliminarProductoStock(int idproducto)
+/*int EliminarProductoStock(int idproducto)
 {
     ProductoStock aux;
     int pos=0;
@@ -81,7 +81,7 @@ int EliminarProductoStock(int idproducto)
         pos++;
     }
     return -1;
-}
+}*/
 
 ///Funciones globales
 int CantidadRegistrosStock()
@@ -459,18 +459,27 @@ void listarStocks()
 
 void alertaStock()
 {
-    ProductoStock reg;
-    int pos = 0;
-    cout << "PRODUCTOS PROXIMOS A TERMINARSE" << endl;
-    while(reg.LeerDeDisco(pos))
+    ProductoStock aux;
+    int cont=0;
+    int cantStocks = CantidadRegistrosStock();
+    cout << "PRODUCTOS PROXIMOS A AGOTARSE" << endl;
+    cout << "----------------------------------" << endl;
+    for(int i=0; i<cantStocks; i++)
     {
-        if(reg.getEstadoStock()==true && reg.getStock() == 1)
+        aux.LeerDeDisco(i);
+        if(aux.getEstadoStock() &&  aux.getStock()==1)
         {
-            cout << buscarProductoPorId(reg.getIdProducto()).toString() << endl;
+            cout<<aux.toString()<<endl;
         }
-        pos++;
+        else
+        {
+            cont++;
+        }
     }
-    //porque muestra el ultimo un par de veces?
+    cout << "----------------------------------" << endl;
+    cout << "Total: " << cantStocks - cont << " registros.";
+    cout<<endl;
+    cout<<endl;
 }
 
 void menuStockProductos()

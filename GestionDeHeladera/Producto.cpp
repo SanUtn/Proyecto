@@ -142,8 +142,7 @@ bool validarProductoExistente(string n)
 
     while(aux.LeerDeDisco(pos))
     {
-        ///ver de pasar todo el nombre a mayuscula para que no haya repetidos
-       // nombre = n.toupper();//transforma todo a mayuscula por si se tipea diferente pero existe
+
         if(aux.getNombreProducto() == n && aux.getEstadoProducto() == true)
         {
             return true;
@@ -153,6 +152,7 @@ bool validarProductoExistente(string n)
     return false;
 }
 
+//valida el id de producto
 bool validarProductoExistenteID(int id)
 {
     Producto aux;
@@ -205,7 +205,7 @@ int EliminarProducto()
 
     while(aux.LeerDeDisco(pos)==1)
     {
-        if(aux.getIdProducto() == idproducto)
+        if(aux.getIdProducto() == idproducto && aux.getEstadoProducto() == true)
         {
             aux.setEstadoProducto(false);
             bool modifico = aux.ModificarArchivo(pos);

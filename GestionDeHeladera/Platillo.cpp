@@ -193,8 +193,6 @@ bool validarPlatilloExistente(string n)
 
     while(aux.LeerDeDisco(pos))
     {
-        ///ver de pasar todo el nombre a mayuscula para que no haya repetidos
-        // nombre = n.toupper();//transforma todo a mayuscula por si se tipea diferente pero existe
         if(aux.getNombrePlatillo() == n && aux.getEstadoPlatillo() == true)
         {
             return true;

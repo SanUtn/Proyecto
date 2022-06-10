@@ -109,7 +109,7 @@ string mayuscula(string cadena) {
   return cadena;
 }
 
-Producto buscarProductoPorId(int id){
+/*Producto buscarProductoPorId(int id){
     Producto reg;
     int pos =0;
 
@@ -119,7 +119,7 @@ Producto buscarProductoPorId(int id){
             }
         pos++;
     }
-}
+}*/
 
 void eliminarStock(int idproducto){
     ProductoStock reg;
@@ -127,7 +127,9 @@ void eliminarStock(int idproducto){
 
     while(reg.LeerDeDisco(pos)){
         if(reg.getIdProducto() == idproducto && reg.getEstadoStock()){
-            EliminarProductoStock(idproducto);
+            //EliminarProductoStock(idproducto);HACE LO MISMO QUE ESTA FUNCION RECORRE EL MISMO ARCHIVO.
+             reg.setEstadoStock(false);
+             reg.ModificarArchivo(pos);
         }
         pos++;
     }
