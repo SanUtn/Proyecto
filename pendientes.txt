@@ -53,7 +53,7 @@ COSAS QUE ME PARECE A MI CAMBIAR Y LAS ANOTO ACA ASI ME ACUERDO:
 
 10/06 Anotaciones cris xd:
 
-Validacion string: Arranque esto! ya lo logre hacer para producto, me volvi loco con un error de mierda.
+Validacion string: Logre hacerlo, me volvi loco. Hecho en producto, platillo, orientacion. (creo que con estas estamos)
 Recetas segun stock: Esto lo habia pensado asi pero desde el menu de sugerencias (vi q lo metiste en el de consumos, por ahi separarlo)
 Fecha de vencimiento: Me gusta, hay que pensarlo un poco.
 Alerta de stock: lo mismo que habia pensado, tamos bien.
