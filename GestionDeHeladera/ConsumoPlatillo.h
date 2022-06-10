@@ -33,6 +33,7 @@ using namespace std;
     bool nuevoConsumoPlatillo();
     int CantidadRegistrosConsumoPlatillo();
     ConsumoPlatillo cargarConsumoPlatillo();
+    bool validarExistenciaDeProductos(int idPlatillo);
     void listarConsumosPlatillo();
 
 

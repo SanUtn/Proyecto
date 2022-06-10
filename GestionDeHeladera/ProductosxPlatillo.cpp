@@ -12,7 +12,7 @@ int ProductosxPlatillo::getIdProducto()
 {
     return IdProducto;
 };
-//int getCantidad(){return Cantidad;}
+
 void ProductosxPlatillo::setIdProducto(int i)
 {
         IdProducto = i;

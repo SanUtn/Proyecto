@@ -108,8 +108,9 @@ IngresoProducto cargarProductoExistente()
     cout<<endl;
     cout<<"Ingrese el id del Producto: ";
     cin>>idProducto;
+
         while(validarProductoExistenteID(idProducto) == false){
-        cout << "El ID de producto que ingreso no existe en el sistema, ingrese otro:  ";//esto despues no iria porque lo tomaría de la sesión
+        cout << "El ID de producto que ingreso no existe en el sistema, ingrese otro:  ";
         cin >> idProducto;
     }
     //ver si cargamos la fecha o tomamos la actual

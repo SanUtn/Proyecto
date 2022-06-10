@@ -40,20 +40,21 @@
 	<cstdlib>
 	<cstring>
 
-1654728187 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\consumoplatillo.cpp
+1654823984 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\consumoplatillo.cpp
 	<iostream>
 	"ConsumoPlatillo.h"
 	"Platillo.h"
 	"ProductoStock.h"
+	"ProductosxPlatillo.h"
 	"FuncionesGlobales.h"
 
-1653513807 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\consumoplatillo.h
+1654807920 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\consumoplatillo.h
 	<cstring>
 	<cstdlib>
 	<string>
 	"Fecha.h"
 
-1653865830 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\platillo.h
+1654819450 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\platillo.h
 	"Fecha.h"
 	"Producto.h"
 	"OrientacionAlimentaria.h"
@@ -66,7 +67,7 @@
 	<cstring>
 	<string>
 
-1654731873 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.h
+1654805430 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.h
 	<cstring>
 	<cstdlib>
 	<string>
@@ -105,12 +106,13 @@
 	"Receta.h"
 	"ProductoStock.h"
 
-1654723686 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.cpp
+1654815612 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.cpp
 	<cstdlib>
 	<cstring>
 	<iostream>
 	"IngresoProducto.h"
 	"ProductoStock.h"
+	"Usuario.h"
 
 1653878561 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.h
 	"Fecha.h"
@@ -125,24 +127,24 @@
 	<iostream>
 	"OrientacionAlimentaria.h"
 
-1654734532 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.cpp
+1654805429 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.cpp
 	<iostream>
 	"Producto.h"
 	"ProductoStock.h"
 	"IngresoProducto.h"
 	"RetiroProducto.h"
 
-1654743938 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productostock.cpp
+1654820122 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productostock.cpp
 	<iostream>
 	"ProductoStock.h"
 	"FuncionesGlobales.h"
 	"ProductoStock.h"
 	"ProductosxPlatillo.h"
 
-1654743921 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productostock.h
+1654819450 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productostock.h
 	"Producto.h"
 
-1654744663 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\platillo.cpp
+1654744850 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\platillo.cpp
 	<iostream>
 	"ProductosxPlatillo.h"
 	"Platillo.h"
@@ -330,7 +332,7 @@
 	"Fecha.h"
 	"Producto.h"
 
-1654726347 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productosxplatillo.cpp
+1654807920 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\productosxplatillo.cpp
 	<iostream>
 	"ProductosxPlatillo.h"
 

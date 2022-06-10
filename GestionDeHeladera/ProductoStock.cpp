@@ -145,7 +145,7 @@ int consultarStock(int idP)
     {
         if(aux.LeerDeDisco(i))
         {
-            if(aux.getIdProducto()==idP)
+            if(aux.getIdProducto()==idP && aux.getEstadoStock()==true)
             {
                 cantidad = aux.getStock();
                 return cantidad;
@@ -310,6 +310,8 @@ void buscarProductosXPlatillo(int idP, int *vProductos, int tam)
 {
     ProductosxPlatillo aux;
 
+    ponerEnCeroElVector(vProductos,tam);
+
     for(int i=0; i<tam; i++)
     {
         if(aux.LeerDeDisco(i))
@@ -321,6 +323,13 @@ void buscarProductosXPlatillo(int idP, int *vProductos, int tam)
         }
     }
 
+}
+
+void ponerEnCeroElVector(int *vProductos, int tam)
+{
+     for(int i=0; i<tam; i++){
+        vProductos[i] = 0;
+     }
 }
 
 

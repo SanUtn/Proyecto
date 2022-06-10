@@ -2,6 +2,7 @@
 #include "ConsumoPlatillo.h"
 #include "Platillo.h"
 #include "ProductoStock.h"
+#include "ProductosxPlatillo.h"
 #include "FuncionesGlobales.h"
 using namespace std;
 
@@ -105,9 +106,22 @@ ConsumoPlatillo cargarConsumoPlatillo()
 
     listarPlatillos();
 
-    cout << "Ingrese el id del Producto: ";
+    cout << "Ingrese el id del Platillo: ";
     cin >> id;
     cout<<endl;
+
+    //validamos que exista ese platillo
+    while(buscarPlatillo(id) == false){
+       cout << "Platillo inexistente, ingrese otro: ";
+       cin >> id;
+       cout<<endl;
+    }
+
+    while(validarExistenciaDeProductos(id)== false){
+        cout << "Lo sentimos, no hay stock de productos para cosumir ese platillo o no existe, ingrese otro: ";
+        cin >> id;
+        cout<<endl;
+    }
 
     ConsumoPlatillo reg;
     Fecha actual;
@@ -119,6 +133,38 @@ ConsumoPlatillo cargarConsumoPlatillo()
     return reg;
 }
 
+bool validarExistenciaDeProductos(int idPlatillo)
+{
+    bool bandera = true;
+    int *vProductos;
+    int cantReg = CantidadRegistrosProductosxPlatillos();
+    vProductos = new int [cantReg];
+     if(vProductos==NULL){return false;}
+
+    if(buscarPlatillo(idPlatillo))
+    {
+     //llamamos a la funcion para que cargue todos los productos de ese platillo
+     buscarProductosXPlatillo(idPlatillo,vProductos,cantReg);
+
+      for(int i=0; i<cantReg; i++)
+      {
+        //porque algunas posiciones del vector estan vacias, solo va a buscar las que tengan id de productos.
+
+        if(vProductos[i]>0)
+        {
+
+            if(consultarStock(vProductos[i]) == 0)
+            {
+                bandera = false;
+            }
+        }
+      }
+    } else {
+     bandera = false;
+    }
+      delete vProductos;
+      return bandera;
+}
 
 void listarConsumosPlatillo()
 {

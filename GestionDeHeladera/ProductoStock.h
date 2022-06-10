@@ -41,6 +41,7 @@ public:
     bool retirarProductoDelStockDesdePlatillo(int idplatillo);
     bool buscarPlatillo(int idP);
     void buscarProductosXPlatillo(int idP, int *vProductos, int tam);
+    void ponerEnCeroElVector(int *vProductos, int tam);
 
 
 
