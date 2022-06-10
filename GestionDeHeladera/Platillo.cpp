@@ -16,15 +16,15 @@ string Platillo::toString()
 {
     string cadena;
     cadena = "Id: " +
-    to_string(idPlatillo) +
-    " " " " +
-    " Nombre: " +
-    nombrePlatillo + " " " " +
-    fechaRegistrado.toString() +
-    " " " " +
-    " Orientacion alimentaria: "
-    + mostrarOrientacionAlimentaria(getOrientacionAlimentaria()) + " " " "    + " Calorias: "
-    + to_string(calorias);
+             to_string(idPlatillo) +
+             " " " " +
+             " Nombre: " +
+             nombrePlatillo + " " " " +
+             fechaRegistrado.toString() +
+             " " " " +
+             " Orientacion alimentaria: "
+             + mostrarOrientacionAlimentaria(getOrientacionAlimentaria()) + " " " "    + " Calorias: "
+             + to_string(calorias);
 
     return cadena;
 }
@@ -45,7 +45,7 @@ bool Platillo::LeerDeDisco(int pos)
 
     fclose(p);
 
-   return leyo;
+    return leyo;
 }
 
 bool Platillo::GrabarEnDisco()
@@ -60,7 +60,7 @@ bool Platillo::GrabarEnDisco()
     int escribio=fwrite(this, sizeof(Platillo),1,p);
     fclose(p);
 
-  return escribio;
+    return escribio;
 }
 
 //METODO GUARDAR EN DISCO QUE PERMITE GUARDAR UNA MODIFICACION
@@ -78,7 +78,7 @@ bool Platillo::ModificarArchivo(int pos)
     int escribio=fwrite(this, sizeof(Platillo),1,p);
     fclose(p);
 
-   return escribio;
+    return escribio;
 }
 
 /// Funciones globales para gestionar Platillos
@@ -125,6 +125,15 @@ Platillo cargarPlatillo()
     cin.ignore();
     getline(cin, nombrePlatillo);
 
+    nombrePlatillo = mayuscula(nombrePlatillo);
+
+    while(validarPlatilloExistente(nombrePlatillo))
+    {
+        cout <<"Platillo ya ingresado, ingrese otro: ";
+        getline(cin, nombrePlatillo);
+        nombrePlatillo = mayuscula(nombrePlatillo);
+    }
+
 
     cout<<"Ingrese el dia: ";
     cin>>dia;
@@ -140,7 +149,8 @@ Platillo cargarPlatillo()
     listarProductos();
     cin >> opc;
 
-    while(opc != 0){
+    while(opc != 0)
+    {
 
         nuevoProductoxPlatillo(id, opc);//le pasa el id del platillo y el ingrediente a agregar.
 
@@ -151,7 +161,7 @@ Platillo cargarPlatillo()
         cin >> opc;
     }
     cout<<endl;
-     system("cls");
+    system("cls");
     cout<<endl;
     listarOrientacionAlimentaria();
     cout<<endl;
@@ -176,6 +186,23 @@ Platillo cargarPlatillo()
     return reg;
 }
 
+bool validarPlatilloExistente(string n)
+{
+    Platillo aux;
+    int pos = 0;
+
+    while(aux.LeerDeDisco(pos))
+    {
+        ///ver de pasar todo el nombre a mayuscula para que no haya repetidos
+        // nombre = n.toupper();//transforma todo a mayuscula por si se tipea diferente pero existe
+        if(aux.getNombrePlatillo() == n && aux.getEstadoPlatillo() == true)
+        {
+            return true;
+        }
+        pos++;
+    }
+    return false;
+}
 
 void listarPlatillos()
 {
@@ -190,8 +217,10 @@ void listarPlatillos()
         if(aux.getEstadoPlatillo())
         {
             cout<<aux.toString()<<endl;
-        }else {
-        cont++;
+        }
+        else
+        {
+            cont++;
         }
     }
     cout << "----------------------------------" << endl;
@@ -200,26 +229,29 @@ void listarPlatillos()
     cout<<endl;
 }
 
-int EliminarPlatillo(){
-        Platillo aux;
-        int pos=0, idplatillo;
+int EliminarPlatillo()
+{
+    Platillo aux;
+    int pos=0, idplatillo;
 
-        listarPlatillos();
-        cout<<endl;
+    listarPlatillos();
+    cout<<endl;
 
-        cout<<"Ingrese el ID del platillo a eliminar: ";
-        cin>>idplatillo;
+    cout<<"Ingrese el ID del platillo a eliminar: ";
+    cin>>idplatillo;
 
-        while(aux.LeerDeDisco(pos)==1){
-           if(aux.getIdPlatillo() == idplatillo){
-                aux.setEstadoPlatillo(false);
-                aux.ModificarArchivo(pos);
-                return pos;
-           }
-           pos++;
+    while(aux.LeerDeDisco(pos)==1)
+    {
+        if(aux.getIdPlatillo() == idplatillo)
+        {
+            aux.setEstadoPlatillo(false);
+            aux.ModificarArchivo(pos);
+            return pos;
         }
-        return -1;
-     }
+        pos++;
+    }
+    return -1;
+}
 
 void menuPlatillo()
 {
@@ -262,21 +294,24 @@ void menuPlatillo()
             }
             break;
         case 2:
-             if(EliminarPlatillo()!= -1){
-                            cout<<endl;
-                            cout<<"PLATILLO ELIMINADO";
-                            cout<<endl;
-                            system("pause");
-                        }else {
-                             cout<<endl;
-                            cout<<"NO SE PUDO ELIMINAR EL PLATILLO";
-                            cout<<endl;
-                            system("pause");
-                        }
+            if(EliminarPlatillo()!= -1)
+            {
+                cout<<endl;
+                cout<<"PLATILLO ELIMINADO";
+                cout<<endl;
+                system("pause");
+            }
+            else
+            {
+                cout<<endl;
+                cout<<"NO SE PUDO ELIMINAR EL PLATILLO";
+                cout<<endl;
+                system("pause");
+            }
             break;
         case 3:
             listarPlatillos();
-             system("pause");
+            system("pause");
             break;
         case 4:
             listarProductosxPlatillo();

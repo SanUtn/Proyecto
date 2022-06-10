@@ -40,6 +40,6 @@ using namespace std;
     void listarOrientacionAlimentaria();
     void menuOrientacionAlimentaria();
     int EliminarOrientacionAlimentaria();
-
+    bool validarOrientacionExistente(string n);
 
 #endif // ORIENTACIONALIMENTARIA_H_INCLUDED

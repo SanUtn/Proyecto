@@ -370,7 +370,7 @@
 	<cstring>
 	<string>
 
-1654862925 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\platillo.h
+1654872136 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\platillo.h
 	"Fecha.h"
 	"Producto.h"
 	"OrientacionAlimentaria.h"
@@ -384,7 +384,7 @@
 	<string>
 	"Fecha.h"
 
-1654173433 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\orientacionalimentaria.h
+1654872391 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\orientacionalimentaria.h
 	<cstdlib>
 	<cstring>
 	<string>
@@ -454,11 +454,12 @@
 	<cstring>
 	<string>
 
-1654863913 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\orientacionalimentaria.cpp
+1654872637 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\orientacionalimentaria.cpp
 	<iostream>
 	"OrientacionAlimentaria.h"
+	"FuncionesGlobales.h"
 
-1654862925 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\platillo.cpp
+1654872193 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\platillo.cpp
 	<iostream>
 	"ProductosxPlatillo.h"
 	"Platillo.h"

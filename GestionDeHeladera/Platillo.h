@@ -51,6 +51,6 @@ using namespace std;
     void listarPlatillos();
     void menuPlatillo();
     int EliminarPlatillo();
-
+    bool validarPlatilloExistente(string n);
 
 #endif // PLATILLO_H_INCLUDED
