@@ -16,7 +16,7 @@ Fecha::Fecha(int d, int m, int a)
 string Fecha::toString()
 {
     string cadena;
-    cadena = "Fecha: " + to_string(dia) + "/" + to_string(mes) + "/" + to_string(anio);
+    cadena = to_string(dia) + "/" + to_string(mes) + "/" + to_string(anio);
     return cadena;
 }
 

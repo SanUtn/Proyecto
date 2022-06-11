@@ -91,21 +91,24 @@ int CantidadRegistrosProductosExistentes()
 IngresoProducto cargarProductoExistente()
 {
     int id;
-    int dniUsuario; //ver de hacer que lo tome de la sesion.
+    int dniUsuario;
     int idProducto;
     int dia, mes, anio;
 
     id = CantidadRegistrosProductosExistentes()+1;
 
-    cout << "Ingrese el dni del Usuario: ";//esto despues no iria porque lo tomaría de la sesión
+    cout << "Ingrese el dni del Usuario: ";
     cin >> dniUsuario;
+
     while(validarUsuarioExistente(dniUsuario) == false){
-        cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";//esto despues no iria porque lo tomaría de la sesión
+        cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniUsuario;
     }
+
     cout<<endl;
     listarProductos();
     cout<<endl;
+
     cout<<"Ingrese el id del Producto: ";
     cin>>idProducto;
 

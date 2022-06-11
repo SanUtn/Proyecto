@@ -18,10 +18,18 @@ string Producto::getNombreProducto()
 string Producto::toString()
 {
     string cadena;
-    cadena = "Id: " + to_string(idProducto) + " " " " + " Nombre: " + nombreProducto;
+    cadena = "Id: " + to_string(idProducto) + " " " " + " Nombre: " + nombreProducto  + " " " " + " Fecha vencimiento: " + fechaVencimiento.toString();;
     return cadena;
 }
 
+bool Producto::operator == (Fecha fecha)
+{
+    if(fechaVencimiento.getDia()== fecha.getDia() && fechaVencimiento.getMes()== fecha.getMes() && fechaVencimiento.getAnio()== fecha.getAnio())
+    {
+        return true;
+    }
+    return false;
+}
 
 bool Producto::LeerDeDisco(int pos)
 {
@@ -105,6 +113,7 @@ Producto cargarProducto()
 {
     int id;
     string nombre;
+    int dia, mes, anio;
     bool estado = true;
 
     id = CantidadRegistrosProductos()+1;
@@ -121,9 +130,18 @@ Producto cargarProducto()
         nombre = mayuscula(nombre);
     }
 
+    cout << "Ingrese el dia: ";
+    cin >> dia;
+    cout << "Ingrese el mes: ";
+    cin >> mes;
+    cout << "Ingrese el anio: ";
+    cin >> anio;
+
+    Fecha fecha(dia, mes, anio);
     Producto reg;
     reg.setIdProducto(id);
     reg.setNombreProducto(nombre);
+    reg.setFechaVencimiento(fecha);
     reg.setEstadoProducto(estado);
 
     //agrega producto al stock
@@ -220,6 +238,35 @@ int EliminarProducto()
 }
 
 
+void alertaDeProductosAVencer(){
+ Producto aux;
+ Fecha fecha;
+ int cont=0;
+ int cantReg = CantidadRegistrosProductos();
+
+    cout << "LISTADO DE PRODUCTOS POR VENCER" << endl;
+    cout << "----------------------------------" << endl;
+   for(int i=0; i<cantReg;i++)
+   {
+       if(aux.LeerDeDisco(i))
+       {
+            if(aux.getEstadoProducto() == true)
+            {
+                //usa la sobrecarga de operator
+                if(aux == fecha)
+                {
+                  cout<<aux.toString()<<endl;
+                  cont++;
+                }
+            }
+       }
+   }
+    cout << "----------------------------------" << endl;
+    cout << "Total: " << cont << " Productos.";
+    cout<<endl;
+    cout<<endl;
+}
+
 void menuProducto()
 {
     int opc;
@@ -236,6 +283,7 @@ void menuProducto()
         cout<<"5. LISTAR PRODUCTOS "<<endl;
         cout<<"6. LISTAR INGRESOS DE PRODUCTOS "<<endl;
         cout<<"7. LISTAR RETIROS DE PRODUCTOS "<<endl;
+        cout<<"8. ALERTA DE PRODUCTOS A VENCER "<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -320,6 +368,10 @@ void menuProducto()
             break;
         case 7:
             listarRetirosDeProductosExistentes();
+            system("pause");
+            break;
+        case 8:
+            alertaDeProductosAVencer();
             system("pause");
             break;
         case 0:

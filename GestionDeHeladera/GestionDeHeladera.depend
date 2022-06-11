@@ -68,7 +68,7 @@
 	<cstring>
 	<string>
 
-1654805430 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.h
+1654918507 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.h
 	<cstring>
 	<cstdlib>
 	<string>
@@ -108,7 +108,7 @@
 	"Receta.h"
 	"ProductoStock.h"
 
-1654828389 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.cpp
+1654918566 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\ingresoproducto.cpp
 	<cstdlib>
 	<cstring>
 	<iostream>
@@ -130,7 +130,7 @@
 	"OrientacionAlimentaria.h"
 	"FuncionesGlobales.h"
 
-1654898685 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.cpp
+1654918579 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\producto.cpp
 	<iostream>
 	"Producto.h"
 	"ProductoStock.h"

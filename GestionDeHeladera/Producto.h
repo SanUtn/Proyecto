@@ -11,6 +11,7 @@ class Producto{
     private:
         int idProducto;
         char nombreProducto[30];
+        Fecha fechaVencimiento;
         bool estadoProducto;
 
 
@@ -18,11 +19,13 @@ class Producto{
         //getters
         int getIdProducto(){return idProducto;}
         string getNombreProducto();
+        Fecha getFechaVencimiento(){return fechaVencimiento;}
         bool getEstadoProducto(){return estadoProducto;}
 
         //setters
         void setIdProducto(int id){idProducto=id;}
         void setNombreProducto(string n){strcpy(nombreProducto, n.c_str());}
+        void setFechaVencimiento(Fecha f){fechaVencimiento=f;}
         void setEstadoProducto(bool e){estadoProducto=e;}
 
         //metodos
@@ -31,9 +34,12 @@ class Producto{
         bool GrabarEnDisco();
         bool ModificarArchivo(int pos);
 
+        //operator para comparar fechas
+        bool operator==(Fecha fecha);
+
 };
 
-    //Funciones globales no pertenecientes a la clase
+    ///Funciones globales no pertenecientes a la clase
     bool nuevoProducto();
     int CantidadRegistrosProductos();
     Producto cargarProducto();
@@ -42,6 +48,7 @@ class Producto{
     int EliminarProducto();
     bool validarProductoExistente(string);
     bool validarProductoExistenteID(int id);
+    void alertaDeProductosAVencer();
 
 
 
