@@ -2,6 +2,7 @@
 #include<string>
 #include "Receta.h"
 #include "FuncionesGlobales.h"
+#include "ProductosxPlatillo.h"
 
 using namespace std;
 
@@ -131,30 +132,6 @@ Receta cargarReceta()
 }
 
 
-void listarRecetas()
-{
-    Receta aux;
-    int cont=0;
-    int cantRecetas = CantidadRegistrosReceta();
-    cout << "LISTADO DE RECETAS" << endl;
-    cout << "----------------------------------" << endl;
-    for(int i=0; i<cantRecetas; i++)
-    {
-        aux.LeerDeDisco(i);
-        if(aux.getEstadoReceta())
-        {
-            cout<<aux.toString()<<endl;
-        }else{
-        cont++;
-        }
-    }
-    cout << "----------------------------------" << endl;
-    cout << "Total: " << cantRecetas - cont << " recetas.";
-    cout<<endl;
-    cout<<endl;
-    system("pause");
-}
-
 int EliminarReceta()
 {
     Receta aux;
@@ -180,6 +157,109 @@ int EliminarReceta()
 }
 
 
+void listarRecetas()
+{
+    Receta aux;
+    int cont=0;
+    Receta *vRecetas;
+    int cantRecetas = CantidadRegistrosReceta();
+    vRecetas = new Receta [cantRecetas];
+    if(vRecetas==NULL){exit(1);}
+
+    //carga el vector con los id de las recetas en orden
+    cargarVectorConNombresReceta(vRecetas, cantRecetas);
+
+    cout << "LISTADO DE RECETAS" << endl;
+    cout << "----------------------------------" << endl;
+    for(int i=0; i<cantRecetas; i++)
+    {
+        if(vRecetas[i].getIdReceta() != 0)
+        {
+          cout<<i+1<<"."<<mostrarNombrePlatillo(vRecetas[i].getIdReceta())<<endl;
+          cont++;
+        }
+    }
+    cout << "----------------------------------" << endl;
+    cout << "Total: " << cont << " recetas.";
+
+    cout<<endl;
+    cout<<endl;
+    //muestra de la opcion elegida los ingredientes y las instrucciones
+    elegirReceta(vRecetas);
+
+    delete vRecetas;
+}
+
+
+void cargarVectorConNombresReceta(Receta *vRecetas, int tam)
+{
+    Receta aux;
+    int pos=0;
+
+    ponerEnCeroElVectorDeRecetas(vRecetas,tam);
+
+    for(int i=0; i<tam; i++)
+    {
+        if(aux.LeerDeDisco(i))
+        {
+            if(aux.getEstadoReceta())
+            {
+                vRecetas[pos++] = aux;
+            }
+        }
+    }
+}
+
+void ponerEnCeroElVectorDeRecetas(Receta *vRecetas, int tam)
+{
+    for(int i=0; i<tam; i++)
+    {
+        vRecetas[i].setIdReceta(0);
+    }
+}
+
+
+
+void elegirReceta(Receta *vRecetas)
+{
+    int opcion;
+    ProductosxPlatillo aux;
+    int cantReg = CantidadRegistrosProductosxPlatillos();
+
+    cout<<endl;
+    cout<<"Ingrese la opcion seleccionada: ";
+    cin>>opcion;
+
+    if(opcion==0){
+        return;
+    }
+
+    while(vRecetas[opcion-1].getIdReceta() == 0){
+        cout<<endl;
+        cout<<"Opcion no existente, por favor ingrese otra: ";
+        cin>>opcion;
+    }
+        cout<<endl;
+        cout<<endl;
+        cout<<"Ingredientes: ";
+        for(int i=0; i<cantReg; i++)
+        {
+            aux.LeerDeDisco(i);
+            if(vRecetas[opcion-1].getIdPlatillo() == aux.getIdPlatillo())
+            {
+                cout<< mostrarNombreProducto(aux.getIdProducto())<<", ";
+            }
+        }
+            cout<<endl;
+            cout<<endl;
+            cout<<"Intrucciones: " <<vRecetas[opcion-1].getDescripcion();
+            cout<<endl;
+            cout<<endl;
+}
+
+
+
+
 void menuRecetas()
 {
     int opc;
@@ -189,9 +269,10 @@ void menuRecetas()
 
         cout<<"MENU RECETAS"<<endl;
         cout<<"-------------------"<<endl;
-        cout<<"1. AGREGAR RECETAS "<<endl;
+        cout<<"1. AGREGAR RECETA "<<endl;
         cout<<"2. ELIMINAR RECETA" <<endl;
         cout<<"3. LISTAR RECETAS "<<endl;
+        cout<<"4. SUGERENCIAS POR STOCK DE PRODUCTOS "<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -236,7 +317,13 @@ void menuRecetas()
             }
             break;
         case 3:
-            listarRecetas();
+                listarRecetas();
+                cout<<endl;
+                cout<<endl;
+                system("pause");
+            break;
+        case 4:
+
             break;
         case 0:
             return;

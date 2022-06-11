@@ -154,13 +154,14 @@
 	"Platillo.h"
 	"FuncionesGlobales.h"
 
-1654894605 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\receta.cpp
+1654907648 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\receta.cpp
 	<iostream>
 	<string>
 	"Receta.h"
 	"FuncionesGlobales.h"
+	"ProductosxPlatillo.h"
 
-1653865830 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\receta.h
+1654906852 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\receta.h
 	"Platillo.h"
 	<cstdlib>
 	<cstring>

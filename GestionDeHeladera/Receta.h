@@ -36,13 +36,16 @@ using namespace std;
     };
 
 
-    //Funciones globales que no pertenecen a la clase
+    ///Funciones globales que no pertenecen a la clase
     bool nuevaReceta();
     int CantidadRegistrosReceta();
     Receta cargarReceta();
     void listarRecetas();
     void menuRecetas();
     int EliminarReceta();
+    void cargarVectorConNombresReceta(Receta *vRecetas, int tam);
+    void ponerEnCeroElVectorDeRecetas(Receta *vRecetas, int tam);
+    void elegirReceta(Receta *vRecetas);
 
 
 
