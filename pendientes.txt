@@ -64,3 +64,4 @@ Cuando se elimina un producto, hay que eliminar el stock. HECHO
 11/06/2022 ANOTACIONES SAN
 - AHORA QUE LO PIENSO ELIMINAR PRODUCTO NO ESTARIA MEDIO AL PEPE? DEJAMOS SOLO RETIRAR PRODUCTOS?
 -  SOLUCIONADO LO DE ALERTAS STOCK.
+- verificar si cuando se elimina un platillo se elimina de productos por platillo.
