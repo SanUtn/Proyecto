@@ -251,6 +251,102 @@ int EliminarPlatillo()
     return -1;
 }
 
+void buscarPlatilloNombre()
+{
+    Platillo reg;
+    int pos = 0;
+    bool bandera = false;
+    string nombre;
+
+    cout << "Ingrese el nombre del platillo a buscar: ";
+    cin.ignore();
+    getline(cin, nombre);
+    nombre = mayuscula(nombre);
+    cout << endl;
+
+    while(reg.LeerDeDisco(pos))
+    {
+        if(reg.getNombrePlatillo() == nombre && reg.getEstadoPlatillo())
+        {
+            cout << reg.toString() << endl;
+            bandera = true;
+        }
+        pos++;
+    }
+
+    if(bandera == false)
+    {
+        cout << "No hay platillos con ese nombre." << endl;
+    }
+}
+
+void busquedaPlatilloOrientacion()
+{
+    Platillo reg;
+    int pos = 0;
+    bool bandera = false;
+    int opc;
+
+    listarOrientacionAlimentaria();
+
+    cout << "Ingrese el nombre del platillo a buscar: ";
+    cin >> opc;
+    cout << endl;
+
+    while(reg.LeerDeDisco(pos))
+    {
+        if(reg.getOrientacionAlimentaria() == opc && reg.getEstadoPlatillo())
+        {
+            cout << reg.toString() << endl;
+            bandera = true;
+        }
+        pos++;
+    }
+
+    if(bandera == false)
+    {
+        cout << "No hay platillos con ese nombre." << endl;
+    }
+}
+
+void menuBuscarPlatillo()
+{
+    int opc;
+    while(true)
+    {
+        system("cls");
+
+        cout<<"MENU PLATILLOS"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"1. BUSCAR POR NOMBRE"<<endl;
+        cout<<"2. BUSCAR POR ORIENTACION"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"0. SALIR"<<endl;
+        cout<<endl;
+
+        cout<<"OPCION: ";
+        cin>>opc;
+
+        system("cls");
+
+        switch(opc)
+        {
+        case 1:
+            buscarPlatilloNombre();
+            system("pause");
+            break;
+        case 2:
+            busquedaPlatilloOrientacion();
+            system("pause");
+            break;
+        case 0:
+            return;
+            break;
+        }
+        cout<<endl;
+    }
+}
+
 void menuPlatillo()
 {
     int opc;
@@ -264,6 +360,7 @@ void menuPlatillo()
         cout<<"2. ELIMINAR PLATILLO "<<endl;
         cout<<"3. LISTAR PLATILLOS "<<endl;
         cout<<"4. LISTAR PRODUCTOS POR PLATILLO" << endl;
+        cout<<"5. BUSCAR PLATILLO"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -313,6 +410,10 @@ void menuPlatillo()
             break;
         case 4:
             listarProductosxPlatillo();
+            system("pause");
+            break;
+        case 5:
+            menuBuscarPlatillo();
             system("pause");
             break;
         case 0:

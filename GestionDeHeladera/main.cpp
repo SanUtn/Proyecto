@@ -27,6 +27,7 @@ int main(){
         cout<<"5. MENU STOCK DE PRODUCTOS"<<endl;
         cout<<"6. MENU RECETAS"<<endl;
         cout<<"7. MENU CONSUMOS"<<endl;
+        cout<<"8. MENU REPORTES"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -51,6 +52,9 @@ int main(){
             case 6: menuRecetas();
                 break;
             case 7: menuConsumos();
+                break;
+            case 8:
+                menuReportes();
                 break;
             case 0: cout<<"Seguro que desea salir de la aplicacion? "<<endl;
                     cout<<"1 - SI " << endl;

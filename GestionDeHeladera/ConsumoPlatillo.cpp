@@ -74,10 +74,12 @@ bool nuevoConsumoPlatillo()
 {
     ConsumoPlatillo reg;
     reg = cargarConsumoPlatillo();
+
     bool ok = reg.GrabarEnDisco();
     if(ok){
         int platillo= reg.getIdPlatillo();
         ok = retirarProductoDelStockDesdePlatillo(platillo);
+        //retirarProductoPorConsumo(platillo);
       }
     return ok;
 }
@@ -250,7 +252,7 @@ void listarConsumosPlatillo()
         for(int i=0; i<cantPlatillos; i++)
         {
             aux.LeerDeDisco(i);
-            if(aux.getCalorias() == calorias && aux.getEstadoPlatillo() == true){
+            if(aux.getCalorias() <= calorias && aux.getEstadoPlatillo() == true){
               cout<<aux.toString()<<endl;
             }
         }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "OrientacionAlimentaria.h"
 #include "FuncionesGlobales.h"
 
@@ -154,21 +155,30 @@ void listarOrientacionAlimentaria()
     OrientacionAlimentaria aux;
     int cont=0;
     int cantOA = CantidadRegistrosOA();
-    cout << "LISTADO DE ORIENTACIONES ALIMENTARIAS" << endl;
-    cout << "----------------------------------" << endl;
+
+    cout << "ORIENTACIONES ALIMENTARIAS" << endl;
+    cout << "-----------------------------------" << endl;
+
+    cout << left;
+    cout << setw(5) << "ID";
+    cout << setw(20)  << "NOMBRE" << endl;
+    cout << "-----------------------------------" << endl;
+
     for(int i=0; i<cantOA; i++)
     {
         aux.LeerDeDisco(i);
         if(aux.getEstadoOrientacion())
         {
-            cout<<aux.toString()<<endl;
+            cout << left;
+            cout << setw(5)  << aux.getIdOrientacionAlimentaria();
+            cout << setw(20) << aux.getDescripcion() << endl;
         }
         else
         {
             cont++;
         }
     }
-    cout << "----------------------------------" << endl;
+    cout << "-----------------------------------" << endl;
     cout << "Total: " << cantOA - cont<< " orientaciones alimentarias.";
     cout<<endl;
     cout<<endl;

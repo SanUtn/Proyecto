@@ -4,6 +4,7 @@
 #include "IngresoProducto.h"
 #include "RetiroProducto.h"
 #include "FuncionesGlobales.h"
+#include "Usuario.h"
 
 using namespace std;
 
@@ -113,10 +114,18 @@ Producto cargarProducto()
 {
     int id;
     string nombre;
-    int dia, mes, anio;
+    int dia, mes, anio, dniUsuario;
     bool estado = true;
 
     id = CantidadRegistrosProductos()+1;
+
+    cout << "Ingrese el dni del Usuario: ";
+    cin >> dniUsuario;
+
+    while(validarUsuarioExistente(dniUsuario) == false){
+        cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
+        cin >> dniUsuario;
+    }
 
     cout << "Ingrese el nombre del Producto: ";
     cin.ignore();
@@ -146,6 +155,8 @@ Producto cargarProducto()
 
     //agrega producto al stock
     agregarProductoNuevoAlStock(id);
+    //genera el ingreso
+    agregarIngresoDesdeNuevoProducto(id, dniUsuario, fecha);
 
     cout<<endl;
     cout<<endl;
@@ -267,6 +278,24 @@ void alertaDeProductosAVencer(){
     cout<<endl;
 }
 
+void buscarProducto(){
+    Producto aux;
+    int pos = 0;
+    string nombre;
+
+    cout << "Ingrese el nombre del Producto a buscar: ";
+    cin.ignore();
+    getline(cin, nombre);
+    nombre = mayuscula(nombre);
+
+    while(aux.LeerDeDisco(pos)){
+            if(aux.getNombreProducto() == nombre && aux.getEstadoProducto()){
+                cout << aux.toString() << endl;
+            }
+        pos++;
+    }
+}
+
 void menuProducto()
 {
     int opc;
@@ -284,6 +313,7 @@ void menuProducto()
         cout<<"6. LISTAR INGRESOS DE PRODUCTOS "<<endl;
         cout<<"7. LISTAR RETIROS DE PRODUCTOS "<<endl;
         cout<<"8. ALERTA DE PRODUCTOS A VENCER "<<endl;
+        cout<<"9. BUSCAR PRODUCTO"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -353,7 +383,7 @@ void menuProducto()
             else
             {
                 cout<<endl;
-                cout<<"NO EXISTE EL PRODUCTO";
+                cout<<"NO SE PUDO RETIRAR EL PRODUCTO";
                 cout<<endl;
                 system("pause");
             }
@@ -372,6 +402,10 @@ void menuProducto()
             break;
         case 8:
             alertaDeProductosAVencer();
+            system("pause");
+            break;
+        case 9:
+            buscarProducto();
             system("pause");
             break;
         case 0:

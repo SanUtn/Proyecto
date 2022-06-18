@@ -1,5 +1,6 @@
 #include<iostream>
 # include "ProductosxPlatillo.h"
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
@@ -101,6 +102,21 @@ ProductosxPlatillo cargarProductosxPlatillo(int idplatillo, int idproducto)
         return reg;
 }
 
+int CantidadProductosxPlatillo(int idplatillo){
+    ProductosxPlatillo reg;
+    int pos = 0;
+    int cant = 0;
+
+    while(reg.LeerDeDisco(pos)){
+            if(reg.getIdPlatillo() == idplatillo){
+                cant++;
+            }
+        pos++;
+    }
+
+    return cant;
+}
+
 bool validarProductoEnPlatillo(int idplatillo, int idproducto)
 {
     ProductosxPlatillo aux;
@@ -123,10 +139,11 @@ void listarProductosxPlatillo()
     int cantProductosxPlatillo = CantidadRegistrosProductosxPlatillos();
     cout << "LISTADO DE PRODUCTOS x PLATILLO" << endl;
     cout << "----------------------------------" << endl;
+    cout << "PLATILLO           PRODUCTO" << endl;
     for(int i=0; i<cantProductosxPlatillo; i++)
     {
         aux.LeerDeDisco(i);
-        cout<<aux.getIdPlatillo()  << " " << aux.getIdProducto() <<endl;
+        cout<<mostrarNombrePlatillo(aux.getIdPlatillo())  << " " << mostrarNombreProducto(aux.getIdProducto()) <<endl;
     }
     cout << "----------------------------------" << endl;
     cout << "Total: " << cantProductosxPlatillo << " Productos.";

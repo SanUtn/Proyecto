@@ -70,3 +70,11 @@ Cuando se elimina un producto, hay que eliminar el stock. HECHO
 
 bueno cris: creo que estamos con el proyecto, ya quedo recetas, te muestra una lista, elegis y ahi te muestra los ingredientes y sus intrucciones, despues hay una opcion de sugerencias de recetas que te dice si tenes todos los ingrediente sino no, y cambie en productos ya agregue la fecha de vencimiento y por lo que veo funciona bien, se agrego en productos la alerta y lista los que vencen hoy por ejemplo.
 lo que faltaria es revisar todo, probarlo bien que funcione todo, borrar lo que no va, modificar los listados para que se vean mas lindo y una vez que quede todo, creo que ahi nos ponemos con la estetica, no se ponerle colores y centrar los menus y demas con rutil puede ser.
+
+14/06
+
+1. Agregar producto deberia pedir el usuario y generar un ingreso. HECHO.
+2. Generar un consumo deberia generar un retiro? 
+3. Fecha vencimiento +1 semana desde la fecha que se ingresa y un ingreso actualice el vencimiento del producto a 1 semana.
+4. Cambiar listar productos por platillo a nombres. HECHO
+5. Reportes y busquedas.

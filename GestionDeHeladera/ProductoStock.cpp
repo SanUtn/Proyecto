@@ -120,7 +120,6 @@ bool agregarProductoNuevoAlStock(int idProducto)
     return false;
 }
 
-
 bool agregarProductoAlStock(int idProducto)
 {
     ProductoStock aux;
@@ -142,7 +141,6 @@ bool agregarProductoAlStock(int idProducto)
 bool retirarProductoDelStock(int idProducto)
 {
     ProductoStock aux;
-    Producto reg;
     int cantStocks = CantidadRegistrosStock();
     int cantidad, posicion;
 
@@ -152,20 +150,18 @@ bool retirarProductoDelStock(int idProducto)
         if(aux.getIdProducto()==idProducto)
         {
             cantidad = aux.getStock();
-            posicion=buscarPosicionProducto(aux.getIdProducto());
-            if(cantidad == 1 && posicion != -1)
-            {
-                reg.setEstadoProducto(false);
-                reg.ModificarArchivo(posicion);
-                aux.setEstadoStock(false);
-                aux.ModificarArchivo(i);
-                return true;
-            }
-            else if(cantidad > 1)
+            //posicion=buscarPosicionProducto(aux.getIdProducto());
+            if(cantidad > 0)
             {
                 aux.setStock(cantidad - 1);
                 aux.ModificarArchivo(i);
                 return true;
+            }
+            else
+            {
+                //aux.setStock(cantidad - 1);
+                //aux.ModificarArchivo(i);
+                return false;
             }
         }
     }
@@ -276,20 +272,22 @@ bool retirarProductoDelStockDesdePlatillo(int idplatillo)
 bool retirarProductoDelStockDesdePlatillo(int idplatillo)
 {
     Platillo pla;
-    ProductosxPlatillo pxp;
     ProductoStock aux;
-    Producto reg;
+    bool bandera = false;
 
     int *vProductos;
-    int cantStocks = CantidadRegistrosStock();
-    int cantReg = CantidadRegistrosProductosxPlatillos();
+    int cantReg = CantidadProductosxPlatillo(idplatillo);
     vProductos = new int [cantReg];
+
+    int cantStocks = CantidadRegistrosStock();
+    //int cantReg = CantidadRegistrosProductosxPlatillos();
+    //vProductos = new int [cantReg];
     if(vProductos==NULL)
     {
         return false;
     }
-    int cantidad, posicion, productoId;
-    bool bandera = false;
+    //int cantidad, posicion, productoId;
+    //bool bandera = false;
 
     if(buscarPlatillo(idplatillo))
     {
@@ -304,21 +302,19 @@ bool retirarProductoDelStockDesdePlatillo(int idplatillo)
             {
                 if(aux.getIdProducto()== vProductos[j])
                 {
-                    cantidad = aux.getStock();
-                    posicion=buscarPosicionProducto(aux.getIdProducto());
-                    if(cantidad == 1 && posicion != -1)
+                    //posicion=buscarPosicionProducto(aux.getIdProducto());
+                    if(aux.getStock() > 0)
                     {
-                        reg.setEstadoProducto(false);
-                        reg.ModificarArchivo(posicion);
-                        aux.setEstadoStock(false);
+                        //reg.setEstadoProducto(false);
+                        //reg.ModificarArchivo(posicion);
+                        aux.setStock(aux.getStock() - 1);
                         aux.ModificarArchivo(i);
                         bandera = true;
                     }
-                    else if(cantidad > 1)
+                    else
                     {
-                        aux.setStock(cantidad - 1);
-                        aux.ModificarArchivo(i);
-                        bandera = true;
+                        bandera = false;
+                        return bandera;
                     }
                 }
             }
@@ -349,17 +345,22 @@ bool buscarPlatillo(int idP)
 void buscarProductosXPlatillo(int idP, int *vProductos, int tam)
 {
     ProductosxPlatillo aux;
-
-    ponerEnCeroElVector(vProductos,tam);
+    int pos = 0;
+    bool bandera;
+    //ponerEnCeroElVector(vProductos,tam);
 
     for(int i=0; i<tam; i++)
     {
-        if(aux.LeerDeDisco(i))
+        bandera = false;
+        while(aux.LeerDeDisco(pos) && bandera == false)
         {
             if(aux.getIdPlatillo()==idP)
             {
                 vProductos[i] = aux.getIdProducto();
+                bandera = true;
+                //que sea diferente al ya guardado
             }
+            pos++;
         }
     }
 
@@ -457,31 +458,6 @@ void listarStocks()
     cout<<endl;
 }
 
-void alertaStock()
-{
-    ProductoStock aux;
-    int cont=0;
-    int cantStocks = CantidadRegistrosStock();
-    cout << "PRODUCTOS PROXIMOS A AGOTARSE" << endl;
-    cout << "----------------------------------" << endl;
-    for(int i=0; i<cantStocks; i++)
-    {
-        aux.LeerDeDisco(i);
-        if(aux.getEstadoStock() &&  aux.getStock()==1)
-        {
-            cout<<aux.toString()<<endl;
-        }
-        else
-        {
-            cont++;
-        }
-    }
-    cout << "----------------------------------" << endl;
-    cout << "Total: " << cantStocks - cont << " registros.";
-    cout<<endl;
-    cout<<endl;
-}
-
 void menuStockProductos()
 {
     int opc;
@@ -492,11 +468,9 @@ void menuStockProductos()
         cout<<"MENU STOCK DE PRODUCTOS"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"1. LISTAR STOCK "<<endl;
-        cout<<"2. ALERTAS DE STOCK"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
-
         cout<<"OPCION: ";
         cin>>opc;
 
@@ -507,10 +481,6 @@ void menuStockProductos()
 
         case 1:
             listarStocks();
-            system("pause");
-            break;
-        case 2:
-            alertaStock();
             system("pause");
             break;
         case 0:

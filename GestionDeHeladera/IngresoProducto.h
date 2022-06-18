@@ -37,6 +37,8 @@
     int CantidadRegistrosProductosExistentes();
     IngresoProducto cargarProductoExistente();
     void listarIngresosDeProductosExistentes();
+    void agregarIngresoDesdeNuevoProducto(int idProducto, int dni, Fecha fecha);
+
 
 
 

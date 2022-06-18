@@ -45,7 +45,7 @@ public:
     void ponerEnCeroElVector(int *vProductos, int tam);
     bool retirarProductoDelStockConsumoProducto(int idproducto);
     bool buscarProducto(int idproducto);
-    void alertaStock();
+
 
 
 

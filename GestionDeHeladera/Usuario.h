@@ -40,6 +40,7 @@ using namespace std;
             bool ModificarArchivo(int pos);
             int buscarUsuario(int dni);
             bool EliminarUsuario();
+            void toList();
 
     };
 
@@ -49,6 +50,10 @@ using namespace std;
     Usuario cargarUsuario();
     void listarUsuarios();
     void menuUsuario();
+    void menuBuscarUsuario();
     bool validarUsuarioExistente(int);
+    void buscarUsuarioNombre();
+    void buscarUsuarioDNI();
+    void buscarUsuarioOrientacion();
 
 #endif // USUARIO_H_INCLUDED
