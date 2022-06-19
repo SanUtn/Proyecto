@@ -128,14 +128,16 @@ IngresoProducto cargarProductoExistente()
         cin >> idProducto;
     }
     //ver si cargamos la fecha o tomamos la actual
-    cout << "Ingrese el dia: ";
+    /*cout << "Ingrese el dia: ";
     cin >> dia;
     cout << "Ingrese el mes: ";
     cin >> mes;
     cout << "Ingrese el anio: ";
-    cin >> anio;
+    cin >> anio;*/
 
     Fecha fecha(dia, mes, anio);
+    Fecha fechaVencimiento(7);
+
     IngresoProducto reg;
     reg.setIdIngreso(id);
     reg.setDniUsuario(dniUsuario);
@@ -143,6 +145,8 @@ IngresoProducto cargarProductoExistente()
     reg.setFechaIngreso(fecha);
     //agrega al stock de productos el ingresado
     agregarProductoAlStock(idProducto);
+    //modificamos el vencimiento del producto
+    modificarVencimientoProducto(idProducto, fechaVencimiento);
 
     cout<<endl;
     cout<<endl;
@@ -169,31 +173,28 @@ void listarIngresosDeProductosExistentes()
 {
     IngresoProducto aux;
     int cantProductos = CantidadRegistrosProductosExistentes();
-    cout << "LISTADO DE PRODUCTOS INGRESADOS " << endl;
-    cout << "----------------------------------" << endl;
+    cout << "REGISTRO DE INGRESOS " << endl;
+     cout << "---------------------------------------------------------------" << endl;
 
-    /*cout << left;
-    cout << setw(15)  <<"Id";
-    cout << setw(15) <<"DNI Usuario";
+    cout << left;
+    cout << setw(4)  <<"Id";
+    cout << setw(10) <<"Usuario";
     cout << setw(15) <<"Producto";
-    cout << setw(15)  <<"Fecha" << endl;*/
+    cout << setw(15)  <<"Fecha" << endl;
+
+     cout << "---------------------------------------------------------------" << endl;
 
     for(int i=0; i<cantProductos; i++)
     {
         aux.LeerDeDisco(i);
-        cout << aux.toString() << endl;
-        /*if(aux.getIdProducto()!=0)
-        {
             cout << left;
-            cout << setw(15) << aux.getIdIngreso();
-            cout << setw(15) << aux.getDniUsuario();
+            cout << setw(4) << aux.getIdIngreso();
+            cout << setw(10) << aux.getDniUsuario();
             cout << setw(15) << mostrarNombreProducto(aux.getIdProducto());
             cout << setw(15) << aux.getFechaIngreso().toString() << endl;
-        }*/
     }
-    cout << "----------------------------------" << endl;
+     cout << "---------------------------------------------------------------" << endl;
     cout << "Total: " << cantProductos << " registros.";
-    cout<<endl;
     cout<<endl;
 }
 

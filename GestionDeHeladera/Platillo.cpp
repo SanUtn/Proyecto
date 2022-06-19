@@ -251,6 +251,22 @@ int EliminarPlatillo()
     return -1;
 }
 
+void EliminarPlatilloPorParametro(int idplatillo)
+{
+    Platillo aux;
+    int pos=0;
+
+    while(aux.LeerDeDisco(pos)==1)
+    {
+        if(aux.getIdPlatillo() == idplatillo)
+        {
+            aux.setEstadoPlatillo(false);
+            aux.ModificarArchivo(pos);
+        }
+        pos++;
+    }
+}
+
 void buscarPlatilloNombre()
 {
     Platillo reg;

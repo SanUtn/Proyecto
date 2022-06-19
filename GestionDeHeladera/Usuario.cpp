@@ -335,6 +335,8 @@ void buscarUsuarioOrientacion()
     cout << "Ingrese el id de la orientacion: ";
     cin >> orientacion;
 
+    system("cls");
+
     cout << endl;
     cout << left;
     cout << setw(10) << "DNI";

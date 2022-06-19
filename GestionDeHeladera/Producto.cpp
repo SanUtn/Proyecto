@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "Producto.h"
 #include "ProductoStock.h"
 #include "IngresoProducto.h"
@@ -21,6 +22,14 @@ string Producto::toString()
     string cadena;
     cadena = "Id: " + to_string(idProducto) + " " " " + " Nombre: " + nombreProducto  + " " " " + " Fecha vencimiento: " + fechaVencimiento.toString();;
     return cadena;
+}
+
+void Producto::toList()
+{
+    cout << left;
+    cout << setw(4) << getIdProducto();
+    cout << setw(15) << getNombreProducto();
+    cout << setw(15)  << getFechaVencimiento().toString() << endl;
 }
 
 bool Producto::operator == (Fecha fecha)
@@ -73,13 +82,13 @@ bool Producto::ModificarArchivo(int pos)
     p=fopen("Productos.dat", "rb+");
     if(p==NULL)
     {
-      return false;
+        return false;
     }
     fseek(p, pos*sizeof(Producto),0);
     int escribio=fwrite(this, sizeof(Producto),1,p);
     fclose(p);
 
-   return escribio;
+    return escribio;
 }
 
 /// Funciones globales para gestionar Producto
@@ -122,7 +131,8 @@ Producto cargarProducto()
     cout << "Ingrese el dni del Usuario: ";
     cin >> dniUsuario;
 
-    while(validarUsuarioExistente(dniUsuario) == false){
+    while(validarUsuarioExistente(dniUsuario) == false)
+    {
         cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniUsuario;
     }
@@ -139,18 +149,19 @@ Producto cargarProducto()
         nombre = mayuscula(nombre);
     }
 
-    cout << "Ingrese el dia: ";
+    /*cout << "Ingrese el dia: ";
     cin >> dia;
     cout << "Ingrese el mes: ";
     cin >> mes;
     cout << "Ingrese el anio: ";
-    cin >> anio;
+    cin >> anio; */
 
-    Fecha fecha(dia, mes, anio);
+    Fecha fechavencimiento(7);
+    Fecha fecha;
     Producto reg;
     reg.setIdProducto(id);
     reg.setNombreProducto(nombre);
-    reg.setFechaVencimiento(fecha);
+    reg.setFechaVencimiento(fechavencimiento);
     reg.setEstadoProducto(estado);
 
     //agrega producto al stock
@@ -203,19 +214,32 @@ void listarProductos()
     Producto aux;
     int cont=0;
     int cantProductos = CantidadRegistrosProductos();
-    cout << "LISTADO DE PRODUCTOS" << endl;
-    cout << "----------------------------------" << endl;
+
+    cout << left;
+    cout << setw(20) << "\t";
+    cout << "PRODUCTOS" << endl;
+    cout << "---------------------------------------------------------------" << endl;
+    cout << setw(4)  << "ID";
+    cout << setw(15) << "NOMBRE";
+    cout << setw(15) << "VENCIMIENTO"<<endl;
+    cout << "---------------------------------------------------------------" << endl;
+
     for(int i=0; i<cantProductos; i++)
     {
         aux.LeerDeDisco(i);
         if(aux.getEstadoProducto())
         {
-            cout<<aux.toString()<<endl;
-        }else{
-         cont++;
+            cout << left;
+            cout << setw(4)  << aux.getIdProducto();
+            cout << setw(15) << aux.getNombreProducto();
+            cout << setw(15) << aux.getFechaVencimiento().toString() << endl;
+        }
+        else
+        {
+            cont++;
         }
     }
-    cout << "----------------------------------" << endl;
+    cout << "---------------------------------------------------------------" << endl;
     cout << "Total: " << cantProductos - cont<< " Productos.";
     cout<<endl;
     cout<<endl;
@@ -238,8 +262,10 @@ int EliminarProducto()
         {
             aux.setEstadoProducto(false);
             bool modifico = aux.ModificarArchivo(pos);
-            if (modifico){
+            if (modifico)
+            {
                 eliminarStock(idproducto);
+                eliminarPlatillos(idproducto);
             }
             return pos;
         }
@@ -249,51 +275,93 @@ int EliminarProducto()
 }
 
 
-void alertaDeProductosAVencer(){
- Producto aux;
- Fecha fecha;
- int cont=0;
- int cantReg = CantidadRegistrosProductos();
+void alertaDeProductosAVencer()
+{
+    Producto aux;
+    Fecha fecha;
+    int cont=0;
+    int cantReg = CantidadRegistrosProductos();
+    bool bandera = false;
 
-    cout << "LISTADO DE PRODUCTOS POR VENCER" << endl;
+    cout << "PRODUCTOS PROXIMOS A VENCER" << endl;
     cout << "----------------------------------" << endl;
-   for(int i=0; i<cantReg;i++)
-   {
-       if(aux.LeerDeDisco(i))
-       {
+
+    cout << left;
+    cout << setw(17) << "PRODUCTO";
+    cout << setw(17)  << "VENCIMIENTO" << endl;
+    cout << "----------------------------------" << endl;
+
+    for(int i=0; i<cantReg; i++)
+    {
+        if(aux.LeerDeDisco(i))
+        {
             if(aux.getEstadoProducto() == true)
             {
                 //usa la sobrecarga de operator
                 if(aux == fecha)
                 {
-                  cout<<aux.toString()<<endl;
-                  cont++;
+                    cout << left;
+                    cout << setw(17) << aux.getNombreProducto();
+                    cout << setw(17)  << aux.getFechaVencimiento().toString() << endl;
+                    cont++;
+                    bandera = true;
                 }
             }
-       }
-   }
-    cout << "----------------------------------" << endl;
-    cout << "Total: " << cont << " Productos.";
+        }
+    }
+    if(bandera)
+    {
+        cout << "----------------------------------" << endl;
+        cout << "Total: " << cont << " Productos.";
+    }
+    else
+    {
+        system("cls");
+        cout << "No hay productos proximos a vencerse." << endl;
+    }
+
     cout<<endl;
     cout<<endl;
 }
 
-void buscarProducto(){
+void buscarProducto()
+{
     Producto aux;
     int pos = 0;
     string nombre;
+    bool bandera = false;
 
     cout << "Ingrese el nombre del Producto a buscar: ";
     cin.ignore();
     getline(cin, nombre);
     nombre = mayuscula(nombre);
 
-    while(aux.LeerDeDisco(pos)){
-            if(aux.getNombreProducto() == nombre && aux.getEstadoProducto()){
-                cout << aux.toString() << endl;
-            }
+    system("cls");
+
+    cout << "PRODUCTOS" << endl;
+    cout << "----------------------------------" << endl;
+    cout << left;
+    cout << setw(4) << "ID";
+    cout << setw(15) << "PRODUCTO";
+    cout << setw(15)  << "VENCIMIENTO" << endl;
+    cout << "----------------------------------" << endl;
+
+    while(aux.LeerDeDisco(pos))
+    {
+        if(aux.getNombreProducto() == nombre && aux.getEstadoProducto())
+        {
+            aux.toList();
+            bandera = true;
+        }
         pos++;
     }
+
+    if(bandera == false)
+    {
+        system("cls");
+        cout << "No hay productos con ese nombre." << endl;
+    }
+    cout << endl;
 }
 
 void menuProducto()
@@ -357,7 +425,8 @@ void menuProducto()
                 system("pause");
             }
             break;
-        case 3:  if(ingresarProducto())
+        case 3:
+            if(ingresarProducto())
             {
                 cout<<endl;
                 cout<<"PRODUCTO AGREGADO";
@@ -373,7 +442,8 @@ void menuProducto()
             }
             break;
 
-        case 4:  if(retirarProducto())
+        case 4:
+            if(retirarProducto())
             {
                 cout<<endl;
                 cout<<"PRODUCTO RETIRADO";

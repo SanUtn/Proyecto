@@ -26,6 +26,7 @@ using namespace std;
             //metodos
              Fecha(int d, int m, int a);
              Fecha();
+             Fecha(int d);
              string toString();
 
     };

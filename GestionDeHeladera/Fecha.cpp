@@ -34,3 +34,17 @@ Fecha::Fecha()
     mes = timeinfo.tm_mon + 1;
     anio = timeinfo.tm_year + 1900;
 }
+
+Fecha::Fecha(int d)
+{
+    time_t rawtime;
+    struct tm timeinfo;
+
+    time (&rawtime);
+    timeinfo = *(localtime (&rawtime));
+
+    dia = timeinfo.tm_mday + d;
+    mes = timeinfo.tm_mon + 1;
+    anio = timeinfo.tm_year + 1900;
+}
+
