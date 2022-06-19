@@ -128,15 +128,15 @@ IngresoProducto cargarProductoExistente()
         cin >> idProducto;
     }
     //ver si cargamos la fecha o tomamos la actual
-    /*cout << "Ingrese el dia: ";
+    cout << "Ingrese el dia vencimiento: ";
     cin >> dia;
-    cout << "Ingrese el mes: ";
+    cout << "Ingrese el mes vencimiento: ";
     cin >> mes;
-    cout << "Ingrese el anio: ";
-    cin >> anio;*/
+    cout << "Ingrese el anio vencimiento: ";
+    cin >> anio;
 
-    Fecha fecha(dia, mes, anio);
-    Fecha fechaVencimiento(7);
+    Fecha fecha;
+    Fecha fechaVencimiento(dia, mes, anio);
 
     IngresoProducto reg;
     reg.setIdIngreso(id);

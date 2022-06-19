@@ -355,7 +355,7 @@
 	<iostream>
 	"FuncionesGlobales.h"
 
-1654863873 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\consumoplatillo.cpp
+1655577117 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\consumoplatillo.cpp
 	<iostream>
 	"ConsumoPlatillo.h"
 	"Platillo.h"
@@ -370,12 +370,12 @@
 	<string>
 	"Fecha.h"
 
-1654173433 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\fecha.h
+1655670334 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\fecha.h
 	<cstdlib>
 	<cstring>
 	<string>
 
-1654872136 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\platillo.h
+1655669302 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\platillo.h
 	"Fecha.h"
 	"Producto.h"
 	"OrientacionAlimentaria.h"
@@ -383,7 +383,7 @@
 	<cstring>
 	<string>
 
-1655235333 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\producto.h
+1655675968 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\producto.h
 	<cstring>
 	<cstdlib>
 	<string>
@@ -395,13 +395,15 @@
 	<string>
 	<iostream>
 
-1655240047 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\funcionesglobales.h
+1655670685 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\funcionesglobales.h
 	"ConsumoProducto.h"
 	"ConsumoPlatillo.h"
 	"OrientacionAlimentaria.h"
 	"Platillo.h"
 	"Producto.h"
 	"ProductoStock.h"
+	"RetiroProducto.h"
+	"ProductosxPlatillo.h"
 
 1654830066 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\consumoproducto.h
 	<cstring>
@@ -415,16 +417,16 @@
 	"Producto.h"
 	"ProductoStock.h"
 
-1654975923 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\fecha.cpp
+1655670322 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\fecha.cpp
 	<iostream>
 	"Fecha.h"
 	<ctime>
 
-1655240140 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\funcionesglobales.cpp
+1655672060 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\funcionesglobales.cpp
 	<iostream>
 	"FuncionesGlobales.h"
 
-1655243471 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\ingresoproducto.cpp
+1655677745 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\ingresoproducto.cpp
 	<cstdlib>
 	<cstring>
 	<iostream>
@@ -434,13 +436,13 @@
 	"Usuario.h"
 	"FuncionesGlobales.h"
 
-1655235413 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\ingresoproducto.h
+1655670659 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\ingresoproducto.h
 	"Fecha.h"
 
-1654916474 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\productostock.h
+1655406163 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\productostock.h
 	"Producto.h"
 
-1655239988 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\main.cpp
+1655401931 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\main.cpp
 	<iostream>
 	"Usuario.h"
 	"FuncionesGlobales.h"
@@ -451,7 +453,7 @@
 	"Receta.h"
 	"ProductoStock.h"
 
-1654173433 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\usuario.h
+1655585173 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\usuario.h
 	<cstdlib>
 	<cstring>
 	<string>
@@ -463,12 +465,13 @@
 	<cstring>
 	<string>
 
-1654872637 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\orientacionalimentaria.cpp
+1655584701 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\orientacionalimentaria.cpp
 	<iostream>
+	<iomanip>
 	"OrientacionAlimentaria.h"
 	"FuncionesGlobales.h"
 
-1654916474 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\platillo.cpp
+1655669314 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\platillo.cpp
 	<iostream>
 	"ProductosxPlatillo.h"
 	"Platillo.h"
@@ -481,8 +484,9 @@
 	"Fecha.h"
 	"Producto.h"
 
-1655245525 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\producto.cpp
+1655677766 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\producto.cpp
 	<iostream>
+	<iomanip>
 	"Producto.h"
 	"ProductoStock.h"
 	"IngresoProducto.h"
@@ -493,7 +497,7 @@
 1654173433 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\retiroproducto.h
 	"Fecha.h"
 
-1655246821 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\productostock.cpp
+1655406156 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\productostock.cpp
 	<iostream>
 	"ProductoStock.h"
 	"FuncionesGlobales.h"
@@ -519,8 +523,9 @@
 	"ProductoStock.h"
 	"Usuario.h"
 
-1654863979 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\usuario.cpp
+1655674491 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\usuario.cpp
 	<iostream>
+	<iomanip>
 	"Usuario.h"
 	"FuncionesGlobales.h"
 

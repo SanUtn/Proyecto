@@ -78,3 +78,12 @@ lo que faltaria es revisar todo, probarlo bien que funcione todo, borrar lo que 
 3. Fecha vencimiento +1 semana desde la fecha que se ingresa y un ingreso actualice el vencimiento del producto a 1 semana.
 4. Cambiar listar productos por platillo a nombres. HECHO
 5. Reportes y busquedas.
+
+19/06
+
+1. Borrar ProductosxPlatillo al eliminar un platillo. 
+2. Opcion de salir en cargas productos, platillo. 
+3. Productos sin stock
+4. Productos a vencer: si es stock 0, no mostrar.
+5. Generar un consumo deberia generar un retiro.
+6. Borrar productos/platillo -> te borre receta. desde eliminar platillo en eliminar producto.
