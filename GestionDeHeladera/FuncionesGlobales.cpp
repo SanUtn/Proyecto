@@ -199,7 +199,8 @@ void menuReportes()
         cout<<"1. CONSUMOS ANUALES "<<endl;
         cout<<"2. CONSUMOS MENSUALES"<<endl;
         cout<<"3. MENU DE SUGERENCIAS"<<endl;
-        cout<<"4. ALERTAS DE STOCK"<<endl;
+        cout<<"4. ALERTA DE STOCK"<<endl;
+        cout<<"5. ALERTA SIN STOCK"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -225,6 +226,10 @@ void menuReportes()
             break;
         case 4:
             alertaStock();
+            system("pause");
+            break;
+             case 5:
+            alertaSinStock();
             system("pause");
             break;
         case 0:
@@ -326,6 +331,22 @@ void eliminarPlatillos(int idproducto)
         if(reg.getIdProducto() == idproducto)
         {
             EliminarPlatilloPorParametro(reg.getIdPlatillo());
+            eliminarRecetasPorPlatillo(reg.getIdPlatillo());
+        }
+        pos++;
+    }
+}
+
+void eliminarRecetasPorPlatillo(int idplatillo)
+{
+    Receta reg;
+    int pos = 0;
+
+    while(reg.LeerDeDisco(pos))
+    {
+        if(reg.getIdPlatillo() == idplatillo)
+        {
+            EliminarRecetaPorParametro(reg.getIdReceta());
         }
         pos++;
     }
@@ -405,7 +426,32 @@ void alertaStock()
     for(int i=0; i<cantStocks; i++)
     {
         aux.LeerDeDisco(i);
-        if(aux.getEstadoStock() &&  aux.getStock()<= 1)
+        if(aux.getEstadoStock() &&  aux.getStock()<= 2 && aux.getStock()!= 0 )
+        {
+            cout<<aux.toString()<<endl;
+        }
+        else
+        {
+            cont++;
+        }
+    }
+    cout << "----------------------------------" << endl;
+    cout << "Total: " << cantStocks - cont << " registros.";
+    cout<<endl;
+    cout<<endl;
+}
+
+void alertaSinStock()
+{
+    ProductoStock aux;
+    int cont=0;
+    int cantStocks = CantidadRegistrosStock();
+    cout << "PRODUCTOS PROXIMOS A AGOTARSE" << endl;
+    cout << "----------------------------------" << endl;
+    for(int i=0; i<cantStocks; i++)
+    {
+        aux.LeerDeDisco(i);
+        if(aux.getEstadoStock() &&  aux.getStock()== 0)
         {
             cout<<aux.toString()<<endl;
         }

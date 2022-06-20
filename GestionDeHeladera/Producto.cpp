@@ -281,6 +281,7 @@ void alertaDeProductosAVencer()
     Fecha fecha;
     int cont=0;
     int cantReg = CantidadRegistrosProductos();
+    int stock;
     bool bandera = false;
 
     cout << "PRODUCTOS PROXIMOS A VENCER" << endl;
@@ -297,14 +298,24 @@ void alertaDeProductosAVencer()
         {
             if(aux.getEstadoProducto() == true)
             {
+                stock = buscarStockDeProducto(aux.getIdProducto());
                 //usa la sobrecarga de operator
-                if(aux == fecha)
+                if(stock > 0)
                 {
-                    cout << left;
-                    cout << setw(17) << aux.getNombreProducto();
-                    cout << setw(17)  << aux.getFechaVencimiento().toString() << endl;
-                    cont++;
-                    bandera = true;
+                    if(aux.getFechaVencimiento().getAnio() == fecha.getAnio())
+                    {
+                        if(aux.getFechaVencimiento().getMes() == fecha.getMes())
+                        {
+                            if((aux.getFechaVencimiento().getDia() - fecha.getDia()) <= 2 )
+                            {
+                                cout << left;
+                                cout << setw(17) << aux.getNombreProducto();
+                                cout << setw(17)  << aux.getFechaVencimiento().toString() << endl;
+                                cont++;
+                                bandera = true;
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -140,7 +140,7 @@ bool validarExistenciaDeProductos(int idPlatillo)
     int *vProductos;
     int cantReg = CantidadRegistrosProductosxPlatillos();
     vProductos = new int [cantReg];
-     if(vProductos==NULL){return false;}
+    if(vProductos==NULL){return false;}
 
     if(buscarPlatillo(idPlatillo))
     {

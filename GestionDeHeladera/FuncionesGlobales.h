@@ -8,7 +8,7 @@
 #include "ProductoStock.h"
 #include "RetiroProducto.h"
 #include "ProductosxPlatillo.h"
-
+#include "Receta.h"
 
 void menuConsumos();
 string mostrarOrientacionAlimentaria(int id);
@@ -29,5 +29,7 @@ int buscarStockDeProducto(int idproducto);
 void copiarProductos(Producto *vDinamico, int cantidad, int idplatillo);
 void eliminarPlatillos(int idproducto);
 void modificarVencimientoProducto(int idproducto, Fecha fecha);
+void alertaSinStock();
+void eliminarRecetasPorPlatillo(int idplatillo);
 
 #endif // FUNCIONESGLOBALES_H_INCLUDED

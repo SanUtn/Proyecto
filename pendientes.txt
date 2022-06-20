@@ -84,7 +84,17 @@ lo que faltaria es revisar todo, probarlo bien que funcione todo, borrar lo que 
 1. Borrar ProductosxPlatillo al eliminar un platillo. (HECHO)(Lo que hice es que no muestre los productos por platillo cuando el platillo tiene estado false asi no teniamos que agregar estado a productos por platillo pero sino te parece hacemos la baja logica agregando el atributo estado a productosXPlatillo).
 CAMBIE LISTADO DE PLATILLOS, Y DE STOCK, EN PLATILLOS ME COSTO JAJAJ PERO AGREGUE QUE MUESTRE UNA SOLA VEZ EL NOMBRE DEL PLATILLO.
 2. Opcion de salir en cargas productos, platillo. 
-3. Productos sin stock
-4. Productos a vencer: si es stock 0, no mostrar.
+3. Productos sin stock. HECHO
+3 BIS. Alerta de stock, muestre los que se estan por quedar sin. HECHO (muestra de 2 para abajo)
+4. Productos a vencer: si es stock 0, no mostrar. HECHO. Cambie que muestre lo que se vence en menos de 2 dias.
 5. Generar un consumo deberia generar un retiro.
-6. Borrar productos/platillo -> te borre receta. desde eliminar platillo en eliminar producto.
+6. Borrar productos/platillo -> te borre receta. desde eliminar platillo en eliminar producto. HECHO.
+7. Consumo producto sigue poniendo el false el producto.
+8. Listar recetas no estaba bien, lo modifique. HECHO.
+9. Recetas por stock no funciona bien. 
+
+20/06 Paso en limpio.
+1. Opcion de salir en cargas productos, platillo. 
+2. Generar un consumo deberia generar un retiro.
+3. Consumo producto sigue poniendo el false el producto.
+4. Recetas por stock no funciona bien. 

@@ -281,6 +281,7 @@ void EliminarPlatilloPorParametro(int idplatillo)
         {
             aux.setEstadoPlatillo(false);
             aux.ModificarArchivo(pos);
+            return;
         }
         pos++;
     }
