@@ -219,7 +219,7 @@ void listarPlatillos()
     Platillo aux;
     int cantPlatillos = CantidadRegistrosPlatillo();
     int pos = 0, cont=0;
-    cout <<  setw(45)<<"LISTADO DE PLATILLOS" << endl;
+    cout << setw(45)<<"LISTADO DE PLATILLOS" << endl;
     cout << "--------------------------------------------------------------------------"<< endl;
     cout << left;
     cout << setw(5) << "ID";

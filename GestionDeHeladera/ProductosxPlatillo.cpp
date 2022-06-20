@@ -156,6 +156,8 @@ void listarProductosxPlatillo()
 {
     ProductosxPlatillo aux;
     int cantProductosxPlatillo = CantidadRegistrosProductosxPlatillos();
+    bool bandera = false;
+    int idPlatillo;
 
     cout << "LISTADO DE PRODUCTOS x PLATILLO" << endl;
     cout << "----------------------------------" << endl;
@@ -166,9 +168,23 @@ void listarProductosxPlatillo()
     for(int i=0; i<cantProductosxPlatillo; i++)
     {
         aux.LeerDeDisco(i);
-        //si el platillo tiene el estado en true mustra los productos por platillo sino no.
+        //si el platillo tiene el estado en true muestra los productos por platillo sino no.
         if(buscarPlatillo(aux.getIdPlatillo())){
-        cout<< setw(20) << mostrarNombrePlatillo(aux.getIdPlatillo())<< setw(20) << mostrarNombreProducto(aux.getIdProducto()) <<endl;
+                //para que muestre una sola vez el nombre, se hace lo de la bandera y lo de guardar el idPlatillo
+                if(aux.getIdPlatillo() != idPlatillo){
+                    bandera = false;
+                }
+               if(bandera == false){
+                   cout<<endl;
+        cout<< setw(20) << mostrarNombrePlatillo(aux.getIdPlatillo());
+                    bandera = true;
+                    idPlatillo = aux.getIdPlatillo();
+               }
+                if(idPlatillo == aux.getIdPlatillo()){
+                cout<<mostrarNombreProducto(aux.getIdProducto())<<" " " ";
+               }else{
+                    bandera=false;
+               }
 
         }
     }

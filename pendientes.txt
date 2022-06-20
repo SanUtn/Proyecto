@@ -81,7 +81,8 @@ lo que faltaria es revisar todo, probarlo bien que funcione todo, borrar lo que 
 
 19/06
 
-1. Borrar ProductosxPlatillo al eliminar un platillo. 
+1. Borrar ProductosxPlatillo al eliminar un platillo. (HECHO)(Lo que hice es que no muestre los productos por platillo cuando el platillo tiene estado false asi no teniamos que agregar estado a productos por platillo pero sino te parece hacemos la baja logica agregando el atributo estado a productosXPlatillo).
+CAMBIE LISTADO DE PLATILLOS, Y DE STOCK, EN PLATILLOS ME COSTO JAJAJ PERO AGREGUE QUE MUESTRE UNA SOLA VEZ EL NOMBRE DEL PLATILLO.
 2. Opcion de salir en cargas productos, platillo. 
 3. Productos sin stock
 4. Productos a vencer: si es stock 0, no mostrar.
