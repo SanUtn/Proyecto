@@ -41,6 +41,7 @@ using namespace std;
             bool LeerDeDisco(int pos);
             bool GrabarEnDisco();
             bool ModificarArchivo(int pos);
+            void toList();
 
     };
 

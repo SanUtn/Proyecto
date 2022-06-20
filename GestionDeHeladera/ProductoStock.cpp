@@ -3,7 +3,7 @@
 #include "FuncionesGlobales.h"
 #include "ProductoStock.h"
 #include "ProductosxPlatillo.h"
-
+#include <iomanip>
 using namespace std;
 
 
@@ -12,6 +12,13 @@ string ProductoStock::toString()
     string cadena;
     cadena = "Producto: " + mostrarNombreProducto(getIdProducto()) + " " " " + " Stock: " + to_string(stock);
     return cadena;
+}
+
+void ProductoStock::toList()
+{
+    cout << left;
+    cout << setw(20) << mostrarNombreProducto(getIdProducto());
+    cout << setw(20) << to_string(stock)<<endl;
 }
 
 
@@ -440,12 +447,16 @@ void listarStocks()
     int cantStocks = CantidadRegistrosStock();
     cout << "LISTADO DE STOCK DE PRODUCTOS" << endl;
     cout << "----------------------------------" << endl;
+    cout << left;
+    cout << setw(20) << "PRODUCTO";
+    cout << setw(20) << "STOCK" << endl;
+    cout<< "----------------------------------" << endl;
     for(int i=0; i<cantStocks; i++)
     {
         aux.LeerDeDisco(i);
         if(aux.getEstadoStock())
         {
-            cout<<aux.toString()<<endl;
+            aux.toList();
         }
         else
         {

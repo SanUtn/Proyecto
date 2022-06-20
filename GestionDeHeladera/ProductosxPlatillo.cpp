@@ -1,4 +1,5 @@
 #include<iostream>
+#include <iomanip>
 # include "ProductosxPlatillo.h"
 #include "FuncionesGlobales.h"
 
@@ -133,20 +134,44 @@ bool validarProductoEnPlatillo(int idplatillo, int idproducto)
     return false;
 }
 
+//LA OTRA OPCION DE ELIMINAR PRODUCTOS POR PLATILLO ES AGREGAR UN ESTADO Y HACER LA BAJA LOGICA.
+/*void EliminarProductosPorPlatillo(int idplatillo)
+{
+    ProductosxPlatillo aux;
+    int pos=0;
+
+    while(aux.LeerDeDisco(pos)==1)
+    {
+        if(aux.getIdPlatillo() == idplatillo)
+        {
+            aux.setEstadoPlatillo(false);
+            aux.ModificarArchivo(pos);
+        }
+        pos++;
+    }
+}*/
+
+
 void listarProductosxPlatillo()
 {
     ProductosxPlatillo aux;
     int cantProductosxPlatillo = CantidadRegistrosProductosxPlatillos();
+
     cout << "LISTADO DE PRODUCTOS x PLATILLO" << endl;
     cout << "----------------------------------" << endl;
-    cout << "PLATILLO           PRODUCTO" << endl;
+    cout << left;
+    cout << setw(20) << "PLATILLO ";
+    cout << setw(20) << "PRODUCTO" << endl;
+    cout<< "----------------------------------" << endl;
     for(int i=0; i<cantProductosxPlatillo; i++)
     {
         aux.LeerDeDisco(i);
-        cout<<mostrarNombrePlatillo(aux.getIdPlatillo())  << " " << mostrarNombreProducto(aux.getIdProducto()) <<endl;
+        //si el platillo tiene el estado en true mustra los productos por platillo sino no.
+        if(buscarPlatillo(aux.getIdPlatillo())){
+        cout<< setw(20) << mostrarNombrePlatillo(aux.getIdPlatillo())<< setw(20) << mostrarNombreProducto(aux.getIdProducto()) <<endl;
+
+        }
     }
-    cout << "----------------------------------" << endl;
-    cout << "Total: " << cantProductosxPlatillo << " Productos.";
     cout<<endl;
     cout<<endl;
 }

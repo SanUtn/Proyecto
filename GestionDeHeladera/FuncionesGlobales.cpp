@@ -76,6 +76,8 @@ int buscarStockDeProducto(int idproducto)
     }
     return -1;
 }
+
+
 void copiarProductos(Producto *vDinamico, int cantidad, int idplatillo)
 {
     ProductosxPlatillo reg;

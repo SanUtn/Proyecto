@@ -16,6 +16,7 @@ class ProductosxPlatillo{
         //getters
         int getIdProducto();
         int getIdPlatillo();
+
         //setters
         void setIdProducto(int i);
         void setIdPlatillo(int i);

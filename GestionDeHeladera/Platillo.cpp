@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "ProductosxPlatillo.h"
 #include "Platillo.h"
 #include "FuncionesGlobales.h"
@@ -27,6 +28,17 @@ string Platillo::toString()
              + to_string(calorias);
 
     return cadena;
+}
+
+
+void Platillo::toList()
+{
+    cout << left;
+    cout << setw(5) << to_string(idPlatillo);
+    cout << setw(20) << nombrePlatillo;
+    cout << setw(15) << fechaRegistrado.toString();
+    cout << setw(20) << mostrarOrientacionAlimentaria(getOrientacionAlimentaria());
+    cout << setw(10) << to_string(calorias)<<endl;
 }
 
 
@@ -207,21 +219,28 @@ void listarPlatillos()
     Platillo aux;
     int cantPlatillos = CantidadRegistrosPlatillo();
     int pos = 0, cont=0;
-    cout << "LISTADO DE PLATILLOS" << endl;
-    cout << "----------------------------------" << endl;
+    cout <<  setw(45)<<"LISTADO DE PLATILLOS" << endl;
+    cout << "--------------------------------------------------------------------------"<< endl;
+    cout << left;
+    cout << setw(5) << "ID";
+    cout << setw(20) << "NOMBRE";
+    cout << setw(15) << "FECHA";
+    cout << setw(20) << "ORIENTACION A.";
+    cout << setw(10) << "CALORIAS"<<endl;
+    cout<< "--------------------------------------------------------------------------"<< endl;
     for(int i=0; i<cantPlatillos; i++)
     {
         aux.LeerDeDisco(i); //un while aca?
         if(aux.getEstadoPlatillo())
         {
-            cout<<aux.toString()<<endl;
+            aux.toList();
         }
         else
         {
             cont++;
         }
     }
-    cout << "----------------------------------" << endl;
+    cout << "--------------------------------------------------------------------------" << endl;
     cout << "Total: " << cantPlatillos - cont<< " platillos.";
     cout<<endl;
     cout<<endl;
