@@ -61,6 +61,21 @@ void menuConsumos()
     }
 }
 
+int CantidadProductosxPlatillo(int idplatillo){
+    ProductosxPlatillo reg;
+    int pos = 0;
+    int cant = 0;
+
+    while(reg.LeerDeDisco(pos)){
+            if(reg.getIdPlatillo() == idplatillo){
+                cant++;
+            }
+        pos++;
+    }
+
+    return cant;
+}
+
 int buscarStockDeProducto(int idproducto)
 {
     ProductoStock reg;

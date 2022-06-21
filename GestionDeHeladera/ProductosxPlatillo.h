@@ -34,7 +34,7 @@ ProductosxPlatillo cargarProductosxPlatillo(int idplatillo, int idproducto);
 bool nuevoProductoxPlatillo(int idplatillo, int idproducto);
 void listarProductosxPlatillo();
 bool validarProductoEnPlatillo(int idplatillo, int idproducto);
-int CantidadProductosxPlatillo(int idplatillo);
+
 
 
 #endif // PRODUCTOSXPLATILLO_H_INCLUDED

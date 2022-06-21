@@ -38,7 +38,7 @@
     int CantidadRegistrosRetiroProductosExistentes();
     RetiroProducto retirarProductoExistente();
     void listarRetirosDeProductosExistentes();
-
+    bool retirarProductoExistentePorConsumo(int idplatillo, int usuario);
 
 
 

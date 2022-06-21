@@ -11,15 +11,17 @@ using namespace std;
         private:
             int idPlatillo;
             Fecha fechaConsumo;
-
+            int usuario;
         public:
             //getters
             int getIdPlatillo(){return idPlatillo;}
             Fecha getFechaConsumo(){return fechaConsumo;}
+            int getUsuario(){return usuario;}
 
             //setters
             void setIdPlatillo(int id){idPlatillo=id;}
             void setFechaConsumo(Fecha f){fechaConsumo=f;}
+            void setUsuario(int u){usuario = u;}
 
              //metodos
             string toString();
@@ -30,16 +32,16 @@ using namespace std;
     };
 
  //Funciones globales que no pertenecen a la clase
-    bool nuevoConsumoPlatillo();
+    bool nuevoConsumoPlatillo(int u);
     int CantidadRegistrosConsumoPlatillo();
-    ConsumoPlatillo cargarConsumoPlatillo();
+    ConsumoPlatillo cargarConsumoPlatillo(int u);
     bool validarExistenciaDeProductos(int idPlatillo);
     void listarConsumosPlatillo();
     void menuSugerenciasPlatillos();
-    void sugerenciasXOrientacion();
+    int sugerenciasXOrientacion();
     int buscarOrientacion(int dni);
     void buscarPlatillosXOrientacion(int orientacion);
-    void sugerenciasXCalorias();
+    int sugerenciasXCalorias();
     void buscarPlatillosXCalorias(int calorias);
     bool validarCalorias(int calorias);
     bool validarCalorias(int calorias);

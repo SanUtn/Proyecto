@@ -70,16 +70,18 @@ bool ConsumoPlatillo::ModificarArchivo(int pos)
 
 
 /// Funciones globales para gestionar el consumo de un platillo
-bool nuevoConsumoPlatillo()
+bool nuevoConsumoPlatillo(int u)
 {
     ConsumoPlatillo reg;
-    reg = cargarConsumoPlatillo();
+    reg = cargarConsumoPlatillo(u);
 
     bool ok = reg.GrabarEnDisco();
     if(ok){
         int platillo= reg.getIdPlatillo();
-        ok = retirarProductoDelStockDesdePlatillo(platillo);
-        //retirarProductoPorConsumo(platillo);
+        int usuario = reg.getUsuario();
+        if(retirarProductoDelStockDesdePlatillo(platillo)){
+            ok = retirarProductoExistentePorConsumo(platillo, usuario);
+        }
       }
     return ok;
 }
@@ -103,7 +105,7 @@ int CantidadRegistrosConsumoPlatillo()
     return cantidad;
 }
 
-ConsumoPlatillo cargarConsumoPlatillo()
+ConsumoPlatillo cargarConsumoPlatillo(int u)
 {
     int id;
 
@@ -128,6 +130,7 @@ ConsumoPlatillo cargarConsumoPlatillo()
     Fecha actual;
     reg.setIdPlatillo(id);
     reg.setFechaConsumo(actual);
+    reg.setUsuario(u);
     cout<<endl;
     cout<<endl;
     system("pause");
@@ -183,7 +186,7 @@ void listarConsumosPlatillo()
     system("pause");
 }
 
-    void sugerenciasXOrientacion(){
+    int sugerenciasXOrientacion(){
       int orientacion, dni;
 
       cout << "Ingrese el dni: ";
@@ -197,6 +200,8 @@ void listarConsumosPlatillo()
 
          orientacion = buscarOrientacion(dni);
          buscarPlatillosXOrientacion(orientacion);
+
+         return dni;
     }
 
      int buscarOrientacion(int dni){
@@ -230,8 +235,18 @@ void listarConsumosPlatillo()
         system("pause");
     }
 
-    void sugerenciasXCalorias(){
+    int sugerenciasXCalorias(){
       int calorias;
+      int dniusuario;
+
+    cout << "Ingrese el dni: ";
+      cin >> dniusuario;
+      cout<<endl;
+
+        while(validarUsuarioExistente(dniusuario) == false){
+            cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
+            cin >> dniusuario;
+        }
 
       cout << "Ingrese las calorias que desea consumir: ";
       cin >> calorias;
@@ -243,6 +258,7 @@ void listarConsumosPlatillo()
         }
 
         buscarPlatillosXCalorias(calorias);
+        return dniusuario;
     }
 
 
@@ -280,6 +296,8 @@ bool validarCalorias(int calorias)
 
  void menuSugerenciasPlatillos(){
    int opc;
+   int aux;
+
     while(true){
         system("cls");
 
@@ -297,9 +315,9 @@ bool validarCalorias(int calorias)
         system("cls");
 
         switch(opc){
-            case 1: sugerenciasXOrientacion();
+            case 1: aux = sugerenciasXOrientacion();
                     cout<<endl;
-                    if(nuevoConsumoPlatillo())
+                    if(nuevoConsumoPlatillo(aux))
                     {
                     cout<<endl;
                     cout<<"CONSUMO AGREGADO";
@@ -314,9 +332,9 @@ bool validarCalorias(int calorias)
                     system("pause");
                     }
                 break;
-            case 2:  sugerenciasXCalorias();
+            case 2:  aux = sugerenciasXCalorias();
                       cout<<endl;
-                    if(nuevoConsumoPlatillo())
+                    if(nuevoConsumoPlatillo(aux))
                     {
                     cout<<endl;
                     cout<<"CONSUMO AGREGADO";

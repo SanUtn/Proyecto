@@ -11,6 +11,7 @@
 #include "Receta.h"
 
 void menuConsumos();
+int CantidadProductosxPlatillo(int idplatillo);
 string mostrarOrientacionAlimentaria(int id);
 string mostrarNombreProducto(int id);
 string mostrarNombrePlatillo(int id);

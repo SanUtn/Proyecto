@@ -103,21 +103,6 @@ ProductosxPlatillo cargarProductosxPlatillo(int idplatillo, int idproducto)
         return reg;
 }
 
-int CantidadProductosxPlatillo(int idplatillo){
-    ProductosxPlatillo reg;
-    int pos = 0;
-    int cant = 0;
-
-    while(reg.LeerDeDisco(pos)){
-            if(reg.getIdPlatillo() == idplatillo){
-                cant++;
-            }
-        pos++;
-    }
-
-    return cant;
-}
-
 bool validarProductoEnPlatillo(int idplatillo, int idproducto)
 {
     ProductosxPlatillo aux;

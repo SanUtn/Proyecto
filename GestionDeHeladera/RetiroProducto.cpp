@@ -3,6 +3,7 @@
 #include "Producto.h"
 #include "ProductoStock.h"
 #include "Usuario.h"
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
@@ -68,7 +69,7 @@ bool RetiroProducto::ModificarArchivo(int pos)
 /// Funciones globales para gestionar Producto
 bool retirarProducto()
 {
-     bool ok;
+    bool ok;
     RetiroProducto reg;
     reg = retirarProductoExistente();
     if(reg.getIdRetiro() != -1){
@@ -78,6 +79,7 @@ bool retirarProducto()
     }
     return ok;
 }
+
 
 int CantidadRegistrosRetiroProductosExistentes()
 {
@@ -155,6 +157,41 @@ RetiroProducto retirarProductoExistente()
     cout<<endl;
     cout<<endl;
     return reg;
+}
+
+bool retirarProductoExistentePorConsumo(int idplatillo, int usuario)
+{
+    int id;
+    int idProducto;
+    int cantProductos = CantidadProductosxPlatillo(idplatillo);
+
+    Producto *vDinamico;
+
+    vDinamico = new Producto[cantProductos];
+
+       if(vDinamico == NULL)
+            {
+                cout << "ERROR" <<endl;
+                return false;
+            }
+
+    copiarProductos(vDinamico,cantProductos, idplatillo);
+
+    RetiroProducto reg;
+    Fecha fecha;
+
+    for(int i=0; i<cantProductos;i++){
+        id = CantidadRegistrosRetiroProductosExistentes()+1;
+        reg.setIdRetiro(id);
+        reg.setDniUsuario(usuario);
+        reg.setIdProducto(vDinamico[i].getIdProducto());
+        reg.setFechaRetiro(fecha);
+        if(reg.GrabarEnDisco() == false){
+            return false;
+        }
+    }
+
+    return true;
 }
 
 

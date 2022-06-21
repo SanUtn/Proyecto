@@ -95,6 +95,7 @@ CAMBIE LISTADO DE PLATILLOS, Y DE STOCK, EN PLATILLOS ME COSTO JAJAJ PERO AGREGU
 
 20/06 Paso en limpio.
 1. Opcion de salir en cargas productos, platillo. 
-2. Generar un consumo deberia generar un retiro.
+2. Generar un consumo deberia generar un retiro. HECHO EN PLATILLO, HAY QUE HACERLO EN CONSUMO PRODUCTO.
 3. Consumo producto sigue poniendo el false el producto. HECHO/SOLUCIONADO.
 4. Recetas por stock no funciona bien.  HECHO/SOLUCIONADO
+
