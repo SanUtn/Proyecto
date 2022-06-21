@@ -330,7 +330,7 @@ void buscarRecetaQueTegaStockDeProductos(Receta *vRecetas, int tam)
             {
                 if(controlarStockDeProductosPorPlatillos(aux.getIdPlatillo()))
                 {
-                    vRecetas[pos++] = aux;
+                    vRecetas[i] = aux;
                 }
             }
         }
@@ -341,33 +341,19 @@ bool controlarStockDeProductosPorPlatillos(int idPlatillo)
 {
 
     ProductosxPlatillo aux;
-    int cantReg = CantidadRegistrosProductosxPlatillos();
-    int contProductos=0, contStock=0;
+    int cantReg = CantidadProductosxPlatillo(idPlatillo);
+    bool bandera = true;
+    int pos = 0;
 
-    for(int i=0; i<cantReg; i++)
-    {
-        if(aux.LeerDeDisco(i))
-        {
-            if(aux.getIdPlatillo() == idPlatillo)
-            {
-                //cuenta la cantidad de productos del platillo
-                contProductos++;
-                if(consultarStock(aux.getIdProducto())> 0)
-                {
-                    //cuenta la cantidad de productos que tienen stock
-                    contStock++;
-                }
+    while(aux.LeerDeDisco(pos)){
+            if(aux.getIdPlatillo() == idPlatillo){
+                if(consultarStock(aux.getIdProducto()) <= 0){
+                    return false;
+                   }
             }
-        }
+        pos++;
     }
-
-    //si son iguales es que todos los productos tienen stock
-    if(contProductos==contStock)
-    {
-        return true;
-    }
-
-    return false;
+    return true;
 }
 
 void sugerenciaRecetas()
@@ -375,7 +361,8 @@ void sugerenciaRecetas()
 
     Receta *vRecetas;
     int cont=0, opcion;
-    int cantReg = CantidadRegistrosProductosxPlatillos();
+    //int cantReg = CantidadRegistrosProductosxPlatillos();
+    int cantReg = CantidadRegistrosReceta();
     vRecetas = new Receta [cantReg];
     if(vRecetas==NULL)
     {
@@ -391,7 +378,7 @@ void sugerenciaRecetas()
     {
         if(vRecetas[i].getIdReceta() != 0)
         {
-            cout<<i+1<<"."<<mostrarNombrePlatillo(vRecetas[i].getIdReceta())<<endl;
+            cout<<i+1<<"."<<mostrarNombrePlatillo(vRecetas[i].getIdPlatillo())<<endl;
             cont++;
         }
     }

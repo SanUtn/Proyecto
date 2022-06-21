@@ -385,8 +385,6 @@ void ponerEnCeroElVector(int *vProductos, int tam)
 bool retirarProductoDelStockConsumoProducto(int idproducto)
 {
     ProductoStock aux;
-    Producto reg;
-
     int cantStocks = CantidadRegistrosStock();
     int cantidad, posicion;
     bool bandera = false;
@@ -399,20 +397,17 @@ bool retirarProductoDelStockConsumoProducto(int idproducto)
             if(aux.getIdProducto()== idproducto)
             {
                 cantidad = aux.getStock();
-                posicion=buscarPosicionProducto(aux.getIdProducto());
-                if(cantidad == 1 && posicion != -1)
-                {
-                    reg.setEstadoProducto(false);
-                    reg.ModificarArchivo(posicion);
-                    aux.setEstadoStock(false);
-                    aux.ModificarArchivo(i);
-                    bandera = true;
-                }
-                else if(cantidad > 1)
+                //posicion=buscarPosicionProducto(aux.getIdProducto());
+                if(cantidad > 0)
                 {
                     aux.setStock(cantidad - 1);
                     aux.ModificarArchivo(i);
                     bandera = true;
+                }
+                else
+                {
+                    bandera = false;
+                    return bandera;
                 }
             }
 
