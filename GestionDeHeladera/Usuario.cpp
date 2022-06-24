@@ -244,7 +244,7 @@ int EliminarUsuario()
 
     while(aux.LeerDeDisco(pos)==1)
     {
-        if(aux.getDNI()==dni)
+        if(aux.getDNI()==dni && aux.getEstadoUsuario() == true)
         {
             aux.setEstadoUsuario(false);
             aux.ModificarArchivo(pos);

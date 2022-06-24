@@ -127,7 +127,7 @@ IngresoProducto cargarProductoExistente()
         cout << "El ID de producto que ingreso no existe en el sistema, ingrese otro:  ";
         cin >> idProducto;
     }
-    //ver si cargamos la fecha o tomamos la actual
+
     cout << "Ingrese el dia vencimiento: ";
     cin >> dia;
     cout << "Ingrese el mes vencimiento: ";

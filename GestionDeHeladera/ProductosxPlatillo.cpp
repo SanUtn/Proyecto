@@ -119,22 +119,7 @@ bool validarProductoEnPlatillo(int idplatillo, int idproducto)
     return false;
 }
 
-//LA OTRA OPCION DE ELIMINAR PRODUCTOS POR PLATILLO ES AGREGAR UN ESTADO Y HACER LA BAJA LOGICA.
-/*void EliminarProductosPorPlatillo(int idplatillo)
-{
-    ProductosxPlatillo aux;
-    int pos=0;
 
-    while(aux.LeerDeDisco(pos)==1)
-    {
-        if(aux.getIdPlatillo() == idplatillo)
-        {
-            aux.setEstadoPlatillo(false);
-            aux.ModificarArchivo(pos);
-        }
-        pos++;
-    }
-}*/
 
 
 void listarProductosxPlatillo()

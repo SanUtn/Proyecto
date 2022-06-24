@@ -274,7 +274,7 @@ int EliminarProducto()
     return -1;
 }
 
-
+//muestra los vencidos y los que les falta dos dias para vencer
 void alertaDeProductosAVencer()
 {
     Producto aux;
@@ -299,7 +299,7 @@ void alertaDeProductosAVencer()
             if(aux.getEstadoProducto() == true)
             {
                 stock = buscarStockDeProducto(aux.getIdProducto());
-                //usa la sobrecarga de operator
+
                 if(stock > 0)
                 {
                     if(aux.getFechaVencimiento().getAnio() == fecha.getAnio())

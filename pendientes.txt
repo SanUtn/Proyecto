@@ -99,3 +99,10 @@ CAMBIE LISTADO DE PLATILLOS, Y DE STOCK, EN PLATILLOS ME COSTO JAJAJ PERO AGREGU
 3. Consumo producto sigue poniendo el false el producto. HECHO/SOLUCIONADO.
 4. Recetas por stock no funciona bien.  HECHO/SOLUCIONADO
 
+
+23/06
+- Arregle listado de retiro de productos que se veia feo.
+- Agregue como se ve el listado de busqueda de platillo por nombre
+- Agregue como se ve el listado de busqueda de platillo por orientacion
+
+- receta linea 300 no etiendo mucho porque llena el vector en cada vuelta, cual es el sentido.

@@ -72,23 +72,8 @@ bool ProductoStock::ModificarArchivo(int pos)
     return escribio;
 }
 
-/*int EliminarProductoStock(int idproducto)
-{
-    ProductoStock aux;
-    int pos=0;
 
-    while(aux.LeerDeDisco(pos)==1)
-    {
-        if(aux.getIdProducto() == idproducto)
-        {
-            aux.setEstadoStock(false);
-            aux.ModificarArchivo(pos);
-            return pos;
-        }
-        pos++;
-    }
-    return -1;
-}*/
+
 
 ///Funciones globales
 int CantidadRegistrosStock()
@@ -157,7 +142,7 @@ bool retirarProductoDelStock(int idProducto)
         if(aux.getIdProducto()==idProducto)
         {
             cantidad = aux.getStock();
-            //posicion=buscarPosicionProducto(aux.getIdProducto());
+
             if(cantidad > 0)
             {
                 aux.setStock(cantidad - 1);
@@ -218,61 +203,6 @@ int buscarPosicionProducto(int idP)
 }
 
 
-/*///consulto en archivo de platillo si existe ese platillo, si existe, busco en productos por platillo sus ingredientes para ir agregando a stock, si no existe en stock el producto retorno true y si existe resto uno a stock de cada producto y retorno true y sino se pudo restar productos retorno false.
-bool retirarProductoDelStockDesdePlatillo(int idplatillo)
-{
-    Platillo pla;
-    ProductosxPlatillo pxp;
-    ProductoStock psto;
-
-    bool resto;
-
-    int pos=0, cantidad, pos2, pos3;
-
-    while(pla.LeerDeDisco(pos)==1)
-    {
-        pos2 = 0;
-
-
-        if(pla.getIdPlatillo() == idplatillo && pla.getEstadoPlatillo() == true)
-        {
-            while(pxp.LeerDeDisco(pos2) == 1)
-            {
-                        pos3 = 0;
-                if(pxp.getIdPlatillo() == idplatillo)
-                {
-                    cantidad = consultarStock(pxp.getIdProducto());
-                    if(cantidad == 0)
-                    {
-                        //reg.setEstadoProducto(false);
-                        //reg.ModificarArchivo(pos);
-                        resto = true;
-                    }
-                    else
-                    {
-                        while(psto.LeerDeDisco(pos3) == 1)
-                        {
-                            if(psto.getIdProducto() == pxp.getIdProducto())
-                            {
-                                psto.setIdProducto(psto.getIdProducto());//se carga setid porque cuando no estaba rompia y traia basura en id.
-                                psto.setStock(cantidad - 1);
-                                psto.ModificarArchivo(pos3);
-                                resto =  true;
-                            }
-                            pos3++;
-                        }
-                    }
-                }
-                pos2++;
-            }
-        }
-        pos++;
-    }
-    if(resto){
-        return true;
-    }
-    return false;
-}*/
 
 
 ///consulta en archivo de platillo si existe ese platillo, si existe, busca en productos por platillo sus ingredientes y los carga en un vector para ir sacando de stock de productos cada uno.
@@ -287,14 +217,12 @@ bool retirarProductoDelStockDesdePlatillo(int idplatillo)
     vProductos = new int [cantReg];
 
     int cantStocks = CantidadRegistrosStock();
-    //int cantReg = CantidadRegistrosProductosxPlatillos();
-    //vProductos = new int [cantReg];
+
     if(vProductos==NULL)
     {
         return false;
     }
-    //int cantidad, posicion, productoId;
-    //bool bandera = false;
+
 
     if(buscarPlatillo(idplatillo))
     {
@@ -354,7 +282,7 @@ void buscarProductosXPlatillo(int idP, int *vProductos, int tam)
     ProductosxPlatillo aux;
     int pos = 0;
     bool bandera;
-    //ponerEnCeroElVector(vProductos,tam);
+    ponerEnCeroElVector(vProductos,tam);
 
     for(int i=0; i<tam; i++)
     {

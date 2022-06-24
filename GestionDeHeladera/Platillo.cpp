@@ -325,7 +325,7 @@ void busquedaPlatilloOrientacion()
 
     listarOrientacionAlimentaria();
 
-    cout << "Ingrese el nombre del platillo a buscar: ";
+    cout << "Ingrese el id de la orientacion a buscar: ";
     cin >> opc;
     cout << endl;
 
@@ -341,7 +341,7 @@ void busquedaPlatilloOrientacion()
 
     if(bandera == false)
     {
-        cout << "No hay platillos con ese nombre." << endl;
+        cout << "No hay platillos con ese id." << endl;
     }
 }
 

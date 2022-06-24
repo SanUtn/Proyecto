@@ -46,6 +46,8 @@ using namespace std;
     void cargarVectorConRecetas(Receta *vRecetas, int tam);
     void ponerEnCeroElVectorDeRecetas(Receta *vRecetas, int tam);
     void elegirReceta(int opc);
+    bool elegirReceta2(int opc);
+    void buscarProductosDelPlatillo(int idP, int *vProductos, int tam);
     void buscarReceta(int *vRecetas, int tam);
     bool validarExisteReceta(int idreceta);
     void buscarRecetaQueTegaStockDeProductos(Receta *vRecetas, int tam);
