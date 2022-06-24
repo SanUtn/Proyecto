@@ -107,6 +107,12 @@ bool nuevoUsuario()
 {
     Usuario reg;
     reg = cargarUsuario();
+    if(reg.getId() == -1)
+    {
+        cout << endl;
+        cout << "CARGA DE USUARIO CANCELADA" <<endl;
+        return false;
+    }
     bool ok = reg.GrabarEnDisco();
     return ok;
 }
@@ -138,16 +144,29 @@ Usuario cargarUsuario()
     string apellido;
     int idOrientacionAlimentaria;
     bool estado = true;
+    Usuario reg;
 
     id = CantidadRegistrosUsuario()+1;
 
-    cout << "Ingrese el DNI: ";
+    cout << "Ingrese el DNI o 0 para salir: ";
     cin >> dni;
+
+    if(dni == 0)
+    {
+        reg.setId(-1);
+        return reg;
+    }
+
     while(validarUsuarioExistente(dni))
     {
         cout << "Usuario ya existente."<<endl;
-        cout << "Ingrese el DNI: ";
+        cout << "Ingrese el DNI o 0 para salir: ";
         cin >> dni;
+        if(dni == 0)
+        {
+            reg.setId(-1);
+            return reg;
+        }
     }
 
     cout << "Ingrese el nombre: ";
@@ -163,7 +182,7 @@ Usuario cargarUsuario()
     cout << "Ingrese el id de la orientacion alimentaria: ";
     cin >> idOrientacionAlimentaria;
 
-    Usuario reg;
+
     reg.setId(id);
     reg.setDNI(dni);
     reg.setNombre(nombre);
@@ -239,8 +258,11 @@ int EliminarUsuario()
     listarUsuarios();
     cout<<endl;
 
-    cout<<"Ingrese el dni del usuario a eliminar: ";
+    cout<<"Ingrese el dni del usuario a eliminar o 0 para cancelar: ";
     cin>>dni;
+    if(dni == 0){
+        return -2;
+    }
 
     while(aux.LeerDeDisco(pos)==1)
     {
@@ -407,6 +429,7 @@ void menuBuscarUsuario()
 void menuUsuario()
 {
     int opc;
+    int aux;
     while(true)
     {
         system("cls");
@@ -445,10 +468,17 @@ void menuUsuario()
             }
             break;
         case 2:
-            if(EliminarUsuario()!= -1)
+            aux = EliminarUsuario();
+            if(aux!= -1 && aux!= -2)
             {
                 cout<<endl;
                 cout<<"USUARIO ELIMINADO";
+                cout<<endl;
+                system("pause");
+            }
+            else if(aux == -2){
+                cout<<endl;
+                cout<<"ELIMINACION CANCELADA";
                 cout<<endl;
                 system("pause");
             }

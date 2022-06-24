@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "ConsumoPlatillo.h"
 #include "Platillo.h"
 #include "ProductoStock.h"
@@ -30,7 +31,7 @@ bool ConsumoPlatillo::LeerDeDisco(int pos)
 
     fclose(p);
 
-  return leyo;
+    return leyo;
 }
 
 bool ConsumoPlatillo::GrabarEnDisco()
@@ -40,7 +41,7 @@ bool ConsumoPlatillo::GrabarEnDisco()
     if(p==NULL)
     {
         cout<<"El archivo no pudo abrirse"<<endl;
-       return false;
+        return false;
     }
     int escribio=fwrite(this, sizeof(ConsumoPlatillo),1,p);
     fclose(p);
@@ -59,7 +60,7 @@ bool ConsumoPlatillo::ModificarArchivo(int pos)
     if(p==NULL)
     {
         cout<<"El archivo no pudo abrirse"<<endl;
-       return false;
+        return false;
     }
     fseek(p, pos*sizeof(ConsumoPlatillo),0);
     int escribio=fwrite(this, sizeof(ConsumoPlatillo),1,p);
@@ -76,13 +77,15 @@ bool nuevoConsumoPlatillo(int u)
     reg = cargarConsumoPlatillo(u);
 
     bool ok = reg.GrabarEnDisco();
-    if(ok){
+    if(ok)
+    {
         int platillo= reg.getIdPlatillo();
         int usuario = reg.getUsuario();
-        if(retirarProductoDelStockDesdePlatillo(platillo)){
+        if(retirarProductoDelStockDesdePlatillo(platillo))
+        {
             ok = retirarProductoExistentePorConsumo(platillo, usuario);
         }
-      }
+    }
     return ok;
 }
 
@@ -114,13 +117,15 @@ ConsumoPlatillo cargarConsumoPlatillo(int u)
     cout<<endl;
 
     //validamos que exista ese platillo
-    while(buscarPlatillo(id) == false){
-       cout << "Platillo inexistente, ingrese otro: ";
-       cin >> id;
-       cout<<endl;
+    while(buscarPlatillo(id) == false)
+    {
+        cout << "Platillo inexistente, ingrese otro: ";
+        cin >> id;
+        cout<<endl;
     }
 
-    while(validarExistenciaDeProductos(id)== false){
+    while(validarExistenciaDeProductos(id)== false)
+    {
         cout << "Lo sentimos, no hay stock de productos para cosumir ese platillo o no existe, ingrese otro: ";
         cin >> id;
         cout<<endl;
@@ -143,139 +148,173 @@ bool validarExistenciaDeProductos(int idPlatillo)
     int *vProductos;
     int cantReg = CantidadRegistrosProductosxPlatillos();
     vProductos = new int [cantReg];
-    if(vProductos==NULL){return false;}
+    if(vProductos==NULL)
+    {
+        return false;
+    }
 
     if(buscarPlatillo(idPlatillo))
     {
-     //llamamos a la funcion para que cargue todos los productos de ese platillo
-     buscarProductosXPlatillo(idPlatillo,vProductos,cantReg);
+        //llamamos a la funcion para que cargue todos los productos de ese platillo
+        buscarProductosXPlatillo(idPlatillo,vProductos,cantReg);
 
-      for(int i=0; i<cantReg; i++)
-      {
-        //porque algunas posiciones del vector estan vacias, solo va a buscar las que tengan id de productos.
-
-        if(vProductos[i]>0)
+        for(int i=0; i<cantReg; i++)
         {
+            //porque algunas posiciones del vector estan vacias, solo va a buscar las que tengan id de productos.
 
-            if(consultarStock(vProductos[i]) == 0)
+            if(vProductos[i]>0)
             {
-                bandera = false;
+
+                if(consultarStock(vProductos[i]) == 0)
+                {
+                    bandera = false;
+                }
             }
         }
-      }
-    } else {
-     bandera = false;
     }
-      delete vProductos;
-      return bandera;
+    else
+    {
+        bandera = false;
+    }
+    delete vProductos;
+    return bandera;
 }
 
 void listarConsumosPlatillo()
 {
     ConsumoPlatillo aux;
     int cantConsumoPlatillo = CantidadRegistrosConsumoPlatillo();
-    cout << "LISTADO DE CONSUMOS PLATILLOS" << endl;
-    cout << "----------------------------------" << endl;
-    for(int i=0; i<cantConsumoPlatillo; i++)
+
+    if (cantConsumoPlatillo != 0)
+    {
+        cout << left;
+        cout << setw(15) << "\t";
+        cout << "CONSUMOS PLATILLOS" << endl;
+        cout << "---------------------------------------------------------------" << endl;
+        cout << setw(15)  << "PLATILLO";
+        cout << setw(15) << "FECHA CONSUMO";
+        cout << setw(15) << "DNI USUARIO" << endl;
+        cout << "---------------------------------------------------------------" << endl;
+
+        for(int i=0; i<cantConsumoPlatillo; i++)
+        {
+            aux.LeerDeDisco(i);
+            cout << left;
+            cout << setw(15)  << mostrarNombrePlatillo(aux.getIdPlatillo());
+            cout << setw(15) << aux.getFechaConsumo().toString();
+            cout << setw(15) << aux.getUsuario() << endl;
+        }
+    }
+    else
+    {
+        cout << "No hay consumos de platillos registrados." << endl;
+    }
+
+    cout<<endl;
+    cout<<endl;
+    system("pause");
+}
+
+int sugerenciasXOrientacion()
+{
+    int orientacion, dni;
+
+    cout << "Ingrese el dni: ";
+    cin >> dni;
+    cout<<endl;
+
+    while(validarUsuarioExistente(dni) == false)
+    {
+        cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
+        cin >> dni;
+    }
+
+    orientacion = buscarOrientacion(dni);
+    buscarPlatillosXOrientacion(orientacion);
+
+    return dni;
+}
+
+int buscarOrientacion(int dni)
+{
+    Usuario aux;
+    int cantUsuarios=CantidadRegistrosUsuario();
+
+    for(int i=0; i<cantUsuarios; i++)
     {
         aux.LeerDeDisco(i);
-        cout<<aux.toString()<<endl;
+        if(aux.getDNI() == dni && aux.getEstadoUsuario()== true)
+        {
+            return aux.getIdOrientacionAlimentaria();
+        }
+    }
+
+    return -1;
+}
+
+void buscarPlatillosXOrientacion(int orientacion)
+{
+    Platillo aux;
+    int cantPlatillos = CantidadRegistrosPlatillo();
+    for(int i=0; i<cantPlatillos; i++)
+    {
+        aux.LeerDeDisco(i);
+        if(aux.getOrientacionAlimentaria() == orientacion && aux.getEstadoPlatillo() == true)
+        {
+            cout<<aux.toString()<<endl;
+        }
     }
     cout<<endl;
     cout<<endl;
     system("pause");
 }
 
-    int sugerenciasXOrientacion(){
-      int orientacion, dni;
-
-      cout << "Ingrese el dni: ";
-      cin >> dni;
-      cout<<endl;
-
-        while(validarUsuarioExistente(dni) == false){
-            cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
-            cin >> dni;
-        }
-
-         orientacion = buscarOrientacion(dni);
-         buscarPlatillosXOrientacion(orientacion);
-
-         return dni;
-    }
-
-     int buscarOrientacion(int dni){
-        Usuario aux;
-        int cantUsuarios=CantidadRegistrosUsuario();
-
-        for(int i=0; i<cantUsuarios; i++)
-        {
-            aux.LeerDeDisco(i);
-            if(aux.getDNI() == dni && aux.getEstadoUsuario()== true)
-            {
-              return aux.getIdOrientacionAlimentaria();
-            }
-        }
-
-        return -1;
-    }
-
-    void buscarPlatillosXOrientacion(int orientacion){
-        Platillo aux;
-        int cantPlatillos = CantidadRegistrosPlatillo();
-        for(int i=0; i<cantPlatillos; i++)
-        {
-            aux.LeerDeDisco(i);
-            if(aux.getOrientacionAlimentaria() == orientacion && aux.getEstadoPlatillo() == true){
-              cout<<aux.toString()<<endl;
-            }
-        }
-        cout<<endl;
-        cout<<endl;
-        system("pause");
-    }
-
-    int sugerenciasXCalorias(){
-      int calorias;
-      int dniusuario;
+int sugerenciasXCalorias()
+{
+    int calorias;
+    int dniusuario;
 
     cout << "Ingrese el dni: ";
-      cin >> dniusuario;
-      cout<<endl;
+    cin >> dniusuario;
+    cout<<endl;
 
-        while(validarUsuarioExistente(dniusuario) == false){
-            cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
-            cin >> dniusuario;
-        }
-
-      cout << "Ingrese las calorias que desea consumir: ";
-      cin >> calorias;
-      cout<<endl;
-
-        while(validarCalorias(calorias) == false){
-            cout << "No hay platillos con esas calorias, ingrese otro valor:  ";
-            cin >> calorias;
-        }
-
-        buscarPlatillosXCalorias(calorias);
-        return dniusuario;
+    while(validarUsuarioExistente(dniusuario) == false)
+    {
+        cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
+        cin >> dniusuario;
     }
 
+    cout << "Ingrese las calorias que desea consumir: ";
+    cin >> calorias;
+    cout<<endl;
 
-    void buscarPlatillosXCalorias(int calorias){
-        Platillo aux;
-        int cantPlatillos = CantidadRegistrosPlatillo();
-        for(int i=0; i<cantPlatillos; i++)
+    while(validarCalorias(calorias) == false)
+    {
+        cout << "No hay platillos con esas calorias, ingrese otro valor:  ";
+        cin >> calorias;
+    }
+
+    buscarPlatillosXCalorias(calorias);
+    return dniusuario;
+}
+
+
+void buscarPlatillosXCalorias(int calorias)
+{
+    Platillo aux;
+    int cantPlatillos = CantidadRegistrosPlatillo();
+    for(int i=0; i<cantPlatillos; i++)
+    {
+        aux.LeerDeDisco(i);
+        if(aux.getCalorias() <= calorias && aux.getEstadoPlatillo() == true)
         {
-            aux.LeerDeDisco(i);
-            if(aux.getCalorias() <= calorias && aux.getEstadoPlatillo() == true){
-              cout<<aux.toString()<<endl;
-            }
+            cout<<aux.toString()<<endl;
         }
-        cout<<endl;
-        cout<<endl;
-        system("pause");
     }
+    cout<<endl;
+    cout<<endl;
+    system("pause");
+}
 
 
 bool validarCalorias(int calorias)
@@ -294,11 +333,13 @@ bool validarCalorias(int calorias)
     return false;
 }
 
- void menuSugerenciasPlatillos(){
-   int opc;
-   int aux;
+void menuSugerenciasPlatillos()
+{
+    int opc;
+    int aux;
 
-    while(true){
+    while(true)
+    {
         system("cls");
 
         cout<<"MENU SUGERENCIAS PLATILLOS"<<endl;
@@ -314,44 +355,48 @@ bool validarCalorias(int calorias)
 
         system("cls");
 
-        switch(opc){
-            case 1: aux = sugerenciasXOrientacion();
-                    cout<<endl;
-                    if(nuevoConsumoPlatillo(aux))
-                    {
-                    cout<<endl;
-                    cout<<"CONSUMO AGREGADO";
-                    cout<<endl;
-                    system("pause");
-                    }
-                    else
-                    {
-                    cout<<endl;
-                    cout<<"NO SE PUDO AGREGAR EL CONSUMO";
-                    cout<<endl;
-                    system("pause");
-                    }
-                break;
-            case 2:  aux = sugerenciasXCalorias();
-                      cout<<endl;
-                    if(nuevoConsumoPlatillo(aux))
-                    {
-                    cout<<endl;
-                    cout<<"CONSUMO AGREGADO";
-                    cout<<endl;
-                    system("pause");
-                    }
-                    else
-                    {
-                    cout<<endl;
-                    cout<<"NO SE PUDO AGREGAR EL CONSUMO";
-                    cout<<endl;
-                    system("pause");
-                    }
-                break;
-            case 0: return;
-                    break;
+        switch(opc)
+        {
+        case 1:
+            aux = sugerenciasXOrientacion();
+            cout<<endl;
+            if(nuevoConsumoPlatillo(aux))
+            {
+                cout<<endl;
+                cout<<"CONSUMO AGREGADO";
+                cout<<endl;
+                system("pause");
+            }
+            else
+            {
+                cout<<endl;
+                cout<<"NO SE PUDO AGREGAR EL CONSUMO";
+                cout<<endl;
+                system("pause");
+            }
+            break;
+        case 2:
+            aux = sugerenciasXCalorias();
+            cout<<endl;
+            if(nuevoConsumoPlatillo(aux))
+            {
+                cout<<endl;
+                cout<<"CONSUMO AGREGADO";
+                cout<<endl;
+                system("pause");
+            }
+            else
+            {
+                cout<<endl;
+                cout<<"NO SE PUDO AGREGAR EL CONSUMO";
+                cout<<endl;
+                system("pause");
+            }
+            break;
+        case 0:
+            return;
+            break;
         }
         cout<<endl;
     }
-  }
+}
