@@ -367,8 +367,9 @@
 	<iostream>
 	"FuncionesGlobales.h"
 
-1655841725 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\consumoplatillo.cpp
+1656083535 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\consumoplatillo.cpp
 	<iostream>
+	<iomanip>
 	"ConsumoPlatillo.h"
 	"Platillo.h"
 	"ProductoStock.h"

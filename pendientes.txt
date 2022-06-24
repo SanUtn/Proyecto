@@ -112,11 +112,11 @@ pendiente:
 2. Generar un consumo deberia generar un retiro. HECHO(en ambos)
 - cambiar listado de consumo platillo y de consumo productos, cambiar listado de sugerencias en consumos, en todas las sugerencias de platillo y productos.
 - revisar todo el menu reportes, como muestra los listados, cuando no existe algo no dice nada, el menu sugerencias esta repetido, las alertas de stock yo las pondria en el menu de stock(arreglar como se ven), dejaria solo en reportes los consumos anuales y mensuales.
-- ver en menu platillo en buscar que al salir genera otra pantalla con un system pause
+- ver en menu platillo en buscar que al salir genera otra pantalla con un system pause. FIX
 
 pendiente:
 1. Salir en cargas (hay que definirlo un poco mejor)
 2. cambiar listado de sugerencias en consumos, en todas las sugerencias de platillo y productos.
 3. revisar todo el menu reportes, como muestra los listados, cuando no existe algo no dice nada, el menu sugerencias esta repetido, las alertas de stock yo las pondria en el menu de stock(arreglar como se ven), dejaria solo en reportes los consumos anuales y mensuales.
-4. ver en menu platillo en buscar que al salir genera otra pantalla con un system pause
+
 

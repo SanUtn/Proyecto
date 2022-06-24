@@ -482,7 +482,6 @@ void menuPlatillo()
             break;
         case 5:
             menuBuscarPlatillo();
-            system("pause");
             break;
         case 0:
             return;
