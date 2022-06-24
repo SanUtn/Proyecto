@@ -41,6 +41,7 @@ using namespace std;
     int CantidadRegistrosReceta();
     Receta cargarReceta();
     void listarRecetas();
+    void listarRecetas2();
     void menuRecetas();
     int EliminarReceta();
     void cargarVectorConRecetas(Receta *vRecetas, int tam);

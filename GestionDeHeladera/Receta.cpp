@@ -138,7 +138,7 @@ int EliminarReceta()
     Receta aux;
     int pos=0, idReceta;
 
-    listarRecetas();
+    listarRecetas2();
     cout<<endl;
 
     cout<<"Ingrese el ID de la receta a eliminar: ";
@@ -219,6 +219,53 @@ void listarRecetas()
     //muestra de la opcion elegida los ingredientes y las instrucciones
     elegirReceta(opcion);
 }
+
+void listarRecetas2()
+{
+    Receta aux;
+    int cont=0, opc, opcion;
+    int cantReg = CantidadRegistrosReceta();
+
+    cout << left;
+    cout << setw(10) << "\t";
+    cout << "RECETAS" << endl;
+    cout << "--------------------------------------"  << endl;
+    cout << setw(4)  << "ID";
+    cout << setw(15) << "PLATILLO" << endl;
+    cout << "--------------------------------------" << endl;
+
+    for(int i=0; i<cantReg; i++)
+    {
+        aux.LeerDeDisco(i);
+        if(aux.getEstadoReceta())
+        {
+            cout << left;
+            cout << setw(4)  << aux.getIdReceta();
+            cout << setw(15) << mostrarNombrePlatillo(aux.getIdPlatillo()) << endl;
+            cont++;
+        }
+    }
+    cout << "--------------------------------------" << endl;
+    cout << "Total: " << cont << " recetas.";
+
+    cout<<endl;
+    cout<<endl;
+
+    //si no hay recetas disponibles sale para no hacer elegir
+    if(cont == 0)
+    {
+        cout<<"Lo sentimos no hay recetas disponibles.";
+        cout<<endl;
+        system("pause");
+        return;
+    }
+
+    cout<<endl;
+    cout<<endl;
+
+}
+
+
 
 void cargarVectorConRecetas(Receta *vRecetas, int tam)
 {

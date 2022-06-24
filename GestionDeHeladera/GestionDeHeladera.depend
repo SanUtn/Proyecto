@@ -791,7 +791,7 @@
 1656022337 c:\users\asus\documents\github\proyecto\gestiondeheladera\retiroproducto.h
 	"Fecha.h"
 
-1656032782 c:\users\asus\documents\github\proyecto\gestiondeheladera\receta.h
+1656035608 c:\users\asus\documents\github\proyecto\gestiondeheladera\receta.h
 	"Platillo.h"
 	<cstdlib>
 	<cstring>
@@ -879,7 +879,7 @@
 	"ProductosxPlatillo.h"
 	"FuncionesGlobales.h"
 
-1656031484 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\receta.cpp
+1656035608 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\receta.cpp
 	<iostream>
 	<string>
 	<iomanip>
@@ -887,8 +887,9 @@
 	"FuncionesGlobales.h"
 	"ProductosxPlatillo.h"
 
-1656022337 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\retiroproducto.cpp
+1656036352 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\retiroproducto.cpp
 	<iostream>
+	<iomanip>
 	"RetiroProducto.h"
 	"Producto.h"
 	"ProductoStock.h"

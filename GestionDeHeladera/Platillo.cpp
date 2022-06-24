@@ -300,15 +300,31 @@ void buscarPlatilloNombre()
     nombre = mayuscula(nombre);
     cout << endl;
 
+     cout<<endl;
+    cout << left;
+    cout << setw(5) << "\t";
+    cout <<  "LISTADO DE PLATILLOS POR NOMBRE " << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
+    cout << left;
+    cout << setw(5) << "ID";
+    cout << setw(20) << "NOMBRE";
+    cout << setw(15) << "FECHA";
+    cout << setw(20) << "ORIENTACION A.";
+    cout << setw(10) << "CALORIAS"<<endl;
+    cout << "-------------------------------------------------------------------------" << endl;
+
     while(reg.LeerDeDisco(pos))
     {
         if(reg.getNombrePlatillo() == nombre && reg.getEstadoPlatillo())
         {
-            cout << reg.toString() << endl;
+            reg.toList();
             bandera = true;
         }
         pos++;
     }
+
+    cout<<endl;
+    cout<<endl;
 
     if(bandera == false)
     {
@@ -329,15 +345,31 @@ void busquedaPlatilloOrientacion()
     cin >> opc;
     cout << endl;
 
+    cout<<endl;
+    cout << left;
+    cout << setw(5) << "\t";
+    cout <<  "LISTADO DE PLATILLOS POR ORIENTACION " << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
+    cout << left;
+    cout << setw(5) << "ID";
+    cout << setw(20) << "NOMBRE";
+    cout << setw(15) << "FECHA";
+    cout << setw(20) << "ORIENTACION A.";
+    cout << setw(10) << "CALORIAS"<<endl;
+    cout << "-------------------------------------------------------------------------" << endl;
+
     while(reg.LeerDeDisco(pos))
     {
         if(reg.getOrientacionAlimentaria() == opc && reg.getEstadoPlatillo())
         {
-            cout << reg.toString() << endl;
+            reg.toList();
             bandera = true;
         }
         pos++;
     }
+
+     cout<<endl;
+     cout<<endl;
 
     if(bandera == false)
     {

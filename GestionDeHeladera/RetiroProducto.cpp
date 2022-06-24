@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "RetiroProducto.h"
 #include "Producto.h"
 #include "ProductoStock.h"
@@ -199,14 +200,26 @@ void listarRetirosDeProductosExistentes()
 {
     RetiroProducto aux;
     int cantProductos = CantidadRegistrosRetiroProductosExistentes();
-    cout << "LISTADO DE PRODUCTOS RETIRADOS " << endl;
-    cout << "----------------------------------" << endl;
+    cout << left;
+    cout << setw(5) << "\t";
+    cout <<  "LISTADO DE PRODUCTOS RETIRADOS " << endl;
+    cout << "--------------------------------------------------" << endl;
+    cout << left;
+    cout << setw(4)  <<"Id";
+    cout << setw(10) <<"Usuario";
+    cout << setw(15) <<"Producto";
+    cout << setw(15)  <<"Fecha" << endl;
+    cout << "---------------------------------------------------" << endl;
     for(int i=0; i<cantProductos; i++)
     {
-        aux.LeerDeDisco(i);
-        cout<<aux.toString()<<endl;
+            aux.LeerDeDisco(i);
+            cout << left;
+            cout << setw(4) << to_string(aux.getIdRetiro());
+            cout << setw(10) << to_string(aux.getDniUsuario());
+            cout << setw(15) << mostrarNombreProducto(aux.getIdProducto());
+            cout << setw(15) << aux.getFechaRetiro().toString() << endl;
     }
-    cout << "----------------------------------" << endl;
+    cout << "---------------------------------------------------" << endl;
     cout << "Total: " << cantProductos << " registros.";
     cout<<endl;
     cout<<endl;

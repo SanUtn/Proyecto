@@ -104,5 +104,13 @@ CAMBIE LISTADO DE PLATILLOS, Y DE STOCK, EN PLATILLOS ME COSTO JAJAJ PERO AGREGU
 - Arregle listado de retiro de productos que se veia feo.
 - Agregue como se ve el listado de busqueda de platillo por nombre
 - Agregue como se ve el listado de busqueda de platillo por orientacion
+- cambie en recetas que en sugerencia si ponias el id de una existente pero no tiene stock te la mostraba igual, no en el listado de sugerencias pero si al elegir la opcion, asi que agregue otra funcion elegir opcion 2 que valida que aunque exista la receta tenga stock para mostrarte.
+- arregle eliminar receta que quedo mal el listado porque te hacia elegir la opcion para mostrarte ingredientes
 
-- receta linea 300 no etiendo mucho porque llena el vector en cada vuelta, cual es el sentido.
+pendiente:
+1. Opcion de salir en cargas productos, platillo. 
+2. Generar un consumo deberia generar un retiro. HECHO EN PLATILLO, HAY QUE HACERLO EN CONSUMO PRODUCTO.
+- cambiar listado de consumo platillo y de consumo productos, cambiar listado de sugerencias en consumos, en todas las sugerencias de platillo y productos.
+- revisar todo el menu reportes, como muestra los listados, cuando no existe algo no dice nada, el menu sugerencias esta repetido, las alertas de stock yo las pondria en el menu de stock(arreglar como se ven), dejaria solo en reportes los consumos anuales y mensuales.
+- ver en menu platillo en buscar que al salir genera otra pantalla con un system pause
+
