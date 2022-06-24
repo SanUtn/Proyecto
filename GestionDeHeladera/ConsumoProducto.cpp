@@ -2,6 +2,7 @@
 #include "ConsumoProducto.h"
 #include "Producto.h"
 #include "ProductoStock.h"
+#include "RetiroProducto.h"
 
 using namespace std;
 
@@ -69,7 +70,9 @@ using namespace std;
         bool ok = reg.GrabarEnDisco();
         if(ok){
             int producto= reg.getIdProducto();
-            ok = retirarProductoDelStockConsumoProducto(producto);
+            if(retirarProductoDelStockConsumoProducto(producto)){
+                ok = retirarProducto(reg.getIdProducto());
+            }
         }
         return ok;
     }

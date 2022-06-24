@@ -454,7 +454,7 @@ void menuProducto()
             break;
 
         case 4:
-            if(retirarProducto())
+            if(retirarProductoManual())
             {
                 cout<<endl;
                 cout<<"PRODUCTO RETIRADO";

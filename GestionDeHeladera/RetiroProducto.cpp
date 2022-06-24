@@ -68,11 +68,24 @@ bool RetiroProducto::ModificarArchivo(int pos)
 
 
 /// Funciones globales para gestionar Producto
-bool retirarProducto()
+bool retirarProducto(int idproducto)
 {
     bool ok;
     RetiroProducto reg;
-    reg = retirarProductoExistente();
+    reg = retirarProductoExistente(idproducto);
+    if(reg.getIdRetiro() != -1){
+        ok= reg.GrabarEnDisco();
+    }else{
+        ok = false;
+    }
+    return ok;
+}
+
+bool retirarProductoManual()
+{
+    bool ok;
+    RetiroProducto reg;
+    reg = retirarProductoExistenteManual();
     if(reg.getIdRetiro() != -1){
         ok= reg.GrabarEnDisco();
     }else{
@@ -101,7 +114,7 @@ int CantidadRegistrosRetiroProductosExistentes()
     return cantidad;
 }
 
-RetiroProducto retirarProductoExistente()
+RetiroProducto retirarProductoExistenteManual()
 {
     int id;
     int dniUsuario;
@@ -110,12 +123,12 @@ RetiroProducto retirarProductoExistente()
 
     id = CantidadRegistrosRetiroProductosExistentes()+1;
 
-    cout << "Ingrese el dni del Usuario: ";//esto despues no iria porque lo tomaría de la sesión
+    cout << "Ingrese el dni del Usuario: ";
     cin >> dniUsuario;
 
     while(validarUsuarioExistente(dniUsuario) == false)
     {
-        cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";//esto despues no iria porque lo tomaría de la sesión
+        cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniUsuario;
     }
 
@@ -154,6 +167,43 @@ RetiroProducto retirarProductoExistente()
         cout << "No hay stock del producto seleccionado" << endl;
         reg.setIdRetiro(-1);
     }
+
+    cout<<endl;
+    cout<<endl;
+    return reg;
+}
+
+RetiroProducto retirarProductoExistente(int idproducto)
+{
+    int id;
+    int dniUsuario;
+
+    id = CantidadRegistrosRetiroProductosExistentes()+1;
+
+    cout << "Ingrese el dni del Usuario: ";//esto despues no iria porque lo tomaría de la sesión
+    cin >> dniUsuario;
+
+    while(validarUsuarioExistente(dniUsuario) == false)
+    {
+        cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";//esto despues no iria porque lo tomaría de la sesión
+        cin >> dniUsuario;
+    }
+
+    while(validarProductoExistenteID(idproducto) == false)
+    {
+        cout << "El ID de producto que ingreso no existe en el sistema, ingrese otro:  ";
+        cin >> idproducto;
+    }
+
+    //ver si cargamos la fecha o tomamos la actual
+
+    RetiroProducto reg;
+
+    Fecha fecha;
+    reg.setIdRetiro(id);
+    reg.setDniUsuario(dniUsuario);
+    reg.setIdProducto(idproducto);
+    reg.setFechaRetiro(fecha);
 
     cout<<endl;
     cout<<endl;

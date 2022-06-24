@@ -34,11 +34,13 @@
 
 
     //Funciones que no pertenecen a la clase
-    bool retirarProducto();
+    bool retirarProducto(int idproducto);
     int CantidadRegistrosRetiroProductosExistentes();
-    RetiroProducto retirarProductoExistente();
+    RetiroProducto retirarProductoExistente(int idproducto);
     void listarRetirosDeProductosExistentes();
     bool retirarProductoExistentePorConsumo(int idplatillo, int usuario);
+    bool retirarProductoManual();
+    RetiroProducto retirarProductoExistenteManual();
 
 
 
