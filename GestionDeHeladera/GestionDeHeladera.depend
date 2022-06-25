@@ -823,7 +823,7 @@
 	"Fecha.h"
 	<ctime>
 
-1656122247 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\funcionesglobales.cpp
+1656123609 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\funcionesglobales.cpp
 	<iostream>
 	<iomanip>
 	"FuncionesGlobales.h"

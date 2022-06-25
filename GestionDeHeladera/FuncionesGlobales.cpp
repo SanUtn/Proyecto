@@ -127,6 +127,7 @@ void menuReportes()
         cout<<"2. CONSUMOS MENSUALES"<<endl;
         cout<<"3. ALERTA DE STOCK"<<endl;
         cout<<"4. ALERTA SIN STOCK"<<endl;
+
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
