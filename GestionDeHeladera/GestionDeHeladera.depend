@@ -726,8 +726,9 @@
 	"Usuario.h"
 	"FuncionesGlobales.h"
 
-1656022337 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoplatillo.cpp
+1656117125 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoplatillo.cpp
 	<iostream>
+	<iomanip>
 	"ConsumoPlatillo.h"
 	"Platillo.h"
 	"ProductoStock.h"
@@ -793,7 +794,7 @@
 	<string>
 	"Fecha.h"
 
-1656022337 c:\users\asus\documents\github\proyecto\gestiondeheladera\retiroproducto.h
+1656113204 c:\users\asus\documents\github\proyecto\gestiondeheladera\retiroproducto.h
 	"Fecha.h"
 
 1656035608 c:\users\asus\documents\github\proyecto\gestiondeheladera\receta.h
@@ -808,11 +809,14 @@
 	<string>
 	"OrientacionAlimentaria.h"
 
-1656022337 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoproducto.cpp
+1656115098 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoproducto.cpp
 	<iostream>
+	<iomanip>
 	"ConsumoProducto.h"
 	"Producto.h"
 	"ProductoStock.h"
+	"RetiroProducto.h"
+	"FuncionesGlobales.h"
 
 1656022337 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\fecha.cpp
 	<iostream>
@@ -853,14 +857,14 @@
 	"OrientacionAlimentaria.h"
 	"FuncionesGlobales.h"
 
-1656026778 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\platillo.cpp
+1656113204 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\platillo.cpp
 	<iostream>
 	<iomanip>
 	"ProductosxPlatillo.h"
 	"Platillo.h"
 	"FuncionesGlobales.h"
 
-1656024844 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\producto.cpp
+1656113204 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\producto.cpp
 	<iostream>
 	<iomanip>
 	"Producto.h"
@@ -892,7 +896,7 @@
 	"FuncionesGlobales.h"
 	"ProductosxPlatillo.h"
 
-1656036352 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\retiroproducto.cpp
+1656115098 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\retiroproducto.cpp
 	<iostream>
 	<iomanip>
 	"RetiroProducto.h"
@@ -901,7 +905,7 @@
 	"Usuario.h"
 	"FuncionesGlobales.h"
 
-1656024047 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\usuario.cpp
+1656113204 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\usuario.cpp
 	<iostream>
 	<iomanip>
 	"Usuario.h"

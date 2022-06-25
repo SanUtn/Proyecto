@@ -180,12 +180,12 @@ RetiroProducto retirarProductoExistente(int idproducto)
 
     id = CantidadRegistrosRetiroProductosExistentes()+1;
 
-    cout << "Ingrese el dni del Usuario: ";//esto despues no iria porque lo tomaría de la sesión
+    cout << "Ingrese el dni del Usuario: ";
     cin >> dniUsuario;
 
     while(validarUsuarioExistente(dniUsuario) == false)
     {
-        cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";//esto despues no iria porque lo tomaría de la sesión
+        cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniUsuario;
     }
 
@@ -194,8 +194,6 @@ RetiroProducto retirarProductoExistente(int idproducto)
         cout << "El ID de producto que ingreso no existe en el sistema, ingrese otro:  ";
         cin >> idproducto;
     }
-
-    //ver si cargamos la fecha o tomamos la actual
 
     RetiroProducto reg;
 

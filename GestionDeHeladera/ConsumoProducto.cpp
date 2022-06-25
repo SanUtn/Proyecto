@@ -139,7 +139,7 @@ ConsumoProducto cargarConsumoProducto()
     reg.setFechaConsumo(fecha);
     cout<<endl;
     cout<<endl;
-    system("pause");
+    //system("pause");
     return reg;
 }
 

@@ -138,7 +138,7 @@ ConsumoPlatillo cargarConsumoPlatillo(int u)
     reg.setUsuario(u);
     cout<<endl;
     cout<<endl;
-    system("pause");
+    //system("pause");
     return reg;
 }
 
@@ -256,17 +256,29 @@ void buscarPlatillosXOrientacion(int orientacion)
 {
     Platillo aux;
     int cantPlatillos = CantidadRegistrosPlatillo();
+    cout<<endl;
+    cout << left;
+    cout << setw(5) << "\t";
+    cout <<  "LISTADO DE PLATILLOS POR ORIENTACION " << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
+    cout << left;
+    cout << setw(5) << "ID";
+    cout << setw(20) << "NOMBRE";
+    cout << setw(15) << "FECHA";
+    cout << setw(20) << "ORIENTACION A.";
+    cout << setw(10) << "CALORIAS"<<endl;
+    cout << "-------------------------------------------------------------------------" << endl;
     for(int i=0; i<cantPlatillos; i++)
     {
         aux.LeerDeDisco(i);
         if(aux.getOrientacionAlimentaria() == orientacion && aux.getEstadoPlatillo() == true)
         {
-            cout<<aux.toString()<<endl;
+            aux.toList();
         }
     }
     cout<<endl;
     cout<<endl;
-    system("pause");
+    //system("pause");
 }
 
 int sugerenciasXCalorias()
@@ -303,17 +315,29 @@ void buscarPlatillosXCalorias(int calorias)
 {
     Platillo aux;
     int cantPlatillos = CantidadRegistrosPlatillo();
+    cout<<endl;
+    cout << left;
+    cout << setw(5) << "\t";
+    cout <<  "LISTADO DE PLATILLOS POR CALORIAS " << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
+    cout << left;
+    cout << setw(5) << "ID";
+    cout << setw(20) << "NOMBRE";
+    cout << setw(15) << "FECHA";
+    cout << setw(20) << "ORIENTACION A.";
+    cout << setw(10) << "CALORIAS"<<endl;
+    cout << "-------------------------------------------------------------------------" << endl;
     for(int i=0; i<cantPlatillos; i++)
     {
         aux.LeerDeDisco(i);
         if(aux.getCalorias() <= calorias && aux.getEstadoPlatillo() == true)
         {
-            cout<<aux.toString()<<endl;
+            aux.toList();
         }
     }
     cout<<endl;
     cout<<endl;
-    system("pause");
+    //system("pause");
 }
 
 
