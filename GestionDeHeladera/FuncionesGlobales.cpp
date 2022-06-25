@@ -125,9 +125,8 @@ void menuReportes()
         cout<<"-------------------"<<endl;
         cout<<"1. CONSUMOS ANUALES "<<endl;
         cout<<"2. CONSUMOS MENSUALES"<<endl;
-        cout<<"3. MENU DE SUGERENCIAS"<<endl;
-        cout<<"4. ALERTA DE STOCK"<<endl;
-        cout<<"5. ALERTA SIN STOCK"<<endl;
+        cout<<"3. ALERTA DE STOCK"<<endl;
+        cout<<"4. ALERTA SIN STOCK"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -146,14 +145,10 @@ void menuReportes()
             menuConsumosMensuales();
             break;
         case 3:
-            //MenuSugerencias();
-            system("pause");
-            break;
-        case 4:
             alertaStock();
             system("pause");
             break;
-             case 5:
+        case 4:
             alertaSinStock();
             system("pause");
             break;
@@ -557,12 +552,16 @@ void alertaStock()
     int cantStocks = CantidadRegistrosStock();
     cout << "PRODUCTOS PROXIMOS A AGOTARSE" << endl;
     cout << "----------------------------------" << endl;
+    cout << left;
+    cout << setw(20) << "PRODUCTO";
+    cout << setw(20) << "STOCK" << endl;
+    cout<< "----------------------------------" << endl;
     for(int i=0; i<cantStocks; i++)
     {
         aux.LeerDeDisco(i);
         if(aux.getEstadoStock() &&  aux.getStock()<= 2 && aux.getStock()!= 0 )
         {
-            cout<<aux.toString()<<endl;
+            aux.toList();
         }
         else
         {
@@ -580,14 +579,18 @@ void alertaSinStock()
     ProductoStock aux;
     int cont=0;
     int cantStocks = CantidadRegistrosStock();
-    cout << "PRODUCTOS PROXIMOS A AGOTARSE" << endl;
+    cout << "PRODUCTOS SIN STOCK" << endl;
     cout << "----------------------------------" << endl;
+    cout << left;
+    cout << setw(20) << "PRODUCTO";
+    cout << setw(20) << "STOCK" << endl;
+    cout<< "----------------------------------" << endl;
     for(int i=0; i<cantStocks; i++)
     {
         aux.LeerDeDisco(i);
         if(aux.getEstadoStock() &&  aux.getStock()== 0)
         {
-            cout<<aux.toString()<<endl;
+            aux.toList();
         }
         else
         {
