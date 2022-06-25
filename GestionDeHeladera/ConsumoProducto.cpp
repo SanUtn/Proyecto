@@ -16,6 +16,12 @@ string ConsumoProducto::toString()
     return cadena;
 }
 
+void ConsumoProducto::toList(){
+            cout << left;
+            cout << setw(15)  << mostrarNombreProducto(getIdProducto());
+            cout << setw(15) << getFechaConsumo().toString() << endl;
+}
+
 
 bool ConsumoProducto::LeerDeDisco(int pos)
 {
@@ -179,9 +185,7 @@ void listarConsumosPoductos()
         for(int i=0; i<cantConsumoProducto; i++)
         {
             aux.LeerDeDisco(i);
-            cout << left;
-            cout << setw(15)  << mostrarNombreProducto(aux.getIdProducto());
-            cout << setw(15) << aux.getFechaConsumo().toString() << endl;
+            aux.toList();
         }
 
     }

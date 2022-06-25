@@ -25,6 +25,7 @@ using namespace std;
 
              //metodos
             string toString();
+            void toList();
             bool LeerDeDisco(int pos);
             bool GrabarEnDisco();
             bool ModificarArchivo(int pos);

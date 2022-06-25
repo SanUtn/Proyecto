@@ -15,6 +15,13 @@ string ConsumoPlatillo::toString()
     return cadena;
 }
 
+void ConsumoPlatillo::toList(){
+            cout << left;
+            cout << setw(15)  << mostrarNombrePlatillo(idPlatillo);
+            cout << setw(15) << getFechaConsumo().toString();
+            cout << setw(15) << getUsuario() << endl;
+}
+
 
 bool ConsumoPlatillo::LeerDeDisco(int pos)
 {
@@ -199,10 +206,7 @@ void listarConsumosPlatillo()
         for(int i=0; i<cantConsumoPlatillo; i++)
         {
             aux.LeerDeDisco(i);
-            cout << left;
-            cout << setw(15)  << mostrarNombrePlatillo(aux.getIdPlatillo());
-            cout << setw(15) << aux.getFechaConsumo().toString();
-            cout << setw(15) << aux.getUsuario() << endl;
+            aux.toList();
         }
     }
     else

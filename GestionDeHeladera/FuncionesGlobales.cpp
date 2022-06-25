@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "FuncionesGlobales.h"
 
 using namespace std;
@@ -112,95 +113,6 @@ void copiarProductos(Producto *vDinamico, int cantidad, int idplatillo)
 }
 
 
-void  sugerenciaPorStock()
-{
-    Platillo reg;
-    int pos = 0;
-    bool bandera;
-
-    while(reg.LeerDeDisco(pos))
-    {
-        bandera = true;
-        if(reg.getEstadoPlatillo())
-        {
-            Producto *vDinamico;
-
-            int cantidad = CantidadProductosxPlatillo(reg.getIdPlatillo());
-
-            vDinamico = new Producto[cantidad];
-
-            if(vDinamico == NULL)
-            {
-                cout << "ERROR" <<endl;
-                return;
-            }
-
-            copiarProductos(vDinamico,cantidad, reg.getIdPlatillo());
-
-            for(int i = 0; i<cantidad; i++)
-            {
-                if(buscarStockDeProducto(vDinamico[i].getIdProducto())<= 0)
-                {
-                    bandera = false;
-                }
-            }
-
-            if(bandera)
-            {
-                cout << reg.toString() << endl;
-            }
-
-            delete vDinamico;
-        }
-        pos++;
-    }
-
-}
-
-void MenuSugerencias()
-{
-    int opc;
-    while(true)
-    {
-        system("cls");
-
-        cout<<"MENU SUGERENCIAS"<<endl;
-        cout<<"-------------------"<<endl;
-        cout<<"1. SUGERENCIA POR ORIENTACION "<<endl;
-        cout<<"2. SUGERENCIA POR CALORIAS"<<endl;
-        cout<<"3. SUGERENCIA POR DISPONIBILIDAD"<<endl;
-        cout<<"-------------------"<<endl;
-        cout<<"0. SALIR"<<endl;
-        cout<<endl;
-
-        cout<<"OPCION: ";
-        cin>>opc;
-
-        system("cls");
-
-        switch(opc)
-        {
-        case 1:
-            sugerenciasXOrientacion();
-            system("pause");
-            break;
-        case 2:
-            sugerenciasXCalorias();
-            system("pause");
-            break;
-        case 3:
-            sugerenciaPorStock();
-            system("pause");
-            break;
-        case 0:
-            return;
-            break;
-        }
-        cout<<endl;
-    }
-}
-
-
 
 void menuReportes()
 {
@@ -228,15 +140,13 @@ void menuReportes()
         switch(opc)
         {
         case 1:
-            PlatillosAnual();
-            system("pause");
+            menuConsumosAnuales();
             break;
         case 2:
-            PlatillosMensual();
-            system("pause");
+            menuConsumosMensuales();
             break;
         case 3:
-            MenuSugerencias();
+            //MenuSugerencias();
             system("pause");
             break;
         case 4:
@@ -245,6 +155,90 @@ void menuReportes()
             break;
              case 5:
             alertaSinStock();
+            system("pause");
+            break;
+        case 0:
+            return;
+            break;
+        }
+        cout<<endl;
+    }
+}
+
+void menuConsumosAnuales()
+{
+    int opc;
+    while(true)
+    {
+        system("cls");
+
+        cout<<"MENU CONSUMOS ANUALES"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"1. CONSUMOS PLATILLOS "<<endl;
+        cout<<"2. CONSUMOS PRODUCTOS"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"0. SALIR"<<endl;
+        cout<<endl;
+
+        cout<<"OPCION: ";
+        cin>>opc;
+
+        system("cls");
+
+        switch(opc)
+        {
+        case 1:
+            PlatillosAnual();
+            cout<<endl;
+            cout<<endl;
+            system("pause");
+            break;
+        case 2:
+            ProductosAnual();
+            cout<<endl;
+            cout<<endl;
+            system("pause");
+            break;
+        case 0:
+            return;
+            break;
+        }
+        cout<<endl;
+    }
+}
+
+void menuConsumosMensuales()
+{
+    int opc;
+    while(true)
+    {
+        system("cls");
+
+        cout<<"MENU CONSUMOS MENSUALES"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"1. CONSUMOS PLATILLOS "<<endl;
+        cout<<"2. CONSUMOS PRODUCTOS"<<endl;
+        cout<<"-------------------"<<endl;
+        cout<<"0. SALIR"<<endl;
+        cout<<endl;
+
+        cout<<"OPCION: ";
+        cin>>opc;
+
+        system("cls");
+
+        switch(opc)
+        {
+        case 1:
+            PlatillosMensual();
+            cout<<endl;
+            cout<<endl;
+            system("pause");
+            break;
+        case 2:
+            ProductosMensual();
+            cout<<endl;
+            cout<<endl;
             system("pause");
             break;
         case 0:
@@ -306,17 +300,7 @@ string mayuscula(string cadena)
     return cadena;
 }
 
-/*Producto buscarProductoPorId(int id){
-    Producto reg;
-    int pos =0;
 
-    while(reg.LeerDeDisco(pos)){
-            if(reg.getIdProducto() == id && reg.getEstadoProducto()){
-                return reg;
-            }
-        pos++;
-    }
-}*/
 
 void eliminarStock(int idproducto)
 {
@@ -327,7 +311,6 @@ void eliminarStock(int idproducto)
     {
         if(reg.getIdProducto() == idproducto && reg.getEstadoStock())
         {
-            //EliminarProductoStock(idproducto);HACE LO MISMO QUE ESTA FUNCION RECORRE EL MISMO ARCHIVO.
             reg.setEstadoStock(false);
             reg.ModificarArchivo(pos);
         }
@@ -398,17 +381,42 @@ void PlatillosAnual()
     ConsumoPlatillo reg;
     int pos = 0;
     int opc;
+    bool bandera=true; //para mostrar el encabezado.
 
     cout << "Ingrese el anio a consultar: ";
     cin >> opc;
 
-    while(reg.LeerDeDisco(pos))
+        cout<<endl;
+        cout<<endl;
+
+    while(reg.LeerDeDisco(pos++))
     {
         if (reg.getFechaConsumo().getAnio() == opc)
         {
-            cout << reg.toString() << endl;
+            if(bandera==true){
+                cout << left;
+                cout << setw(15) << "\t";
+                cout << "CONSUMOS ANUALES DE PLATILLOS" << endl;
+                cout << "---------------------------------------------------------------" << endl;
+                cout << setw(15)  << "PLATILLO";
+                cout << setw(15) << "FECHA CONSUMO";
+                cout << setw(15) << "DNI USUARIO" << endl;
+                cout << "---------------------------------------------------------------" << endl;
+                bandera = false;
+            }
+            reg.toList();
+        }else{
+        cout<<endl;
+        cout<<"No existen consumos, ingrese otro anio o 0 para salir: ";
+        cin>>opc;
+        cout<<endl;
+            if(opc==0){
+                return;
+            }else{
+                bandera=true;//para que vuelva a mostrar el encabezado.
+                pos=0;//para que vuelva a recorrer todos
+            }
         }
-        pos++;
     }
 }
 
@@ -417,17 +425,128 @@ void PlatillosMensual()
     ConsumoPlatillo reg;
     int pos = 0;
     int opc;
+    bool bandera = true;
 
     cout << "Ingrese el mes a consultar: ";
     cin >> opc;
 
-    while(reg.LeerDeDisco(pos))
+    cout<<endl;
+    cout<<endl;
+
+    while(reg.LeerDeDisco(pos++))
     {
         if (reg.getFechaConsumo().getMes() == opc)
         {
-            cout << reg.toString() << endl;
+            if(bandera==true){
+                cout << left;
+                cout << setw(15) << "\t";
+                cout << "CONSUMOS MENSUALES DE PLATILLOS" << endl;
+                cout << "---------------------------------------------------------------" << endl;
+                cout << setw(15)  << "PLATILLO";
+                cout << setw(15) << "FECHA CONSUMO";
+                cout << setw(15) << "DNI USUARIO" << endl;
+                cout << "---------------------------------------------------------------" << endl;
+                bandera = false;
+            }
+            reg.toList();
+        }else{
+        cout<<endl;
+        cout<<"No existen consumos, ingrese otro MES o 0 para salir: ";
+        cin>>opc;
+        cout<<endl;
+            if(opc==0){
+                return;
+            }else{
+                bandera=true;//para que vuelva a mostrar el encabezado.
+                pos=0;//para que vuelva a recorrer todos
+            }
         }
-        pos++;
+    }
+}
+
+void ProductosAnual()
+{
+    ConsumoProducto reg;
+    int pos = 0;
+    int opc;
+    bool bandera=true; //para mostrar el encabezado.
+
+    cout << "Ingrese el anio a consultar: ";
+    cin >> opc;
+
+        cout<<endl;
+        cout<<endl;
+
+    while(reg.LeerDeDisco(pos++))
+    {
+        if (reg.getFechaConsumo().getAnio() == opc)
+        {
+            if(bandera==true){
+                cout << left;
+                cout << setw(15) << "\t";
+                cout << "CONSUMOS PRODUCTOS" << endl;
+                cout << "---------------------------------------------------------------" << endl;
+                cout << setw(15)  << "PRODUCTO";
+                cout << setw(15) << "FECHA CONSUMO" << endl;
+                cout << "---------------------------------------------------------------" << endl;
+                bandera = false;
+            }
+            reg.toList();
+        }else{
+        cout<<endl;
+        cout<<"No existen consumos, ingrese otro anio o 0 para salir: ";
+        cin>>opc;
+        cout<<endl;
+            if(opc==0){
+                return;
+            }else{
+                bandera=true;//para que vuelva a mostrar el encabezado.
+                pos=0;//para que vuelva a recorrer todos
+            }
+        }
+    }
+}
+
+void ProductosMensual()
+{
+    ConsumoProducto reg;
+    int pos = 0;
+    int opc;
+    bool bandera = true;
+
+    cout << "Ingrese el mes a consultar: ";
+    cin >> opc;
+
+    cout<<endl;
+    cout<<endl;
+
+    while(reg.LeerDeDisco(pos++))
+    {
+        if (reg.getFechaConsumo().getMes() == opc)
+        {
+            if(bandera==true){
+                cout << left;
+                cout << setw(15) << "\t";
+                cout << "CONSUMOS PRODUCTO" << endl;
+                cout << "---------------------------------------------------------------" << endl;
+                cout << setw(15)  << "PRODUCTO";
+                cout << setw(15) << "FECHA CONSUMO" << endl;
+                cout << "---------------------------------------------------------------" << endl;
+                bandera = false;
+            }
+            reg.toList();
+        }else{
+        cout<<endl;
+        cout<<"No existen consumos, ingrese otro MES o 0 para salir: ";
+        cin>>opc;
+        cout<<endl;
+            if(opc==0){
+                return;
+            }else{
+                bandera=true;//para que vuelva a mostrar el encabezado.
+                pos=0;//para que vuelva a recorrer todos
+            }
+        }
     }
 }
 
@@ -481,61 +600,3 @@ void alertaSinStock()
     cout<<endl;
 }
 
-/*RetiroProducto retirarProductoPorConsumo(int idplatillo)
-{
-    int id;
-    int dniUsuario;
-    int idProducto;
-    int dia, mes, anio;
-
-    id = CantidadRegistrosRetiroProductosExistentes()+1;
-
-    cout << "Ingrese el dni del Usuario: ";//esto despues no iria porque lo tomaría de la sesión
-    cin >> dniUsuario;
-
-    while(validarUsuarioExistente(dniUsuario) == false)
-    {
-        cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";//esto despues no iria porque lo tomaría de la sesión
-        cin >> dniUsuario;
-    }
-
-    cout<<endl;
-    listarProductos();
-    cout<<endl;
-    cout<<"Ingrese el id del Producto: ";
-    cin>>idProducto;
-
-    while(validarProductoExistenteID(idProducto) == false)
-    {
-        cout << "El ID de producto que ingreso no existe en el sistema, ingrese otro:  ";
-        cin >> idProducto;
-    }
-
-    //ver si cargamos la fecha o tomamos la actual
-    cout << "Ingrese el dia: ";
-    cin >> dia;
-    cout << "Ingrese el mes: ";
-    cin >> mes;
-    cout << "Ingrese el anio: ";
-    cin >> anio;
-
-    RetiroProducto reg;
-
-    if(retirarProductoDelStock(idProducto))
-    {
-        Fecha fecha(dia, mes, anio);
-        reg.setIdRetiro(id);
-        reg.setDniUsuario(dniUsuario);
-        reg.setIdProducto(idProducto);
-        reg.setFechaRetiro(fecha);
-    }
-    else
-    {
-        cout << "No hay stock del producto seleccionado" << endl;
-        reg.setIdRetiro(-1);
-    }
-
-    cout<<endl;
-    cout<<endl;
-    return reg;
-}*/
