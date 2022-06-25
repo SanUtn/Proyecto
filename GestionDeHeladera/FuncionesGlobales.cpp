@@ -127,7 +127,8 @@ void menuReportes()
         cout<<"2. CONSUMOS MENSUALES"<<endl;
         cout<<"3. ALERTA DE STOCK"<<endl;
         cout<<"4. ALERTA SIN STOCK"<<endl;
-
+        cout<<"5. PRODUCTOS A VENCER"<<endl;
+        cout<<"6. PRODUCTOS VENCIDOS"<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -151,6 +152,14 @@ void menuReportes()
             break;
         case 4:
             alertaSinStock();
+            system("pause");
+            break;
+        case 5:
+            alertaDeProductosAVencer();
+            system("pause");
+            break;
+        case 6:
+            alertaDeProductosVencidos();
             system("pause");
             break;
         case 0:
@@ -358,19 +367,6 @@ void eliminarRecetasPorPlatillo(int idplatillo)
             pos++;
         }
     }
-
-void prueba()
-{
-    Producto reg;
-
-    int pos = 0;
-
-    while(reg.LeerDeDisco(pos))
-    {
-        cout << reg.toString() << endl;
-        pos++;
-    }
-}
 
 void PlatillosAnual()
 {
@@ -603,4 +599,129 @@ void alertaSinStock()
     cout<<endl;
     cout<<endl;
 }
+
+//muestra los vencidos y los que les falta dos dias para vencer
+void alertaDeProductosAVencer()
+{
+    Producto aux;
+    Fecha fecha;
+    int cont=0;
+    int cantReg = CantidadRegistrosProductos();
+    int stock;
+    bool bandera = false;
+
+    cout << "PRODUCTOS PROXIMOS A VENCER" << endl;
+    cout << "----------------------------------" << endl;
+
+    cout << left;
+    cout << setw(17) << "PRODUCTO";
+    cout << setw(17)  << "VENCIMIENTO" << endl;
+    cout << "----------------------------------" << endl;
+
+    for(int i=0; i<cantReg; i++)
+    {
+        if(aux.LeerDeDisco(i))
+        {
+            if(aux.getEstadoProducto() == true)
+            {
+                stock = buscarStockDeProducto(aux.getIdProducto());
+
+                if(stock > 0)
+                {
+                    if(aux.getFechaVencimiento().getAnio() == fecha.getAnio())
+                    {
+                        if(aux.getFechaVencimiento().getMes() == fecha.getMes())
+                        {
+                            int dif = aux.getFechaVencimiento().getDia() - fecha.getDia();
+                            if(dif <= 2 && dif >= 0)
+                            {
+                                cout << left;
+                                cout << setw(17) << aux.getNombreProducto();
+                                cout << setw(17)  << aux.getFechaVencimiento().toString() << endl;
+                                cont++;
+                                bandera = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if(bandera)
+    {
+        cout << "----------------------------------" << endl;
+        cout << "Total: " << cont << " Productos.";
+    }
+    else
+    {
+        system("cls");
+        cout << "No hay productos proximos a vencerse." << endl;
+    }
+
+    cout<<endl;
+    cout<<endl;
+}
+
+void alertaDeProductosVencidos()
+{
+    Producto aux;
+    Fecha fecha;
+    int cont=0;
+    int cantReg = CantidadRegistrosProductos();
+    int stock;
+    bool bandera = false;
+
+    cout << "PRODUCTOS VENCIDOS" << endl;
+    cout << "----------------------------------" << endl;
+
+    cout << left;
+    cout << setw(17) << "PRODUCTO";
+    cout << setw(17)  << "VENCIMIENTO" << endl;
+    cout << "----------------------------------" << endl;
+
+    for(int i=0; i<cantReg; i++)
+    {
+        if(aux.LeerDeDisco(i))
+        {
+            if(aux.getEstadoProducto() == true)
+            {
+                stock = buscarStockDeProducto(aux.getIdProducto());
+
+                if(stock > 0)
+                {
+                    if(aux.getFechaVencimiento().getAnio() == fecha.getAnio())
+                    {
+                        if(aux.getFechaVencimiento().getMes() == fecha.getMes())
+                        {
+                            int dif = aux.getFechaVencimiento().getDia() - fecha.getDia();
+                            if(dif < 0 )
+                            {
+                                cout << left;
+                                cout << setw(17) << aux.getNombreProducto();
+                                cout << setw(17)  << aux.getFechaVencimiento().toString() << endl;
+                                cont++;
+                                bandera = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if(bandera)
+    {
+        cout << "----------------------------------" << endl;
+        cout << "Total: " << cont << " Productos.";
+    }
+    else
+    {
+        system("cls");
+        cout << "No hay productos proximos a vencerse." << endl;
+    }
+
+    cout<<endl;
+    cout<<endl;
+}
+
+
 

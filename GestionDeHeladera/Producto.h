@@ -48,7 +48,6 @@ class Producto{
     int EliminarProducto();
     bool validarProductoExistente(string);
     bool validarProductoExistenteID(int id);
-    void alertaDeProductosAVencer();
     void buscarProducto();
 
 

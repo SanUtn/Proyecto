@@ -18,7 +18,6 @@ string mostrarNombrePlatillo(int id);
 string mayuscula(string cadena);
 Producto buscarProductoPorId(int id);
 void eliminarStock(int idproducto);
-void prueba();
 void menuReportes();
 void menuConsumosAnuales();
 void menuConsumosMensuales();
@@ -35,6 +34,8 @@ void copiarProductos(Producto *vDinamico, int cantidad, int idplatillo);
 void eliminarPlatillos(int idproducto);
 void modificarVencimientoProducto(int idproducto, Fecha fecha);
 void alertaSinStock();
+void alertaDeProductosAVencer();
+void alertaDeProductosVencidos();
 void eliminarRecetasPorPlatillo(int idplatillo);
 
 #endif // FUNCIONESGLOBALES_H_INCLUDED

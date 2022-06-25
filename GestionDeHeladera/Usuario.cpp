@@ -293,7 +293,7 @@ void buscarUsuarioNombre()
     cout << setw(10) << "DNI";
     cout << setw(17) << "NOMBRE";
     cout << setw(17)  << "APELLIDO" << endl;
-    cout << endl;
+    cout << "---------------------------------------------------------------" << endl;
     while(reg.LeerDeDisco(pos))
     {
         if(reg.getNombre() == nombre && reg.getEstadoUsuario())
@@ -303,6 +303,7 @@ void buscarUsuarioNombre()
         }
         pos++;
     }
+    cout << "---------------------------------------------------------------" << endl;
 
     if(bandera == false)
     {
@@ -327,7 +328,7 @@ void buscarUsuarioDNI()
     cout << setw(10) << "DNI";
     cout << setw(17) << "NOMBRE";
     cout << setw(17)  << "APELLIDO" << endl;
-    cout << endl;
+    cout << "---------------------------------------------------------------" << endl;
     while(reg.LeerDeDisco(pos))
     {
         if(reg.getDNI() == dni && reg.getEstadoUsuario())
@@ -337,6 +338,7 @@ void buscarUsuarioDNI()
         }
         pos++;
     }
+    cout << "---------------------------------------------------------------" << endl;
     if(bandera == false)
     {
         system("cls");
@@ -364,7 +366,7 @@ void buscarUsuarioOrientacion()
     cout << setw(10) << "DNI";
     cout << setw(17) << "NOMBRE";
     cout << setw(17)  << "APELLIDO" << endl;
-    cout << endl;
+    cout << "---------------------------------------------------------------" << endl;
     while(reg.LeerDeDisco(pos))
     {
         if(reg.getIdOrientacionAlimentaria() == orientacion && reg.getEstadoUsuario())
@@ -374,6 +376,7 @@ void buscarUsuarioOrientacion()
         }
         pos++;
     }
+    cout << "---------------------------------------------------------------" << endl;
     if(bandera == false)
     {
         system("cls");

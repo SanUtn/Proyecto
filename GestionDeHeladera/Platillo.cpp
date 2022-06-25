@@ -300,7 +300,7 @@ void buscarPlatilloNombre()
     nombre = mayuscula(nombre);
     cout << endl;
 
-     cout<<endl;
+    system("cls");
     cout << left;
     cout << setw(5) << "\t";
     cout <<  "LISTADO DE PLATILLOS POR NOMBRE " << endl;
@@ -328,6 +328,7 @@ void buscarPlatilloNombre()
 
     if(bandera == false)
     {
+        system("cls");
         cout << "No hay platillos con ese nombre." << endl;
     }
 }
@@ -345,10 +346,12 @@ void busquedaPlatilloOrientacion()
     cin >> opc;
     cout << endl;
 
+    system("cls");
+
     cout<<endl;
     cout << left;
     cout << setw(5) << "\t";
-    cout <<  "LISTADO DE PLATILLOS POR ORIENTACION " << endl;
+    cout <<  "PLATILLOS DE ORIENTACION: "<< mostrarOrientacionAlimentaria(opc)<<endl;
     cout << "-------------------------------------------------------------------------" << endl;
     cout << left;
     cout << setw(5) << "ID";
@@ -373,7 +376,8 @@ void busquedaPlatilloOrientacion()
 
     if(bandera == false)
     {
-        cout << "No hay platillos con ese id." << endl;
+        system("cls");
+        cout << "No hay platillos con esa orientacion." << endl;
     }
 }
 

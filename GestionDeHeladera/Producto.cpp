@@ -274,67 +274,6 @@ int EliminarProducto()
     return -1;
 }
 
-//muestra los vencidos y los que les falta dos dias para vencer
-void alertaDeProductosAVencer()
-{
-    Producto aux;
-    Fecha fecha;
-    int cont=0;
-    int cantReg = CantidadRegistrosProductos();
-    int stock;
-    bool bandera = false;
-
-    cout << "PRODUCTOS PROXIMOS A VENCER" << endl;
-    cout << "----------------------------------" << endl;
-
-    cout << left;
-    cout << setw(17) << "PRODUCTO";
-    cout << setw(17)  << "VENCIMIENTO" << endl;
-    cout << "----------------------------------" << endl;
-
-    for(int i=0; i<cantReg; i++)
-    {
-        if(aux.LeerDeDisco(i))
-        {
-            if(aux.getEstadoProducto() == true)
-            {
-                stock = buscarStockDeProducto(aux.getIdProducto());
-
-                if(stock > 0)
-                {
-                    if(aux.getFechaVencimiento().getAnio() == fecha.getAnio())
-                    {
-                        if(aux.getFechaVencimiento().getMes() == fecha.getMes())
-                        {
-                            if((aux.getFechaVencimiento().getDia() - fecha.getDia()) <= 2 )
-                            {
-                                cout << left;
-                                cout << setw(17) << aux.getNombreProducto();
-                                cout << setw(17)  << aux.getFechaVencimiento().toString() << endl;
-                                cont++;
-                                bandera = true;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    if(bandera)
-    {
-        cout << "----------------------------------" << endl;
-        cout << "Total: " << cont << " Productos.";
-    }
-    else
-    {
-        system("cls");
-        cout << "No hay productos proximos a vencerse." << endl;
-    }
-
-    cout<<endl;
-    cout<<endl;
-}
-
 void buscarProducto()
 {
     Producto aux;
@@ -391,8 +330,7 @@ void menuProducto()
         cout<<"5. LISTAR PRODUCTOS "<<endl;
         cout<<"6. LISTAR INGRESOS DE PRODUCTOS "<<endl;
         cout<<"7. LISTAR RETIROS DE PRODUCTOS "<<endl;
-        cout<<"8. ALERTA DE PRODUCTOS A VENCER "<<endl;
-        cout<<"9. BUSCAR PRODUCTO"<<endl;
+        cout<<"8. BUSCAR PRODUCTO "<<endl;
         cout<<"-------------------"<<endl;
         cout<<"0. SALIR"<<endl;
         cout<<endl;
@@ -482,10 +420,6 @@ void menuProducto()
             system("pause");
             break;
         case 8:
-            alertaDeProductosAVencer();
-            system("pause");
-            break;
-        case 9:
             buscarProducto();
             system("pause");
             break;
