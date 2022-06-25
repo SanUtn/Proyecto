@@ -1,6 +1,7 @@
 #include <iostream>
 #include<string>
 #include<iomanip>
+#include "rlutil.h"
 #include "Receta.h"
 #include "FuncionesGlobales.h"
 #include "ProductosxPlatillo.h"
@@ -561,20 +562,32 @@ void menuRecetas()
     while(true)
     {
         system("cls");
-
+        rlutil::locate(59, 5);
+        rlutil::setColor(rlutil::CYAN);
         cout<<"MENU RECETAS"<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(40, 6);
+        cout<<"----------------------------------------------------"<<endl;
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        rlutil::locate(48,8);
         cout<<"1. AGREGAR RECETA "<<endl;
+        rlutil::locate(48,9);
         cout<<"2. ELIMINAR RECETA" <<endl;
+        rlutil::locate(48,10);
         cout<<"3. LISTAR RECETAS "<<endl;
+        rlutil::locate(48,11);
         cout<<"4. SUGERENCIAS POR STOCK DE PRODUCTOS "<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(48,12);
+        cout<<"-------------------------------------"<<endl;
+        rlutil::locate(48,13);
         cout<<"0. SALIR"<<endl;
         cout<<endl;
 
+        rlutil::locate(48,16);
+        rlutil::setColor(rlutil::DARKGREY);
         cout<<"OPCION: ";
         cin>>opc;
 
+        rlutil::setColor(rlutil::BROWN);
         system("cls");
 
         switch(opc)

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include "rlutil.h"
 #include "OrientacionAlimentaria.h"
 #include "FuncionesGlobales.h"
 
@@ -214,19 +215,30 @@ void menuOrientacionAlimentaria()
     while(true)
     {
         system("cls");
-
+        rlutil::locate(51, 5);
+        rlutil::setColor(rlutil::CYAN);
         cout<<"MENU ORIENTACION ALIMENTARIA"<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(40, 6);
+        cout<<"------------------------------------------------"<<endl;
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        rlutil::locate(53, 8);
         cout<<"1. AGREGAR ORIENTACION "<<endl;
+        rlutil::locate(53, 9);
         cout<<"2. ELIMINAR ORIENTACION" <<endl;
+        rlutil::locate(53, 10);
         cout<<"3. LISTAR ORIENTACIONES "<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(53, 11);
+        cout<<"-----------------------"<<endl;
+        rlutil::locate(53, 12);
         cout<<"0. SALIR"<<endl;
         cout<<endl;
 
+        rlutil::locate(53, 15);
+        rlutil::setColor(rlutil::DARKGREY);
         cout<<"OPCION: ";
         cin>>opc;
 
+        rlutil::setColor(rlutil::BROWN);
         system("cls");
 
         switch(opc)

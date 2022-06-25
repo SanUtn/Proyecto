@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include "rlutil.h"
 #include "FuncionesGlobales.h"
 
 using namespace std;
@@ -10,20 +11,32 @@ void menuConsumos()
     while(true)
     {
         system("cls");
-
+        rlutil::locate(54, 5);
+        rlutil::setColor(rlutil::CYAN);
         cout<<"MENU CONSUMOS"<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(40, 6);
+        cout<<"-------------------------------------------"<<endl;
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        rlutil::locate(48,8);
         cout<<"1. AGREGAR CONSUMO PRODUCTO "<<endl;
+        rlutil::locate(48,9);
         cout<<"2. LISTAR CONSUMO PRODUCTOS"<<endl;
+        rlutil::locate(48,10);
         cout<<"3. AGREGAR CONSUMO PLATILLO "<<endl;
+        rlutil::locate(48,11);
         cout<<"4. LISTAR CONSUMO PLATILLOS"<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(48,12);
+        cout<<"---------------------------"<<endl;
+        rlutil::locate(48,13);
         cout<<"0. SALIR"<<endl;
         cout<<endl;
 
+        rlutil::locate(48,16);
+        rlutil::setColor(rlutil::DARKGREY);
         cout<<"OPCION: ";
         cin>>opc;
 
+        rlutil::setColor(rlutil::BROWN);
         system("cls");
 
         switch(opc)
@@ -120,22 +133,36 @@ void menuReportes()
     while(true)
     {
         system("cls");
-
+        rlutil::locate(52, 5);
+        rlutil::setColor(rlutil::CYAN);
         cout<<"MENU REPORTES"<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(40, 6);
+        cout<<"---------------------------------------"<<endl;
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        rlutil::locate(48,8);
         cout<<"1. CONSUMOS ANUALES "<<endl;
+        rlutil::locate(48,9);
         cout<<"2. CONSUMOS MENSUALES"<<endl;
+        rlutil::locate(48,10);
         cout<<"3. ALERTA DE STOCK"<<endl;
+        rlutil::locate(48,11);
         cout<<"4. ALERTA SIN STOCK"<<endl;
+        rlutil::locate(48,12);
         cout<<"5. PRODUCTOS A VENCER"<<endl;
+        rlutil::locate(48,13);
         cout<<"6. PRODUCTOS VENCIDOS"<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(48,14);
+        cout<<"----------------------"<<endl;
+        rlutil::locate(48,15);
         cout<<"0. SALIR"<<endl;
         cout<<endl;
 
+        rlutil::locate(48,18);
+        rlutil::setColor(rlutil::DARKGREY);
         cout<<"OPCION: ";
         cin>>opc;
 
+        rlutil::setColor(rlutil::BROWN);
         system("cls");
 
         switch(opc)

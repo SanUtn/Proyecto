@@ -1,4 +1,5 @@
 #include <iostream>
+#include "rlutil.h"
 #include "ProductoStock.h"
 #include "FuncionesGlobales.h"
 #include "ProductoStock.h"
@@ -398,16 +399,26 @@ void menuStockProductos()
     while(true)
     {
         system("cls");
-
+        rlutil::locate(50, 5);
+        rlutil::setColor(rlutil::CYAN);
         cout<<"MENU STOCK DE PRODUCTOS"<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(40, 6);
+        cout<<"-----------------------------------------"<<endl;
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        rlutil::locate(52,8);
         cout<<"1. LISTAR STOCK "<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(52,9);
+        cout<<"---------------"<<endl;
+        rlutil::locate(52,10);
         cout<<"0. SALIR"<<endl;
         cout<<endl;
+
+        rlutil::locate(52,13);
+        rlutil::setColor(rlutil::DARKGREY);
         cout<<"OPCION: ";
         cin>>opc;
 
+        rlutil::setColor(rlutil::BROWN);
         system("cls");
 
         switch(opc)

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include "rlutil.h"
 #include "Producto.h"
 #include "ProductoStock.h"
 #include "IngresoProducto.h"
@@ -320,24 +321,40 @@ void menuProducto()
     while(true)
     {
         system("cls");
-
+        rlutil::locate(56, 5);
+        rlutil::setColor(rlutil::CYAN);
         cout<<"MENU PRODUCTO"<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(40, 6);
+        cout<<"----------------------------------------------"<<endl;
+        rlutil::locate(48, 8);
+        rlutil::setColor(rlutil::LIGHTCYAN);
         cout<<"1. AGREGAR PRODUCTO "<<endl;
+        rlutil::locate(48, 9);
         cout<<"2. ELIMINAR PRODUCTO "<<endl;
+        rlutil::locate(48, 10);
         cout<<"3. INGRESAR PRODUCTO EXISTENTE "<<endl;
+        rlutil::locate(48, 11);
         cout<<"4. RETIRAR PRODUCTO EXISTENTE "<<endl;
+        rlutil::locate(48, 12);
         cout<<"5. LISTAR PRODUCTOS "<<endl;
+        rlutil::locate(48, 13);
         cout<<"6. LISTAR INGRESOS DE PRODUCTOS "<<endl;
+        rlutil::locate(48, 14);
         cout<<"7. LISTAR RETIROS DE PRODUCTOS "<<endl;
+        rlutil::locate(48, 15);
         cout<<"8. BUSCAR PRODUCTO "<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(48, 16);
+        cout<<"-------------------------------"<<endl;
+        rlutil::locate(48, 17);
         cout<<"0. SALIR"<<endl;
         cout<<endl;
 
+        rlutil::locate(48, 20);
+        rlutil::setColor(rlutil::DARKGREY);
         cout<<"OPCION: ";
         cin>>opc;
 
+        rlutil::setColor(rlutil::BROWN);
         system("cls");
 
         switch(opc)

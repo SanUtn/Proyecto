@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include "rlutil.h"
 #include "Usuario.h"
 #include "FuncionesGlobales.h"
 
@@ -436,20 +437,32 @@ void menuUsuario()
     while(true)
     {
         system("cls");
-
+        rlutil::locate(52, 5);
+        rlutil::setColor(rlutil::CYAN);
         cout<<"MENU USUARIO"<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(40, 6);
+        cout<<"-------------------------------------"<<endl;
+        rlutil::locate(48, 8);
+        rlutil::setColor(rlutil::LIGHTCYAN);
         cout<<"1. AGREGAR USUARIO "<<endl;
+        rlutil::locate(48, 9);
         cout<<"2. ELIMINAR USUARIO"<<endl;
+        rlutil::locate(48, 10);
         cout<<"3. LISTAR USUARIOS "<<endl;
+        rlutil::locate(48, 11);
         cout<<"4. BUSCAR USUARIO"<<endl;
+        rlutil::locate(48, 12);
         cout<<"-------------------"<<endl;
+        rlutil::locate(48, 13);
         cout<<"0. SALIR"<<endl;
         cout<<endl;
 
+        rlutil::locate(48, 16);
+        rlutil::setColor(rlutil::DARKGREY);
         cout<<"OPCION: ";
         cin>>opc;
 
+        rlutil::setColor(rlutil::BROWN);
         system("cls");
 
         switch(opc)

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include "rlutil.h"
 #include "ProductosxPlatillo.h"
 #include "Platillo.h"
 #include "FuncionesGlobales.h"
@@ -425,21 +426,34 @@ void menuPlatillo()
     while(true)
     {
         system("cls");
-
+        rlutil::locate(56, 5);
+        rlutil::setColor(rlutil::CYAN);
         cout<<"MENU PLATILLO"<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(40, 6);
+        cout<<"------------------------------------------------"<<endl;
+        rlutil::locate(48, 8);
+        rlutil::setColor(rlutil::LIGHTCYAN);
         cout<<"1. AGREGAR PLATILLO "<<endl;
+        rlutil::locate(48, 9);
         cout<<"2. ELIMINAR PLATILLO "<<endl;
+        rlutil::locate(48, 10);
         cout<<"3. LISTAR PLATILLOS "<<endl;
+        rlutil::locate(48, 11);
         cout<<"4. LISTAR PRODUCTOS POR PLATILLO" << endl;
+        rlutil::locate(48, 12);
         cout<<"5. BUSCAR PLATILLO"<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(48, 13);
+        cout<<"--------------------------------"<<endl;
+        rlutil::locate(48, 14);
         cout<<"0. SALIR"<<endl;
         cout<<endl;
 
+        rlutil::locate(48, 17);
+        rlutil::setColor(rlutil::DARKGREY);
         cout<<"OPCION: ";
         cin>>opc;
 
+        rlutil::setColor(rlutil::BROWN);
         system("cls");
 
         switch(opc)
