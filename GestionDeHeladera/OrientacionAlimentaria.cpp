@@ -157,32 +157,39 @@ void listarOrientacionAlimentaria()
     int cont=0;
     int cantOA = CantidadRegistrosOA();
 
+    rlutil::setColor(rlutil::MAGENTA);
+    cout << left;
+    cout << "\t" << "\t";
     cout << "ORIENTACIONES ALIMENTARIAS" << endl;
-    cout << "-----------------------------------" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t"<<"-------------------------------------------" << endl;
 
     cout << left;
-    cout << setw(5) << "ID";
-    cout << setw(20)  << "NOMBRE" << endl;
-    cout << "-----------------------------------" << endl;
+    cout << setw(5) << "\t" <<"\t" << "ID";
+    cout << setw(5)  << "\t" <<"\t" << "NOMBRE" << endl;
+    cout << "\t"<<"-------------------------------------------" << endl;
 
     for(int i=0; i<cantOA; i++)
     {
         aux.LeerDeDisco(i);
         if(aux.getEstadoOrientacion())
         {
+            rlutil::setColor(rlutil::LIGHTCYAN);
             cout << left;
-            cout << setw(5)  << aux.getIdOrientacionAlimentaria();
-            cout << setw(20) << aux.getDescripcion() << endl;
+            cout << setw(5)  << "\t" << "\t" << aux.getIdOrientacionAlimentaria();
+            cout << setw(5) << "\t" << "\t" << aux.getDescripcion() << endl;
         }
         else
         {
             cont++;
         }
     }
-    cout << "-----------------------------------" << endl;
-    cout << "Total: " << cantOA - cont<< " orientaciones alimentarias.";
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t"<<"-------------------------------------------" << endl;
+    cout << "\t"<<"Total: " << cantOA - cont<< " orientaciones alimentarias.";
     cout<<endl;
     cout<<endl;
+    rlutil::setColor(rlutil::BROWN);
 }
 
 int EliminarOrientacionAlimentaria()

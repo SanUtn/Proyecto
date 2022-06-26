@@ -101,7 +101,7 @@
 	"Fecha.h"
 	<ctime>
 
-1656191259 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\main.cpp
+1656191359 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\main.cpp
 	<iostream>
 	"rlutil.h"
 	"Usuario.h"
@@ -132,7 +132,7 @@
 	<string>
 	"OrientacionAlimentaria.h"
 
-1656189598 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\orientacionalimentaria.cpp
+1656200093 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\orientacionalimentaria.cpp
 	<iostream>
 	<iomanip>
 	"rlutil.h"
@@ -197,7 +197,7 @@
 1656178915 c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\retiroproducto.h
 	"Fecha.h"
 
-1656187699 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\usuario.cpp
+1656201027 source:c:\users\intel-pentium\documents\github\proyecto\gestiondeheladera\usuario.cpp
 	<iostream>
 	<iomanip>
 	"rlutil.h"
