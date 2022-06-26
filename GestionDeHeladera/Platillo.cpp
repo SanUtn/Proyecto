@@ -127,7 +127,6 @@ Platillo cargarPlatillo()
     int opc;
     int id;
     string nombrePlatillo;
-    int dia,mes, anio;
     int orientacionAlimentaria;
     int calorias;
     bool estado = true;
@@ -147,14 +146,6 @@ Platillo cargarPlatillo()
         nombrePlatillo = mayuscula(nombrePlatillo);
     }
 
-
-    cout<<"Ingrese el dia: ";
-    cin>>dia;
-    cout<<"Ingrese el mes: ";
-    cin>>mes;
-    cout<<"Ingrese el anio: ";
-    cin>>anio;
-    cout<<endl;
     system("cls");
 
     cout << "Ingrese el id del ingrendiente o 0 para no agregar mas: " << endl;
@@ -164,15 +155,14 @@ Platillo cargarPlatillo()
 
     while(opc != 0)
     {
-
         nuevoProductoxPlatillo(id, opc);//le pasa el id del platillo y el ingrediente a agregar.
-
         system("cls");
         cout << "Ingrese el id del ingrendiente o 0 para no agregar mas: " << endl;
         cout<<endl;
         listarProductos();
         cin >> opc;
     }
+
     cout<<endl;
     system("cls");
     cout<<endl;
@@ -184,7 +174,7 @@ Platillo cargarPlatillo()
     cout << "Ingrese las calorias: ";
     cin >> calorias;
 
-    Fecha fecha(dia, mes, anio);
+    Fecha fecha;
 
     Platillo reg;
     reg.setIdPlatillo(id);
@@ -219,7 +209,7 @@ void listarPlatillos()
 {
     Platillo aux;
     int cantPlatillos = CantidadRegistrosPlatillo();
-    int pos = 0, cont=0;
+    int cont=0;
     cout << setw(45)<<"LISTADO DE PLATILLOS" << endl;
     cout << "--------------------------------------------------------------------------"<< endl;
     cout << left;
