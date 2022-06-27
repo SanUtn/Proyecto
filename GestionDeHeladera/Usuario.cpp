@@ -44,9 +44,10 @@ void Usuario::toList()
 {
     rlutil::setColor(rlutil::LIGHTCYAN);
     cout << left;
+    cout << "\t";
     cout << setw(15) << to_string(DNI);
-    cout << setw(15) << getNombre();
-    cout << setw(15) << getApellido() << endl;
+    cout << setw(20) << getNombre();
+    cout << setw(20) << getApellido() << endl;
     rlutil::setColor(rlutil::BROWN);
 }
 
@@ -235,19 +236,21 @@ void listarUsuarios()
     cout << left;
     cout<<endl;
     cout<<endl;
-    cout << "\t" << "\t" <<"\t";
+    cout << setw(26) << "\t";
     rlutil::setColor(rlutil::MAGENTA);
     cout << "USUARIOS" << endl;
     rlutil::setColor(rlutil::DARKGREY);
-    cout <<"---------------------------------------------------------------" << endl;
+    cout << "\t" << "-----------------------------------------------------------" << endl;
 
+    cout << left;
+    cout << "\t";
     cout << setw(5)  <<  "ID";
     cout << setw(10) <<  "DNI";
     cout << setw(15) <<  "NOMBRE";
     cout << setw(15) <<  "APELLIDO";
     cout << setw(10) <<  "O. ALIMENTARIA" << endl;
 
-    cout <<"---------------------------------------------------------------" << endl;
+    cout << "\t" << "-----------------------------------------------------------" << endl;
     for(int i=0; i<cantUsuarios; i++)
     {
         aux.LeerDeDisco(i);
@@ -255,6 +258,7 @@ void listarUsuarios()
         {
             rlutil::setColor(rlutil::LIGHTCYAN);
             cout << left;
+            cout << "\t";
             cout << setw(5) << aux.getId();
             cout << setw(10) << aux.getDNI();
             cout << setw(15)<< aux.getNombre();
@@ -267,8 +271,9 @@ void listarUsuarios()
         }
     }
     rlutil::setColor(rlutil::DARKGREY);
-    cout <<"---------------------------------------------------------------" << endl;
-    cout <<"Total: " << cantUsuarios - cont<< " Usuarios.";
+    cout << "\t" << "-----------------------------------------------------------" << endl;
+    cout << "\t" << "Total: " << cantUsuarios - cont<< " Usuarios.";
+    cout<<endl;
     cout<<endl;
     cout<<endl;
     rlutil::setColor(rlutil::BROWN);
@@ -315,13 +320,15 @@ void buscarUsuarioNombre()
     getline(cin, nombre);
     nombre = mayuscula(nombre);
     cout << endl;
+    cout << endl;
     rlutil::setColor(rlutil::MAGENTA);
     cout << left;
+    cout << "\t";
     cout << setw(15)<<"DNI";
-    cout << setw(15)<<"NOMBRE";
-    cout << setw(15)<<"APELLIDO" << endl;
+    cout << setw(20)<<"NOMBRE";
+    cout << setw(20)<<"APELLIDO" << endl;
     rlutil::setColor(rlutil::DARKGREY);
-    cout <<"----------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------" << endl;
 
     while(reg.LeerDeDisco(pos))
     {
@@ -333,7 +340,7 @@ void buscarUsuarioNombre()
         pos++;
     }
     rlutil::setColor(rlutil::DARKGREY);
-    cout <<"----------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------" << endl;
 
     if(bandera == false)
     {
@@ -344,6 +351,8 @@ void buscarUsuarioNombre()
         cout << endl;
         rlutil::setColor(rlutil::BROWN);
     }
+    cout << endl;
+    cout << endl;
     cout << endl;
     rlutil::setColor(rlutil::BROWN);
 }
@@ -361,12 +370,14 @@ void buscarUsuarioDNI()
 
     rlutil::setColor(rlutil::MAGENTA);
     cout << endl;
+    cout << endl;
     cout << left;
+    cout << "\t";
     cout << setw(15) << "DNI";
-    cout << setw(15) << "NOMBRE";
-    cout << setw(15) << "APELLIDO" << endl;
+    cout << setw(20) << "NOMBRE";
+    cout << setw(20) << "APELLIDO" << endl;
      rlutil::setColor(rlutil::DARKGREY);
-    cout <<"----------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------" << endl;
 
     while(reg.LeerDeDisco(pos))
     {
@@ -378,7 +389,8 @@ void buscarUsuarioDNI()
         pos++;
     }
      rlutil::setColor(rlutil::DARKGREY);
-    cout <<"----------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------" << endl;
+
     if(bandera == false)
     {
         system("cls");
@@ -388,6 +400,8 @@ void buscarUsuarioDNI()
         cout << endl;
         rlutil::setColor(rlutil::BROWN);
     }
+    cout << endl;
+    cout << endl;
     cout << endl;
     rlutil::setColor(rlutil::BROWN);
 }
@@ -413,12 +427,15 @@ void buscarUsuarioOrientacion()
 
     rlutil::setColor(rlutil::MAGENTA);
     cout << endl;
+    cout << endl;
     cout << left;
+    cout << "\t";
     cout << setw(15) << "DNI";
-    cout << setw(15) << "NOMBRE";
-    cout << setw(15)  << "APELLIDO" << endl;
+    cout << setw(20) << "NOMBRE";
+    cout << setw(20)  << "APELLIDO" << endl;
      rlutil::setColor(rlutil::DARKGREY);
-    cout <<"----------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------" << endl;
+
     while(reg.LeerDeDisco(pos))
     {
         if(reg.getIdOrientacionAlimentaria() == orientacion && reg.getEstadoUsuario())
@@ -429,7 +446,8 @@ void buscarUsuarioOrientacion()
         pos++;
     }
      rlutil::setColor(rlutil::DARKGREY);
-    cout <<"----------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------" << endl;
+
     if(bandera == false)
     {
         system("cls");
@@ -439,6 +457,8 @@ void buscarUsuarioOrientacion()
         cout << endl;
         rlutil::setColor(rlutil::BROWN);
     }
+    cout << endl;
+    cout << endl;
     cout << endl;
     rlutil::setColor(rlutil::BROWN);
 }

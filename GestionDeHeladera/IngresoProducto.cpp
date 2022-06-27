@@ -2,6 +2,7 @@
 #include<cstring>
 #include <iostream>
 #include <iomanip>
+#include "rlutil.h"
 #include "IngresoProducto.h"
 #include "ProductoStock.h"
 #include "Usuario.h"
@@ -39,7 +40,9 @@ bool IngresoProducto::GrabarEnDisco()
     p=fopen("IngresosProductos.dat", "ab");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     int escribio=fwrite(this, sizeof(IngresoProducto),1,p);
@@ -111,8 +114,12 @@ IngresoProducto cargarProductoExistente()
 
     while(validarUsuarioExistente(dniUsuario) == false)
     {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
         cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniUsuario;
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
     }
 
     cout<<endl;
@@ -124,8 +131,12 @@ IngresoProducto cargarProductoExistente()
 
     while(validarProductoExistenteID(idProducto) == false)
     {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
         cout << "El ID de producto que ingreso no existe en el sistema, ingrese otro:  ";
         cin >> idProducto;
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
     }
 
     cout << "Ingrese el dia vencimiento: ";
@@ -150,7 +161,7 @@ IngresoProducto cargarProductoExistente()
 
     cout<<endl;
     cout<<endl;
-    system("pause");
+    //system("pause");
     return reg;
 }
 
@@ -174,29 +185,42 @@ void listarIngresosDeProductosExistentes()
 {
     IngresoProducto aux;
     int cantProductos = CantidadRegistrosProductosExistentes();
+
+    rlutil::setColor(rlutil::MAGENTA);
+    cout<<endl;
+    cout << left;
+     cout << setw(16) << "\t";
     cout << "REGISTRO DE INGRESOS " << endl;
-     cout << "---------------------------------------------------------------" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "-------------------------------------------------" << endl;
 
     cout << left;
-    cout << setw(4)  <<"Id";
+    cout << "\t";
+    cout << setw(10)  <<"Id";
     cout << setw(10) <<"Usuario";
-    cout << setw(15) <<"Producto";
-    cout << setw(15)  <<"Fecha" << endl;
+    cout << setw(20) <<"Producto";
+    cout << setw(20)  <<"Fecha" << endl;
 
-     cout << "---------------------------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------------" << endl;
 
     for(int i=0; i<cantProductos; i++)
     {
         aux.LeerDeDisco(i);
+            rlutil::setColor(rlutil::LIGHTCYAN);
             cout << left;
-            cout << setw(4) << aux.getIdIngreso();
+            cout << "\t";
+            cout << setw(10) << aux.getIdIngreso();
             cout << setw(10) << aux.getDniUsuario();
-            cout << setw(15) << mostrarNombreProducto(aux.getIdProducto());
-            cout << setw(15) << aux.getFechaIngreso().toString() << endl;
+            cout << setw(20) << mostrarNombreProducto(aux.getIdProducto());
+            cout << setw(20) << aux.getFechaIngreso().toString() << endl;
     }
-     cout << "---------------------------------------------------------------" << endl;
-    cout << "Total: " << cantProductos << " registros.";
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "-------------------------------------------------" << endl;
+    cout << "\t" << "Total: " << cantProductos << " registros.";
     cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    rlutil::setColor(rlutil::BROWN);
 }
 
 

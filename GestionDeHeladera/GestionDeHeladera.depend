@@ -752,7 +752,7 @@
 	"Usuario.h"
 	"FuncionesGlobales.h"
 
-1656118827 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoplatillo.cpp
+1656332782 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoplatillo.cpp
 	<iostream>
 	<iomanip>
 	"ConsumoPlatillo.h"
@@ -762,7 +762,7 @@
 	"FuncionesGlobales.h"
 	"Usuario.h"
 
-1656118673 c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoplatillo.h
+1656332138 c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoplatillo.h
 	<cstring>
 	<cstdlib>
 	<string>
@@ -781,7 +781,7 @@
 	<cstring>
 	<string>
 
-1656022337 c:\users\asus\documents\github\proyecto\gestiondeheladera\producto.h
+1656328783 c:\users\asus\documents\github\proyecto\gestiondeheladera\producto.h
 	<cstring>
 	<cstdlib>
 	<string>
@@ -793,7 +793,7 @@
 	<string>
 	<iostream>
 
-1656022337 c:\users\asus\documents\github\proyecto\gestiondeheladera\productostock.h
+1656332316 c:\users\asus\documents\github\proyecto\gestiondeheladera\productostock.h
 	"Producto.h"
 
 1656022337 c:\users\asus\documents\github\proyecto\gestiondeheladera\productosxplatillo.h
@@ -803,7 +803,7 @@
 	"Fecha.h"
 	"Producto.h"
 
-1656121474 c:\users\asus\documents\github\proyecto\gestiondeheladera\funcionesglobales.h
+1656328783 c:\users\asus\documents\github\proyecto\gestiondeheladera\funcionesglobales.h
 	"ConsumoProducto.h"
 	"ConsumoPlatillo.h"
 	"OrientacionAlimentaria.h"
@@ -835,7 +835,7 @@
 	<string>
 	"OrientacionAlimentaria.h"
 
-1656121635 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoproducto.cpp
+1656333024 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoproducto.cpp
 	<iostream>
 	<iomanip>
 	"ConsumoProducto.h"
@@ -849,16 +849,18 @@
 	"Fecha.h"
 	<ctime>
 
-1656123609 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\funcionesglobales.cpp
+1656348931 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\funcionesglobales.cpp
 	<iostream>
 	<iomanip>
+	"rlutil.h"
 	"FuncionesGlobales.h"
 
-1656025779 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\ingresoproducto.cpp
+1656372723 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\ingresoproducto.cpp
 	<cstdlib>
 	<cstring>
 	<iostream>
 	<iomanip>
+	"rlutil.h"
 	"IngresoProducto.h"
 	"ProductoStock.h"
 	"Usuario.h"
@@ -867,8 +869,9 @@
 1656022337 c:\users\asus\documents\github\proyecto\gestiondeheladera\ingresoproducto.h
 	"Fecha.h"
 
-1656022337 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\main.cpp
+1656328783 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\main.cpp
 	<iostream>
+	"rlutil.h"
 	"Usuario.h"
 	"FuncionesGlobales.h"
 	"Producto.h"
@@ -878,22 +881,25 @@
 	"Receta.h"
 	"ProductoStock.h"
 
-1656022337 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\orientacionalimentaria.cpp
+1656340585 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\orientacionalimentaria.cpp
 	<iostream>
 	<iomanip>
+	"rlutil.h"
 	"OrientacionAlimentaria.h"
 	"FuncionesGlobales.h"
 
-1656113204 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\platillo.cpp
+1656349350 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\platillo.cpp
 	<iostream>
 	<iomanip>
+	"rlutil.h"
 	"ProductosxPlatillo.h"
 	"Platillo.h"
 	"FuncionesGlobales.h"
 
-1656113204 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\producto.cpp
+1656372794 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\producto.cpp
 	<iostream>
 	<iomanip>
+	"rlutil.h"
 	"Producto.h"
 	"ProductoStock.h"
 	"IngresoProducto.h"
@@ -901,40 +907,44 @@
 	"FuncionesGlobales.h"
 	"Usuario.h"
 
-1656031240 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\productostock.cpp
+1656331419 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\productostock.cpp
 	<iostream>
+	"rlutil.h"
 	"ProductoStock.h"
 	"FuncionesGlobales.h"
 	"ProductoStock.h"
 	"ProductosxPlatillo.h"
 	<iomanip>
 
-1656028781 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\productosxplatillo.cpp
+1656349504 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\productosxplatillo.cpp
 	<iostream>
 	<iomanip>
 	"ProductosxPlatillo.h"
 	"FuncionesGlobales.h"
 
-1656035608 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\receta.cpp
+1656350630 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\receta.cpp
 	<iostream>
 	<string>
 	<iomanip>
+	"rlutil.h"
 	"Receta.h"
 	"FuncionesGlobales.h"
 	"ProductosxPlatillo.h"
 
-1656115098 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\retiroproducto.cpp
+1656372723 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\retiroproducto.cpp
 	<iostream>
 	<iomanip>
+	"rlutil.h"
 	"RetiroProducto.h"
 	"Producto.h"
 	"ProductoStock.h"
 	"Usuario.h"
 	"FuncionesGlobales.h"
 
-1656113204 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\usuario.cpp
+1656352349 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\usuario.cpp
 	<iostream>
 	<iomanip>
+	"rlutil.h"
 	"Usuario.h"
 	"FuncionesGlobales.h"
 
@@ -953,6 +963,20 @@
 	<sys/time.h>
 
 1656279460 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1656328783 c:\users\asus\documents\github\proyecto\gestiondeheladera\rlutil.h
 	<iostream>
 	<string>
 	<cstdio>

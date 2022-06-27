@@ -27,10 +27,13 @@ string Producto::toString()
 
 void Producto::toList()
 {
+    rlutil::setColor(rlutil::LIGHTCYAN);
     cout << left;
-    cout << setw(4) << getIdProducto();
-    cout << setw(15) << getNombreProducto();
-    cout << setw(15)  << getFechaVencimiento().toString() << endl;
+    cout << "\t";
+    cout << setw(10) << getIdProducto();
+    cout << setw(20) << getNombreProducto();
+    cout << setw(20) << getFechaVencimiento().toString() << endl;
+    rlutil::setColor(rlutil::BROWN);
 }
 
 bool Producto::operator == (Fecha fecha)
@@ -64,7 +67,9 @@ bool Producto::GrabarEnDisco()
     p=fopen("Productos.dat", "ab");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     int escribio=fwrite(this, sizeof(Producto),1,p);
@@ -134,8 +139,13 @@ Producto cargarProducto()
 
     while(validarUsuarioExistente(dniUsuario) == false)
     {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
         cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniUsuario;
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
+
     }
 
     cout << "Ingrese el nombre del Producto: ";
@@ -145,9 +155,13 @@ Producto cargarProducto()
 
     while(validarProductoExistente(nombre))
     {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
         cout <<"Producto ya ingresado, ingrese otro: ";
         getline(cin, nombre);
         nombre = mayuscula(nombre);
+        rlutil::setColor(rlutil::BROWN);
+        cout<<endl;
     }
 
     cout << "Ingrese el dia vencimiento: ";
@@ -172,7 +186,7 @@ Producto cargarProducto()
 
     cout<<endl;
     cout<<endl;
-    system("pause");
+    //system("pause");
     return reg;
 }
 
@@ -216,32 +230,40 @@ void listarProductos()
     int cont=0;
     int cantProductos = CantidadRegistrosProductos();
 
+    rlutil::setColor(rlutil::MAGENTA);
+    cout<<endl;
     cout << left;
-    cout << setw(20) << "\t";
+    cout << setw(16) << "\t";
     cout << "PRODUCTOS" << endl;
-    cout << "---------------------------------------------------------------" << endl;
-    cout << setw(4)  << "ID";
-    cout << setw(15) << "NOMBRE";
-    cout << setw(15) << "VENCIMIENTO"<<endl;
-    cout << "---------------------------------------------------------------" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "-----------------------------------------" << endl;
+    cout << "\t";
+    cout << setw(10)  << "ID";
+    cout << setw(20) << "NOMBRE";
+    cout << setw(20) << "VENCIMIENTO"<<endl;
+    cout << "\t" << "-----------------------------------------" << endl;
 
     for(int i=0; i<cantProductos; i++)
     {
         aux.LeerDeDisco(i);
         if(aux.getEstadoProducto())
         {
+            rlutil::setColor(rlutil::LIGHTCYAN);
             cout << left;
-            cout << setw(4)  << aux.getIdProducto();
-            cout << setw(15) << aux.getNombreProducto();
-            cout << setw(15) << aux.getFechaVencimiento().toString() << endl;
+            cout << "\t";
+            cout << setw(10) << aux.getIdProducto();
+            cout << setw(20) << aux.getNombreProducto();
+            cout << setw(20) << aux.getFechaVencimiento().toString() << endl;
         }
         else
         {
             cont++;
         }
     }
-    cout << "---------------------------------------------------------------" << endl;
-    cout << "Total: " << cantProductos - cont<< " Productos.";
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "-----------------------------------------" << endl;
+    cout << "\t" << "Total: " << cantProductos - cont<< " Productos.";
+    rlutil::setColor(rlutil::BROWN);
     cout<<endl;
     cout<<endl;
 }
@@ -289,14 +311,19 @@ void buscarProducto()
     nombre = mayuscula(nombre);
 
     system("cls");
-
-    cout << "PRODUCTOS" << endl;
-    cout << "----------------------------------" << endl;
+    rlutil::setColor(rlutil::MAGENTA);
+    cout<<endl;
     cout << left;
-    cout << setw(4) << "ID";
-    cout << setw(15) << "PRODUCTO";
-    cout << setw(15)  << "VENCIMIENTO" << endl;
-    cout << "----------------------------------" << endl;
+    cout << setw(16) << "\t";
+    cout << "PRODUCTOS" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "-----------------------------------------" << endl;
+    cout << left;
+    cout << "\t";
+    cout << setw(10) << "ID";
+    cout << setw(20) << "PRODUCTO";
+    cout << setw(20) << "VENCIMIENTO" << endl;
+    cout << "\t" << "-----------------------------------------" << endl;
 
     while(aux.LeerDeDisco(pos))
     {
@@ -312,10 +339,15 @@ void buscarProducto()
     {
         system("cls");
         cout<<endl;
+        rlutil::setColor(rlutil::RED);
         cout << "No hay productos con ese nombre." << endl;
+        rlutil::setColor(rlutil::BROWN);
         cout<<endl;
     }
-    cout << endl;
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    rlutil::setColor(rlutil::BROWN);
 }
 
 void menuProducto()
@@ -366,14 +398,20 @@ void menuProducto()
             if(nuevoProducto())
             {
                 cout<<endl;
+                rlutil::setColor(rlutil::GREEN);
                 cout<<"PRODUCTO AGREGADO";
+                rlutil::setColor(rlutil::BROWN);
+                cout<<endl;
                 cout<<endl;
                 system("pause");
             }
             else
             {
                 cout<<endl;
+                rlutil::setColor(rlutil::RED);
                 cout<<"NO SE PUDO AGREGAR EL PRODUCTO";
+                rlutil::setColor(rlutil::BROWN);
+                cout<<endl;
                 cout<<endl;
                 system("pause");
             }
@@ -382,14 +420,20 @@ void menuProducto()
             if(EliminarProducto()!= -1)
             {
                 cout<<endl;
+                rlutil::setColor(rlutil::GREEN);
                 cout<<"PRODUCTO ELIMINADO";
+                rlutil::setColor(rlutil::BROWN);
+                cout<<endl;
                 cout<<endl;
                 system("pause");
             }
             else
             {
                 cout<<endl;
+                rlutil::setColor(rlutil::RED);
                 cout<<"NO SE PUDO ELIMINAR EL PRODUCTO";
+                rlutil::setColor(rlutil::BROWN);
+                cout<<endl;
                 cout<<endl;
                 system("pause");
             }
@@ -398,14 +442,20 @@ void menuProducto()
             if(ingresarProducto())
             {
                 cout<<endl;
+                rlutil::setColor(rlutil::GREEN);
                 cout<<"PRODUCTO AGREGADO";
+                rlutil::setColor(rlutil::BROWN);
+                cout<<endl;
                 cout<<endl;
                 system("pause");
             }
             else
             {
                 cout<<endl;
+                rlutil::setColor(rlutil::RED);
                 cout<<"NO EXISTE EL PRODUCTO";
+                rlutil::setColor(rlutil::BROWN);
+                cout<<endl;
                 cout<<endl;
                 system("pause");
             }
@@ -415,14 +465,20 @@ void menuProducto()
             if(retirarProductoManual())
             {
                 cout<<endl;
+                rlutil::setColor(rlutil::GREEN);
                 cout<<"PRODUCTO RETIRADO";
+                rlutil::setColor(rlutil::BROWN);
+                cout<<endl;
                 cout<<endl;
                 system("pause");
             }
             else
             {
                 cout<<endl;
+                rlutil::setColor(rlutil::RED);
                 cout<<"NO SE PUDO RETIRAR EL PRODUCTO";
+                rlutil::setColor(rlutil::BROWN);
+                cout<<endl;
                 cout<<endl;
                 system("pause");
             }
