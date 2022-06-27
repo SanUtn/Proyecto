@@ -211,7 +211,9 @@ void listarConsumosPlatillo()
     }
     else
     {
+        cout<<endl;
         cout << "No hay consumos de platillos registrados." << endl;
+        cout<<endl;
     }
 
     cout<<endl;

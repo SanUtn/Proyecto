@@ -191,7 +191,9 @@ void listarConsumosPoductos()
     }
     else
     {
+        cout<<endl;
         cout << "No hay consumos de productos registrados." << endl;
+        cout<<endl;
     }
 
     cout<<endl;

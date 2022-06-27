@@ -119,5 +119,6 @@ pendiente:
 2. cambiar listado de sugerencias en consumos, en todas las sugerencias de platillo y productos.HECHO
 3. revisar todo el menu reportes, como muestra los listados, cuando no existe algo no dice nada, el menu sugerencias esta repetido, las alertas de stock yo las pondria en el menu de stock(arreglar como se ven), dejaria solo en reportes los consumos anuales y mensuales.HECHO
 
-
+27/06
+tengo una duda, en productosStock, en la linea 322 cuando buscar un producto no tiene que ademas preguntar si el estado es true?? no lo quise modificar por las dudas
 

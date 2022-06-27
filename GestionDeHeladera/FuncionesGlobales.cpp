@@ -119,6 +119,7 @@ void copiarProductos(Producto *vDinamico, int cantidad, int idplatillo)
         {
             vDinamico[i].setIdProducto(reg.getIdProducto());
             i++;
+            //cantidad de productos del platillo.
             cantidad--;
         }
         pos++;
@@ -350,6 +351,7 @@ void eliminarStock(int idproducto)
     }
 }
 
+//cuando se elimina un platillo debe eliminarse también de productosXPlatillo y de recetas.
 void eliminarPlatillos(int idproducto)
 {
     ProductosxPlatillo reg;
@@ -367,6 +369,7 @@ void eliminarPlatillos(int idproducto)
     }
 }
 
+//recibe un platillo chequea si existe en recetas y setea su estado a false.
 void eliminarRecetasPorPlatillo(int idplatillo)
 {
     Receta reg;
@@ -627,7 +630,7 @@ void alertaSinStock()
     cout<<endl;
 }
 
-//muestra los vencidos y los que les falta dos dias para vencer
+//muestra los que vencen hoy y los que les falta dos dias para vencer
 void alertaDeProductosAVencer()
 {
     Producto aux;
@@ -743,7 +746,9 @@ void alertaDeProductosVencidos()
     else
     {
         system("cls");
+        cout<<endl;
         cout << "No hay productos proximos a vencerse." << endl;
+        cout<<endl;
     }
 
     cout<<endl;

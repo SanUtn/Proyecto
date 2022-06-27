@@ -45,7 +45,7 @@ using namespace std;
     int sugerenciasXCalorias();
     void buscarPlatillosXCalorias(int calorias);
     bool validarCalorias(int calorias);
-    bool validarCalorias(int calorias);
+
 
 
 

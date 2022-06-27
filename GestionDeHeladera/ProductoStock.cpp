@@ -152,8 +152,6 @@ bool retirarProductoDelStock(int idProducto)
             }
             else
             {
-                //aux.setStock(cantidad - 1);
-                //aux.ModificarArchivo(i);
                 return false;
             }
         }
@@ -238,11 +236,9 @@ bool retirarProductoDelStockDesdePlatillo(int idplatillo)
             {
                 if(aux.getIdProducto()== vProductos[j])
                 {
-                    //posicion=buscarPosicionProducto(aux.getIdProducto());
+
                     if(aux.getStock() > 0)
                     {
-                        //reg.setEstadoProducto(false);
-                        //reg.ModificarArchivo(posicion);
                         aux.setStock(aux.getStock() - 1);
                         aux.ModificarArchivo(i);
                         bandera = true;
@@ -315,7 +311,7 @@ bool retirarProductoDelStockConsumoProducto(int idproducto)
 {
     ProductoStock aux;
     int cantStocks = CantidadRegistrosStock();
-    int cantidad, posicion;
+    int cantidad;
     bool bandera = false;
 
     if(buscarProducto(idproducto))
@@ -326,7 +322,7 @@ bool retirarProductoDelStockConsumoProducto(int idproducto)
             if(aux.getIdProducto()== idproducto)
             {
                 cantidad = aux.getStock();
-                //posicion=buscarPosicionProducto(aux.getIdProducto());
+
                 if(cantidad > 0)
                 {
                     aux.setStock(cantidad - 1);
