@@ -116,6 +116,7 @@ bool nuevoUsuario()
 {
     Usuario reg;
     reg = cargarUsuario();
+    //si ingresa 0 para salir se setea el id en -1.
     if(reg.getId() == -1)
     {
         rlutil::setColor(rlutil::RED);

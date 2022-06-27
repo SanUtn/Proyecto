@@ -154,6 +154,7 @@ IngresoProducto cargarProductoExistente()
     return reg;
 }
 
+//cuando se agrega un nuevo producto tambien se agrega el ingreso de ese producto con el dni del usuario que ingreso.
 void agregarIngresoDesdeNuevoProducto(int idProducto, int dni, Fecha fecha)
 {
 

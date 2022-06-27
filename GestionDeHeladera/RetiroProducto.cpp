@@ -144,7 +144,6 @@ RetiroProducto retirarProductoExistenteManual()
         cin >> idProducto;
     }
 
-    //ver si cargamos la fecha o tomamos la actual
     cout << "Ingrese el dia: ";
     cin >> dia;
     cout << "Ingrese el mes: ";
@@ -154,6 +153,7 @@ RetiroProducto retirarProductoExistenteManual()
 
     RetiroProducto reg;
 
+    //se encuentra en productos stock, da de baja 1 cantidad de ese producto.
     if(retirarProductoDelStock(idProducto))
     {
         Fecha fecha(dia, mes, anio);
@@ -208,6 +208,7 @@ RetiroProducto retirarProductoExistente(int idproducto)
     return reg;
 }
 
+//cuando se consume un platillo se genera el retiro de cada producto.
 bool retirarProductoExistentePorConsumo(int idplatillo, int usuario)
 {
     int id;
@@ -224,6 +225,7 @@ bool retirarProductoExistentePorConsumo(int idplatillo, int usuario)
                 return false;
             }
 
+    //LLENA EL VECTOR CON LOS PRODUCTOS DE ESE PLATILLO
     copiarProductos(vDinamico,cantProductos, idplatillo);
 
     RetiroProducto reg;

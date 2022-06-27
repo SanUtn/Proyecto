@@ -265,6 +265,7 @@ int EliminarProducto()
             bool modifico = aux.ModificarArchivo(pos);
             if (modifico)
             {
+                //al eliminar el producto se elimina de stock, de platillo y de recetas
                 eliminarStock(idproducto);
                 eliminarPlatillos(idproducto);
             }
@@ -310,7 +311,9 @@ void buscarProducto()
     if(bandera == false)
     {
         system("cls");
+        cout<<endl;
         cout << "No hay productos con ese nombre." << endl;
+        cout<<endl;
     }
     cout << endl;
 }

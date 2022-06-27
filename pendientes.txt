@@ -121,6 +121,9 @@ pendiente:
 
 27/06
 tengo una duda, en productosStock, en la linea 322 cuando buscar un producto no tiene que ademas preguntar si el estado es true?? no lo quise modificar por las dudas en la 237 lo mismo, revisar eso en todo stoc de productos
-retirarProductoExistentePorConsumo(platillo, usuario); donde esta esta funcion? 
+cuando se elimina un producto, se elimina el stock, el platillo, sus recetas, y se elimina productosXPlatillo?
+retirarProductoExistentePorConsumo(platillo, usuario); donde esta esta funcion? (EN RETIRO PRODUCTOS)
 en funciones globales: esta esta int buscarStockDeProducto(int idproducto) que es lo mismo que consultar stoc en productos stock.
-
+en recetas en elegir recetas ver lo del vector dinamico que se vuelve a cargar en el white.
+en recetas en elegir recetas copiarProductos que esta en funciones globales no hace lo mismo que buscarProductosPorPlatillo en stock de productos, que tambien llena el vector con los productos?
+porque en retiro producto cuando retiras manual se setea el id en -1??y para que sirve la manual, que diferencia hay con la que no dice manual?

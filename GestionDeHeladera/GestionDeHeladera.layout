@@ -2,89 +2,44 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="FuncionesGlobales.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ProductoStock.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="328" topLine="11" />
+			<Cursor1 position="4975" topLine="275" />
 		</Cursor>
 	</File>
-	<File name="OrientacionAlimentaria.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4651" topLine="179" />
-		</Cursor>
-	</File>
-	<File name="ConsumoPlatillo.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1330" topLine="3" />
-		</Cursor>
-	</File>
-	<File name="RetiroProducto.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4729" topLine="195" />
-		</Cursor>
-	</File>
-	<File name="ProductoStock.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9689" topLine="410" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1605" topLine="38" />
-		</Cursor>
-	</File>
-	<File name="ConsumoPlatillo.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3865" topLine="361" />
-		</Cursor>
-	</File>
-	<File name="Fecha.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="654" topLine="4" />
-		</Cursor>
-	</File>
-	<File name="Usuario.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9556" topLine="396" />
-		</Cursor>
-	</File>
-	<File name="Producto.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="41" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Receta.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1217" topLine="41" />
-		</Cursor>
-	</File>
-	<File name="Platillo.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="10265" topLine="451" />
-		</Cursor>
-	</File>
-	<File name="Receta.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="58" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="OrientacionAlimentaria.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1307" topLine="6" />
-		</Cursor>
-	</File>
-	<File name="ProductosxPlatillo.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ProductosxPlatillo.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="285" topLine="16" />
 		</Cursor>
 	</File>
-	<File name="ConsumoProducto.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1055" topLine="0" />
+			<Cursor1 position="1605" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Fecha.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Fecha.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="798" topLine="9" />
+			<Cursor1 position="654" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="ConsumoPlatillo.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5263" topLine="414" />
+		</Cursor>
+	</File>
+	<File name="ConsumoProducto.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1055" topLine="22" />
+		</Cursor>
+	</File>
+	<File name="OrientacionAlimentaria.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7265" topLine="274" />
+		</Cursor>
+	</File>
+	<File name="ConsumoProducto.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4442" topLine="183" />
 		</Cursor>
 	</File>
 	<File name="IngresoProducto.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -92,19 +47,9 @@
 			<Cursor1 position="1263" topLine="9" />
 		</Cursor>
 	</File>
-	<File name="Producto.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ConsumoPlatillo.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="902" topLine="36" />
-		</Cursor>
-	</File>
-	<File name="ProductosxPlatillo.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2492" topLine="48" />
-		</Cursor>
-	</File>
-	<File name="IngresoProducto.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="59" topLine="0" />
+			<Cursor1 position="1446" topLine="19" />
 		</Cursor>
 	</File>
 	<File name="Usuario.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -112,9 +57,79 @@
 			<Cursor1 position="1329" topLine="21" />
 		</Cursor>
 	</File>
-	<File name="FuncionesGlobales.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FuncionesGlobales.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3227" topLine="126" />
+			<Cursor1 position="328" topLine="22" />
+		</Cursor>
+	</File>
+	<File name="Usuario.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2633" topLine="592" />
+		</Cursor>
+	</File>
+	<File name="RetiroProducto.cpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4819" topLine="259" />
+		</Cursor>
+	</File>
+	<File name="Fecha.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="798" topLine="31" />
+		</Cursor>
+	</File>
+	<File name="Receta.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8893" topLine="637" />
+		</Cursor>
+	</File>
+	<File name="ProductoStock.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="817" topLine="29" />
+		</Cursor>
+	</File>
+	<File name="rlutil.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4333" topLine="153" />
+		</Cursor>
+	</File>
+	<File name="Producto.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="902" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="Platillo.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1481" topLine="41" />
+		</Cursor>
+	</File>
+	<File name="IngresoProducto.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3697" topLine="183" />
+		</Cursor>
+	</File>
+	<File name="Platillo.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3585" topLine="167" />
+		</Cursor>
+	</File>
+	<File name="OrientacionAlimentaria.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1307" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="FuncionesGlobales.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8164" topLine="107" />
+		</Cursor>
+	</File>
+	<File name="Producto.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7371" topLine="433" />
+		</Cursor>
+	</File>
+	<File name="ProductosxPlatillo.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1790" topLine="146" />
 		</Cursor>
 	</File>
 	<File name="RetiroProducto.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -122,24 +137,9 @@
 			<Cursor1 position="72" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="ProductoStock.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Receta.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="634" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ConsumoProducto.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3460" topLine="121" />
-		</Cursor>
-	</File>
-	<File name="Platillo.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1481" topLine="23" />
-		</Cursor>
-	</File>
-	<File name="rlutil.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4333" topLine="153" />
+			<Cursor1 position="1217" topLine="41" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

@@ -155,6 +155,7 @@ Platillo cargarPlatillo()
 
     while(opc != 0)
     {
+        //ingresa el platillo, con sus productos en productosXPlatillo, tambien valida su existencia.
         nuevoProductoxPlatillo(id, opc);//le pasa el id del platillo y el ingrediente a agregar.
         system("cls");
         cout << "Ingrese el id del ingrendiente o 0 para no agregar mas: " << endl;
@@ -320,7 +321,9 @@ void buscarPlatilloNombre()
     if(bandera == false)
     {
         system("cls");
+        cout<<endl;
         cout << "No hay platillos con ese nombre." << endl;
+        cout<<endl;
     }
 }
 
@@ -368,7 +371,10 @@ void busquedaPlatilloOrientacion()
     if(bandera == false)
     {
         system("cls");
+        cout<<endl;
         cout << "No hay platillos con esa orientacion." << endl;
+        cout<<endl;
+
     }
 }
 

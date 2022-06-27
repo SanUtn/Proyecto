@@ -147,7 +147,7 @@ int EliminarReceta()
 
     while(aux.LeerDeDisco(pos)==1)
     {
-        if(aux.getIdReceta() == idReceta)
+        if(aux.getIdReceta() == idReceta && aux.getEstadoReceta()== true)
         {
             aux.setEstadoReceta(false);
             aux.ModificarArchivo(pos);
@@ -302,7 +302,7 @@ void EliminarRecetaPorParametro(int idreceta)
 
     while(aux.LeerDeDisco(pos)==1)
     {
-        if(aux.getIdReceta() == idreceta)
+        if(aux.getIdReceta() == idreceta && aux.getEstadoReceta()==true)
         {
             aux.setEstadoReceta(false);
             aux.ModificarArchivo(pos);
@@ -351,6 +351,7 @@ void elegirReceta(int opc)
                 return;
             }
 
+            //funcion que se encuentra en stock, llena el vector con los productos del platillo consultado.
             buscarProductosXPlatillo(reg.getIdPlatillo(), vProductos, cantReg);
 
             cout<<endl;
@@ -395,7 +396,7 @@ bool elegirReceta2(int opc)
             if(controlarStockDeProductosPorPlatillos(reg.getIdPlatillo()))
             {
 
-
+                //se encuentra en funciones globales, llena el vector con los productos de ese platillo
                 copiarProductos(vProductos, cantReg, reg.getIdPlatillo());
 
                 cout<<endl;

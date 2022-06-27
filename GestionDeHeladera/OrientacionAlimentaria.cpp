@@ -139,8 +139,6 @@ bool validarOrientacionExistente(string n)
 
     while(aux.LeerDeDisco(pos))
     {
-        ///ver de pasar todo el nombre a mayuscula para que no haya repetidos
-        // nombre = n.toupper();//transforma todo a mayuscula por si se tipea diferente pero existe
         if(aux.getDescripcion() == n && aux.getEstadoOrientacion() == true)
         {
             return true;

@@ -86,6 +86,7 @@ bool nuevoProductoxPlatillo(int idplatillo, int idproducto)
     return ok;
 }
 
+//recibe desde platillo los datos, valida si ya existe ese producto para ese platillo
 ProductosxPlatillo cargarProductosxPlatillo(int idplatillo, int idproducto)
 {
         ProductosxPlatillo reg;

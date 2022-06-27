@@ -351,7 +351,7 @@ void eliminarStock(int idproducto)
     }
 }
 
-//cuando se elimina un platillo debe eliminarse también de productosXPlatillo y de recetas.
+//cuando se elimina un producto debe eliminarse también el platillo y sus recetas
 void eliminarPlatillos(int idproducto)
 {
     ProductosxPlatillo reg;
