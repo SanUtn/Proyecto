@@ -161,7 +161,7 @@ int EliminarReceta()
 void listarRecetas()
 {
     Receta aux;
-    int cont=0, opc, opcion;
+    int cont=0, opcion;
     int cantReg = CantidadRegistrosReceta();
 
     cout << left;
@@ -224,7 +224,7 @@ void listarRecetas()
 void listarRecetas2()
 {
     Receta aux;
-    int cont=0, opc, opcion;
+    int cont=0;
     int cantReg = CantidadRegistrosReceta();
 
     cout << left;
@@ -334,9 +334,6 @@ void elegirReceta(int opc)
     Receta reg;
     int pos = 0;
     int *vProductos;
-    if(vProductos==NULL){
-        return;
-    }
 
 
     //int cantReg = CantidadRegistrosProductosxPlatillos();
@@ -349,6 +346,11 @@ void elegirReceta(int opc)
 
             int cantReg = CantidadProductosxPlatillo(reg.getIdPlatillo());
             vProductos = new int [cantReg];
+            if(vProductos==NULL)
+            {
+                return;
+            }
+
             buscarProductosXPlatillo(reg.getIdPlatillo(), vProductos, cantReg);
 
             cout<<endl;
@@ -375,39 +377,44 @@ bool elegirReceta2(int opc)
 {
     Receta reg;
     int pos = 0;
-    int *vProductos;
-    int cantReg = CantidadRegistrosProductos();
-    vProductos = new int [cantReg];
-    if(vProductos==NULL){
-        exit(1);
-    }
+    Producto *vProductos;
+
 
 
     while(reg.LeerDeDisco(pos))
     {
         if(reg.getIdReceta() == opc && reg.getEstadoReceta()==true)
         {
-            //controlar que tengan stock esos productos
-            if(controlarStockDeProductosPorPlatillos(reg.getIdPlatillo())){
-
-
-            buscarProductosDelPlatillo(reg.getIdPlatillo(), vProductos, cantReg);
-
-            cout<<endl;
-            cout<<endl;
-            cout<<"Ingredientes: ";
-            for(int i=0; i<cantReg; i++)
+            int cantReg = CantidadProductosxPlatillo(reg.getIdPlatillo());
+            vProductos = new Producto [cantReg];
+            if(vProductos==NULL)
             {
-                cout<< mostrarNombreProducto(vProductos[i])<<", ";
+                exit(1);
             }
-            cout<<endl;
-            cout<<endl;
-            cout<<"Intrucciones: " <<reg.getDescripcion();
-            cout<<endl;
-            cout<<endl;
-        }else {
-        return false;
-        }
+            //controlar que tengan stock esos productos
+            if(controlarStockDeProductosPorPlatillos(reg.getIdPlatillo()))
+            {
+
+
+                copiarProductos(vProductos, cantReg, reg.getIdPlatillo());
+
+                cout<<endl;
+                cout<<endl;
+                cout<<"Ingredientes: ";
+                for(int i=0; i<cantReg; i++)
+                {
+                    cout<< mostrarNombreProducto(vProductos[i].getIdProducto())<<", ";
+                }
+                cout<<endl;
+                cout<<endl;
+                cout<<"Intrucciones: " <<reg.getDescripcion();
+                cout<<endl;
+                cout<<endl;
+            }
+            else
+            {
+                return false;
+            }
         }
         pos++;
     }
@@ -444,7 +451,6 @@ void buscarProductosDelPlatillo(int idP, int *vProductos, int tam)
 void buscarRecetaQueTegaStockDeProductos(Receta *vRecetas, int tam)
 {
     Receta aux;
-    int pos=0;
 
     ponerEnCeroElVectorDeRecetas(vRecetas, tam);
 
@@ -468,15 +474,17 @@ bool controlarStockDeProductosPorPlatillos(int idPlatillo)
 
     ProductosxPlatillo aux;
 
-    bool bandera = true;
     int pos = 0;
 
-    while(aux.LeerDeDisco(pos)){
-            if(aux.getIdPlatillo() == idPlatillo){
-                if(consultarStock(aux.getIdProducto()) <= 0){
-                    return false;
-                   }
+    while(aux.LeerDeDisco(pos))
+    {
+        if(aux.getIdPlatillo() == idPlatillo)
+        {
+            if(consultarStock(aux.getIdProducto()) <= 0)
+            {
+                return false;
             }
+        }
         pos++;
     }
     return true;
@@ -514,7 +522,7 @@ void sugerenciaRecetas()
     cout<<endl;
     cout<<endl;
 
-     //si no hay recetas disponibles sale para no hacer elegir
+    //si no hay recetas disponibles sale para no hacer elegir
     if(cont == 0)
     {
         cout<<"Lo sentimos no hay recetas disponibles.";
@@ -543,15 +551,16 @@ void sugerenciaRecetas()
     //muestra de la opcion elegida los ingredientes y las instrucciones
     elegir = elegirReceta2(opcion);
 
-        //si elige una receta que existe pero no tiene stock
-        if(elegir == false){
-            cout<<endl;
-            cout<<endl;
-            cout<<"Lo sentimos no hay stock de productos para la receta seleccionada.";
-            cout<<endl;
-            cout<<endl;
-            return;
-        }
+    //si elige una receta que existe pero no tiene stock
+    if(elegir == false)
+    {
+        cout<<endl;
+        cout<<endl;
+        cout<<"Lo sentimos no hay stock de productos para la receta seleccionada.";
+        cout<<endl;
+        cout<<endl;
+        return;
+    }
 
     delete vRecetas;
 }
