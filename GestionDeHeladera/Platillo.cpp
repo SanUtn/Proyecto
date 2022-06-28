@@ -180,6 +180,17 @@ Platillo cargarPlatillo()
     cout << "Ingrese el id de la orientacion: ";
     cin >> orientacionAlimentaria;
     cout<<endl;
+
+     while(validarOrientacionExistentePorId(orientacionAlimentaria)== false)
+    {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
+        cout <<"Orientacion inexistente, ingrese otra: ";
+        cin >> orientacionAlimentaria;
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
+    }
+
     cout << "Ingrese las calorias: ";
     cin >> calorias;
 
@@ -503,6 +514,7 @@ void menuPlatillo()
                 cout<<endl;
                 cout<<"PLATILLO AGREGADO";
                 cout<<endl;
+                cout<<endl;
                 rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
@@ -511,6 +523,7 @@ void menuPlatillo()
                 rlutil::setColor(rlutil::RED);
                 cout<<endl;
                 cout<<"NO SE PUDO AGREGAR EL PLATILLO";
+                cout<<endl;
                 cout<<endl;
                 rlutil::setColor(rlutil::BROWN);
                 system("pause");
@@ -523,6 +536,7 @@ void menuPlatillo()
                 cout<<endl;
                 cout<<"PLATILLO ELIMINADO";
                 cout<<endl;
+                cout<<endl;
                 rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
@@ -531,6 +545,7 @@ void menuPlatillo()
                 rlutil::setColor(rlutil::RED);
                 cout<<endl;
                 cout<<"NO SE PUDO ELIMINAR EL PLATILLO";
+                cout<<endl;
                 cout<<endl;
                 rlutil::setColor(rlutil::BROWN);
                 system("pause");

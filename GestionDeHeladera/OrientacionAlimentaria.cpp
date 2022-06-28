@@ -148,6 +148,22 @@ bool validarOrientacionExistente(string n)
     return false;
 }
 
+bool validarOrientacionExistentePorId(int idOrientacion)
+{
+    OrientacionAlimentaria aux;
+    int pos = 0;
+
+    while(aux.LeerDeDisco(pos))
+    {
+        if(aux.getIdOrientacionAlimentaria() == idOrientacion && aux.getEstadoOrientacion() == true)
+        {
+            return true;
+        }
+        pos++;
+    }
+    return false;
+}
+
 
 void listarOrientacionAlimentaria()
 {
