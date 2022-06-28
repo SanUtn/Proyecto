@@ -28,7 +28,6 @@ bool OrientacionAlimentaria::LeerDeDisco(int pos)
     p=fopen("OrientacionesAlimentarias.dat", "rb");
     if(p==NULL)
     {
-        cout<<"El archivo no pudo abrirse"<<endl;
         return false;
     }
     fseek(p, pos*sizeof(OrientacionAlimentaria),0);
@@ -45,7 +44,9 @@ bool OrientacionAlimentaria::GrabarEnDisco()
     p=fopen("OrientacionesAlimentarias.dat", "ab");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     int escribio=fwrite(this, sizeof(OrientacionAlimentaria),1,p);
@@ -62,7 +63,9 @@ bool OrientacionAlimentaria::ModificarArchivo(int pos)
     p=fopen("OrientacionesAlimentarias.dat", "rb+");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     fseek(p, pos*sizeof(OrientacionAlimentaria),0);
@@ -117,9 +120,13 @@ OrientacionAlimentaria cargarOrientacionAlimentaria()
 
     while(validarOrientacionExistente(descripcion))
     {
-        cout <<"Orientacion ya ingresada, ingrese otro: ";
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
+        cout <<"Orientacion ya ingresada, ingrese otra: ";
         getline(cin, descripcion);
         descripcion = mayuscula(descripcion);
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
     }
 
     OrientacionAlimentaria reg;
@@ -128,7 +135,7 @@ OrientacionAlimentaria cargarOrientacionAlimentaria()
     reg.setEstadoOrientacion(estado);
     cout<<endl;
     cout<<endl;
-    system("pause");
+    //system("pause");
     return reg;
 }
 
@@ -172,6 +179,8 @@ void listarOrientacionAlimentaria()
     int cantOA = CantidadRegistrosOA();
 
     rlutil::setColor(rlutil::MAGENTA);
+    cout<<endl;
+    cout<<endl;
     cout << left;
     cout << "\t" << "\t";
     cout << "ORIENTACIONES ALIMENTARIAS" << endl;
@@ -203,6 +212,7 @@ void listarOrientacionAlimentaria()
     cout << "\t"<<"Total: " << cantOA - cont<< " orientaciones alimentarias.";
     cout<<endl;
     cout<<endl;
+    cout<<endl;
     rlutil::setColor(rlutil::BROWN);
 }
 
@@ -211,6 +221,7 @@ int EliminarOrientacionAlimentaria()
     OrientacionAlimentaria aux;
     int pos=0, idOrientacion;
 
+    cout<<endl;
     listarOrientacionAlimentaria();
     cout<<endl;
 
@@ -267,32 +278,44 @@ void menuOrientacionAlimentaria()
         case 1:
             if(nuevaOrientacionAlimentaria())
             {
+                rlutil::setColor(rlutil::GREEN);
                 cout<<endl;
                 cout<<"ORIENTACION AGREGADA";
                 cout<<endl;
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             else
             {
+                rlutil::setColor(rlutil::RED);
                 cout<<endl;
                 cout<<"NO SE PUDO AGREGAR LA ORIENTACION";
                 cout<<endl;
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             break;
         case 2:
             if(EliminarOrientacionAlimentaria()!= -1)
             {
+                rlutil::setColor(rlutil::GREEN);
                 cout<<endl;
                 cout<<"ORIENTACION ELIMINADA";
                 cout<<endl;
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             else
             {
+                rlutil::setColor(rlutil::RED);
                 cout<<endl;
                 cout<<"NO SE PUDO ELIMINAR LA ORIENTACION";
                 cout<<endl;
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             break;

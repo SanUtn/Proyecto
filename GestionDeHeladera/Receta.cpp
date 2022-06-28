@@ -29,7 +29,9 @@ bool Receta::LeerDeDisco(int pos)
     p=fopen("Recetas.dat", "rb");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     fseek(p, pos*sizeof(Receta),0);
@@ -46,7 +48,9 @@ bool Receta::GrabarEnDisco()
     p=fopen("Recetas.dat", "ab");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     int escribio=fwrite(this, sizeof(Receta),1,p);
@@ -65,7 +69,9 @@ bool Receta::ModificarArchivo(int pos)
     p=fopen("Recetas.dat", "rb+");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     fseek(p, pos*sizeof(Receta),0);
@@ -76,7 +82,7 @@ bool Receta::ModificarArchivo(int pos)
 }
 
 
-/// Funciones globales para gestionar Usuario
+/// FUINCIONES GLOBALES
 bool nuevaReceta()
 {
     Receta reg;
@@ -113,11 +119,24 @@ Receta cargarReceta()
 
     id = CantidadRegistrosReceta()+1;
 
+    cout<<endl;
     listarPlatillos();
     cout<<endl;
 
     cout << "Ingrese el Id del Platillo: ";
     cin >> idPlatillo;
+    cout<<endl;
+
+      while(validarPlatilloExistenteXId(idPlatillo)== false)
+    {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
+        cout <<"Platillo inexistente, ingrese otro: ";
+        cin >> idPlatillo;
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
+    }
+
     cout << "Ingrese la descripcion: ";
     cin.ignore();
     getline(cin, descripcion);
@@ -129,7 +148,8 @@ Receta cargarReceta()
     reg.setEstadoReceta(estado);
     cout<<endl;
     cout<<endl;
-    system("pause");
+    cout<<endl;
+    //system("pause");
     return reg;
 }
 
@@ -139,6 +159,7 @@ int EliminarReceta()
     Receta aux;
     int pos=0, idReceta;
 
+    cout<<endl;
     listarRecetas2();
     cout<<endl;
 
@@ -164,36 +185,50 @@ void listarRecetas()
     int cont=0, opcion;
     int cantReg = CantidadRegistrosReceta();
 
+    cout<<endl;
+    cout<<endl;
     cout << left;
     cout << setw(10) << "\t";
-    cout << "RECETAS" << endl;
-    cout << "--------------------------------------"  << endl;
-    cout << setw(4)  << "ID";
-    cout << setw(15) << "PLATILLO" << endl;
-    cout << "--------------------------------------" << endl;
+    rlutil::setColor(rlutil::MAGENTA);
+    cout << "LISTADO DE RECETAS" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "--------------------------------------"  << endl;
+    cout << left;
+    cout << "\t";
+    cout << setw(10)  << "ID";
+    cout << setw(20) << "PLATILLO" << endl;
+    cout << "\t" << "--------------------------------------" << endl;
 
     for(int i=0; i<cantReg; i++)
     {
         aux.LeerDeDisco(i);
         if(aux.getEstadoReceta())
         {
+            rlutil::setColor(rlutil::LIGHTCYAN);
             cout << left;
-            cout << setw(4)  << aux.getIdReceta();
-            cout << setw(15) << mostrarNombrePlatillo(aux.getIdPlatillo()) << endl;
+            cout << "\t";
+            cout << setw(10)  << aux.getIdReceta();
+            cout << setw(20) << mostrarNombrePlatillo(aux.getIdPlatillo()) << endl;
             cont++;
         }
     }
-    cout << "--------------------------------------" << endl;
-    cout << "Total: " << cont << " recetas.";
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "--------------------------------------" << endl;
+    cout << "\t" << "Total: " << cont << " recetas.";
 
     cout<<endl;
     cout<<endl;
+    cout<<endl;
+    rlutil::setColor(rlutil::BROWN);
 
     //si no hay recetas disponibles sale para no hacer elegir
     if(cont == 0)
     {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
         cout<<"Lo sentimos no hay recetas disponibles.";
         cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
         system("pause");
         return;
     }
@@ -204,6 +239,8 @@ void listarRecetas()
     cout<<"Ingrese la opcion seleccionada o 0 para salir: ";
     cin>>opcion;
 
+    cout<<endl;
+
     if(opcion==0)
     {
         return;
@@ -211,14 +248,18 @@ void listarRecetas()
 
     while(validarExisteReceta(opcion) == false)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<endl;
-        cout<<"Opcion no existente, por favor ingrese otra: ";
+        cout<<"Opcion inexistente, por favor ingrese otra: ";
         cin>>opcion;
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
     }
 
 
     //muestra de la opcion elegida los ingredientes y las instrucciones
     elegirReceta(opcion);
+    rlutil::setColor(rlutil::BROWN);
 }
 
 void listarRecetas2()
@@ -227,42 +268,57 @@ void listarRecetas2()
     int cont=0;
     int cantReg = CantidadRegistrosReceta();
 
+    cout<<endl;
+    cout<<endl;
     cout << left;
     cout << setw(10) << "\t";
-    cout << "RECETAS" << endl;
-    cout << "--------------------------------------"  << endl;
-    cout << setw(4)  << "ID";
-    cout << setw(15) << "PLATILLO" << endl;
-    cout << "--------------------------------------" << endl;
+    rlutil::setColor(rlutil::MAGENTA);
+    cout << "LISTADO DE RECETAS" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "--------------------------------------"  << endl;
+    cout << left;
+    cout << "\t";
+    cout << setw(10)  << "ID";
+    cout << setw(20) << "PLATILLO" << endl;
+    cout << "\t" << "--------------------------------------" << endl;
 
     for(int i=0; i<cantReg; i++)
     {
         aux.LeerDeDisco(i);
         if(aux.getEstadoReceta())
         {
+            rlutil::setColor(rlutil::LIGHTCYAN);
             cout << left;
-            cout << setw(4)  << aux.getIdReceta();
-            cout << setw(15) << mostrarNombrePlatillo(aux.getIdPlatillo()) << endl;
+            cout << "\t";
+            cout << setw(10)  << aux.getIdReceta();
+            cout << setw(20) << mostrarNombrePlatillo(aux.getIdPlatillo()) << endl;
             cont++;
         }
     }
-    cout << "--------------------------------------" << endl;
-    cout << "Total: " << cont << " recetas.";
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "--------------------------------------" << endl;
+    cout << "\t" << "Total: " << cont << " recetas.";
 
     cout<<endl;
     cout<<endl;
+    cout<<endl;
+    rlutil::setColor(rlutil::BROWN);
 
     //si no hay recetas disponibles sale para no hacer elegir
     if(cont == 0)
     {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
         cout<<"Lo sentimos no hay recetas disponibles.";
         cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
         system("pause");
         return;
     }
 
     cout<<endl;
     cout<<endl;
+    rlutil::setColor(rlutil::BROWN);
 
 }
 
@@ -359,6 +415,7 @@ void elegirReceta(int opc)
             cout<<"Ingredientes: ";
             for(int i=0; i<cantReg; i++)
             {
+                rlutil::setColor(rlutil::WHITE);
                 cout<< mostrarNombreProducto(vProductos[i])<<", ";
             }
             cout<<endl;
@@ -366,11 +423,13 @@ void elegirReceta(int opc)
             cout<<"Intrucciones: " <<reg.getDescripcion();
             cout<<endl;
             cout<<endl;
+            rlutil::setColor(rlutil::BROWN);
 
         }
         pos++;
     }
     delete vProductos;
+    rlutil::setColor(rlutil::BROWN);
 }
 
 //aca si valida que haya stock en los productos para mostrar la receta
@@ -399,6 +458,7 @@ bool elegirReceta2(int opc)
                 //se encuentra en funciones globales, llena el vector con los productos de ese platillo
                 copiarProductos(vProductos, cantReg, reg.getIdPlatillo());
 
+                rlutil::setColor(rlutil::LIGHTGREEN);
                 cout<<endl;
                 cout<<endl;
                 cout<<"Ingredientes: ";
@@ -411,6 +471,7 @@ bool elegirReceta2(int opc)
                 cout<<"Intrucciones: " <<reg.getDescripcion();
                 cout<<endl;
                 cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
             }
             else
             {
@@ -420,6 +481,7 @@ bool elegirReceta2(int opc)
         pos++;
     }
     delete vProductos;
+    rlutil::setColor(rlutil::BROWN);
     return true;
 }
 
@@ -507,28 +569,42 @@ void sugerenciaRecetas()
     //lena el vector con todas las recetas que hay con stock de productos
     buscarRecetaQueTegaStockDeProductos(vRecetas, cantReg);
 
+    rlutil::setColor(rlutil::MAGENTA);
+    cout<<endl;
+    cout<<endl;
+    cout << left;
+    cout << "\t";
     cout << "SUGERENCIAS DE RECETAS SEGUN STOCK DE PRODUCTOS" << endl;
-    cout << "----------------------------------" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "-----------------------------------------------" << endl;
+
     for(int i=0; i<cantReg; i++)
     {
         if(vRecetas[i].getIdReceta() != 0)
         {
+            rlutil::setColor(rlutil::LIGHTCYAN);
+            cout << "\t" << "\t";
             cout<<i+1<<"."<<mostrarNombrePlatillo(vRecetas[i].getIdPlatillo())<<endl;
             cont++;
         }
     }
-    cout << "----------------------------------" << endl;
-    cout << "Total: " << cont << " recetas.";
+    rlutil::setColor(rlutil::DARKGREY);
+     cout << "\t" << "-----------------------------------------------" << endl;
+     cout << "\t" << "Total: " << cont << " recetas.";
 
     cout<<endl;
     cout<<endl;
+    cout<<endl;
+    rlutil::setColor(rlutil::BROWN);
 
     //si no hay recetas disponibles sale para no hacer elegir
     if(cont == 0)
     {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
         cout<<"Lo sentimos no hay recetas disponibles.";
         cout<<endl;
-        //system("pause");
+        rlutil::setColor(rlutil::BROWN);
         return;
     }
 
@@ -545,9 +621,12 @@ void sugerenciaRecetas()
 
     while(validarExisteReceta(opcion) == false)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<endl;
         cout<<"Opcion no existente, por favor ingrese otra: ";
         cin>>opcion;
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
     }
     //muestra de la opcion elegida los ingredientes y las instrucciones
     elegir = elegirReceta2(opcion);
@@ -555,15 +634,18 @@ void sugerenciaRecetas()
     //si elige una receta que existe pero no tiene stock
     if(elegir == false)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<endl;
         cout<<endl;
         cout<<"Lo sentimos no hay stock de productos para la receta seleccionada.";
         cout<<endl;
         cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return;
     }
 
     delete vRecetas;
+    rlutil::setColor(rlutil::BROWN);
 }
 
 void menuRecetas()
@@ -605,37 +687,49 @@ void menuRecetas()
         case 1:
             if(nuevaReceta())
             {
+                rlutil::setColor(rlutil::GREEN);
                 cout<<endl;
                 cout<<"RECETA AGREGADA";
                 cout<<endl;
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             else
             {
+                rlutil::setColor(rlutil::RED);
                 cout<<endl;
                 cout<<"NO SE PUDO AGREGAR LA RECETA";
                 cout<<endl;
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             break;
         case 2:
             if(EliminarReceta()!= -1)
             {
+                rlutil::setColor(rlutil::GREEN);
                 cout<<endl;
                 cout<<"RECETA ELIMINADA";
                 cout<<endl;
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             else
             {
+                rlutil::setColor(rlutil::RED);
                 cout<<endl;
                 cout<<"NO SE PUDO ELIMINAR LA RECETA";
                 cout<<endl;
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             break;
         case 3:
-            listarRecetas();
+            listarRecetas2();
             cout<<endl;
             cout<<endl;
             system("pause");

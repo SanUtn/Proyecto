@@ -17,9 +17,12 @@ string ProductoStock::toString()
 
 void ProductoStock::toList()
 {
+    rlutil::setColor(rlutil::LIGHTCYAN);
     cout << left;
-    cout << setw(20) << mostrarNombreProducto(getIdProducto());
+    cout << "\t";
+    cout << setw(25) << mostrarNombreProducto(getIdProducto());
     cout << setw(20) << to_string(stock)<<endl;
+    rlutil::setColor(rlutil::BROWN);
 }
 
 
@@ -46,7 +49,9 @@ bool ProductoStock::GrabarEnDisco()
     p=fopen("ProductosStock.dat", "ab");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     int escribio=fwrite(this, sizeof(ProductoStock),1,p);
@@ -63,7 +68,9 @@ bool ProductoStock::ModificarArchivo(int pos)
     p=fopen("ProductosStock.dat", "rb+");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     fseek(p, pos*sizeof(ProductoStock),0);
@@ -365,12 +372,21 @@ void listarStocks()
     ProductoStock aux;
     int cont=0;
     int cantStocks = CantidadRegistrosStock();
-    cout << "LISTADO DE STOCK DE PRODUCTOS" << endl;
-    cout << "----------------------------------" << endl;
+
+    rlutil::setColor(rlutil::MAGENTA);
+    cout<<endl;
+    cout<<endl;
     cout << left;
-    cout << setw(20) << "PRODUCTO";
+    cout << setw(8) << "\t";
+    cout << "STOCK DE PRODUCTOS" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "------------------------------" << endl;
+    cout << left;
+    cout << "\t";
+    cout << setw(25) << "PRODUCTO";
     cout << setw(20) << "STOCK" << endl;
-    cout<< "----------------------------------" << endl;
+    cout << "\t" << "------------------------------" << endl;
+
     for(int i=0; i<cantStocks; i++)
     {
         aux.LeerDeDisco(i);
@@ -383,10 +399,13 @@ void listarStocks()
             cont++;
         }
     }
-    cout << "----------------------------------" << endl;
-    cout << "Total: " << cantStocks - cont << " registros.";
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "------------------------------" << endl;
+    cout << "\t" << "Total: " << cantStocks - cont << " registros.";
     cout<<endl;
     cout<<endl;
+    cout<<endl;
+    rlutil::setColor(rlutil::BROWN);
 }
 
 void menuStockProductos()

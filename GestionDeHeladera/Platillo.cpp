@@ -225,6 +225,23 @@ bool validarPlatilloExistente(string n)
     return false;
 }
 
+bool validarPlatilloExistenteXId(int idPlatillo)
+{
+    Platillo aux;
+    int pos = 0;
+
+    while(aux.LeerDeDisco(pos))
+    {
+        if(aux.getIdPlatillo() == idPlatillo && aux.getEstadoPlatillo() == true)
+        {
+            return true;
+        }
+        pos++;
+    }
+    return false;
+}
+
+
 void listarPlatillos()
 {
     Platillo aux;
@@ -237,7 +254,7 @@ void listarPlatillos()
     rlutil::setColor(rlutil::MAGENTA);
     cout << "LISTADO DE PLATILLOS" << endl;
     rlutil::setColor(rlutil::DARKGREY);
-    cout << "\t" << "------------------------------------------------------------------------------"<< endl;
+    cout << "\t" << "-------------------------------------------------------------------------"<< endl;
     cout << left;
     cout << "\t";
     cout << setw(5) << "ID";
@@ -245,7 +262,7 @@ void listarPlatillos()
     cout << setw(15) << "FECHA";
     cout << setw(20) << "ORIENTACION A.";
     cout << setw(10) << "CALORIAS"<<endl;
-    cout << "\t" << "------------------------------------------------------------------------------"<< endl;
+    cout << "\t" << "-------------------------------------------------------------------------"<< endl;
 
     for(int i=0; i<cantPlatillos; i++)
     {
@@ -260,7 +277,7 @@ void listarPlatillos()
         }
     }
     rlutil::setColor(rlutil::DARKGREY);
-    cout << "\t" << "------------------------------------------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------------------------------------" << endl;
     cout << "\t" << "Total: " << cantPlatillos - cont<< " platillos.";
     cout<<endl;
     cout<<endl;

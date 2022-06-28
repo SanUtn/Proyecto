@@ -32,7 +32,9 @@ bool ProductosxPlatillo::LeerDeDisco(int pos)
     p=fopen("ProductosxPlatillo.dat", "rb");
     if(p==NULL)
     {
+         rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+         rlutil::setColor(rlutil::BROWN);
         return false;
     }
     fseek(p, pos*sizeof(ProductosxPlatillo),0);
@@ -49,7 +51,9 @@ bool ProductosxPlatillo::GrabarEnDisco()
     p=fopen("ProductosxPlatillo.dat", "ab");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     int escribio=fwrite(this, sizeof(ProductosxPlatillo),1,p);
@@ -58,7 +62,7 @@ bool ProductosxPlatillo::GrabarEnDisco()
    return escribio;
 }
 
-//Funciones globales
+///FUNCIONES GLOBALES
 
 int CantidadRegistrosProductosxPlatillos()
 {
@@ -139,12 +143,20 @@ void listarProductosxPlatillo()
     bool bandera = false;
     int idPlatillo;
 
-    cout << "LISTADO DE PRODUCTOS x PLATILLO" << endl;
-    cout << "----------------------------------" << endl;
+    rlutil::setColor(rlutil::MAGENTA);
+    cout << endl;
+    cout << endl;
     cout << left;
-    cout << setw(20) << "PLATILLO ";
+    cout << setw(22) << "\t";
+    cout << "LISTADO DE PRODUCTOS x PLATILLO" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "------------------------------------------------------------------------" << endl;
+    cout << left;
+    cout << "\t";
+    cout << setw(25) << "PLATILLO ";
     cout << setw(20) << "PRODUCTO" << endl;
-    cout<< "----------------------------------" << endl;
+    cout << "\t" << "------------------------------------------------------------------------" << endl;
+
     for(int i=0; i<cantProductosxPlatillo; i++)
     {
         aux.LeerDeDisco(i);
@@ -155,13 +167,17 @@ void listarProductosxPlatillo()
                     bandera = false;
                 }
                if(bandera == false){
-                   cout<<endl;
-        cout<< setw(20) << mostrarNombrePlatillo(aux.getIdPlatillo());
+                    rlutil::setColor(rlutil::LIGHTCYAN);
+                    cout<<endl;
+                    cout << left;
+                    cout << "\t";
+                    cout<< setw(25) << mostrarNombrePlatillo(aux.getIdPlatillo());
                     bandera = true;
                     idPlatillo = aux.getIdPlatillo();
                }
-                if(idPlatillo == aux.getIdPlatillo()){
-                cout<<mostrarNombreProducto(aux.getIdProducto())<<" " " ";
+               if(idPlatillo == aux.getIdPlatillo()){
+                    rlutil::setColor(rlutil::BLUE);
+                    cout<<mostrarNombreProducto(aux.getIdProducto())<<" " " ";
                }else{
                     bandera=false;
                }
@@ -170,4 +186,6 @@ void listarProductosxPlatillo()
     }
     cout<<endl;
     cout<<endl;
+    cout<<endl;
+    rlutil::setColor(rlutil::BROWN);
 }

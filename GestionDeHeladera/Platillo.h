@@ -57,5 +57,6 @@ using namespace std;
     void buscarPlatilloNombre();
     void busquedaPlatilloOrientacion();
     void EliminarPlatilloPorParametro(int idplatillo);
+    bool validarPlatilloExistenteXId(int idPlatillo);
 
 #endif // PLATILLO_H_INCLUDED
