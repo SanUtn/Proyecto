@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include "rlutil.h"
 #include "ConsumoPlatillo.h"
 #include "Platillo.h"
 #include "ProductoStock.h"
@@ -16,10 +17,13 @@ string ConsumoPlatillo::toString()
 }
 
 void ConsumoPlatillo::toList(){
+            rlutil::setColor(rlutil::LIGHTCYAN);
             cout << left;
+            cout << "\t";
             cout << setw(15)  << mostrarNombrePlatillo(idPlatillo);
-            cout << setw(15) << getFechaConsumo().toString();
+            cout << setw(20) << getFechaConsumo().toString();
             cout << setw(15) << getUsuario() << endl;
+            rlutil::setColor(rlutil::BROWN);
 }
 
 
@@ -30,7 +34,9 @@ bool ConsumoPlatillo::LeerDeDisco(int pos)
     p=fopen("ConsumosPlatillos.dat", "rb");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     fseek(p, pos*sizeof(ConsumoPlatillo),0);
@@ -47,7 +53,9 @@ bool ConsumoPlatillo::GrabarEnDisco()
     p=fopen("ConsumosPlatillos.dat", "ab");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     int escribio=fwrite(this, sizeof(ConsumoPlatillo),1,p);
@@ -66,7 +74,9 @@ bool ConsumoPlatillo::ModificarArchivo(int pos)
     p=fopen("ConsumosPlatillos.dat", "rb+");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     fseek(p, pos*sizeof(ConsumoPlatillo),0);
@@ -126,16 +136,22 @@ ConsumoPlatillo cargarConsumoPlatillo(int u)
     //validamos que exista ese platillo
     while(buscarPlatillo(id) == false)
     {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
         cout << "Platillo inexistente, ingrese otro: ";
         cin >> id;
         cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
     }
 
     while(validarExistenciaDeProductos(id)== false)
     {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
         cout << "Lo sentimos, no hay stock de productos para cosumir ese platillo o no existe, ingrese otro: ";
         cin >> id;
         cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
     }
 
     ConsumoPlatillo reg;
@@ -194,14 +210,19 @@ void listarConsumosPlatillo()
 
     if (cantConsumoPlatillo != 0)
     {
+        rlutil::setColor(rlutil::MAGENTA);
+        cout<<endl;
         cout << left;
         cout << setw(15) << "\t";
         cout << "CONSUMOS PLATILLOS" << endl;
-        cout << "---------------------------------------------------------------" << endl;
+        rlutil::setColor(rlutil::DARKGREY);
+        cout << "\t" << "----------------------------------------------" << endl;
+        cout << left;
+        cout << "\t";
         cout << setw(15)  << "PLATILLO";
-        cout << setw(15) << "FECHA CONSUMO";
+        cout << setw(20) << "FECHA CONSUMO";
         cout << setw(15) << "DNI USUARIO" << endl;
-        cout << "---------------------------------------------------------------" << endl;
+        cout << "\t" << "----------------------------------------------" << endl;
 
         for(int i=0; i<cantConsumoPlatillo; i++)
         {
@@ -211,13 +232,16 @@ void listarConsumosPlatillo()
     }
     else
     {
+        rlutil::setColor(rlutil::RED);
         cout<<endl;
         cout << "No hay consumos de platillos registrados." << endl;
         cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
     }
 
     cout<<endl;
     cout<<endl;
+    rlutil::setColor(rlutil::BROWN);
     system("pause");
 }
 
@@ -231,8 +255,12 @@ int sugerenciasXOrientacion()
 
     while(validarUsuarioExistente(dni) == false)
     {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
         cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dni;
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
     }
 
     orientacion = buscarOrientacion(dni);
@@ -262,18 +290,22 @@ void buscarPlatillosXOrientacion(int orientacion)
 {
     Platillo aux;
     int cantPlatillos = CantidadRegistrosPlatillo();
+
+    rlutil::setColor(rlutil::MAGENTA);
     cout<<endl;
     cout << left;
-    cout << setw(5) << "\t";
+    cout << setw(20) << "\t";
     cout <<  "LISTADO DE PLATILLOS POR ORIENTACION " << endl;
-    cout << "-------------------------------------------------------------------------" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "-------------------------------------------------------------------------" << endl;
     cout << left;
+    cout << "\t";
     cout << setw(5) << "ID";
-    cout << setw(20) << "NOMBRE";
+    cout << setw(25) << "NOMBRE";
     cout << setw(15) << "FECHA";
     cout << setw(20) << "ORIENTACION A.";
     cout << setw(10) << "CALORIAS"<<endl;
-    cout << "-------------------------------------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------------------------------------" << endl;
     for(int i=0; i<cantPlatillos; i++)
     {
         aux.LeerDeDisco(i);
@@ -284,7 +316,7 @@ void buscarPlatillosXOrientacion(int orientacion)
     }
     cout<<endl;
     cout<<endl;
-    //system("pause");
+    rlutil::setColor(rlutil::BROWN);
 }
 
 int sugerenciasXCalorias()
@@ -298,8 +330,12 @@ int sugerenciasXCalorias()
 
     while(validarUsuarioExistente(dniusuario) == false)
     {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
         cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniusuario;
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
     }
 
     cout << "Ingrese las calorias que desea consumir: ";
@@ -308,8 +344,12 @@ int sugerenciasXCalorias()
 
     while(validarCalorias(calorias) == false)
     {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
         cout << "No hay platillos con esas calorias, ingrese otro valor:  ";
         cin >> calorias;
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
     }
 
     buscarPlatillosXCalorias(calorias);
@@ -321,18 +361,23 @@ void buscarPlatillosXCalorias(int calorias)
 {
     Platillo aux;
     int cantPlatillos = CantidadRegistrosPlatillo();
+
+    rlutil::setColor(rlutil::MAGENTA);
     cout<<endl;
     cout << left;
-    cout << setw(5) << "\t";
+    cout << setw(20) << "\t";
     cout <<  "LISTADO DE PLATILLOS POR CALORIAS " << endl;
-    cout << "-------------------------------------------------------------------------" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "-------------------------------------------------------------------------" << endl;
     cout << left;
+    cout << "\t";
     cout << setw(5) << "ID";
-    cout << setw(20) << "NOMBRE";
+    cout << setw(25) << "NOMBRE";
     cout << setw(15) << "FECHA";
     cout << setw(20) << "ORIENTACION A.";
     cout << setw(10) << "CALORIAS"<<endl;
-    cout << "-------------------------------------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------------------------------------" << endl;
+
     for(int i=0; i<cantPlatillos; i++)
     {
         aux.LeerDeDisco(i);
@@ -341,9 +386,10 @@ void buscarPlatillosXCalorias(int calorias)
             aux.toList();
         }
     }
+
     cout<<endl;
     cout<<endl;
-    //system("pause");
+    rlutil::setColor(rlutil::BROWN);
 }
 
 
@@ -371,17 +417,27 @@ void menuSugerenciasPlatillos()
     while(true)
     {
         system("cls");
-
+        rlutil::locate(52, 5);
+        rlutil::setColor(rlutil::GREY);
         cout<<"MENU SUGERENCIAS PLATILLOS"<<endl;
-        cout<<"-------------------"<<endl;
+        rlutil::locate(40, 6);
+        cout<<"-------------------------------------------------"<<endl;
+        rlutil::locate(48, 8);
+        rlutil::setColor(rlutil::MAGENTA);
         cout<<"1. SUGERENCIAS POR ORIENTACION"<<endl;
+        rlutil::locate(48, 9);
         cout<<"2. SUGERENCIAS POR CALORIAS" <<endl;
+        rlutil::locate(48, 10);
         cout<<"-------------------"<<endl;
+        rlutil::locate(48, 11);
         cout<<"0. SALIR"<<endl;
         cout<<endl;
 
+        rlutil::locate(48, 14);
+        rlutil::setColor(rlutil::GREY);
         cout<<"OPCION: ";
         cin>>opc;
+        rlutil::setColor(rlutil::BROWN);
 
         system("cls");
 
@@ -392,16 +448,22 @@ void menuSugerenciasPlatillos()
             cout<<endl;
             if(nuevoConsumoPlatillo(aux))
             {
+                rlutil::setColor(rlutil::GREEN);
                 cout<<endl;
                 cout<<"CONSUMO AGREGADO";
                 cout<<endl;
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             else
             {
+                rlutil::setColor(rlutil::RED);
                 cout<<endl;
                 cout<<"NO SE PUDO AGREGAR EL CONSUMO";
                 cout<<endl;
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             break;
@@ -410,16 +472,22 @@ void menuSugerenciasPlatillos()
             cout<<endl;
             if(nuevoConsumoPlatillo(aux))
             {
+                rlutil::setColor(rlutil::GREEN);
                 cout<<endl;
                 cout<<"CONSUMO AGREGADO";
                 cout<<endl;
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             else
             {
+                rlutil::setColor(rlutil::RED);
                 cout<<endl;
                 cout<<"NO SE PUDO AGREGAR EL CONSUMO";
                 cout<<endl;
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             break;
