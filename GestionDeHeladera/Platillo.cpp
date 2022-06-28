@@ -38,7 +38,7 @@ void Platillo::toList()
     cout << left;
     cout << "\t";
     cout << setw(5) << to_string(idPlatillo);
-    cout << setw(30) << nombrePlatillo;
+    cout << setw(25) << nombrePlatillo;
     cout << setw(15) << fechaRegistrado.toString();
     cout << setw(20) << mostrarOrientacionAlimentaria(getOrientacionAlimentaria());
     cout << setw(10) << to_string(calorias)<<endl;
@@ -233,19 +233,19 @@ void listarPlatillos()
     cout << endl;
     cout << endl;
     cout << left;
-    cout << setw(16) << "\t";
+    cout << setw(30) << "\t";
     rlutil::setColor(rlutil::MAGENTA);
     cout << "LISTADO DE PLATILLOS" << endl;
     rlutil::setColor(rlutil::DARKGREY);
-    cout << "\t" << "--------------------------------------------------------------------------"<< endl;
+    cout << "\t" << "------------------------------------------------------------------------------"<< endl;
     cout << left;
     cout << "\t";
     cout << setw(5) << "ID";
-    cout << setw(30) << "NOMBRE";
+    cout << setw(25) << "NOMBRE";
     cout << setw(15) << "FECHA";
     cout << setw(20) << "ORIENTACION A.";
     cout << setw(10) << "CALORIAS"<<endl;
-    cout << "\t" << "--------------------------------------------------------------------------"<< endl;
+    cout << "\t" << "------------------------------------------------------------------------------"<< endl;
 
     for(int i=0; i<cantPlatillos; i++)
     {
@@ -260,7 +260,7 @@ void listarPlatillos()
         }
     }
     rlutil::setColor(rlutil::DARKGREY);
-    cout << "\t" << "--------------------------------------------------------------------------" << endl;
+    cout << "\t" << "------------------------------------------------------------------------------" << endl;
     cout << "\t" << "Total: " << cantPlatillos - cont<< " platillos.";
     cout<<endl;
     cout<<endl;
@@ -322,22 +322,34 @@ void buscarPlatilloNombre()
     nombre = mayuscula(nombre);
     cout << endl;
 
+      while(validarPlatilloExistente(nombre)== false)
+    {
+        rlutil::setColor(rlutil::RED);
+        cout << endl;
+        cout <<"Platillo inexistente, ingrese otro: ";
+        getline(cin, nombre);
+        nombre = mayuscula(nombre);
+        cout << endl;
+        rlutil::setColor(rlutil::BROWN);
+    }
+
     system("cls");
     cout << endl;
+    cout << endl;
     cout << left;
-    cout << setw(5) << "\t";
+    cout << setw(20) << "\t";
     rlutil::setColor(rlutil::MAGENTA);
     cout <<  "LISTADO DE PLATILLOS POR NOMBRE " << endl;
     rlutil::setColor(rlutil::DARKGREY);
-    cout << "t" << "-------------------------------------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------------------------------------" << endl;
     cout << left;
-    cout << "t";
+    cout << "\t";
     cout << setw(5) << "ID";
-    cout << setw(30) << "NOMBRE";
+    cout << setw(25) << "NOMBRE";
     cout << setw(15) << "FECHA";
     cout << setw(20) << "ORIENTACION A.";
     cout << setw(10) << "CALORIAS"<<endl;
-    cout << "-------------------------------------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------------------------------------" << endl;
 
     while(reg.LeerDeDisco(pos))
     {
@@ -349,6 +361,7 @@ void buscarPlatilloNombre()
         pos++;
     }
 
+    cout<<endl;
     cout<<endl;
     cout<<endl;
 
@@ -371,28 +384,44 @@ void busquedaPlatilloOrientacion()
     bool bandera = false;
     int opc;
 
+    cout << endl;
+    cout << endl;
     listarOrientacionAlimentaria();
+    cout << endl;
+    cout << endl;
 
     cout << "Ingrese el id de la orientacion a buscar: ";
     cin >> opc;
     cout << endl;
 
+      while(validarOrientacionExistentePorId(opc)== false)
+    {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
+        cout <<"Orientacion inexistente, ingrese otra: ";
+        cin >> opc;
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
+    }
+
     system("cls");
 
     rlutil::setColor(rlutil::MAGENTA);
     cout<<endl;
+    cout<<endl;
     cout << left;
-    cout << setw(5) << "\t";
-    cout <<  "PLATILLOS DE ORIENTACION: "<< mostrarOrientacionAlimentaria(opc)<<endl;
+    cout << setw(20) << "\t";
+    cout <<  "LISTADO DE PLATILLOS POR ORIENTACION: " << endl;
     rlutil::setColor(rlutil::DARKGREY);
-    cout << "t" << "-------------------------------------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------------------------------------" << endl;
     cout << left;
+    cout << "\t";
     cout << setw(5) << "ID";
-    cout << setw(30) << "NOMBRE";
+    cout << setw(25) << "NOMBRE";
     cout << setw(15) << "FECHA";
     cout << setw(20) << "ORIENTACION A.";
     cout << setw(10) << "CALORIAS"<<endl;
-    cout << "-------------------------------------------------------------------------" << endl;
+    cout << "\t" << "-------------------------------------------------------------------------" << endl;
 
     while(reg.LeerDeDisco(pos))
     {
@@ -404,6 +433,7 @@ void busquedaPlatilloOrientacion()
         pos++;
     }
 
+     cout<<endl;
      cout<<endl;
      cout<<endl;
 
@@ -428,9 +458,9 @@ void menuBuscarPlatillo()
         system("cls");
         rlutil::locate(52, 5);
         rlutil::setColor(rlutil::GREY);
-        cout<<"MENU PLATILLOS"<<endl;
+        cout<<"MENU BUSCAR PLATILLOS"<<endl;
         rlutil::locate(40, 6);
-        cout<<"-------------------"<<endl;
+        cout<<"---------------------------------------------"<<endl;
         rlutil::locate(48, 8);
         rlutil::setColor(rlutil::MAGENTA);
         cout<<"1. BUSCAR POR NOMBRE"<<endl;
@@ -479,7 +509,7 @@ void menuPlatillo()
         rlutil::setColor(rlutil::CYAN);
         cout<<"MENU PLATILLO"<<endl;
         rlutil::locate(40, 6);
-        cout<<"------------------------------------------------"<<endl;
+        cout<<"-----------------------------------------------"<<endl;
         rlutil::locate(48, 8);
         rlutil::setColor(rlutil::LIGHTCYAN);
         cout<<"1. AGREGAR PLATILLO "<<endl;
