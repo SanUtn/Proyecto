@@ -752,8 +752,9 @@
 	"Usuario.h"
 	"FuncionesGlobales.h"
 
-1656453018 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoplatillo.cpp
+1656457947 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoplatillo.cpp
 	<iostream>
+	<cctype>
 	<iomanip>
 	"rlutil.h"
 	"ConsumoPlatillo.h"
@@ -836,7 +837,7 @@
 	<string>
 	"OrientacionAlimentaria.h"
 
-1656452141 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoproducto.cpp
+1656458945 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoproducto.cpp
 	<iostream>
 	<iomanip>
 	"rlutil.h"
@@ -851,7 +852,7 @@
 	"Fecha.h"
 	<ctime>
 
-1656451943 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\funcionesglobales.cpp
+1656460157 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\funcionesglobales.cpp
 	<iostream>
 	<iomanip>
 	"rlutil.h"
@@ -925,7 +926,7 @@
 	"ProductosxPlatillo.h"
 	"FuncionesGlobales.h"
 
-1656384744 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\receta.cpp
+1656457594 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\receta.cpp
 	<iostream>
 	<string>
 	<iomanip>

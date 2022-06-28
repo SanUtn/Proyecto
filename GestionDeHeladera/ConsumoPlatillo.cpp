@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cctype>
 #include <iomanip>
 #include "rlutil.h"
 #include "ConsumoPlatillo.h"
@@ -20,7 +21,7 @@ void ConsumoPlatillo::toList(){
             rlutil::setColor(rlutil::LIGHTCYAN);
             cout << left;
             cout << "\t";
-            cout << setw(15)  << mostrarNombrePlatillo(idPlatillo);
+            cout << setw(25)  << mostrarNombrePlatillo(idPlatillo);
             cout << setw(20) << getFechaConsumo().toString();
             cout << setw(15) << getUsuario() << endl;
             rlutil::setColor(rlutil::BROWN);
@@ -213,16 +214,16 @@ void listarConsumosPlatillo()
         rlutil::setColor(rlutil::MAGENTA);
         cout<<endl;
         cout << left;
-        cout << setw(15) << "\t";
+        cout << setw(21) << "\t";
         cout << "CONSUMOS PLATILLOS" << endl;
         rlutil::setColor(rlutil::DARKGREY);
-        cout << "\t" << "----------------------------------------------" << endl;
+        cout << "\t" << "--------------------------------------------------------" << endl;
         cout << left;
         cout << "\t";
-        cout << setw(15)  << "PLATILLO";
+        cout << setw(25) << "PLATILLO";
         cout << setw(20) << "FECHA CONSUMO";
         cout << setw(15) << "DNI USUARIO" << endl;
-        cout << "\t" << "----------------------------------------------" << endl;
+        cout << "\t" << "--------------------------------------------------------" << endl;
 
         for(int i=0; i<cantConsumoPlatillo; i++)
         {

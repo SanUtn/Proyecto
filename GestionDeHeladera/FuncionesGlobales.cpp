@@ -213,7 +213,7 @@ void menuConsumosAnuales()
         rlutil::setColor(rlutil::GREY);
         cout<<"MENU CONSUMOS ANUALES"<<endl;
         rlutil::locate(40, 6);
-        cout<<"-------------------"<<endl;
+        cout<<"---------------------------------------------"<<endl;
         rlutil::locate(48, 8);
         rlutil::setColor(rlutil::MAGENTA);
         cout<<"1. CONSUMOS PLATILLOS "<<endl;
@@ -265,7 +265,7 @@ void menuConsumosMensuales()
         rlutil::setColor(rlutil::GREY);
         cout<<"MENU CONSUMOS MENSUALES"<<endl;
         rlutil::locate(40, 6);
-        cout<<"-------------------"<<endl;
+        cout<<"---------------------------------------------"<<endl;
         rlutil::setColor(rlutil::MAGENTA);
         rlutil::locate(48, 8);
         cout<<"1. CONSUMOS PLATILLOS "<<endl;
@@ -444,14 +444,16 @@ void PlatillosAnual()
                 rlutil::setColor(rlutil::MAGENTA);
                 cout<<endl;
                 cout << left;
-                cout << setw(15) << "\t";
+                cout << setw(16) << "\t";
                 cout << "CONSUMOS ANUALES DE PLATILLOS" << endl;
                 rlutil::setColor(rlutil::DARKGREY);
-                cout << "\t" << "---------------------------------------------------------------" << endl;
-                cout << setw(15)  << "PLATILLO";
-                cout << setw(15) << "FECHA CONSUMO";
+                cout << "\t" << "--------------------------------------------------------" << endl;
+                cout << left;
+                cout << "\t";
+                cout << setw(25) << "PLATILLO";
+                cout << setw(20) << "FECHA CONSUMO";
                 cout << setw(15) << "DNI USUARIO" << endl;
-                cout << "\t" << "---------------------------------------------------------------" << endl;
+                cout << "\t" << "--------------------------------------------------------" << endl;
                 bandera = false;
                 rlutil::setColor(rlutil::BROWN);
             }
@@ -497,11 +499,13 @@ void PlatillosMensual()
                 cout << setw(15) << "\t";
                 cout << "CONSUMOS MENSUALES DE PLATILLOS" << endl;
                 rlutil::setColor(rlutil::DARKGREY);
-                cout <<  "\t" << "---------------------------------------------------------------" << endl;
-                cout << setw(15)  << "PLATILLO";
-                cout << setw(15) << "FECHA CONSUMO";
+                cout <<  "\t" << "--------------------------------------------------------" << endl;
+                cout << left;
+                cout << "\t";
+                cout << setw(25) << "PLATILLO";
+                cout << setw(20) << "FECHA CONSUMO";
                 cout << setw(15) << "DNI USUARIO" << endl;
-                cout <<  "\t" << "---------------------------------------------------------------" << endl;
+                cout <<  "\t" << "--------------------------------------------------------" << endl;
                 bandera = false;
                 rlutil::setColor(rlutil::BROWN);
             }
@@ -544,13 +548,15 @@ void ProductosAnual()
                 rlutil::setColor(rlutil::MAGENTA);
                 cout<<endl;
                 cout << left;
-                cout << setw(15) << "\t";
-                cout << "CONSUMOS PRODUCTOS" << endl;
+                cout << setw(3) << "\t";
+                cout << "CONSUMOS ANUALES DE PRODUCTOS" << endl;
                 rlutil::setColor(rlutil::DARKGREY);
-                cout << "\t" << "---------------------------------------------------------------" << endl;
-                cout << setw(15)  << "PRODUCTO";
-                cout << setw(15) << "FECHA CONSUMO" << endl;
-                cout << "\t" << "---------------------------------------------------------------" << endl;
+                cout << "\t" << "---------------------------------" << endl;
+                cout << left;
+                cout << "\t";
+                cout << setw(20) << "PRODUCTO";
+                cout << setw(20) << "FECHA CONSUMO" << endl;
+                cout << "\t" << "---------------------------------" << endl;
                 bandera = false;
                 rlutil::setColor(rlutil::BROWN);
             }
@@ -593,13 +599,15 @@ void ProductosMensual()
                 rlutil::setColor(rlutil::MAGENTA);
                 cout << endl;
                 cout << left;
-                cout << setw(15) << "\t";
-                cout << "CONSUMOS PRODUCTO" << endl;
+                cout << setw(2) << "\t";
+                cout << "CONSUMOS MENSUALES DE PRODUCTOS" << endl;
                 rlutil::setColor(rlutil::DARKGREY);
-                cout << "\t" << "---------------------------------------------------------------" << endl;
-                cout << setw(15)  << "PRODUCTO";
-                cout << setw(15) << "FECHA CONSUMO" << endl;
-                cout << "\t" << "---------------------------------------------------------------" << endl;
+                cout << "\t" << "---------------------------------" << endl;
+                cout << left;
+                cout << "\t";
+                cout << setw(20) << "PRODUCTO";
+                cout << setw(20) << "FECHA CONSUMO" << endl;
+                cout << "\t" << "---------------------------------" << endl;
                 bandera = false;
                 rlutil::setColor(rlutil::BROWN);
             }
@@ -630,14 +638,15 @@ void alertaStock()
     rlutil::setColor(rlutil::MAGENTA);
     cout << endl;
     cout << left;
-    cout << setw(15) << "\t";
+    cout << setw(2) << "\t";
     cout << "PRODUCTOS PROXIMOS A AGOTARSE" << endl;
     rlutil::setColor(rlutil::DARKGREY);
-    cout << "\t" << "----------------------------------" << endl;
+    cout << "\t" << "-------------------------------" << endl;
     cout << left;
-    cout << setw(20) << "PRODUCTO";
+    cout << "\t";
+    cout << setw(25) << "PRODUCTO";
     cout << setw(20) << "STOCK" << endl;
-    cout<< "\t" << "----------------------------------" << endl;
+    cout<< "\t" << "-------------------------------" << endl;
     rlutil::setColor(rlutil::BROWN);
 
     for(int i=0; i<cantStocks; i++)
@@ -653,7 +662,7 @@ void alertaStock()
         }
     }
     rlutil::setColor(rlutil::DARKGREY);
-    cout << "\t" << "----------------------------------" << endl;
+    cout << "\t" << "-------------------------------"  << endl;
     cout << "\t" << "Total: " << cantStocks - cont << " registros.";
     cout<<endl;
     cout<<endl;
@@ -670,14 +679,15 @@ void alertaSinStock()
     rlutil::setColor(rlutil::MAGENTA);
     cout << endl;
     cout << left;
-    cout << setw(15) << "\t";
+    cout << setw(7) << "\t";
     cout << "PRODUCTOS SIN STOCK" << endl;
     rlutil::setColor(rlutil::DARKGREY);
-    cout << "\t" << "----------------------------------" << endl;
+    cout << "\t" << "------------------------------"  << endl;
     cout << left;
-    cout << setw(20) << "PRODUCTO";
+    cout << "\t";
+    cout << setw(25) << "PRODUCTO";
     cout << setw(20) << "STOCK" << endl;
-    cout<< "\t" << "----------------------------------" << endl;
+    cout<< "\t" << "------------------------------"  << endl;
     rlutil::setColor(rlutil::BROWN);
 
     for(int i=0; i<cantStocks; i++)
@@ -693,7 +703,7 @@ void alertaSinStock()
         }
     }
     rlutil::setColor(rlutil::DARKGREY);
-    cout << "\t" << "----------------------------------" << endl;
+    cout << "\t" << "------------------------------" << endl;
     cout << "\t" << "Total: " << cantStocks - cont << " registros.";
     cout<<endl;
     cout<<endl;
@@ -714,14 +724,15 @@ void alertaDeProductosAVencer()
     rlutil::setColor(rlutil::MAGENTA);
     cout << endl;
     cout << left;
-    cout << setw(15) << "\t";
+    cout << setw(3) << "\t";
     cout << "PRODUCTOS PROXIMOS A VENCER" << endl;
     rlutil::setColor(rlutil::DARKGREY);
-    cout << "\t" << "----------------------------------" << endl;
+    cout << "\t" << "-------------------------------" << endl;
     cout << left;
-    cout << setw(17) << "PRODUCTO";
-    cout << setw(17)  << "VENCIMIENTO" << endl;
-    cout << "\t" << "----------------------------------" << endl;
+    cout << "\t";
+    cout << setw(20) << "PRODUCTO";
+    cout << setw(20) << "VENCIMIENTO" << endl;
+    cout << "\t" << "-------------------------------"  << endl;
     rlutil::setColor(rlutil::BROWN);
 
     for(int i=0; i<cantReg; i++)
@@ -744,8 +755,8 @@ void alertaDeProductosAVencer()
                                 rlutil::setColor(rlutil::LIGHTCYAN);
                                 cout << left;
                                 cout << "\t";
-                                cout << setw(17) << aux.getNombreProducto();
-                                cout << setw(17)  << aux.getFechaVencimiento().toString() << endl;
+                                cout << setw(20) << aux.getNombreProducto();
+                                cout << setw(20) << aux.getFechaVencimiento().toString() << endl;
                                 cont++;
                                 bandera = true;
                                 rlutil::setColor(rlutil::BROWN);
@@ -759,7 +770,7 @@ void alertaDeProductosAVencer()
     if(bandera)
     {
         rlutil::setColor(rlutil::DARKGREY);
-        cout << "\t" << "----------------------------------" << endl;
+        cout << "\t" << "-------------------------------"  << endl;
         cout << "\t" << "Total: " << cont << " Productos.";
         rlutil::setColor(rlutil::BROWN);
     }
@@ -791,14 +802,15 @@ void alertaDeProductosVencidos()
     rlutil::setColor(rlutil::MAGENTA);
     cout << endl;
     cout << left;
-    cout << setw(15) << "\t";
+    cout << setw(8) << "\t";
     cout << "PRODUCTOS VENCIDOS" << endl;
     rlutil::setColor(rlutil::DARKGREY);
-    cout << "\t" << "----------------------------------" << endl;
+    cout << "\t" << "-------------------------------" << endl;
     cout << left;
-    cout << setw(17) << "PRODUCTO";
-    cout << setw(17)  << "VENCIMIENTO" << endl;
-    cout << "\t" << "----------------------------------" << endl;
+    cout << "\t";
+    cout << setw(20) << "PRODUCTO";
+    cout << setw(20) << "VENCIMIENTO" << endl;
+    cout << "\t" << "-------------------------------" << endl;
     rlutil::setColor(rlutil::BROWN);
 
     for(int i=0; i<cantReg; i++)
@@ -821,8 +833,8 @@ void alertaDeProductosVencidos()
                                 rlutil::setColor(rlutil::LIGHTCYAN);
                                 cout << left;
                                 cout << "\t";
-                                cout << setw(17) << aux.getNombreProducto();
-                                cout << setw(17)  << aux.getFechaVencimiento().toString() << endl;
+                                cout << setw(20) << aux.getNombreProducto();
+                                cout << setw(20) << aux.getFechaVencimiento().toString() << endl;
                                 cont++;
                                 bandera = true;
                                 rlutil::setColor(rlutil::BROWN);
@@ -836,7 +848,7 @@ void alertaDeProductosVencidos()
     if(bandera)
     {
         rlutil::setColor(rlutil::DARKGREY);
-        cout << "\t" << "----------------------------------" << endl;
+        cout << "\t" << "-------------------------------"<< endl;
         cout << "\t" << "Total: " << cont << " Productos.";
         rlutil::setColor(rlutil::BROWN);
     }
@@ -850,6 +862,7 @@ void alertaDeProductosVencidos()
         rlutil::setColor(rlutil::BROWN);
     }
 
+    cout<<endl;
     cout<<endl;
     cout<<endl;
     rlutil::setColor(rlutil::BROWN);

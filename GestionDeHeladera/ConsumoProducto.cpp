@@ -21,8 +21,8 @@ void ConsumoProducto::toList(){
             rlutil::setColor(rlutil::LIGHTCYAN);
             cout << left;
             cout << "\t";
-            cout << setw(15)  << mostrarNombreProducto(getIdProducto());
-            cout << setw(15) << getFechaConsumo().toString() << endl;
+            cout << setw(20)  << mostrarNombreProducto(getIdProducto());
+            cout << setw(20) << getFechaConsumo().toString() << endl;
             rlutil::setColor(rlutil::BROWN);
 }
 
@@ -195,15 +195,16 @@ void listarConsumosPoductos()
         cout<<endl;
         cout<<endl;
         cout << left;
-        cout << setw(7) << "\t";
-        cout << "CONSUMOS PRODUCTO" << endl;
+        cout << setw(8) << "\t";
+        cout << "CONSUMOS PRODUCTOS" << endl;
         rlutil::setColor(rlutil::DARKGREY);
-        cout << "\t" << "----------------------------" << endl;
+        cout << "\t" << "---------------------------------" << endl;
         cout << left;
         cout << "\t";
-        cout << setw(15)  << "PRODUCTO";
-        cout << setw(15) << "FECHA CONSUMO" << endl;
-        cout << "\t" << "----------------------------" << endl;
+        cout << setw(20) << "PRODUCTO";
+        cout << setw(20) << "FECHA CONSUMO" << endl;
+        cout << "\t" << "---------------------------------" << endl;
+
         for(int i=0; i<cantConsumoProducto; i++)
         {
             aux.LeerDeDisco(i);

@@ -391,15 +391,10 @@ void elegirReceta(int opc)
     int pos = 0;
     int *vProductos;
 
-
-    //int cantReg = CantidadRegistrosProductosxPlatillos();
-
     while(reg.LeerDeDisco(pos))
     {
         if(reg.getIdReceta() == opc && reg.getEstadoReceta()==true)
         {
-
-
             int cantReg = CantidadProductosxPlatillo(reg.getIdPlatillo());
             vProductos = new int [cantReg];
             if(vProductos==NULL)
