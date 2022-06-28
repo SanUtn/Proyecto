@@ -888,7 +888,7 @@
 	"OrientacionAlimentaria.h"
 	"FuncionesGlobales.h"
 
-1656349350 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\platillo.cpp
+1656376058 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\platillo.cpp
 	<iostream>
 	<iomanip>
 	"rlutil.h"
@@ -941,7 +941,7 @@
 	"Usuario.h"
 	"FuncionesGlobales.h"
 
-1656352349 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\usuario.cpp
+1656373528 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\usuario.cpp
 	<iostream>
 	<iomanip>
 	"rlutil.h"

@@ -1,5 +1,6 @@
 #include<iostream>
 #include <iomanip>
+#include "rlutil.h"
 # include "ProductosxPlatillo.h"
 #include "FuncionesGlobales.h"
 
@@ -93,8 +94,13 @@ ProductosxPlatillo cargarProductosxPlatillo(int idplatillo, int idproducto)
         reg.setIdPlatillo(idplatillo);
 
         while( validarProductoEnPlatillo(idplatillo, idproducto)){
-            cout << "Producto ya incluido en este platillo, ingrese otro: ";
+
+            rlutil::setColor(rlutil::RED);
+            cout << endl;
+            cout << "Producto ya incluido en este platillo o no existente, ingrese otro: ";
             cin >> idproducto;
+            cout << endl;
+            rlutil::setColor(rlutil::BROWN);
         }
 
         reg.setIdProducto(idproducto);
@@ -114,6 +120,9 @@ bool validarProductoEnPlatillo(int idplatillo, int idproducto)
         if(aux.getIdPlatillo() == idplatillo && aux.getIdProducto() == idproducto)
         {
             return true;
+        //valida que el producto exista para no que no se ingrese cualquier id
+        }else if(validarProductoExistenteID(idproducto)== false){
+           return true;
         }
         pos++;
     }

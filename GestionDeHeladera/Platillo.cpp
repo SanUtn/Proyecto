@@ -34,12 +34,15 @@ string Platillo::toString()
 
 void Platillo::toList()
 {
+    rlutil::setColor(rlutil::LIGHTCYAN);
     cout << left;
+    cout << "\t";
     cout << setw(5) << to_string(idPlatillo);
-    cout << setw(20) << nombrePlatillo;
+    cout << setw(30) << nombrePlatillo;
     cout << setw(15) << fechaRegistrado.toString();
     cout << setw(20) << mostrarOrientacionAlimentaria(getOrientacionAlimentaria());
     cout << setw(10) << to_string(calorias)<<endl;
+    rlutil::setColor(rlutil::BROWN);
 }
 
 
@@ -50,7 +53,6 @@ bool Platillo::LeerDeDisco(int pos)
     p=fopen("Platillos.dat", "rb");
     if(p==NULL)
     {
-        cout<<"El archivo no pudo abrirse"<<endl;
         return false;
     }
     fseek(p, pos*sizeof(Platillo),0);
@@ -67,7 +69,9 @@ bool Platillo::GrabarEnDisco()
     p=fopen("Platillos.dat", "ab");
     if(p==NULL)
     {
+        rlutil::setColor(rlutil::RED);
         cout<<"El archivo no pudo abrirse"<<endl;
+        rlutil::setColor(rlutil::BROWN);
         return false;
     }
     int escribio=fwrite(this, sizeof(Platillo),1,p);
@@ -84,7 +88,6 @@ bool Platillo::ModificarArchivo(int pos)
     p=fopen("Platillos.dat", "rb+");
     if(p==NULL)
     {
-        cout<<"El archivo no pudo abrirse"<<endl;
         return false;
     }
     fseek(p, pos*sizeof(Platillo),0);
@@ -141,9 +144,13 @@ Platillo cargarPlatillo()
 
     while(validarPlatilloExistente(nombrePlatillo))
     {
+        rlutil::setColor(rlutil::RED);
+        cout << endl;
         cout <<"Platillo ya ingresado, ingrese otro: ";
         getline(cin, nombrePlatillo);
         nombrePlatillo = mayuscula(nombrePlatillo);
+        cout << endl;
+        rlutil::setColor(rlutil::BROWN);
     }
 
     system("cls");
@@ -158,6 +165,7 @@ Platillo cargarPlatillo()
         //ingresa el platillo, con sus productos en productosXPlatillo, tambien valida su existencia.
         nuevoProductoxPlatillo(id, opc);//le pasa el id del platillo y el ingrediente a agregar.
         system("cls");
+        cout<<endl;
         cout << "Ingrese el id del ingrendiente o 0 para no agregar mas: " << endl;
         cout<<endl;
         listarProductos();
@@ -186,7 +194,7 @@ Platillo cargarPlatillo()
     reg.setEstadoPlatillo(estado);
     cout<<endl;
     cout<<endl;
-    system("pause");
+    //system("pause");
     return reg;
 }
 
@@ -211,18 +219,26 @@ void listarPlatillos()
     Platillo aux;
     int cantPlatillos = CantidadRegistrosPlatillo();
     int cont=0;
-    cout << setw(45)<<"LISTADO DE PLATILLOS" << endl;
-    cout << "--------------------------------------------------------------------------"<< endl;
+    cout << endl;
+    cout << endl;
     cout << left;
+    cout << setw(16) << "\t";
+    rlutil::setColor(rlutil::MAGENTA);
+    cout << "LISTADO DE PLATILLOS" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "--------------------------------------------------------------------------"<< endl;
+    cout << left;
+    cout << "\t";
     cout << setw(5) << "ID";
-    cout << setw(20) << "NOMBRE";
+    cout << setw(30) << "NOMBRE";
     cout << setw(15) << "FECHA";
     cout << setw(20) << "ORIENTACION A.";
     cout << setw(10) << "CALORIAS"<<endl;
-    cout<< "--------------------------------------------------------------------------"<< endl;
+    cout << "\t" << "--------------------------------------------------------------------------"<< endl;
+
     for(int i=0; i<cantPlatillos; i++)
     {
-        aux.LeerDeDisco(i); //un while aca?
+        aux.LeerDeDisco(i);
         if(aux.getEstadoPlatillo())
         {
             aux.toList();
@@ -232,10 +248,13 @@ void listarPlatillos()
             cont++;
         }
     }
-    cout << "--------------------------------------------------------------------------" << endl;
-    cout << "Total: " << cantPlatillos - cont<< " platillos.";
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "\t" << "--------------------------------------------------------------------------" << endl;
+    cout << "\t" << "Total: " << cantPlatillos - cont<< " platillos.";
     cout<<endl;
     cout<<endl;
+    cout<<endl;
+    rlutil::setColor(rlutil::BROWN);
 }
 
 int EliminarPlatillo()
@@ -251,7 +270,7 @@ int EliminarPlatillo()
 
     while(aux.LeerDeDisco(pos)==1)
     {
-        if(aux.getIdPlatillo() == idplatillo)
+        if(aux.getIdPlatillo() == idplatillo && aux.getEstadoPlatillo() == true)
         {
             aux.setEstadoPlatillo(false);
             aux.ModificarArchivo(pos);
@@ -293,13 +312,17 @@ void buscarPlatilloNombre()
     cout << endl;
 
     system("cls");
+    cout << endl;
     cout << left;
     cout << setw(5) << "\t";
+    rlutil::setColor(rlutil::MAGENTA);
     cout <<  "LISTADO DE PLATILLOS POR NOMBRE " << endl;
-    cout << "-------------------------------------------------------------------------" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "t" << "-------------------------------------------------------------------------" << endl;
     cout << left;
+    cout << "t";
     cout << setw(5) << "ID";
-    cout << setw(20) << "NOMBRE";
+    cout << setw(30) << "NOMBRE";
     cout << setw(15) << "FECHA";
     cout << setw(20) << "ORIENTACION A.";
     cout << setw(10) << "CALORIAS"<<endl;
@@ -320,11 +343,14 @@ void buscarPlatilloNombre()
 
     if(bandera == false)
     {
+        rlutil::setColor(rlutil::RED);
         system("cls");
         cout<<endl;
         cout << "No hay platillos con ese nombre." << endl;
         cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
     }
+    rlutil::setColor(rlutil::BROWN);
 }
 
 void busquedaPlatilloOrientacion()
@@ -342,14 +368,16 @@ void busquedaPlatilloOrientacion()
 
     system("cls");
 
+    rlutil::setColor(rlutil::MAGENTA);
     cout<<endl;
     cout << left;
     cout << setw(5) << "\t";
     cout <<  "PLATILLOS DE ORIENTACION: "<< mostrarOrientacionAlimentaria(opc)<<endl;
-    cout << "-------------------------------------------------------------------------" << endl;
+    rlutil::setColor(rlutil::DARKGREY);
+    cout << "t" << "-------------------------------------------------------------------------" << endl;
     cout << left;
     cout << setw(5) << "ID";
-    cout << setw(20) << "NOMBRE";
+    cout << setw(30) << "NOMBRE";
     cout << setw(15) << "FECHA";
     cout << setw(20) << "ORIENTACION A.";
     cout << setw(10) << "CALORIAS"<<endl;
@@ -370,12 +398,15 @@ void busquedaPlatilloOrientacion()
 
     if(bandera == false)
     {
+        rlutil::setColor(rlutil::RED);
         system("cls");
         cout<<endl;
         cout << "No hay platillos con esa orientacion." << endl;
         cout<<endl;
-
+        rlutil::setColor(rlutil::BROWN);
     }
+
+    rlutil::setColor(rlutil::BROWN);
 }
 
 void menuBuscarPlatillo()
@@ -384,17 +415,28 @@ void menuBuscarPlatillo()
     while(true)
     {
         system("cls");
-
+        rlutil::locate(52, 5);
+        rlutil::setColor(rlutil::GREY);
         cout<<"MENU PLATILLOS"<<endl;
+        rlutil::locate(40, 6);
         cout<<"-------------------"<<endl;
+        rlutil::locate(48, 8);
+        rlutil::setColor(rlutil::MAGENTA);
         cout<<"1. BUSCAR POR NOMBRE"<<endl;
+        rlutil::locate(48, 9);
         cout<<"2. BUSCAR POR ORIENTACION"<<endl;
+        rlutil::locate(48, 10);
         cout<<"-------------------"<<endl;
+        rlutil::locate(48, 11);
         cout<<"0. SALIR"<<endl;
+        rlutil::locate(48, 12);
         cout<<endl;
 
+        rlutil::locate(48, 15);
+        rlutil::setColor(rlutil::GREY);
         cout<<"OPCION: ";
         cin>>opc;
+        rlutil::setColor(rlutil::BROWN);
 
         system("cls");
 
@@ -457,32 +499,40 @@ void menuPlatillo()
         case 1:
             if(nuevoPlatillo())
             {
+                rlutil::setColor(rlutil::GREEN);
                 cout<<endl;
                 cout<<"PLATILLO AGREGADO";
                 cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             else
             {
+                rlutil::setColor(rlutil::RED);
                 cout<<endl;
                 cout<<"NO SE PUDO AGREGAR EL PLATILLO";
                 cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             break;
         case 2:
             if(EliminarPlatillo()!= -1)
             {
+                rlutil::setColor(rlutil::GREEN);
                 cout<<endl;
                 cout<<"PLATILLO ELIMINADO";
                 cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             else
             {
+                rlutil::setColor(rlutil::RED);
                 cout<<endl;
                 cout<<"NO SE PUDO ELIMINAR EL PLATILLO";
                 cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
                 system("pause");
             }
             break;
