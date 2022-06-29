@@ -89,6 +89,7 @@ bool ConsumoPlatillo::ModificarArchivo(int pos)
 
 
 /// Funciones globales para gestionar el consumo de un platillo
+//recibe por parametro el dni del usuario que realiza el consumo
 bool nuevoConsumoPlatillo(int u)
 {
     ConsumoPlatillo reg;
@@ -126,6 +127,7 @@ int CantidadRegistrosConsumoPlatillo()
     return cantidad;
 }
 
+//recibe por parametro el dni del usuario que realiza el consumo
 ConsumoPlatillo cargarConsumoPlatillo(int u)
 {
     int id;
