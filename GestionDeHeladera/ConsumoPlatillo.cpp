@@ -345,7 +345,7 @@ void buscarPlatillosXOrientacion(int orientacion)
     rlutil::setColor(rlutil::BROWN);
 }
 
-int sugerenciasXCalorias()
+bool sugerenciasXCalorias()
 {
     int calorias;
     int dniusuario;
@@ -366,6 +366,7 @@ int sugerenciasXCalorias()
         cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniusuario;
         cout<<endl;
+
         while(validarNumero())
         {
             cin >> dniusuario;
@@ -377,18 +378,31 @@ int sugerenciasXCalorias()
     cin >> calorias;
     cout<<endl;
 
+     while(validarNumero())
+        {
+            cin >> calorias;
+        }
+
     while(validarCalorias(calorias) == false)
     {
         rlutil::setColor(rlutil::RED);
         cout<<endl;
         cout << "No hay platillos con esas calorias, ingrese otro valor:  ";
         cin >> calorias;
+         while(validarNumero())
+        {
+            cin >> calorias;
+        }
         cout<<endl;
         rlutil::setColor(rlutil::BROWN);
     }
 
     buscarPlatillosXCalorias(calorias);
-    return dniusuario;
+        if(nuevoConsumoPlatilloxCalorias(dniusuario,calorias))
+        {
+            return true;
+        }
+    return false;
 }
 
 
@@ -503,9 +517,10 @@ void menuSugerenciasPlatillos()
             }
             break;
         case 2:
-            aux = sugerenciasXCalorias();
+            //aux = sugerenciasXCalorias();
             cout<<endl;
-            if(nuevoConsumoPlatillo(aux))
+            //if(nuevoConsumoPlatillo(aux))
+            if(sugerenciasXCalorias())
             {
                 rlutil::setColor(rlutil::GREEN);
                 cout<<endl;
@@ -533,3 +548,123 @@ void menuSugerenciasPlatillos()
         cout<<endl;
     }
 }
+
+//-------------------------------------------------
+bool nuevoConsumoPlatilloxCalorias(int u, int calorias)
+{
+    ConsumoPlatillo reg;
+    reg = cargarConsumoPlatilloxCalorias(u, calorias);
+
+    bool ok = reg.GrabarEnDisco();
+    if(ok)
+    {
+        int platillo= reg.getIdPlatillo();
+        int usuario = reg.getUsuario();
+        if(retirarProductoDelStockDesdePlatillo(platillo))
+        {
+            ok = retirarProductoExistentePorConsumo(platillo, usuario);
+        }
+    }
+    return ok;
+}
+
+//recibe por parametro el dni del usuario que realiza el consumo y las calorias elegidas
+ConsumoPlatillo cargarConsumoPlatilloxCalorias(int u, int calorias)
+{
+    int id;
+
+    cout << "Ingrese el id del Platillo: ";
+    cin >> id;
+
+    while( validarNumero() )
+    {
+        cin >> id;
+    }
+
+    cout<<endl;
+
+    //validamos que sea uno de los platillos sugeridos
+    while(validarCaloriasSugeridas(calorias,id) == false)
+    {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
+        cout << "Platillo no sugerido, ingrese otro: ";
+        cin >> id;
+        while(validarNumero())
+        {
+            cin >> id;
+        }
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
+    }
+
+    //validamos que exista ese platillo
+    while(buscarPlatillo(id) == false)
+    {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
+        cout << "Platillo inexistente, ingrese otro: ";
+        cin >> id;
+        while(validarNumero())
+        {
+            cin >> id;
+        }
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
+    }
+
+    while(validarExistenciaDeProductos(id)== false)
+    {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
+        cout << "Lo sentimos, no hay stock de productos para consumir ese platillo o no existe, ingrese otro: ";
+        cin >> id;
+        while(validarNumero())
+        {
+            cin >> id;
+        }
+            //validamos que sea uno de los platillos sugeridos
+            while(validarCaloriasSugeridas(calorias,id) == false)
+            {
+                rlutil::setColor(rlutil::RED);
+                cout<<endl;
+                cout << "Platillo no sugerido, ingrese otro: ";
+                cin >> id;
+                while(validarNumero())
+                {
+                    cin >> id;
+                }
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
+            }
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
+    }
+
+    ConsumoPlatillo reg;
+    Fecha actual;
+    reg.setIdPlatillo(id);
+    reg.setFechaConsumo(actual);
+    reg.setUsuario(u);
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    return reg;
+}
+
+bool validarCaloriasSugeridas(int calorias, int id)
+{
+    Platillo aux;
+    int pos = 0;
+
+    while(aux.LeerDeDisco(pos))
+    {
+        if(aux.getCalorias() <= calorias && aux.getEstadoPlatillo() == true && aux.getIdPlatillo() == id)
+        {
+            return true;
+        }
+        pos++;
+    }
+    return false;
+}
+

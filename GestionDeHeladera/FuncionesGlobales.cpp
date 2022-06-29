@@ -11,9 +11,11 @@ bool validarNumero()
 {
     if( std::cin.fail() )
     {
+        rlutil::setColor(rlutil::RED);
         std::cout << "Error, ingrese un ID valido: ";
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<int>::max(),'\n');
+        rlutil::setColor(rlutil::BROWN);
         return true;
     }
     return false;

@@ -42,9 +42,13 @@ using namespace std;
     int sugerenciasXOrientacion();
     int buscarOrientacion(int dni);
     void buscarPlatillosXOrientacion(int orientacion);
-    int sugerenciasXCalorias();
+    bool sugerenciasXCalorias();
     void buscarPlatillosXCalorias(int calorias);
     bool validarCalorias(int calorias);
+
+    bool nuevoConsumoPlatilloxCalorias(int u, int calorias);
+    ConsumoPlatillo cargarConsumoPlatilloxCalorias(int u, int calorias);
+    bool validarCaloriasSugeridas(int calorias, int id);
 
 
 

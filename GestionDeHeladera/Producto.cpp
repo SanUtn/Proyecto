@@ -149,6 +149,7 @@ Producto cargarProducto()
         cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniUsuario;
         cout<<endl;
+
         while(validarNumero())
         {
             cin >> dniUsuario;
