@@ -39,13 +39,16 @@ using namespace std;
     bool validarExistenciaDeProductos(int idPlatillo);
     void listarConsumosPlatillo();
     void menuSugerenciasPlatillos();
-    int sugerenciasXOrientacion();
+    bool sugerenciasXOrientacion();
     int buscarOrientacion(int dni);
     void buscarPlatillosXOrientacion(int orientacion);
     bool sugerenciasXCalorias();
     void buscarPlatillosXCalorias(int calorias);
     bool validarCalorias(int calorias);
 
+    bool nuevoConsumoPlatilloxOrientacion(int u, int orientacion);
+    ConsumoPlatillo cargarConsumoPlatilloxOrientacion(int u, int orientacion);
+    bool validarOrientacionesSugeridas(int orientacion, int id);
     bool nuevoConsumoPlatilloxCalorias(int u, int calorias);
     ConsumoPlatillo cargarConsumoPlatilloxCalorias(int u, int calorias);
     bool validarCaloriasSugeridas(int calorias, int id);

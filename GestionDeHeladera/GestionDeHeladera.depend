@@ -761,7 +761,7 @@
 	"Usuario.h"
 	"FuncionesGlobales.h"
 
-1656538105 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoplatillo.cpp
+1656539238 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoplatillo.cpp
 	<iostream>
 	<cctype>
 	<iomanip>
@@ -773,7 +773,7 @@
 	"FuncionesGlobales.h"
 	"Usuario.h"
 
-1656536810 c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoplatillo.h
+1656538859 c:\users\asus\documents\github\proyecto\gestiondeheladera\consumoplatillo.h
 	<cstring>
 	<cstdlib>
 	<string>

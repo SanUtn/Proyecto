@@ -263,7 +263,7 @@ void listarConsumosPlatillo()
     system("pause");
 }
 
-int sugerenciasXOrientacion()
+bool sugerenciasXOrientacion()
 {
     int orientacion, dni;
 
@@ -292,7 +292,12 @@ int sugerenciasXOrientacion()
     orientacion = buscarOrientacion(dni);
     buscarPlatillosXOrientacion(orientacion);
 
-    return dni;
+      if(nuevoConsumoPlatilloxOrientacion(dni,orientacion))
+        {
+            return true;
+        }
+
+    return false;
 }
 
 int buscarOrientacion(int dni)
@@ -340,6 +345,7 @@ void buscarPlatillosXOrientacion(int orientacion)
             aux.toList();
         }
     }
+    cout<<endl;
     cout<<endl;
     cout<<endl;
     rlutil::setColor(rlutil::BROWN);
@@ -438,6 +444,7 @@ void buscarPlatillosXCalorias(int calorias)
 
     cout<<endl;
     cout<<endl;
+    cout<<endl;
     rlutil::setColor(rlutil::BROWN);
 }
 
@@ -493,9 +500,9 @@ void menuSugerenciasPlatillos()
         switch(opc)
         {
         case 1:
-            aux = sugerenciasXOrientacion();
+
             cout<<endl;
-            if(nuevoConsumoPlatillo(aux))
+            if(sugerenciasXOrientacion())
             {
                 rlutil::setColor(rlutil::GREEN);
                 cout<<endl;
@@ -517,9 +524,8 @@ void menuSugerenciasPlatillos()
             }
             break;
         case 2:
-            //aux = sugerenciasXCalorias();
+
             cout<<endl;
-            //if(nuevoConsumoPlatillo(aux))
             if(sugerenciasXCalorias())
             {
                 rlutil::setColor(rlutil::GREEN);
@@ -549,7 +555,130 @@ void menuSugerenciasPlatillos()
     }
 }
 
+//sugerencias por orientacion
 //-------------------------------------------------
+bool nuevoConsumoPlatilloxOrientacion(int u, int orientacion)
+{
+    ConsumoPlatillo reg;
+    reg = cargarConsumoPlatilloxOrientacion(u, orientacion);
+
+    bool ok = reg.GrabarEnDisco();
+    if(ok)
+    {
+        int platillo= reg.getIdPlatillo();
+        int usuario = reg.getUsuario();
+        if(retirarProductoDelStockDesdePlatillo(platillo))
+        {
+            ok = retirarProductoExistentePorConsumo(platillo, usuario);
+        }
+    }
+    return ok;
+}
+
+//recibe por parametro el dni del usuario que realiza el consumo y las calorias elegidas
+ConsumoPlatillo cargarConsumoPlatilloxOrientacion(int u, int orientacion)
+{
+    int id;
+
+    cout << "Ingrese el id del Platillo: ";
+    cin >> id;
+
+    while( validarNumero() )
+    {
+        cin >> id;
+    }
+
+    cout<<endl;
+
+    //validamos que sea uno de los platillos sugeridos
+    while(validarOrientacionesSugeridas(orientacion,id) == false)
+    {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
+        cout << "Platillo no sugerido, ingrese otro: ";
+        cin >> id;
+        while(validarNumero())
+        {
+            cin >> id;
+        }
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
+    }
+
+    //validamos que exista ese platillo
+    while(buscarPlatillo(id) == false)
+    {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
+        cout << "Platillo inexistente, ingrese otro: ";
+        cin >> id;
+        while(validarNumero())
+        {
+            cin >> id;
+        }
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
+    }
+
+    while(validarExistenciaDeProductos(id)== false)
+    {
+        rlutil::setColor(rlutil::RED);
+        cout<<endl;
+        cout << "Lo sentimos, no hay stock de productos para consumir ese platillo o no existe, ingrese otro: ";
+        cin >> id;
+        while(validarNumero())
+        {
+            cin >> id;
+        }
+            //validamos que sea uno de los platillos sugeridos
+            while(validarOrientacionesSugeridas(orientacion,id) == false)
+            {
+                rlutil::setColor(rlutil::RED);
+                cout<<endl;
+                cout << "Platillo no sugerido, ingrese otro: ";
+                cin >> id;
+                while(validarNumero())
+                {
+                    cin >> id;
+                }
+                cout<<endl;
+                rlutil::setColor(rlutil::BROWN);
+            }
+        cout<<endl;
+        rlutil::setColor(rlutil::BROWN);
+    }
+
+    ConsumoPlatillo reg;
+    Fecha actual;
+    reg.setIdPlatillo(id);
+    reg.setFechaConsumo(actual);
+    reg.setUsuario(u);
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    return reg;
+}
+
+bool validarOrientacionesSugeridas(int orientacion, int id)
+{
+    Platillo aux;
+    int pos = 0;
+
+    while(aux.LeerDeDisco(pos))
+    {
+        if(aux.getOrientacionAlimentaria() == orientacion && aux.getEstadoPlatillo() == true && aux.getIdPlatillo() == id)
+        {
+            return true;
+        }
+        pos++;
+    }
+    return false;
+}
+
+
+
+//sugerencias por calorias
+//-------------------------------------------------------------------------
 bool nuevoConsumoPlatilloxCalorias(int u, int calorias)
 {
     ConsumoPlatillo reg;
@@ -667,4 +796,3 @@ bool validarCaloriasSugeridas(int calorias, int id)
     }
     return false;
 }
-
