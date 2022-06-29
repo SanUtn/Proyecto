@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include "rlutil.h"
 #include "Usuario.h"
 #include "FuncionesGlobales.h"

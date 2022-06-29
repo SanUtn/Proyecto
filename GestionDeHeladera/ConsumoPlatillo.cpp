@@ -17,14 +17,15 @@ string ConsumoPlatillo::toString()
     return cadena;
 }
 
-void ConsumoPlatillo::toList(){
-            rlutil::setColor(rlutil::LIGHTCYAN);
-            cout << left;
-            cout << "\t";
-            cout << setw(25)  << mostrarNombrePlatillo(idPlatillo);
-            cout << setw(20) << getFechaConsumo().toString();
-            cout << setw(15) << getUsuario() << endl;
-            rlutil::setColor(rlutil::BROWN);
+void ConsumoPlatillo::toList()
+{
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << left;
+    cout << "\t";
+    cout << setw(25)  << mostrarNombrePlatillo(idPlatillo);
+    cout << setw(20) << getFechaConsumo().toString();
+    cout << setw(15) << getUsuario() << endl;
+    rlutil::setColor(rlutil::BROWN);
 }
 
 
@@ -134,6 +135,12 @@ ConsumoPlatillo cargarConsumoPlatillo(int u)
 
     cout << "Ingrese el id del Platillo: ";
     cin >> id;
+
+    while( validarNumero() )
+    {
+        cin >> id;
+    }
+
     cout<<endl;
 
     //validamos que exista ese platillo
@@ -143,6 +150,10 @@ ConsumoPlatillo cargarConsumoPlatillo(int u)
         cout<<endl;
         cout << "Platillo inexistente, ingrese otro: ";
         cin >> id;
+        while(validarNumero())
+        {
+            cin >> id;
+        }
         cout<<endl;
         rlutil::setColor(rlutil::BROWN);
     }
@@ -153,6 +164,10 @@ ConsumoPlatillo cargarConsumoPlatillo(int u)
         cout<<endl;
         cout << "Lo sentimos, no hay stock de productos para cosumir ese platillo o no existe, ingrese otro: ";
         cin >> id;
+        while(validarNumero())
+        {
+            cin >> id;
+        }
         cout<<endl;
         rlutil::setColor(rlutil::BROWN);
     }
@@ -254,6 +269,10 @@ int sugerenciasXOrientacion()
 
     cout << "Ingrese el dni: ";
     cin >> dni;
+    while(validarNumero())
+    {
+        cin >> dni;
+    }
     cout<<endl;
 
     while(validarUsuarioExistente(dni) == false)
@@ -262,6 +281,10 @@ int sugerenciasXOrientacion()
         cout<<endl;
         cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dni;
+        while(validarNumero())
+        {
+            cin >> dni;
+        }
         cout<<endl;
         rlutil::setColor(rlutil::BROWN);
     }
@@ -331,6 +354,11 @@ int sugerenciasXCalorias()
     cin >> dniusuario;
     cout<<endl;
 
+    while(validarNumero())
+    {
+        cin >> dniusuario;
+    }
+
     while(validarUsuarioExistente(dniusuario) == false)
     {
         rlutil::setColor(rlutil::RED);
@@ -338,6 +366,10 @@ int sugerenciasXCalorias()
         cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniusuario;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> dniusuario;
+        }
         rlutil::setColor(rlutil::BROWN);
     }
 

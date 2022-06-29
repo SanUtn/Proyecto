@@ -17,13 +17,14 @@ string ConsumoProducto::toString()
     return cadena;
 }
 
-void ConsumoProducto::toList(){
-            rlutil::setColor(rlutil::LIGHTCYAN);
-            cout << left;
-            cout << "\t";
-            cout << setw(20)  << mostrarNombreProducto(getIdProducto());
-            cout << setw(20) << getFechaConsumo().toString() << endl;
-            rlutil::setColor(rlutil::BROWN);
+void ConsumoProducto::toList()
+{
+    rlutil::setColor(rlutil::LIGHTCYAN);
+    cout << left;
+    cout << "\t";
+    cout << setw(20)  << mostrarNombreProducto(getIdProducto());
+    cout << setw(20) << getFechaConsumo().toString() << endl;
+    rlutil::setColor(rlutil::BROWN);
 }
 
 
@@ -135,6 +136,11 @@ ConsumoProducto cargarConsumoProducto()
     cin >> id;
     cout<<endl;
 
+    while(validarNumero())
+    {
+        cin >> id;
+    }
+
     //validamos que exista ese producto
     while(buscarProducto(id) == false)
     {
@@ -143,6 +149,11 @@ ConsumoProducto cargarConsumoProducto()
         cout << "Producto inexistente, ingrese otro: ";
         cin >> id;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> id;
+        }
+
         rlutil::setColor(rlutil::BROWN);
     }
 
@@ -153,6 +164,11 @@ ConsumoProducto cargarConsumoProducto()
         cout << "Lo sentimos, no hay stock de ese producto o no existe, ingrese otro: ";
         cin >> id;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> id;
+        }
+
         rlutil::setColor(rlutil::BROWN);
     }
 

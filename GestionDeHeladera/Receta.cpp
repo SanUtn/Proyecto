@@ -127,13 +127,21 @@ Receta cargarReceta()
     cin >> idPlatillo;
     cout<<endl;
 
-      while(validarPlatilloExistenteXId(idPlatillo)== false)
+    while(validarNumero())
+    {
+        cin >> idPlatillo;
+    }
+    while(validarPlatilloExistenteXId(idPlatillo)== false)
     {
         rlutil::setColor(rlutil::RED);
         cout<<endl;
         cout <<"Platillo inexistente, ingrese otro: ";
         cin >> idPlatillo;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> idPlatillo;
+        }
         rlutil::setColor(rlutil::BROWN);
     }
 
@@ -165,6 +173,11 @@ int EliminarReceta()
 
     cout<<"Ingrese el ID de la receta a eliminar: ";
     cin>>idReceta;
+
+    while(validarNumero())
+    {
+        cin >> idReceta;
+    }
 
     while(aux.LeerDeDisco(pos)==1)
     {
@@ -241,6 +254,11 @@ void listarRecetas()
 
     cout<<endl;
 
+    while(validarNumero())
+    {
+        cin >> opcion;
+    }
+
     if(opcion==0)
     {
         return;
@@ -253,6 +271,10 @@ void listarRecetas()
         cout<<"Opcion inexistente, por favor ingrese otra: ";
         cin>>opcion;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> opcion;
+        }
         rlutil::setColor(rlutil::BROWN);
     }
 
@@ -584,8 +606,8 @@ void sugerenciaRecetas()
         }
     }
     rlutil::setColor(rlutil::DARKGREY);
-     cout << "\t" << "-----------------------------------------------" << endl;
-     cout << "\t" << "Total: " << cont << " recetas.";
+    cout << "\t" << "-----------------------------------------------" << endl;
+    cout << "\t" << "Total: " << cont << " recetas.";
 
     cout<<endl;
     cout<<endl;
@@ -608,6 +630,11 @@ void sugerenciaRecetas()
 
     cout<<"Ingrese la opcion seleccionada o 0 para salir: ";
     cin>>opcion;
+
+    while(validarNumero())
+    {
+        cin >> opcion;
+    }
 
     if(opcion==0)
     {

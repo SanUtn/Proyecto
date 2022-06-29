@@ -37,5 +37,6 @@ void alertaSinStock();
 void alertaDeProductosAVencer();
 void alertaDeProductosVencidos();
 void eliminarRecetasPorPlatillo(int idplatillo);
+bool validarNumero();
 
 #endif // FUNCIONESGLOBALES_H_INCLUDED

@@ -78,9 +78,12 @@ bool retirarProducto(int idproducto)
     bool ok;
     RetiroProducto reg;
     reg = retirarProductoExistente(idproducto);
-    if(reg.getIdRetiro() != -1){
+    if(reg.getIdRetiro() != -1)
+    {
         ok= reg.GrabarEnDisco();
-    }else{
+    }
+    else
+    {
         ok = false;
     }
     return ok;
@@ -92,9 +95,12 @@ bool retirarProductoManual()
     bool ok;
     RetiroProducto reg;
     reg = retirarProductoExistenteManual();
-    if(reg.getIdRetiro() != -1){
+    if(reg.getIdRetiro() != -1)
+    {
         ok= reg.GrabarEnDisco();
-    }else{
+    }
+    else
+    {
         ok = false;
     }
     return ok;
@@ -132,6 +138,11 @@ RetiroProducto retirarProductoExistenteManual()
     cout << "Ingrese el dni del Usuario: ";
     cin >> dniUsuario;
 
+    while(validarNumero())
+    {
+        cin >> dniUsuario;
+    }
+
     while(validarUsuarioExistente(dniUsuario) == false)
     {
         rlutil::setColor(rlutil::RED);
@@ -139,6 +150,11 @@ RetiroProducto retirarProductoExistenteManual()
         cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniUsuario;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> dniUsuario;
+        }
+
         rlutil::setColor(rlutil::BROWN);
     }
 
@@ -147,6 +163,11 @@ RetiroProducto retirarProductoExistenteManual()
     cout<<endl;
     cout<<"Ingrese el id del Producto: ";
     cin>>idProducto;
+    cout << endl;
+    while(validarNumero())
+    {
+        cin >> idProducto;
+    }
 
     while(validarProductoExistenteID(idProducto) == false)
     {
@@ -155,6 +176,11 @@ RetiroProducto retirarProductoExistenteManual()
         cout << "El ID de producto que ingreso no existe en el sistema, ingrese otro:  ";
         cin >> idProducto;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> idProducto;
+        }
+
         rlutil::setColor(rlutil::BROWN);
     }
 
@@ -200,6 +226,13 @@ RetiroProducto retirarProductoExistente(int idproducto)
 
     cout << "Ingrese el dni del Usuario: ";
     cin >> dniUsuario;
+    cout << endl;
+
+    while(validarNumero())
+    {
+        cin >> dniUsuario;
+    }
+
 
     while(validarUsuarioExistente(dniUsuario) == false)
     {
@@ -208,6 +241,10 @@ RetiroProducto retirarProductoExistente(int idproducto)
         cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniUsuario;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> dniUsuario;
+        }
         rlutil::setColor(rlutil::BROWN);
     }
 
@@ -218,6 +255,10 @@ RetiroProducto retirarProductoExistente(int idproducto)
         cout << "El ID de producto que ingreso no existe en el sistema, ingrese otro:  ";
         cin >> idproducto;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> idproducto;
+        }
         rlutil::setColor(rlutil::BROWN);
     }
 
@@ -245,13 +286,13 @@ bool retirarProductoExistentePorConsumo(int idplatillo, int usuario)
 
     vDinamico = new Producto[cantProductos];
 
-       if(vDinamico == NULL)
-            {
-                rlutil::setColor(rlutil::RED);
-                cout << "ERROR" <<endl;
-                rlutil::setColor(rlutil::BROWN);
-                return false;
-            }
+    if(vDinamico == NULL)
+    {
+        rlutil::setColor(rlutil::RED);
+        cout << "ERROR" <<endl;
+        rlutil::setColor(rlutil::BROWN);
+        return false;
+    }
 
     //LLENA EL VECTOR CON LOS PRODUCTOS DE ESE PLATILLO
     copiarProductos(vDinamico,cantProductos, idplatillo);
@@ -259,13 +300,15 @@ bool retirarProductoExistentePorConsumo(int idplatillo, int usuario)
     RetiroProducto reg;
     Fecha fecha;
 
-    for(int i=0; i<cantProductos;i++){
+    for(int i=0; i<cantProductos; i++)
+    {
         id = CantidadRegistrosRetiroProductosExistentes()+1;
         reg.setIdRetiro(id);
         reg.setDniUsuario(usuario);
         reg.setIdProducto(vDinamico[i].getIdProducto());
         reg.setFechaRetiro(fecha);
-        if(reg.GrabarEnDisco() == false){
+        if(reg.GrabarEnDisco() == false)
+        {
             return false;
         }
     }
@@ -282,7 +325,7 @@ void listarRetirosDeProductosExistentes()
     rlutil::setColor(rlutil::MAGENTA);
     cout<<endl;
     cout << left;
-     cout << setw(12) << "\t";
+    cout << setw(12) << "\t";
     cout <<  "LISTADO DE PRODUCTOS RETIRADOS " << endl;
     rlutil::setColor(rlutil::DARKGREY);
     cout << "\t" << "-------------------------------------------------" << endl;
@@ -295,14 +338,14 @@ void listarRetirosDeProductosExistentes()
     cout << "\t" << "-------------------------------------------------" << endl;
     for(int i=0; i<cantProductos; i++)
     {
-            aux.LeerDeDisco(i);
-            rlutil::setColor(rlutil::LIGHTCYAN);
-            cout << left;
-            cout << "\t";
-            cout << setw(10) << to_string(aux.getIdRetiro());
-            cout << setw(10) << to_string(aux.getDniUsuario());
-            cout << setw(20) << mostrarNombreProducto(aux.getIdProducto());
-            cout << setw(20) << aux.getFechaRetiro().toString() << endl;
+        aux.LeerDeDisco(i);
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << left;
+        cout << "\t";
+        cout << setw(10) << to_string(aux.getIdRetiro());
+        cout << setw(10) << to_string(aux.getDniUsuario());
+        cout << setw(20) << mostrarNombreProducto(aux.getIdProducto());
+        cout << setw(20) << aux.getFechaRetiro().toString() << endl;
     }
     rlutil::setColor(rlutil::DARKGREY);
     cout << "\t" << "-------------------------------------------------" << endl;

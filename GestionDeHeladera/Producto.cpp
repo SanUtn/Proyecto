@@ -137,6 +137,11 @@ Producto cargarProducto()
     cout << "Ingrese el dni del Usuario: ";
     cin >> dniUsuario;
 
+    while(validarNumero())
+    {
+        cin >> dniUsuario;
+    }
+
     while(validarUsuarioExistente(dniUsuario) == false)
     {
         rlutil::setColor(rlutil::RED);
@@ -144,6 +149,10 @@ Producto cargarProducto()
         cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniUsuario;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> dniUsuario;
+        }
         rlutil::setColor(rlutil::BROWN);
 
     }
@@ -278,6 +287,13 @@ int EliminarProducto()
 
     cout<<"Ingrese el ID del producto a eliminar: ";
     cin>>idproducto;
+
+    cout << endl;
+
+         while(validarNumero())
+        {
+            cin >> idproducto;
+        }
 
     while(aux.LeerDeDisco(pos)==1)
     {

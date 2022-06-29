@@ -165,6 +165,11 @@ Usuario cargarUsuario()
     cout << "Ingrese el DNI o 0 para salir: ";
     cin >> dni;
 
+    while(validarNumero())
+    {
+        cin >> dni;
+    }
+
     if(dni == 0)
     {
         reg.setId(-1);
@@ -180,6 +185,12 @@ Usuario cargarUsuario()
         rlutil::setColor(rlutil::BROWN);
         cout << "Ingrese el DNI o 0 para salir: ";
         cin >> dni;
+        cout << endl;
+        while(validarNumero())
+        {
+            cin >> dni;
+        }
+
         if(dni == 0)
         {
             reg.setId(-1);
@@ -200,7 +211,11 @@ Usuario cargarUsuario()
     cout<<endl;
     cout << "Ingrese el id de la orientacion alimentaria: ";
     cin >> idOrientacionAlimentaria;
-
+    cout << endl;
+    while(validarNumero())
+    {
+        cin >> idOrientacionAlimentaria;
+    }
 
     reg.setId(id);
     reg.setDNI(dni);
@@ -290,7 +305,14 @@ int EliminarUsuario()
 
     cout<<"Ingrese el dni del usuario a eliminar o 0 para cancelar: ";
     cin>>dni;
-    if(dni == 0){
+
+    while(validarNumero())
+    {
+        cin >> dni;
+    }
+
+    if(dni == 0)
+    {
         return -2;
     }
 
@@ -368,6 +390,11 @@ void buscarUsuarioDNI()
     cout << "Ingrese el dni: ";
     cin >> dni;
 
+    while(validarNumero())
+    {
+        cin >> dni;
+    }
+
     rlutil::setColor(rlutil::MAGENTA);
     cout << endl;
     cout << endl;
@@ -376,7 +403,7 @@ void buscarUsuarioDNI()
     cout << setw(15) << "DNI";
     cout << setw(20) << "NOMBRE";
     cout << setw(20) << "APELLIDO" << endl;
-     rlutil::setColor(rlutil::DARKGREY);
+    rlutil::setColor(rlutil::DARKGREY);
     cout << "\t" << "-------------------------------------------" << endl;
 
     while(reg.LeerDeDisco(pos))
@@ -388,7 +415,7 @@ void buscarUsuarioDNI()
         }
         pos++;
     }
-     rlutil::setColor(rlutil::DARKGREY);
+    rlutil::setColor(rlutil::DARKGREY);
     cout << "\t" << "-------------------------------------------" << endl;
 
     if(bandera == false)
@@ -423,6 +450,11 @@ void buscarUsuarioOrientacion()
     cout << "Ingrese el id de la orientacion: ";
     cin >> orientacion;
 
+        while(validarNumero())
+    {
+        cin >> orientacion;
+    }
+
     system("cls");
 
     rlutil::setColor(rlutil::MAGENTA);
@@ -433,7 +465,7 @@ void buscarUsuarioOrientacion()
     cout << setw(15) << "DNI";
     cout << setw(20) << "NOMBRE";
     cout << setw(20)  << "APELLIDO" << endl;
-     rlutil::setColor(rlutil::DARKGREY);
+    rlutil::setColor(rlutil::DARKGREY);
     cout << "\t" << "-------------------------------------------" << endl;
 
     while(reg.LeerDeDisco(pos))
@@ -445,7 +477,7 @@ void buscarUsuarioOrientacion()
         }
         pos++;
     }
-     rlutil::setColor(rlutil::DARKGREY);
+    rlutil::setColor(rlutil::DARKGREY);
     cout << "\t" << "-------------------------------------------" << endl;
 
     if(bandera == false)
@@ -592,7 +624,8 @@ void menuUsuario()
                 cout<<endl;
                 system("pause");
             }
-            else if(aux == -2){
+            else if(aux == -2)
+            {
                 rlutil::setColor(rlutil::RED);
                 cout<<endl;
                 cout<<"ELIMINACION CANCELADA";

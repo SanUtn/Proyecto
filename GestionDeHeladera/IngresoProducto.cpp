@@ -112,6 +112,12 @@ IngresoProducto cargarProductoExistente()
     cout << "Ingrese el dni del Usuario: ";
     cin >> dniUsuario;
 
+    while(validarNumero())
+    {
+        cin >> dniUsuario;
+    }
+
+
     while(validarUsuarioExistente(dniUsuario) == false)
     {
         rlutil::setColor(rlutil::RED);
@@ -119,6 +125,11 @@ IngresoProducto cargarProductoExistente()
         cout << "El usuario ingresado no existe en el sistema, ingrese otro DNI:  ";
         cin >> dniUsuario;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> dniUsuario;
+        }
+
         rlutil::setColor(rlutil::BROWN);
     }
 
@@ -128,6 +139,11 @@ IngresoProducto cargarProductoExistente()
 
     cout<<"Ingrese el id del Producto: ";
     cin>>idProducto;
+    cout << endl;
+    while(validarNumero())
+    {
+        cin >> idProducto;
+    }
 
     while(validarProductoExistenteID(idProducto) == false)
     {
@@ -136,6 +152,10 @@ IngresoProducto cargarProductoExistente()
         cout << "El ID de producto que ingreso no existe en el sistema, ingrese otro:  ";
         cin >> idProducto;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> idProducto;
+        }
         rlutil::setColor(rlutil::BROWN);
     }
 
@@ -189,7 +209,7 @@ void listarIngresosDeProductosExistentes()
     rlutil::setColor(rlutil::MAGENTA);
     cout<<endl;
     cout << left;
-     cout << setw(16) << "\t";
+    cout << setw(16) << "\t";
     cout << "REGISTRO DE INGRESOS " << endl;
     rlutil::setColor(rlutil::DARKGREY);
     cout << "\t" << "-------------------------------------------------" << endl;
@@ -206,13 +226,13 @@ void listarIngresosDeProductosExistentes()
     for(int i=0; i<cantProductos; i++)
     {
         aux.LeerDeDisco(i);
-            rlutil::setColor(rlutil::LIGHTCYAN);
-            cout << left;
-            cout << "\t";
-            cout << setw(10) << aux.getIdIngreso();
-            cout << setw(10) << aux.getDniUsuario();
-            cout << setw(20) << mostrarNombreProducto(aux.getIdProducto());
-            cout << setw(20) << aux.getFechaIngreso().toString() << endl;
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << left;
+        cout << "\t";
+        cout << setw(10) << aux.getIdIngreso();
+        cout << setw(10) << aux.getDniUsuario();
+        cout << setw(20) << mostrarNombreProducto(aux.getIdProducto());
+        cout << setw(20) << aux.getFechaIngreso().toString() << endl;
     }
     rlutil::setColor(rlutil::DARKGREY);
     cout << "\t" << "-------------------------------------------------" << endl;

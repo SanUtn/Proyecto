@@ -1,9 +1,23 @@
 #include <iostream>
 #include <iomanip>
+#include <stdexcept>
+#include <limits>
 #include "rlutil.h"
 #include "FuncionesGlobales.h"
 
 using namespace std;
+
+bool validarNumero()
+{
+    if( std::cin.fail() )
+    {
+        std::cout << "Error, ingrese un ID valido: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<int>::max(),'\n');
+        return true;
+    }
+    return false;
+}
 
 void menuConsumos()
 {
@@ -80,15 +94,18 @@ void menuConsumos()
     }
 }
 
-int CantidadProductosxPlatillo(int idplatillo){
+int CantidadProductosxPlatillo(int idplatillo)
+{
     ProductosxPlatillo reg;
     int pos = 0;
     int cant = 0;
 
-    while(reg.LeerDeDisco(pos)){
-            if(reg.getIdPlatillo() == idplatillo){
-                cant++;
-            }
+    while(reg.LeerDeDisco(pos))
+    {
+        if(reg.getIdPlatillo() == idplatillo)
+        {
+            cant++;
+        }
         pos++;
     }
 
@@ -410,18 +427,21 @@ void eliminarRecetasPorPlatillo(int idplatillo)
     }
 }
 
-    void modificarVencimientoProducto(int idproducto, Fecha fecha){
-        Producto reg;
-        int pos = 0;
+void modificarVencimientoProducto(int idproducto, Fecha fecha)
+{
+    Producto reg;
+    int pos = 0;
 
-        while(reg.LeerDeDisco(pos)){
-                if(reg.getIdProducto() == idproducto){
-                    reg.setFechaVencimiento(fecha);
-                    reg.ModificarArchivo(pos);
-                }
-            pos++;
+    while(reg.LeerDeDisco(pos))
+    {
+        if(reg.getIdProducto() == idproducto)
+        {
+            reg.setFechaVencimiento(fecha);
+            reg.ModificarArchivo(pos);
         }
+        pos++;
     }
+}
 
 void PlatillosAnual()
 {
@@ -433,14 +453,15 @@ void PlatillosAnual()
     cout << "Ingrese el anio a consultar: ";
     cin >> opc;
 
-        cout<<endl;
-        cout<<endl;
+    cout<<endl;
+    cout<<endl;
 
     while(reg.LeerDeDisco(pos++))
     {
         if (reg.getFechaConsumo().getAnio() == opc)
         {
-            if(bandera==true){
+            if(bandera==true)
+            {
                 rlutil::setColor(rlutil::MAGENTA);
                 cout<<endl;
                 cout << left;
@@ -458,16 +479,21 @@ void PlatillosAnual()
                 rlutil::setColor(rlutil::BROWN);
             }
             reg.toList();
-        }else{
-        rlutil::setColor(rlutil::RED);
-        cout<<endl;
-        cout<<"No existen consumos, ingrese otro anio o 0 para salir: ";
-        cin>>opc;
-        cout<<endl;
-        rlutil::setColor(rlutil::BROWN);
-            if(opc==0){
+        }
+        else
+        {
+            rlutil::setColor(rlutil::RED);
+            cout<<endl;
+            cout<<"No existen consumos, ingrese otro anio o 0 para salir: ";
+            cin>>opc;
+            cout<<endl;
+            rlutil::setColor(rlutil::BROWN);
+            if(opc==0)
+            {
                 return;
-            }else{
+            }
+            else
+            {
                 bandera=true;//para que vuelva a mostrar el encabezado.
                 pos=0;//para que vuelva a recorrer todos
             }
@@ -492,7 +518,8 @@ void PlatillosMensual()
     {
         if (reg.getFechaConsumo().getMes() == opc)
         {
-            if(bandera==true){
+            if(bandera==true)
+            {
                 rlutil::setColor(rlutil::MAGENTA);
                 cout << endl;
                 cout << left;
@@ -510,16 +537,21 @@ void PlatillosMensual()
                 rlutil::setColor(rlutil::BROWN);
             }
             reg.toList();
-        }else{
-        rlutil::setColor(rlutil::RED);
-        cout<<endl;
-        cout<<"No existen consumos, ingrese otro MES o 0 para salir: ";
-        cin>>opc;
-        cout<<endl;
-        rlutil::setColor(rlutil::BROWN);
-            if(opc==0){
+        }
+        else
+        {
+            rlutil::setColor(rlutil::RED);
+            cout<<endl;
+            cout<<"No existen consumos, ingrese otro MES o 0 para salir: ";
+            cin>>opc;
+            cout<<endl;
+            rlutil::setColor(rlutil::BROWN);
+            if(opc==0)
+            {
                 return;
-            }else{
+            }
+            else
+            {
                 bandera=true;//para que vuelva a mostrar el encabezado.
                 pos=0;//para que vuelva a recorrer todos
             }
@@ -537,14 +569,15 @@ void ProductosAnual()
     cout << "Ingrese el anio a consultar: ";
     cin >> opc;
 
-        cout<<endl;
-        cout<<endl;
+    cout<<endl;
+    cout<<endl;
 
     while(reg.LeerDeDisco(pos++))
     {
         if (reg.getFechaConsumo().getAnio() == opc)
         {
-            if(bandera==true){
+            if(bandera==true)
+            {
                 rlutil::setColor(rlutil::MAGENTA);
                 cout<<endl;
                 cout << left;
@@ -561,16 +594,21 @@ void ProductosAnual()
                 rlutil::setColor(rlutil::BROWN);
             }
             reg.toList();
-        }else{
-        rlutil::setColor(rlutil::RED);
-        cout<<endl;
-        cout<<"No existen consumos, ingrese otro anio o 0 para salir: ";
-        cin>>opc;
-        cout<<endl;
-        rlutil::setColor(rlutil::BROWN);
-            if(opc==0){
+        }
+        else
+        {
+            rlutil::setColor(rlutil::RED);
+            cout<<endl;
+            cout<<"No existen consumos, ingrese otro anio o 0 para salir: ";
+            cin>>opc;
+            cout<<endl;
+            rlutil::setColor(rlutil::BROWN);
+            if(opc==0)
+            {
                 return;
-            }else{
+            }
+            else
+            {
                 bandera=true;//para que vuelva a mostrar el encabezado.
                 pos=0;//para que vuelva a recorrer todos
             }
@@ -595,7 +633,8 @@ void ProductosMensual()
     {
         if (reg.getFechaConsumo().getMes() == opc)
         {
-            if(bandera==true){
+            if(bandera==true)
+            {
                 rlutil::setColor(rlutil::MAGENTA);
                 cout << endl;
                 cout << left;
@@ -612,16 +651,21 @@ void ProductosMensual()
                 rlutil::setColor(rlutil::BROWN);
             }
             reg.toList();
-        }else{
-        rlutil::setColor(rlutil::RED);
-        cout<<endl;
-        cout<<"No existen consumos, ingrese otro MES o 0 para salir: ";
-        cin>>opc;
-        cout<<endl;
-        rlutil::setColor(rlutil::BROWN);
-            if(opc==0){
+        }
+        else
+        {
+            rlutil::setColor(rlutil::RED);
+            cout<<endl;
+            cout<<"No existen consumos, ingrese otro MES o 0 para salir: ";
+            cin>>opc;
+            cout<<endl;
+            rlutil::setColor(rlutil::BROWN);
+            if(opc==0)
+            {
                 return;
-            }else{
+            }
+            else
+            {
                 bandera=true;//para que vuelva a mostrar el encabezado.
                 pos=0;//para que vuelva a recorrer todos
             }

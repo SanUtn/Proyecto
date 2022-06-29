@@ -157,8 +157,13 @@ Platillo cargarPlatillo()
 
     cout << "Ingrese el id del ingrendiente o 0 para no agregar mas: " << endl;
     cout<<endl;
+
     listarProductos();
     cin >> opc;
+    while(validarNumero())
+    {
+        cin >> opc;
+    }
 
     while(opc != 0)
     {
@@ -170,6 +175,10 @@ Platillo cargarPlatillo()
         cout<<endl;
         listarProductos();
         cin >> opc;
+        while(validarNumero())
+        {
+            cin >> opc;
+        }
     }
 
     cout<<endl;
@@ -181,13 +190,22 @@ Platillo cargarPlatillo()
     cin >> orientacionAlimentaria;
     cout<<endl;
 
-     while(validarOrientacionExistentePorId(orientacionAlimentaria)== false)
+    while(validarNumero())
+    {
+        cin >> orientacionAlimentaria;
+    }
+
+    while(validarOrientacionExistentePorId(orientacionAlimentaria)== false)
     {
         rlutil::setColor(rlutil::RED);
         cout<<endl;
         cout <<"Orientacion inexistente, ingrese otra: ";
         cin >> orientacionAlimentaria;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> orientacionAlimentaria;
+        }
         rlutil::setColor(rlutil::BROWN);
     }
 
@@ -295,6 +313,12 @@ int EliminarPlatillo()
 
     cout<<"Ingrese el ID del platillo a eliminar: ";
     cin>>idplatillo;
+    cout << endl;
+
+    while(validarNumero())
+    {
+        cin >> idplatillo;
+    }
 
     while(aux.LeerDeDisco(pos)==1)
     {
@@ -339,7 +363,7 @@ void buscarPlatilloNombre()
     nombre = mayuscula(nombre);
     cout << endl;
 
-      while(validarPlatilloExistente(nombre)== false)
+    while(validarPlatilloExistente(nombre)== false)
     {
         rlutil::setColor(rlutil::RED);
         cout << endl;
@@ -410,14 +434,24 @@ void busquedaPlatilloOrientacion()
     cout << "Ingrese el id de la orientacion a buscar: ";
     cin >> opc;
     cout << endl;
+    while(validarNumero())
+    {
+        cin >> opc;
+    }
 
-      while(validarOrientacionExistentePorId(opc)== false)
+
+
+    while(validarOrientacionExistentePorId(opc)== false)
     {
         rlutil::setColor(rlutil::RED);
         cout<<endl;
         cout <<"Orientacion inexistente, ingrese otra: ";
         cin >> opc;
         cout<<endl;
+        while(validarNumero())
+        {
+            cin >> opc;
+        }
         rlutil::setColor(rlutil::BROWN);
     }
 
@@ -450,9 +484,9 @@ void busquedaPlatilloOrientacion()
         pos++;
     }
 
-     cout<<endl;
-     cout<<endl;
-     cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
 
     if(bandera == false)
     {
