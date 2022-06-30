@@ -326,7 +326,7 @@ bool retirarProductoDelStockConsumoProducto(int idproducto)
         for(int i=0; i<cantStocks; i++)
         {
             aux.LeerDeDisco(i);
-            if(aux.getIdProducto()== idproducto)
+            if(aux.getIdProducto()== idproducto && aux.getEstadoStock() == true)
             {
                 cantidad = aux.getStock();
 

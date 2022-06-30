@@ -368,7 +368,7 @@ void buscarPlatilloNombre()
     nombre = mayuscula(nombre);
     cout << endl;
 
-    while(validarPlatilloExistente(nombre)== false)
+   /* while(validarPlatilloExistente(nombre)== false)
     {
         rlutil::setColor(rlutil::RED);
         cout << endl;
@@ -377,7 +377,7 @@ void buscarPlatilloNombre()
         nombre = mayuscula(nombre);
         cout << endl;
         rlutil::setColor(rlutil::BROWN);
-    }
+    }*/
 
     system("cls");
     cout << endl;
@@ -446,7 +446,7 @@ void busquedaPlatilloOrientacion()
 
 
 
-    while(validarOrientacionExistentePorId(opc)== false)
+    /*while(validarOrientacionExistentePorId(opc)== false)
     {
         rlutil::setColor(rlutil::RED);
         cout<<endl;
@@ -458,7 +458,7 @@ void busquedaPlatilloOrientacion()
             cin >> opc;
         }
         rlutil::setColor(rlutil::BROWN);
-    }
+    }*/
 
     system("cls");
 

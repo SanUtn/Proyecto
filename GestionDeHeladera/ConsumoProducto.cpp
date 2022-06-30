@@ -130,7 +130,9 @@ ConsumoProducto cargarConsumoProducto()
     int id;
     Fecha fecha;
 
+    cout<<endl;
     listarProductos();
+    cout<<endl;
 
     cout << "Ingrese el id del Producto: ";
     cin >> id;

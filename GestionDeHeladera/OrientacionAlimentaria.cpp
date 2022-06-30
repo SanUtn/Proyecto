@@ -230,7 +230,7 @@ int EliminarOrientacionAlimentaria()
 
     while(aux.LeerDeDisco(pos)==1)
     {
-        if(aux.getIdOrientacionAlimentaria() == idOrientacion)
+        if(aux.getIdOrientacionAlimentaria() == idOrientacion && aux.getEstadoOrientacion()==true)
         {
             aux.setEstadoOrientacion(false);
             aux.ModificarArchivo(pos);
