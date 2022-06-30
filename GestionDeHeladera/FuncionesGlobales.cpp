@@ -895,6 +895,7 @@ void alertaDeProductosVencidos()
                     {
                         if(difMes == 0)
                         {
+                            //significa que el producto ya vencio
                             if(difDia > 0)
                             {
                                 rlutil::setColor(rlutil::LIGHTCYAN);
@@ -906,7 +907,7 @@ void alertaDeProductosVencidos()
                                 bandera = true;
                                 rlutil::setColor(rlutil::BROWN);
                             }
-
+                        //significa que el producto ya vencio
                         }else if(difMes > 0){
                             rlutil::setColor(rlutil::LIGHTCYAN);
                             cout << left;
@@ -916,7 +917,7 @@ void alertaDeProductosVencidos()
                             cont++;
                             bandera = true;
                             rlutil::setColor(rlutil::BROWN);
-                        }
+                        }//significa que el producto ya vencio
                         }else if (difAnio > 0){
                                 rlutil::setColor(rlutil::LIGHTCYAN);
                                 cout << left;
