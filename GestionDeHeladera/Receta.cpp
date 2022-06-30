@@ -427,12 +427,13 @@ void elegirReceta(int opc)
             //funcion que se encuentra en stock, llena el vector con los productos del platillo consultado.
             buscarProductosXPlatillo(reg.getIdPlatillo(), vProductos, cantReg);
 
+            rlutil::setColor(rlutil::LIGHTGREEN);
             cout<<endl;
             cout<<endl;
             cout<<"Ingredientes: ";
             for(int i=0; i<cantReg; i++)
             {
-                rlutil::setColor(rlutil::WHITE);
+
                 cout<< mostrarNombreProducto(vProductos[i])<<", ";
             }
             cout<<endl;
@@ -751,7 +752,7 @@ void menuRecetas()
             }
             break;
         case 3:
-            listarRecetas2();
+            listarRecetas();
             cout<<endl;
             cout<<endl;
             system("pause");
