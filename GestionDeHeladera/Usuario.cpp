@@ -343,6 +343,8 @@ void buscarUsuarioNombre()
     nombre = mayuscula(nombre);
     cout << endl;
     cout << endl;
+
+
     rlutil::setColor(rlutil::MAGENTA);
     cout << left;
     cout << "\t";

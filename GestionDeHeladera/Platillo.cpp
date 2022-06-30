@@ -155,11 +155,16 @@ Platillo cargarPlatillo()
 
     system("cls");
 
-    cout << "Ingrese el id del ingrendiente o 0 para no agregar mas: " << endl;
+    cout<<endl;
+    listarProductos();
     cout<<endl;
 
-    listarProductos();
+
+    cout << "Ingrese el id del ingrendiente o 0 para no agregar mas: " ;
     cin >> opc;
+    cout<<endl;
+
+
     while(validarNumero())
     {
         cin >> opc;

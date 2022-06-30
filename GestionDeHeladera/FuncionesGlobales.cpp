@@ -399,7 +399,7 @@ void eliminarStock(int idproducto)
 void eliminarPlatillos(int idproducto)
 {
     ProductosxPlatillo reg;
-    Platillo aux;
+
     int pos = 0;
 
     while(reg.LeerDeDisco(pos))
@@ -903,7 +903,7 @@ void alertaDeProductosVencidos()
         rlutil::setColor(rlutil::RED);
         system("cls");
         cout<<endl;
-        cout << "No hay productos proximos a vencerse." << endl;
+        cout << "No hay productos vencidos." << endl;
         cout<<endl;
         rlutil::setColor(rlutil::BROWN);
     }

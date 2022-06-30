@@ -861,7 +861,7 @@
 	"Fecha.h"
 	<ctime>
 
-1656534768 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\funcionesglobales.cpp
+1656544446 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\funcionesglobales.cpp
 	<iostream>
 	<iomanip>
 	<stdexcept>
@@ -903,7 +903,7 @@
 	"OrientacionAlimentaria.h"
 	"FuncionesGlobales.h"
 
-1656534475 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\platillo.cpp
+1656548634 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\platillo.cpp
 	<iostream>
 	<iomanip>
 	"rlutil.h"
@@ -922,7 +922,7 @@
 	"FuncionesGlobales.h"
 	"Usuario.h"
 
-1656381477 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\productostock.cpp
+1656547387 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\productostock.cpp
 	<iostream>
 	"rlutil.h"
 	"ProductoStock.h"
@@ -957,7 +957,7 @@
 	"Usuario.h"
 	"FuncionesGlobales.h"
 
-1656534475 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\usuario.cpp
+1656542654 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\usuario.cpp
 	<iostream>
 	<iomanip>
 	"rlutil.h"

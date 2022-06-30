@@ -128,7 +128,7 @@ bool agregarProductoAlStock(int idProducto)
     for(int i=0; i<cantStocks; i++)
     {
         aux.LeerDeDisco(i);
-        if(aux.getIdProducto()==idProducto)
+        if(aux.getIdProducto()==idProducto && aux.getEstadoStock()== true)
         {
             aux.setStock(aux.getStock() + 1);
             aux.ModificarArchivo(i);
@@ -147,7 +147,7 @@ bool retirarProductoDelStock(int idProducto)
     for(int i=0; i<cantStocks; i++)
     {
         aux.LeerDeDisco(i);
-        if(aux.getIdProducto()==idProducto)
+        if(aux.getIdProducto()==idProducto && aux.getEstadoStock() == true)
         {
             cantidad = aux.getStock();
 
