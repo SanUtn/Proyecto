@@ -922,7 +922,7 @@
 	"FuncionesGlobales.h"
 	"Usuario.h"
 
-1656547387 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\productostock.cpp
+1656556021 source:c:\users\asus\documents\github\proyecto\gestiondeheladera\productostock.cpp
 	<iostream>
 	"rlutil.h"
 	"ProductoStock.h"

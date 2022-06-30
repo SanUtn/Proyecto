@@ -121,7 +121,7 @@ int buscarStockDeProducto(int idproducto)
 
     while(reg.LeerDeDisco(pos))
     {
-        if(reg.getIdProducto() == idproducto)
+        if(reg.getIdProducto() == idproducto && reg.getEstadoStock() == true)
         {
             return reg.getStock();
         }
@@ -807,12 +807,29 @@ void alertaDeProductosAVencer()
                                 bandera = true;
                                 rlutil::setColor(rlutil::BROWN);
                             }
-                        }
-                    }
+                        }else if(aux.getFechaVencimiento().getMes() == fecha.getMes() + 1)
+                            {
+                                int dif2 = fecha.getDia() - aux.getFechaVencimiento().getDia();
+
+                                if(dif2 == fecha.getDia()- 2 || dif2 == fecha.getDia()- 1)
+                                {
+                                    rlutil::setColor(rlutil::LIGHTCYAN);
+                                    cout << left;
+                                    cout << "\t";
+                                    cout << setw(20) << aux.getNombreProducto();
+                                    cout << setw(20) << aux.getFechaVencimiento().toString() << endl;
+                                    cont++;
+                                    bandera = true;
+                                    rlutil::setColor(rlutil::BROWN);
+                                }
+                            }
+                     }
+
                 }
             }
         }
-    }
+        }
+
     if(bandera)
     {
         rlutil::setColor(rlutil::DARKGREY);
