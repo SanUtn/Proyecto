@@ -384,7 +384,7 @@
 	<iostream>
 	"FuncionesGlobales.h"
 
-1656470221 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\consumoplatillo.cpp
+1656601915 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\consumoplatillo.cpp
 	<iostream>
 	<cctype>
 	<iomanip>
@@ -396,7 +396,7 @@
 	"FuncionesGlobales.h"
 	"Usuario.h"
 
-1656379349 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\consumoplatillo.h
+1656601915 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\consumoplatillo.h
 	<cstring>
 	<cstdlib>
 	<string>
@@ -444,7 +444,7 @@
 	<string>
 	"Fecha.h"
 
-1656470344 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\consumoproducto.cpp
+1656601915 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\consumoproducto.cpp
 	<iostream>
 	<iomanip>
 	"rlutil.h"
@@ -459,7 +459,7 @@
 	"Fecha.h"
 	<ctime>
 
-1656469907 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\funcionesglobales.cpp
+1656602600 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\funcionesglobales.cpp
 	<iostream>
 	<iomanip>
 	<stdexcept>
@@ -509,14 +509,14 @@
 	<cstring>
 	<string>
 
-1656467579 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\orientacionalimentaria.cpp
+1656601915 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\orientacionalimentaria.cpp
 	<iostream>
 	<iomanip>
 	"rlutil.h"
 	"OrientacionAlimentaria.h"
 	"FuncionesGlobales.h"
 
-1656470886 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\platillo.cpp
+1656601915 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\platillo.cpp
 	<iostream>
 	<iomanip>
 	"rlutil.h"
@@ -531,7 +531,7 @@
 	"Fecha.h"
 	"Producto.h"
 
-1656471039 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\producto.cpp
+1656601915 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\producto.cpp
 	<iostream>
 	<iomanip>
 	"rlutil.h"
@@ -545,7 +545,7 @@
 1656080414 e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\retiroproducto.h
 	"Fecha.h"
 
-1656467579 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\productostock.cpp
+1656601915 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\productostock.cpp
 	<iostream>
 	"rlutil.h"
 	"ProductoStock.h"
@@ -580,7 +580,7 @@
 	"Usuario.h"
 	"FuncionesGlobales.h"
 
-1656471596 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\usuario.cpp
+1656601915 source:e:\practicas\facultad\labo2\proyecto2-6\proyecto\gestiondeheladera\usuario.cpp
 	<iostream>
 	<iomanip>
 	"rlutil.h"

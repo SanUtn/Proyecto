@@ -807,28 +807,29 @@ void alertaDeProductosAVencer()
                                 bandera = true;
                                 rlutil::setColor(rlutil::BROWN);
                             }
-                        }else if(aux.getFechaVencimiento().getMes() == fecha.getMes() + 1)
-                            {
-                                int dif2 = fecha.getDia() - aux.getFechaVencimiento().getDia();
+                        }
+                        else if(aux.getFechaVencimiento().getMes() == fecha.getMes() + 1)
+                        {
+                            int dif2 = fecha.getDia() - aux.getFechaVencimiento().getDia();
 
-                                if(dif2 == fecha.getDia()- 2 || dif2 == fecha.getDia()- 1)
-                                {
-                                    rlutil::setColor(rlutil::LIGHTCYAN);
-                                    cout << left;
-                                    cout << "\t";
-                                    cout << setw(20) << aux.getNombreProducto();
-                                    cout << setw(20) << aux.getFechaVencimiento().toString() << endl;
-                                    cont++;
-                                    bandera = true;
-                                    rlutil::setColor(rlutil::BROWN);
-                                }
+                            if(dif2 == fecha.getDia()- 2 || dif2 == fecha.getDia()- 1)
+                            {
+                                rlutil::setColor(rlutil::LIGHTCYAN);
+                                cout << left;
+                                cout << "\t";
+                                cout << setw(20) << aux.getNombreProducto();
+                                cout << setw(20) << aux.getFechaVencimiento().toString() << endl;
+                                cont++;
+                                bandera = true;
+                                rlutil::setColor(rlutil::BROWN);
                             }
-                     }
+                        }
+                    }
 
                 }
             }
         }
-        }
+    }
 
     if(bandera)
     {
@@ -886,13 +887,37 @@ void alertaDeProductosVencidos()
 
                 if(stock > 0)
                 {
-                    if(aux.getFechaVencimiento().getAnio() == fecha.getAnio())
+                    int difAnio = fecha.getAnio() - aux.getFechaVencimiento().getAnio();
+                    int difMes =  fecha.getMes() - aux.getFechaVencimiento().getMes();
+                    int difDia =  fecha.getDia() - aux.getFechaVencimiento().getDia() ;
+
+                    if(difAnio == 0)
                     {
-                        if(aux.getFechaVencimiento().getMes() == fecha.getMes())
+                        if(difMes == 0)
                         {
-                            int dif = aux.getFechaVencimiento().getDia() - fecha.getDia();
-                            if(dif < 0 )
+                            if(difDia > 0)
                             {
+                                rlutil::setColor(rlutil::LIGHTCYAN);
+                                cout << left;
+                                cout << "\t";
+                                cout << setw(20) << aux.getNombreProducto();
+                                cout << setw(20) << aux.getFechaVencimiento().toString() << endl;
+                                cont++;
+                                bandera = true;
+                                rlutil::setColor(rlutil::BROWN);
+                            }
+
+                        }else if(difMes > 0){
+                            rlutil::setColor(rlutil::LIGHTCYAN);
+                            cout << left;
+                            cout << "\t";
+                            cout << setw(20) << aux.getNombreProducto();
+                            cout << setw(20) << aux.getFechaVencimiento().toString() << endl;
+                            cont++;
+                            bandera = true;
+                            rlutil::setColor(rlutil::BROWN);
+                        }
+                        }else if (difAnio > 0){
                                 rlutil::setColor(rlutil::LIGHTCYAN);
                                 cout << left;
                                 cout << "\t";
@@ -906,8 +931,6 @@ void alertaDeProductosVencidos()
                     }
                 }
             }
-        }
-    }
     if(bandera)
     {
         rlutil::setColor(rlutil::DARKGREY);
